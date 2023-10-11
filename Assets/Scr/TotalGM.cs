@@ -10,6 +10,13 @@ public class TotalGM : MonoBehaviour
     //前回のタイムと今のタイム
     private float[] nowTime;
     private float[] lastTime;
+
+    //プレイヤー引継ぎ用
+    //スキルはいらない可能性あるけど一応
+    private int playerHp = 3;
+    private int playerLevel = 1;
+    private float[] skillTime;
+    private bool[] playerSkill; 
     
     #region//ステージ管理
 
@@ -61,6 +68,26 @@ public class TotalGM : MonoBehaviour
     public Dictionary<string, StageCon> SceneDic {
         get { return this.sceneDic; }
         set { this.sceneDic = value; }
+    }
+
+    public int PlayerHp {
+        get { return this.playerHp; }
+        set { this.playerHp = value; }
+    }
+
+    public int PlayerLevel {
+        get {return this.playerLevel; }
+        set {this.playerLevel = value; }
+    }
+
+    public float[] SkillTime {
+        get { return this.skillTime; }
+        set { this.skillTime = value; }
+    }
+
+    public bool[] PlayerSkill {
+        get { return this.playerSkill; }
+        set { this.playerSkill = value; }
     }
 
     public float[] NowTime {
