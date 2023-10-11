@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class TotalGM : MonoBehaviour
 {
+    //前回のタイムと今のタイム
+    private float[] nowTime;
+    private float[] lastTime;
+    
     #region//ステージ管理
 
     //ステージ管理
@@ -14,7 +18,7 @@ public class TotalGM : MonoBehaviour
     {
         Title = 0,
         SkillSelect,
-        Fiast,
+        First,
         Secound,
         Thead,
         GameOver,
@@ -30,7 +34,7 @@ public class TotalGM : MonoBehaviour
     {
         {"Title",StageCon.Title },
         {"SkillSelect" ,StageCon.SkillSelect},
-        {"Stage",StageCon.Fiast },
+        {"Stage",StageCon.First },
         {"SecondStage",StageCon.Secound },
         {"TheadStage",StageCon.Secound },
         {"GameOver",StageCon.GameOver },
@@ -39,10 +43,10 @@ public class TotalGM : MonoBehaviour
 
     #endregion
 
+    #region//ゲッター＆セッター
     public StageCon Scene {
         get { return this.scene; }
     }
-
 
     public StageCon BackScene {
         get { return this.backScene; }
@@ -59,6 +63,17 @@ public class TotalGM : MonoBehaviour
         set { this.sceneDic = value; }
     }
 
+    public float[] NowTime {
+        get { return this.nowTime; }
+        set { this.nowTime = value; }
+    }
+
+    public float[] LastTime {
+        get { return this.lastTime; }
+        set { this.lastTime = value; }
+    }
+
+    #endregion
 
     private void Awake()
     {
