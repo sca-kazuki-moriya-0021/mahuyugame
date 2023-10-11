@@ -14,6 +14,8 @@ public class TotalGM : MonoBehaviour
     {
         Title = 0,
         Fiast,
+        Secound,
+        Thead,
         GameOver,
         Clear,
     }
@@ -27,6 +29,8 @@ public class TotalGM : MonoBehaviour
     {
         {"Title",StageCon.Title },
         {"Stage",StageCon.Fiast },
+        {"SecondStage",StageCon.Secound },
+        {"TheadStage",StageCon.Secound },
         {"GameOver",StageCon.GameOver },
         {"Clear",StageCon.Clear },
     };
