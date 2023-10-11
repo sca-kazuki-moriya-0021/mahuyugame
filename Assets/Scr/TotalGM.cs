@@ -13,6 +13,7 @@ public class TotalGM : MonoBehaviour
     public enum StageCon
     {
         Title = 0,
+        SkillSelect,
         Fiast,
         Secound,
         Thead,
@@ -28,6 +29,7 @@ public class TotalGM : MonoBehaviour
     private Dictionary<string, StageCon> sceneDic = new Dictionary<string, StageCon>()
     {
         {"Title",StageCon.Title },
+        {"SkillSelect" ,StageCon.SkillSelect},
         {"Stage",StageCon.Fiast },
         {"SecondStage",StageCon.Secound },
         {"TheadStage",StageCon.Secound },
@@ -104,6 +106,7 @@ public class TotalGM : MonoBehaviour
     }
 
     //クリアからステージに戻る時に使う
+    //使わないと思うけど残しておく
     public void ClearBack()
     {
         MyLoadScene(clearBackScene);
