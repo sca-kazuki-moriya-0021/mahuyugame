@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<prop.map version='4'>
+<prop.list>
+<prop.pair>
+<key>Workspace</key>
+<prop.list>
+<prop.pair>
+<key>Switcher</key>
+<string>{&quot;alwaysConfirmDoubleClickWorkspaceReset&quot;:true,&quot;hidden&quot;:[],&quot;overflow&quot;:[],&quot;shown&quot;:[&quot;初期設定のワークスペース &quot;],&quot;switcherwidth&quot;:-1,&quot;version&quot;:&quot;V5&quot;}</string>
+</prop.pair>
+</prop.list>
+</prop.pair>
+<prop.pair>
+<key>__eXoPrivateData__</key>
+<prop.list>
+<prop.pair>
+<key>sLastSetWorkspace</key>
+<ustring>初期設定のワークスペース </ustring>
+</prop.pair>
+</prop.list>
+</prop.pair>
+</prop.list>
+</prop.map>
