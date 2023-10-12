@@ -7,9 +7,15 @@ public class OpeScripts : MonoBehaviour
 {
     [SerializeField]
     GameObject Panel = null;
+    [SerializeField]
+    private AudioClip soundE;
+    //Œø‰Ê‰¹—p
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Panel.SetActive(false);
     }
 
@@ -23,11 +29,13 @@ public class OpeScripts : MonoBehaviour
         if (Panel.activeSelf)
         {
             Panel.SetActive(false);
+            audioSource.PlayOneShot(soundE);
             //Time.timeScale = 1.0f;
         }
         else
         {
             Panel.SetActive(true);
+            audioSource.PlayOneShot(soundE);
             //Time.timeScale = 0.0f;
         }
     }
