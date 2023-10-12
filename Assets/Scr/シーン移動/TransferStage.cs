@@ -85,9 +85,9 @@ public class TransferStage : MonoBehaviour
         SceneManager.LoadScene("Stage", LoadSceneMode.Single);
     }
 
-    public void ResetStage()
+    /*public void ResetStage()
     {
         audioSource.PlayOneShot(SE);
         SceneManager.LoadScene("Stage", LoadSceneMode.Single);
-    }
+    }*/
 }
