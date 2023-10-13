@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PouseCon : MonoBehaviour
 {
+    //効果音
     [SerializeField]
     private AudioClip soundE;
 
-    [SerializeField]
+    [SerializeField,Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
+    [SerializeField,Header("カウントダウンキャンパス")]
+    private Canvas countDownCanvas;
 
     private AudioSource audioSource;
 
+    private bool menuFlag = false;
+
     private TotalGM totalGM;
+
+    public bool MenuFlag
+    {
+        get { return this.menuFlag; }
+        set { this.menuFlag = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +33,10 @@ public class PouseCon : MonoBehaviour
         totalGM = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
         myCanvas = this.GetComponent<Canvas>();
+        countDownCanvas = GetComponent<Canvas>();
         myCanvas.enabled = false;
+        countDownCanvas.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -54,6 +69,7 @@ public class PouseCon : MonoBehaviour
         audioSource.PlayOneShot(soundE);
         Time.timeScale = 1f;
         myCanvas.enabled = false;
+        countDownCanvas.enabled = false;
     }
 
 
