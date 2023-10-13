@@ -4,31 +4,55 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab; //’e‚ÌƒvƒŒƒnƒu
-    [SerializeField] private float bulletSpeed = 5f; //’e‚Ì‘¬“x
-    [SerializeField] private int numberOfBullets = 8; //Å‰‚Ì’e‚Ì”
-    [SerializeField] private float spreadAngle = 45f; //Å‰‚Ì•úŽËó‚ÌŠp“x
-    [SerializeField] private float bulletSpacing = 0.0f; //’e‚ÌŠÔŠu
-    [SerializeField] private int bulletAmount = 1; //ˆê‰ñ‚Ì’e‚Ì‘‰Á—Ê
-    [SerializeField] private float createBullet = 5.0f;//’e‚ð‘‚â‚·ŽžŠÔ
-    [SerializeField] private float timeAngle = 15f;//Šp“x‚ð‘‚â‚·ŽžŠÔŠÔŠu
-    [SerializeField] private float yimespreadAngle = 10f;//‘‰ÁŠp“x
+    [SerializeField,Header("’e‚ÌƒvƒŒƒnƒu")] private GameObject bulletPrefab;
+    [SerializeField,Header("’e‚Ì‘¬“x")] private float bulletSpeed;
+    [SerializeField,Header("Å‰‚Ì’e‚Ì”")] private int numberOfBullets;
+    [SerializeField,Header("Å‰‚Ì•úŽËó‚ÌŠp“x")] private float spreadAngle;
+    [SerializeField,Header("”­ŽËŠÔŠu")] private float bulletSpacing;
+    [SerializeField,Header("ˆê‰ñ‚Ì’e‚Ì‘‰Á—Ê")] private int bulletAmount;
+    [SerializeField,Header("’e‚ð‘‚â‚·ŽžŠÔ")] private float createBullet;
+    [SerializeField,Header("Šp“x‚ð‘‚â‚·ŽžŠÔ")] private float timeAngle;
+    [SerializeField,Header("‘‰ÁŠp“x")] private float yimespreadAngle;
+    [SerializeField,Header("Å‘å’e”")]private int MaxBullet;
 
-    private float elaTime;//Œo‰ßŽžŠÔ
-    private int curbullet;//Œ»Ý‚Ì’e
-    void Update()
+    private float BulletsTime;//’eŒo‰ßŽžŠÔ
+    private float elaTime;//Šp“xŒo‰ßŽžŠÔ
+    private int curBullet;//Œ»Ý‚Ì’e
+    private float curAngle;//Œ»Ý‚ÌŠp“x
+
+     void Start()
     {
-        ShootNWayBullets();
+        curBullet = numberOfBullets;
+        curAngle = spreadAngle;
     }
 
-    private void ShootNWayBullets()
+    void Update()
     {
-        float angleStep = spreadAngle / (numberOfBullets - 1);
-        float initialAngle = transform.eulerAngles.z - (spreadAngle / 2);
-        bulletSpacing += Time.deltaTime;
-        if (bulletSpacing > 1.0f)
+        BulletsTime += Time.deltaTime;
+        elaTime += Time.deltaTime;
+        if(curBullet < MaxBullet && BulletsTime >= createBullet)
         {
-            for (int i = 0; i < numberOfBullets; i++)
+            curBullet += bulletAmount;
+            curAngle += yimespreadAngle;
+            BulletsTime = 0.0f;
+        }
+        if(elaTime >= timeAngle)
+        {
+            Debug.Log("a");
+            curAngle += yimespreadAngle;
+            elaTime = 0.0f;
+        }
+        ShootNWayBullets(curBullet,curAngle);
+    }
+
+    private void ShootNWayBullets(int curBullet, float curAngle)
+    {
+        float angleStep = curAngle / (curBullet - 1);
+        float initialAngle = transform.eulerAngles.z - (curAngle / 2);
+        bulletSpacing += Time.deltaTime;
+        if (bulletSpacing > 2.0f)
+        {
+            for (int i = 0; i < curBullet; i++)
             {
                 // ’e‚ð¶¬‚µ‚ÄA‰ŠúˆÊ’u‚ðÝ’è
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);

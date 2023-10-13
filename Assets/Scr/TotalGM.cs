@@ -13,10 +13,10 @@ public class TotalGM : MonoBehaviour
 
     //プレイヤー引継ぎ用
     //スキルはいらない可能性あるけど一応
-    private int playerHp = 3;
-    private int playerLevel = 1;
-    private float[] skillTime;
-    private bool[] playerSkill; 
+    private int[] playerHp = new int[]{3,0};
+    private int[] playerLevel =new int[]{0,0};
+    private float[] skillTime = new float[]{0,0,0,0,0,0,0,0};
+    private bool[] playerSkill = new bool[]{false,false,false,false}; 
     
     #region//ステージ管理
 
@@ -70,12 +70,12 @@ public class TotalGM : MonoBehaviour
         set { this.sceneDic = value; }
     }
 
-    public int PlayerHp {
+    public int[] PlayerHp {
         get { return this.playerHp; }
         set { this.playerHp = value; }
     }
 
-    public int PlayerLevel {
+    public int[] PlayerLevel {
         get {return this.playerLevel; }
         set {this.playerLevel = value; }
     }
