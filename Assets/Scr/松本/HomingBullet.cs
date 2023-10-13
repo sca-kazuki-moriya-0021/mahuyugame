@@ -4,18 +4,34 @@ using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    [SerializeField, Header("弾の追尾対象")] Transform target;
-    [SerializeField, Header("弾の速度")] float speed = 5f;
-    [SerializeField, Header("ホーミングが有効な時間")] float homingDuration = 2.0f; // ホーミングが有効な時間
+    [Header("弾の速度")]
+    [SerializeField] float speed = 5f;
+    [Header("ホーミングが有効な時間")]
+    [SerializeField] float homingDuration = 2.0f;
+    [Header("ターゲットのタグ")]
+    [SerializeField] string targetTag = "Player"; // ターゲットのタグ
 
+    private Transform target;
     private bool homingEnabled = true;
     private float homingTimer = 0.0f;
+    private Vector3 forwardDirection;
 
-    private Vector3 forwardDirection; // ホーミングが無効になった後の進行方向
+    private void Awake()
+    {
+        // タグを使用してターゲットを見つける
+        target = GameObject.FindGameObjectWithTag(targetTag).transform;
+    }
 
     private void Start()
     {
-        forwardDirection = transform.up; // 初期進行方向を設定
+        if (target == null)
+        {
+            Debug.LogWarning("ターゲットが見つかりませんでした");
+        }
+        else
+        {
+            // 初期進行方向は transform.up のまま
+        }
     }
 
     private void Update()
@@ -30,7 +46,7 @@ public class HomingBullet : MonoBehaviour
                 if (homingTimer >= homingDuration)
                 {
                     homingEnabled = false;
-                    forwardDirection = (target.position - transform.position).normalized; // ターゲットの方向に進行方向を設定
+                    forwardDirection = (target.position - transform.position).normalized;
                 }
             }
             else
@@ -56,7 +72,6 @@ public class HomingBullet : MonoBehaviour
         Vector3 velocity = forwardDirection * speed;
         transform.position += velocity * Time.deltaTime;
     }
-
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
