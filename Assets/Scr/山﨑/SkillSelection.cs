@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SkillSelection : MonoBehaviour
 {
@@ -9,21 +10,39 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] GameObject GoStageButton;
     [SerializeField] GameObject[] SkillSelect;
     [SerializeField] Button[] Skill;
+    [SerializeField]
+    private Navigation[] navigation;
+
+    private EventSystem ev = EventSystem.current;
+
+    public GameObject a;
+    //[SerializeField] Button[] HighlightSkill;
+    GameObject selectedObj;
 
     int test;
 
     void Start()
     {
+
         //É{É^ÉìÇ™ëIëÇ≥ÇÍÇΩèÛë‘Ç…Ç»ÇÈ
-        button.Select();
+       button.Select();
+        if (ev.alreadySelecting)
+        {
+
+        }
+        
+   
+        //selectedObj = EventSystem.current.currentSelectedGameObject;
         GoStageButton.SetActive(false);
        for(int i=0; i<=3;i++)
         {
+            //navigation = Skill[i].GetComponent<Button>().navigation;
             SkillSelect[i].SetActive(false);
         }
     }
 
     
+
     public void Skill_0_Click()
     {
         if (SkillSelect[0].activeSelf) { 
@@ -83,7 +102,18 @@ public class SkillSelection : MonoBehaviour
         }
         GoStage(); Test();
     }
-    //public void 
+    /*
+    public void HandleMouseEnter()
+    {
+        if(Skill[1].IsInteractable())
+        {
+            a.SetActive(false);
+        }
+        else
+        {
+            a.SetActive(true);
+        }
+    }*/
     private void GoStage()
     {
         if(test==2)
