@@ -12,8 +12,7 @@ public class PouseCon : MonoBehaviour
 
     [SerializeField,Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
-    [SerializeField,Header("カウントダウンキャンパス")]
-    private Canvas countDownCanvas;
+    private CountDownCon countDownCon;
 
     private AudioSource audioSource;
 
@@ -33,9 +32,8 @@ public class PouseCon : MonoBehaviour
         totalGM = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
         myCanvas = this.GetComponent<Canvas>();
-        countDownCanvas = GetComponent<Canvas>();
+        countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
-        countDownCanvas.enabled = false;
 
     }
 
@@ -67,9 +65,8 @@ public class PouseCon : MonoBehaviour
     public void BackStage()
     {
         audioSource.PlayOneShot(soundE);
-        Time.timeScale = 1f;
+        countDownCon.CountDownFlag = true;
         myCanvas.enabled = false;
-        countDownCanvas.enabled = false;
     }
 
 
