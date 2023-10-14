@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bellet"))
         {
-            gm.PlayerHp[0] --;
+            gm.PlayerHp[0]--;
         }
     }
 }
