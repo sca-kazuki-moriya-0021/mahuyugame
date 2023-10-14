@@ -16,16 +16,16 @@ public class Player : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
 
-        var scene = gm.MyGetScene();
+        //var scene = gm.MyGetScene();
 
-        if (scene == gm.BackScene)
+        /*if (scene == gm.BackScene)
         {
            gm.PlayerHp[0] = gm.PlayerHp[1];
         }
         else if (scene != gm.BackScene)
         {
            gm.PlayerHp[1] = gm.PlayerHp[0];
-        }
+        }*/
     }
 
     // Start is called before the first frame update
@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,5 +50,45 @@ public class Player : MonoBehaviour
         {
             gm.PlayerHp[0]--;
         }
+
+        /*if (collision.gameObject.CompareTag("weaponItem0"))
+        {
+            for(int i = 0; i < gm.PlayerWeapon.Length; i++)
+            {
+                gm.PlayerWeapon[i] = false;
+            }
+
+            gm.PlayerWeapon[0] = true;
+        }
+
+        if (collision.gameObject.CompareTag("weaponItem1"))
+        {
+            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
+            {
+                gm.PlayerWeapon[i] = false;
+            }
+
+            gm.PlayerWeapon[1] = true;
+        }
+
+        if (collision.gameObject.CompareTag("weaponItem2"))
+        {
+            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
+            {
+                gm.PlayerWeapon[i] = false;
+            }
+
+            gm.PlayerWeapon[2] = true;
+        }
+
+        if (collision.gameObject.CompareTag("weaponItem3"))
+        {
+            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
+            {
+                gm.PlayerWeapon[i] = false;
+            }
+
+            gm.PlayerWeapon[3] = true;
+        }*/
     }
 }
