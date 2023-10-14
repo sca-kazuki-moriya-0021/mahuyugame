@@ -11,7 +11,7 @@ public class CountDownCon : MonoBehaviour
     private Canvas myCanvas;
     [SerializeField]
     private List<string> texts = new List<string>();
-    private float time = 6.0f;
+    private float countTime;
 
     private PouseCon pouseCon;
 
@@ -39,19 +39,20 @@ public class CountDownCon : MonoBehaviour
         if(countDownFlag == true)
         {
             myCanvas.enabled = true;
-            while (true)
+            float s = 5f;
+            countTime += Time.unscaledDeltaTime;
+            s -= countTime;
+            text.text  = s.ToString("f2");
+            if(s < 0f)
             {
-                text.text = string.Format("Time:{0:00.00}", time);
-                time -= Time.realtimeSinceStartup;
-                Debug.Log("time");
-                if (time <= 0.0f)
-                {
-                    Time.timeScale = 1f;
-                    time = 0f;
-                    myCanvas.enabled = false;
-                    break;
-                }
+              Debug.Log("asi");
+              text.enabled = false;
+              myCanvas.enabled = false;
+              Time.timeScale = 1f;
+              pouseCon.MenuFlag = false;
+              countTime = 0f;
             }
+            
         }
     }
 }
