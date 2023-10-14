@@ -7,17 +7,12 @@ using UnityEngine.EventSystems;
 public class SkillSelection : MonoBehaviour
 {
     [SerializeField]Button button;
-    [SerializeField] GameObject GoStageButton;
-    [SerializeField] GameObject[] SkillSelect;
-    [SerializeField] Button[] Skill;
-    [SerializeField]
-    private Navigation[] navigation;
-
-    private EventSystem ev = EventSystem.current;
-
-    public GameObject a;
-    //[SerializeField] Button[] HighlightSkill;
-    GameObject selectedObj;
+    [SerializeField] GameObject[] skillSelect;
+    [SerializeField] Button[] skill;
+    private EventSystem ev;// = EventSystem.current;
+    private GameObject outLine;
+    private GameObject goStageButton;
+    private GameObject selectedObj;
 
     int test;
 
@@ -25,32 +20,41 @@ public class SkillSelection : MonoBehaviour
     {
 
         //É{É^ÉìÇ™ëIëÇ≥ÇÍÇΩèÛë‘Ç…Ç»ÇÈ
-       button.Select();
-        if (ev.alreadySelecting)
+        button.Select();
+        goStageButton = GameObject.Find("Stage");
+        outLine = GameObject.Find("outerFrame");
+        ev = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        Debug.Log(ev);
+        for (int i=0; i<=3;i++)
         {
-
+            
+            skillSelect[i].SetActive(false);
         }
-        
-   
-        //selectedObj = EventSystem.current.currentSelectedGameObject;
-        GoStageButton.SetActive(false);
-       for(int i=0; i<=3;i++)
+        goStageButton.SetActive(false);
+    }
+
+    private void FixedUpdate()
+    {
+        selectedObj = ev.currentSelectedGameObject.gameObject;
+        outLine.transform.position = selectedObj.transform.position;
+        if(selectedObj.gameObject.tag == "Button")
         {
-            //navigation = Skill[i].GetComponent<Button>().navigation;
-            SkillSelect[i].SetActive(false);
+            outLine.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        }
+        else
+        {
+            outLine.transform.localScale = new Vector3(4.5f, 4.5f, 4.5f);
         }
     }
 
-    
-
     public void Skill_0_Click()
     {
-        if (SkillSelect[0].activeSelf) { 
-            SkillSelect[0].SetActive(false);
+        if (skillSelect[0].activeSelf) { 
+            skillSelect[0].SetActive(false);
             test--;
         }
         else { 
-            SkillSelect[0].SetActive(true);
+            skillSelect[0].SetActive(true);
             test++;
             
         }
@@ -59,14 +63,14 @@ public class SkillSelection : MonoBehaviour
     }
     public void Skill_1_Click()
     {
-        if (SkillSelect[1].activeSelf)
+        if (skillSelect[1].activeSelf)
         {
-            SkillSelect[1].SetActive(false);
+            skillSelect[1].SetActive(false);
             test--;
         }
         else
         {
-            SkillSelect[1].SetActive(true);
+            skillSelect[1].SetActive(true);
             test++;
 
         }
@@ -74,14 +78,14 @@ public class SkillSelection : MonoBehaviour
     }
     public void Skill_2_Click()
     {
-        if (SkillSelect[2].activeSelf)
+        if (skillSelect[2].activeSelf)
         {
-            SkillSelect[2].SetActive(false);
+            skillSelect[2].SetActive(false);
             test--;
         }
         else
         {
-            SkillSelect[2].SetActive(true);
+            skillSelect[2].SetActive(true);
             test++;
 
         }
@@ -89,40 +93,29 @@ public class SkillSelection : MonoBehaviour
     }
     public void Skill_3_Click()
     {
-        if (SkillSelect[3].activeSelf)
+        if (skillSelect[3].activeSelf)
         {
-            SkillSelect[3].SetActive(false);
+            skillSelect[3].SetActive(false);
             test--;
         }
         else
         {
-            SkillSelect[3].SetActive(true);
+            skillSelect[3].SetActive(true);
             test++;
 
         }
         GoStage(); Test();
     }
-    /*
-    public void HandleMouseEnter()
-    {
-        if(Skill[1].IsInteractable())
-        {
-            a.SetActive(false);
-        }
-        else
-        {
-            a.SetActive(true);
-        }
-    }*/
+    
     private void GoStage()
     {
         if(test==2)
         {
-            GoStageButton.SetActive(true);
+            goStageButton.SetActive(true);
         }
         else
         {
-            GoStageButton.SetActive(false);
+            goStageButton.SetActive(false);
         }
     }
     public void GoTitleScene()
@@ -141,13 +134,13 @@ public class SkillSelection : MonoBehaviour
     {
         for (int i = 0; i <= 3; i++)
         {
-            if(!SkillSelect[i].activeSelf&&test==2)
+            if(!skillSelect[i].activeSelf&&test==2)
             {
-                Skill[i].interactable = false;
+                skill[i].interactable = false;
             }
             else
             {
-                Skill[i].interactable = true;
+                skill[i].interactable = true;
             }
         }
     }
