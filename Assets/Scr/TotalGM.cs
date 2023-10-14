@@ -15,10 +15,9 @@ public class TotalGM : MonoBehaviour
     //スキルはいらない可能性あるけど一応
     private int[] playerHp = new int[]{3,0};
     private int[] playerLevel =new int[]{0,0};
-    private bool[] playerWeapon = {false,false,false,false}; 
-    private bool[] playerSkill = new bool[]{false,false,false,false};
-    private float[] skillTime = new float[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-
+    private float[] skillTime = new float[]{0,0,0,0,0,0,0,0};
+    private bool[] playerSkill = new bool[]{false,false,false,false}; 
+    
     #region//ステージ管理
 
     //ステージ管理
@@ -89,12 +88,6 @@ public class TotalGM : MonoBehaviour
     public bool[] PlayerSkill {
         get { return this.playerSkill; }
         set { this.playerSkill = value; }
-    }
-
-    public bool[] PlayerWeapon
-    {
-        get { return this.playerWeapon; }
-        set { this.playerWeapon = value; }
     }
 
     public float[] NowTime {
