@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TransferStage : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class TransferStage : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip soundE;
-    
-    private TotalGM totalGM;
 
+    [SerializeField]
+    private EventSystem ev = EventSystem.current;
+    private TotalGM totalGM;
+    private GameObject selectedObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +27,22 @@ public class TransferStage : MonoBehaviour
         if(Panel != null)
         Panel.SetActive(false);
         button.Select();
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (selectedObj == null)
+        {
+            button.Select();
+            selectedObj = ev.currentSelectedGameObject;
+        }
+        else
+        {
+            selectedObj = ev.currentSelectedGameObject;
+            //アウトラインをここで入れる
+        }
     }
 
 

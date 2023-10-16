@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
+  button: {fileID: 11424168963206228}
   myCanvas: {fileID: 11424169470206026}
 --- !u!82 &11424169470206030
 AudioSource:

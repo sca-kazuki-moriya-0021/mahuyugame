@@ -1046,6 +1046,7 @@ MonoBehaviour:
   Panel: {fileID: 0}
   button: {fileID: 611042893}
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
+  ev: {fileID: 260590255}
 --- !u!81 &1256756910
 AudioListener:
   m_ObjectHideFlags: 0

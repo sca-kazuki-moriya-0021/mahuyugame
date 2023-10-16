@@ -21,9 +21,14 @@ public class SkillSelection : MonoBehaviour
     [SerializeField]float outLineSizeB;
      private TotalGM totalGM;
 
-    void Start()
+    private void Awake()
     {
         totalGM = FindObjectOfType<TotalGM>();
+        PlayerReset();
+    }
+
+    void Start()
+    {
         //ボタンが選択された状態になる
         button.Select();
         goStageButton.SetActive(false);
@@ -33,15 +38,26 @@ public class SkillSelection : MonoBehaviour
             skillSelect[i].SetActive(false);
             totalGM.PlayerSkill[i] = false;//念のため初期化する
         }
+        
     }
     
     void FixedUpdate()
     {
+        //Debug.Log(Cursor.lockState);
         //選ばれているオブジェクトを格納している
-        selectedObj = ev.currentSelectedGameObject;
-        outLine.transform.position = selectedObj.transform.position;
-        OutLineSize();
-        //Debug.Log(totalGM.PlayerSkill[1]);
+       
+        if (selectedObj == null)
+        {
+            button.Select();
+            selectedObj = ev.currentSelectedGameObject;
+        }
+        else 
+        {
+            selectedObj = ev.currentSelectedGameObject;
+            outLine.transform.position = selectedObj.transform.position;
+            OutLineSize();
+        }
+        
     }
     //押されたときの処理
     public void Skill_0_Click()
@@ -157,6 +173,26 @@ public class SkillSelection : MonoBehaviour
         else
         {
             outLine.transform.localScale = new Vector2 (outLineSizeB,outLineSizeB);
+        }
+    }
+
+    private void PlayerReset()
+    {
+        totalGM.PlayerHp[0] = 3;
+        totalGM.PlayerHp[1] = 0;
+
+        totalGM.PlayerLevel[0] = 0;
+        totalGM.PlayerLevel[1] = 0;
+
+        for (int i = 0; i <= 3; i++)
+        {
+            totalGM.PlayerWeapon[i] = false;
+            totalGM.PlayerSkill[i] = false;
+        }
+
+        for(int i = 0; i < totalGM.SkillTime.Length; i++)
+        {
+            totalGM.SkillTime[i] = 0;
         }
     }
 }

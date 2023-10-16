@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PouseCon : MonoBehaviour
 {
     //効果音
     [SerializeField]
     private AudioClip soundE;
+
+    [SerializeField]
+    private Button button;
+
+    [SerializeField]
+    private EventSystem ev = EventSystem.current;
 
     [SerializeField,Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
@@ -19,6 +26,8 @@ public class PouseCon : MonoBehaviour
     private bool menuFlag = false;
 
     private TotalGM totalGM;
+
+    private GameObject selectedObj;
 
     public bool MenuFlag
     {
@@ -34,7 +43,7 @@ public class PouseCon : MonoBehaviour
         myCanvas = this.GetComponent<Canvas>();
         countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
-
+        button.Select();
     }
 
     // Update is called once per frame
@@ -44,6 +53,20 @@ public class PouseCon : MonoBehaviour
         {
             Time.timeScale = 0f;
             myCanvas.enabled = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (selectedObj == null)
+        {
+            button.Select();
+            selectedObj = ev.currentSelectedGameObject;
+        }
+        else
+        {
+            selectedObj = ev.currentSelectedGameObject;
+            //アウトラインをここで入れる
         }
     }
 

@@ -640,6 +640,7 @@ MonoBehaviour:
   Panel: {fileID: 7498579064858636527}
   button: {fileID: 181835519}
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
+  ev: {fileID: 569398404}
 --- !u!1 &569398402
 GameObject:
   m_ObjectHideFlags: 0
