@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TransferStage : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Panel = null;
+    [SerializeField] Button button;
     //効果音用
     private AudioSource audioSource;
     [SerializeField]
-    private AudioClip SE;
+    private AudioClip soundE;
     
     private TotalGM totalGM;
 
@@ -17,6 +21,8 @@ public class TransferStage : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
+        Panel.SetActive(false);
+        button.Select();
     }
 
     // Update is called once per frame
@@ -43,14 +49,14 @@ public class TransferStage : MonoBehaviour
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
-        audioSource.PlayOneShot(SE);
+        audioSource.PlayOneShot(soundE);
         SceneManager.LoadScene("SkillSelect", LoadSceneMode.Single);
     }
 
     //ステージリロード
     public void StageReload()
     {
-        audioSource.PlayOneShot(SE);
+        audioSource.PlayOneShot(soundE);
 
         //if (timeGM.TimeFlag == false)
         {
@@ -66,7 +72,7 @@ public class TransferStage : MonoBehaviour
     //事前にプレイヤーとかでBackSceneに値を投げておいてこれを発動する感じ
     public void ReloadStage()
     {
-        audioSource.PlayOneShot(SE);
+        audioSource.PlayOneShot(soundE);
         totalGM.ReloadClearScene();
     }
 
@@ -74,14 +80,14 @@ public class TransferStage : MonoBehaviour
     //多分使わない
     public void Clear()
     {
-        audioSource.PlayOneShot(SE);
+        audioSource.PlayOneShot(soundE);
         SceneManager.LoadScene("Clear", LoadSceneMode.Single);
     }
 
     //ステージ1に移動
     public void Stage()
     {
-        audioSource.PlayOneShot(SE);
+        audioSource.PlayOneShot(soundE);
         SceneManager.LoadScene("Stage", LoadSceneMode.Single);
     }
 
@@ -90,4 +96,19 @@ public class TransferStage : MonoBehaviour
         audioSource.PlayOneShot(SE);
         SceneManager.LoadScene("Stage", LoadSceneMode.Single);
     }*/
+    public void Opetrue()
+    {
+        if (Panel.activeSelf)
+        {
+            Panel.SetActive(false);
+            audioSource.PlayOneShot(soundE);
+            //Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Panel.SetActive(true);
+            audioSource.PlayOneShot(soundE);
+            //Time.timeScale = 0.0f;
+        }
+    }
 }
