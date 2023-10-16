@@ -21,6 +21,7 @@ public class TransferStage : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
+        if(Panel != null)
         Panel.SetActive(false);
         button.Select();
     }

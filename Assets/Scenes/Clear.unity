@@ -527,7 +527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c306315c312525449b37ec0b0732905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
+  Panel: {fileID: 0}
+  button: {fileID: 1930485930}
+  soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
 --- !u!81 &540047282
 AudioListener:
   m_ObjectHideFlags: 0
@@ -816,7 +818,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333899168}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1333899170
 Camera:
   m_ObjectHideFlags: 0
@@ -881,7 +883,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333899168}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
