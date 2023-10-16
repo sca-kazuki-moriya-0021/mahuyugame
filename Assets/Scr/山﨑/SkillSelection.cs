@@ -3,152 +3,160 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class SkillSelection : MonoBehaviour
 {
-    [SerializeField]Button button;
-    [SerializeField] GameObject GoStageButton;
-    [SerializeField] GameObject[] SkillSelect;
-    [SerializeField] Button[] Skill;
+    [SerializeField]　Button button;
+    [SerializeField] GameObject goStageButton;
+    [SerializeField] GameObject[] skillSelect;//選択しているとき上にかぶせるオブジェ
+    [SerializeField] Button[] skill;//スキルのボタン
     [SerializeField]
-    private Navigation[] navigation;
-
     private EventSystem ev = EventSystem.current;
-
-    public GameObject a;
-    //[SerializeField] Button[] HighlightSkill;
-    GameObject selectedObj;
-
-    int test;
+    private GameObject selectedObj;
+    [SerializeField] private Image outLine;
+    int skillCount;
+    [Header("外枠＿サイズの値")]
+    [SerializeField]float outLineSizeS;
+    [SerializeField]float outLineSizeB;
+     private TotalGM totalGM;
 
     void Start()
     {
-
+        totalGM = FindObjectOfType<TotalGM>();
         //ボタンが選択された状態になる
-       button.Select();
-        if (ev.alreadySelecting)
+        button.Select();
+        goStageButton.SetActive(false);
+        //ボタンの選択状態を解除
+        for(int i=0; i<=3;i++)
         {
-
-        }
-        
-   
-        //selectedObj = EventSystem.current.currentSelectedGameObject;
-        GoStageButton.SetActive(false);
-       for(int i=0; i<=3;i++)
-        {
-            //navigation = Skill[i].GetComponent<Button>().navigation;
-            SkillSelect[i].SetActive(false);
+            skillSelect[i].SetActive(false);
+            totalGM.PlayerSkill[i] = false;//念のため初期化する
         }
     }
-
     
-
+    void FixedUpdate()
+    {
+        //選ばれているオブジェクトを格納している
+        selectedObj = ev.currentSelectedGameObject;
+        outLine.transform.position = selectedObj.transform.position;
+        OutLineSize();
+        //Debug.Log(totalGM.PlayerSkill[1]);
+    }
+    //押されたときの処理
     public void Skill_0_Click()
     {
-        if (SkillSelect[0].activeSelf) { 
-            SkillSelect[0].SetActive(false);
-            test--;
+        if (skillSelect[0].activeSelf) { 
+            skillSelect[0].SetActive(false);
+            skillCount--;
+            totalGM.PlayerSkill[0] = false;
         }
         else { 
-            SkillSelect[0].SetActive(true);
-            test++;
-            
+            skillSelect[0].SetActive(true);
+            skillCount++;
+            totalGM.PlayerSkill[0] = true;
         }
         GoStage();
         Test();
     }
+    //押されたときの処理
     public void Skill_1_Click()
     {
-        if (SkillSelect[1].activeSelf)
+        if (skillSelect[1].activeSelf)
         {
-            SkillSelect[1].SetActive(false);
-            test--;
+            skillSelect[1].SetActive(false);
+            skillCount--;
+            totalGM.PlayerSkill[1] = false;
         }
         else
         {
-            SkillSelect[1].SetActive(true);
-            test++;
-
+            skillSelect[1].SetActive(true);
+            skillCount++;
+            totalGM.PlayerSkill[1] = true;
         }
         GoStage(); Test();
     }
+    //押されたときの処理
     public void Skill_2_Click()
     {
-        if (SkillSelect[2].activeSelf)
+        if (skillSelect[2].activeSelf)
         {
-            SkillSelect[2].SetActive(false);
-            test--;
+            skillSelect[2].SetActive(false);
+            skillCount--;
+            totalGM.PlayerSkill[2] = false;
         }
         else
         {
-            SkillSelect[2].SetActive(true);
-            test++;
-
+            skillSelect[2].SetActive(true);
+            skillCount++;
+            totalGM.PlayerSkill[2] = true;
         }
         GoStage(); Test();
     }
+    //押されたときの処理
     public void Skill_3_Click()
     {
-        if (SkillSelect[3].activeSelf)
+        if (skillSelect[3].activeSelf)
         {
-            SkillSelect[3].SetActive(false);
-            test--;
+            skillSelect[3].SetActive(false);
+            skillCount--;
+            totalGM.PlayerSkill[3] = false;
         }
         else
         {
-            SkillSelect[3].SetActive(true);
-            test++;
-
+            skillSelect[3].SetActive(true);
+            skillCount++;
+            totalGM.PlayerSkill[3] = true;
         }
         GoStage(); Test();
     }
-    /*
-    public void HandleMouseEnter()
-    {
-        if(Skill[1].IsInteractable())
-        {
-            a.SetActive(false);
-        }
-        else
-        {
-            a.SetActive(true);
-        }
-    }*/
+    //ステージに行くボタンの表示・非表示
     private void GoStage()
     {
-        if(test==2)
+        if(skillCount==2)
         {
-            GoStageButton.SetActive(true);
+            goStageButton.SetActive(true);
         }
         else
         {
-            GoStageButton.SetActive(false);
+            goStageButton.SetActive(false);
         }
     }
+    //押されたらタイトルシーンに行く
     public void GoTitleScene()
     {
-        //SceneManager.LoadScene("遷移したいScene名");
+        SceneManager.LoadScene("Title");
     }
-
+    //押されたらステージに行く
     public void GoStageScene()
     {
-        //SceneManager.LoadScene("遷移したいScene名");
+        SceneManager.LoadScene("Stage");
     }
-
-
-
+    //スキルが２個選択されたときに選択されていないものを押せないようにする
     private void Test()
     {
         for (int i = 0; i <= 3; i++)
         {
-            if(!SkillSelect[i].activeSelf&&test==2)
+            if(!skillSelect[i].activeSelf&&skillCount==2)
             {
-                Skill[i].interactable = false;
+                skill[i].interactable = false;
             }
             else
             {
-                Skill[i].interactable = true;
+                skill[i].interactable = true;
             }
+        }
+    }
+    //選択されたボタンによって外枠のサイズを変更
+    private void OutLineSize()
+    {
+        if(selectedObj.gameObject.CompareTag("Button"))
+        {
+            outLine.transform.localScale = new Vector2 (outLineSizeS,outLineSizeS);
+        }
+        else
+        {
+            outLine.transform.localScale = new Vector2 (outLineSizeB,outLineSizeB);
         }
     }
 }
