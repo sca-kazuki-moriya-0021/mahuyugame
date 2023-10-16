@@ -43,7 +43,7 @@ public class PouseCon : MonoBehaviour
         myCanvas = this.GetComponent<Canvas>();
         countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
-        button.Select();
+        //button.Select();
     }
 
     // Update is called once per frame
@@ -53,13 +53,16 @@ public class PouseCon : MonoBehaviour
         {
             Time.timeScale = 0f;
             myCanvas.enabled = true;
+            button.Select();
+            
         }
     }
 
     private void FixedUpdate()
     {
-        if (selectedObj == null)
+        if (selectedObj == null && myCanvas.enabled == true)
         {
+            
             button.Select();
             selectedObj = ev.currentSelectedGameObject;
         }
@@ -90,6 +93,7 @@ public class PouseCon : MonoBehaviour
         audioSource.PlayOneShot(soundE);
         countDownCon.CountDownFlag = true;
         myCanvas.enabled = false;
+        //Debug.Log("Ç®Ç∆Ç»ÇÈÇÊÅ[");
     }
 
 
