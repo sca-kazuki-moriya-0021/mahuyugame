@@ -50,6 +50,7 @@ public class CountDownCon : MonoBehaviour
               text.enabled = false;
               myCanvas.enabled = false;
               Time.timeScale = 1f;
+              countDownFlag = false;
               pouseCon.MenuFlag = false;
               countTime = 0f;
             }

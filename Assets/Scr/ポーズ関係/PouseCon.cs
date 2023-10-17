@@ -49,8 +49,10 @@ public class PouseCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        Debug.Log(myCanvas.enabled);
+        if (Input.GetKeyDown(KeyCode.Escape) && menuFlag == false)
         {
+            menuFlag = true;
             Time.timeScale = 0f;
             myCanvas.enabled = true;
             button.Select();
@@ -60,17 +62,22 @@ public class PouseCon : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (selectedObj == null && myCanvas.enabled == true)
+        if(menuFlag == true && countDownCon.CountDownFlag == false)
         {
-            
-            button.Select();
-            selectedObj = ev.currentSelectedGameObject;
+            if (selectedObj == null)
+            {
+
+                button.Select();
+                selectedObj = ev.currentSelectedGameObject;
+            }
+            else
+            {
+                selectedObj = ev.currentSelectedGameObject;
+                //アウトラインをここで入れる
+            }
         }
-        else
-        {
-            selectedObj = ev.currentSelectedGameObject;
-            //アウトラインをここで入れる
-        }
+
+      
     }
 
     //ゲーム終了
@@ -90,9 +97,10 @@ public class PouseCon : MonoBehaviour
     //ゲームに戻る
     public void BackStage()
     {
+        selectedObj = null;
+        myCanvas.enabled = false;
         audioSource.PlayOneShot(soundE);
         countDownCon.CountDownFlag = true;
-        myCanvas.enabled = false;
         //Debug.Log("おとなるよー");
     }
 
@@ -101,13 +109,12 @@ public class PouseCon : MonoBehaviour
     public void StageReload()
     {
         audioSource.PlayOneShot(soundE);
-
-        myCanvas.enabled = true;
+        myCanvas.enabled = false;
+        menuFlag = false;
         //if (timeGM.TimeFlag == false)
         {
             Time.timeScale = 1f;
         }
-
         totalGM.BackScene = totalGM.MyGetScene();
         totalGM.ReloadCurrentScene();
 
