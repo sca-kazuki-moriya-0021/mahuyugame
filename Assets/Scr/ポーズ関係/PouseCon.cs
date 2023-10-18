@@ -17,7 +17,10 @@ public class PouseCon : MonoBehaviour
     [SerializeField]
     private EventSystem ev = EventSystem.current;
 
-    [SerializeField,Tooltip("自分のキャンパス")]
+    [SerializeField]
+    private Button[] poseButton;
+
+    [SerializeField, Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
     private CountDownCon countDownCon;
 
@@ -28,6 +31,8 @@ public class PouseCon : MonoBehaviour
     private TotalGM totalGM;
 
     private GameObject selectedObj;
+
+    private Coroutine _currentCoroutine;
 
     public bool MenuFlag
     {
@@ -44,46 +49,54 @@ public class PouseCon : MonoBehaviour
         countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
         //button.Select();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(myCanvas.enabled);
+        //Debug.Log(myCanvas.enabled);
         if (Input.GetKeyDown(KeyCode.Escape) && menuFlag == false)
         {
             menuFlag = true;
             Time.timeScale = 0f;
             myCanvas.enabled = true;
-            button.Select();
-            
+            for (int i = 0; i < 3; i++)
+            {
+                poseButton[i].enabled = true;
+            }
+            StartCoroutine(SelectedObj());
         }
     }
 
-    private void FixedUpdate()
+    private IEnumerator SelectedObj()
     {
-        if(menuFlag == true && countDownCon.CountDownFlag == false)
+        while (true)
         {
-            if (selectedObj == null)
+            if (menuFlag == true && countDownCon.CountDownFlag == false)
             {
-
-                button.Select();
-                selectedObj = ev.currentSelectedGameObject;
+                if (selectedObj == null)
+                {
+                    button.Select();
+                    selectedObj = ev.currentSelectedGameObject;
+                }
+                else
+                {
+                    selectedObj = ev.currentSelectedGameObject;
+                    //アウトラインをここで入れる
+                }
             }
-            else
-            {
-                selectedObj = ev.currentSelectedGameObject;
-                //アウトラインをここで入れる
-            }
+            yield return null;
         }
 
-      
+
     }
 
     //ゲーム終了
     public void GameEnd()
     {
         audioSource.PlayOneShot(soundE);
+        poseButton[2].enabled = false;
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         //エディタ上の動作
@@ -101,6 +114,7 @@ public class PouseCon : MonoBehaviour
         myCanvas.enabled = false;
         audioSource.PlayOneShot(soundE);
         countDownCon.CountDownFlag = true;
+        poseButton[0].enabled = false;
         //Debug.Log("おとなるよー");
     }
 
@@ -117,6 +131,7 @@ public class PouseCon : MonoBehaviour
         }
         totalGM.BackScene = totalGM.MyGetScene();
         totalGM.ReloadCurrentScene();
+        poseButton[1].enabled = false;
 
     }
 }

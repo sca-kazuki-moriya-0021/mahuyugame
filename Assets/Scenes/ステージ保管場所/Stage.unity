@@ -1047,6 +1047,10 @@ MonoBehaviour:
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
   button: {fileID: 11424170601350207}
   ev: {fileID: 225547066}
+  poseButton:
+  - {fileID: 11424170601350207}
+  - {fileID: 11424170290381346}
+  - {fileID: 11424169837272138}
   myCanvas: {fileID: 11424169976383521}
 --- !u!82 &11424169976383525
 AudioSource:

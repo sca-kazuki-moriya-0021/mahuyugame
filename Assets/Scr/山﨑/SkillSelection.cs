@@ -176,6 +176,7 @@ public class SkillSelection : MonoBehaviour
         }
     }
 
+    //‰Šú‰»
     private void PlayerReset()
     {
         totalGM.PlayerHp[0] = 3;

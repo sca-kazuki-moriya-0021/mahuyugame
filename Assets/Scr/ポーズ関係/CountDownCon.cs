@@ -38,7 +38,7 @@ public class CountDownCon : MonoBehaviour
     {
         if(countDownFlag == true)
         {
-            
+            text.enabled = true;
             myCanvas.enabled = true;
             float s = 5f;
             countTime += Time.unscaledDeltaTime;
