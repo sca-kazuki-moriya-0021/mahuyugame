@@ -7,6 +7,7 @@ using UnityEditor;
 using System.Linq;
 using Spine.Unity;
 using Spine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
