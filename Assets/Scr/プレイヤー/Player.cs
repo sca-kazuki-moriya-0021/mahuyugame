@@ -8,10 +8,12 @@ using System.Linq;
 using Spine.Unity;
 using Spine;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-     private TotalGM gm;
+    private Vector2 inputV;
+    private TotalGM gm;
 
     private void OnEnable()
     {
@@ -38,11 +40,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        InputSystemMove();
         if(gm.PlayerHp[0] == 0)
         {
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    private void OnMove(InputValue movementValue)
+    {
+        Debug.Log(movementValue);
+        inputV = movementValue.Get<Vector2>();
+    }
+
+    public void InputSystemMove()
+    {  
+        var dire = new Vector3(inputV.x,inputV.y,0);
+        transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 5f, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
