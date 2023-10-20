@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class HomingLauncher : MonoBehaviour
 {
-    [SerializeField,Header("射撃地点1")]
-    GameObject Fire1;
-    [SerializeField,Header("射撃地点2")]
-    GameObject Fire2;
-    [SerializeField,Header("ホーミング弾")]
-    GameObject HomingBullet;
-    [SerializeField,Header("発射間隔")]
-    float fireInterval = 1.0f;
+    [SerializeField]GameObject Fire1;
+    [SerializeField]GameObject Fire2;
+    [SerializeField]GameObject HomingBullet;
+    [SerializeField]float fireInterval = 1.0f;
 
     private float nextFireTime = 0.0f;
 
@@ -31,7 +27,8 @@ public class HomingLauncher : MonoBehaviour
         if (firePoint != null && HomingBullet != null)
         {
             // ホーミング弾のインスタンスを生成
-            GameObject homingBullet = Instantiate(HomingBullet, firePoint.transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(HomingBullet, firePoint.transform.position, Quaternion.identity);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         }
     }
 }
