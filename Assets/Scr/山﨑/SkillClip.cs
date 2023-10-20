@@ -20,7 +20,7 @@ public class SkillClip : MonoBehaviour
     private bool backSelect;
     private bool videoPlay;
     private bool buttonPush;
-    private float time;
+    private float time = 0.0f;
     private IEnumerator reset;
     bool One;
     bool duringVideoPlayback;//ビデオが再生中か判定する
@@ -43,8 +43,8 @@ public class SkillClip : MonoBehaviour
         //バグ対策///////////////
         this.rawImage.enabled = false;
         reset = Video();
-        videoPlayer.time = 0;
-        videoPlayer.frame = 0;
+        //videoPlayer.time = 0;
+        //videoPlayer.frame = 0;
         videoPlayer.Stop();
         //////////////////////////
 

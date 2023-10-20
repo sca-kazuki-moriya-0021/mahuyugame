@@ -56,11 +56,13 @@ public class Player : MonoBehaviour
         
         if(skillAtkFlag[0] == true)
         {
+            
             skillAtkFlag[0] = false;
         }
 
         if (skillAtkFlag[1] == true)
         {
+            
             skillAtkFlag[1] =  false;
         }
 
@@ -79,9 +81,10 @@ public class Player : MonoBehaviour
 
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
+        //Debug.Log(context);
         if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0])
         {
+            skillDisplay.SkillCoolTime[0] = false;
             skillAtkFlag[0] = true;
             Debug.Log("asik");
         }
@@ -92,6 +95,7 @@ public class Player : MonoBehaviour
         Debug.Log(context);
         if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1])
         {
+            skillDisplay.SkillCoolTime[1] = false;
             skillAtkFlag[1] = true;
             Debug.Log("skill");
         }

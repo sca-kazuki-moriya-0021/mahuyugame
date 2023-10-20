@@ -8,11 +8,14 @@ public class SkillDisplay_Stage : MonoBehaviour
     [SerializeField] private Sprite[] skillicon;
     [SerializeField] private Image[] skillPosition;
     [SerializeField] private Image[] ui;
-    private bool[] skillCoolFlag = new bool[] {false ,false};
-    [SerializeField] private float[] coolTime = new float[] {0,0,0,0};
+    private bool[] skillCoolFlag = new bool[] {true ,true};
+    private bool[] test = new bool[] { false, false };
+    [SerializeField] private float[] initialCoolTime = new float[] {0,0,0,0};//スキルの設定
+    [SerializeField] private float[] skillCoolTime = new float [] {0,0};//ここに選択スキル入れる
     private Player player;
     private TotalGM totalGM;
-    int count;
+    //int count;
+    //int skillCount=0;
     //private bool[] playerSkill = new bool[] { false, false, false, false };
 
     public bool[] SkillCoolTime {
@@ -33,39 +36,54 @@ public class SkillDisplay_Stage : MonoBehaviour
             if (totalGM.PlayerSkill[count] == true)
             {
                 if (skillPosition[0].sprite == null)
+                { 
                     skillPosition[0].sprite = skillicon[count];
+                    skillCoolTime[0] = initialCoolTime[count];
+                }
                 else
+                { 
                     skillPosition[1].sprite = skillicon[count];
+                    skillCoolTime[1] = initialCoolTime[count];
+                }
             }
         }
-
     }
+
+    //ここでスキル発動の検知
 
     private void Update()
     {
         if(player.SkillAtkFlag[0] && !skillCoolFlag[0])
         {
-            skillCoolFlag[0] = false;
-            ui[0].fillAmount -= 1.0f / coolTime[0] * Time.deltaTime;
-            if (ui[0].fillAmount <= 0)
-            {
-
-                skillCoolFlag[0] = true;
-                ui[0].fillAmount = 1;
-                coolTime[0] = 0;
-            }
+            
+            test[0] = true;
         }
-
         if (player.SkillAtkFlag[1] &&  !skillCoolFlag[1])
         {
-            skillCoolFlag[1] = false;
-            ui[1].fillAmount -= 1.0f / coolTime[1] * Time.deltaTime;
-            if(ui[1].fillAmount <= 0)
+            test[1] = true;
+        }
+        if (test[0])
+        {
+            
+            ui[0].fillAmount -= 1.0f / skillCoolTime[0] * Time.deltaTime;
+            if (ui[0].fillAmount <= 0)
+            {                
+                skillCoolFlag[0] = true;
+                ui[0].fillAmount = 1;
+                initialCoolTime[0] = 0;
+                test[0] = false;                
+            }
+        }
+        if (test[1])
+        {
+            Debug.Log("入った");
+            ui[1].fillAmount -= 1.0f / skillCoolTime[1] * Time.deltaTime;
+            if (ui[1].fillAmount <= 0)
             {
-
                 skillCoolFlag[1] = true;
                 ui[1].fillAmount = 1;
-                coolTime[1] = 0;
+                initialCoolTime[1] = 0;
+                test[1] = false;
             }
         }
     }
