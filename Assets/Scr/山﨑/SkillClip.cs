@@ -48,7 +48,7 @@ public class SkillClip : MonoBehaviour
         videoPlayer.Stop();
         //////////////////////////
 
-        PushButton();
+        //PushButton();
     }
 
     // Update is called once per frame
@@ -139,6 +139,7 @@ public class SkillClip : MonoBehaviour
     {
         if (buttonPush)
         {
+            Debug.Log("ÇÕÇ¢Ç¡ÇΩ");
             time = 0;
             //ÉoÉOëŒçÙ///////////////
             videoPlay = false;
@@ -165,7 +166,7 @@ public class SkillClip : MonoBehaviour
         if (duringVideoPlayback)
         {
             skillAnimator.SetTrigger("Select");
-            Debug.Log("ÇÕÇ¢Ç¡ÇΩ");
+
         }
     }
 
