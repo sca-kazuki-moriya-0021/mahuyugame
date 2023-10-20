@@ -18,16 +18,28 @@ public class TimeManager : MonoBehaviour
     private void Awake()
     {
         totalGM = FindObjectOfType<TotalGM>();
-        var scene=totalGM.MyGetScene();
-        switch (scene){
+        minute = 0;
+        //DontDestroyOnLoad(this.gameObject);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        var scene = totalGM.MyGetScene();
+        timerText = GetComponent<Text>();
+        Debug.Log(timerText);
+        switch (scene)
+        {
             case TotalGM.StageCon.First:
                 StartCoroutine("TimeStarge01");
+                minute -= ((int)totalGM.NowTime[0]);
                 break;
             case TotalGM.StageCon.Secound:
                 StartCoroutine("TimeStarge02");
+                minute-= ((int)totalGM.NowTime[1]);
                 break;
             case TotalGM.StageCon.Thead:
                 StartCoroutine("TimeStarge03");
+                minute -= ((int)totalGM.NowTime[2]);
                 break;
             case TotalGM.StageCon.Clear:
                 StartCoroutine("TotalTime");
@@ -35,12 +47,6 @@ public class TimeManager : MonoBehaviour
             default:
                 break;
         }
-        //DontDestroyOnLoad(this.gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        minute = 0;
     }
     // Update is called once per frame
     void Update()
@@ -50,8 +56,8 @@ public class TimeManager : MonoBehaviour
     IEnumerator TimeStarge01()
     {
         Debug.Log("Yes");
-        StargeTime[0] += Time.deltaTime;
-        totalGM.NowTime[0] = StargeTime[0];
+        //StargeTime[0] += Time.deltaTime;
+        totalGM.NowTime[0] += Time.deltaTime;
         Debug.Log(totalGM.NowTime[0]);
         timerText.text = minute.ToString("00") + ":" + ((int)totalGM.NowTime[0]).ToString("00");
         if (totalGM.NowTime[0] == 15.0f)
@@ -66,6 +72,7 @@ public class TimeManager : MonoBehaviour
     }
     IEnumerator TimeStarge02()
     {
+        
         yield return new WaitForSeconds(1.0f);
         StargeTime[1] += Time.deltaTime;
         totalGM.NowTime[1] = StargeTime[1];
