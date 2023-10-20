@@ -51,7 +51,18 @@ public class Player : MonoBehaviour
     void Update()
     {
         InputSystemMove();
-        if(gm.PlayerHp[0] == 0)
+        
+        if(skillAtkFlag[0] == true)
+        {
+            
+        }
+
+        if (skillAtkFlag[1] == true)
+        {
+            ;
+        }
+
+        if (gm.PlayerHp[0] == 0)
         {
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
@@ -83,8 +94,6 @@ public class Player : MonoBehaviour
             Debug.Log("skill");
         }
     }
-
-
 
     public void InputSystemMove()
     {  
@@ -138,5 +147,11 @@ public class Player : MonoBehaviour
 
             gm.PlayerWeapon[3] = true;
         }*/
+    }
+
+    private IEnumerator SkillAtack()
+    {
+      
+        yield return null;
     }
 }
