@@ -15,6 +15,16 @@ public class Player : MonoBehaviour
     private Vector2 inputV;
     private TotalGM gm;
 
+    private bool[] skillAtkFlag = new bool[]{false,false };
+
+
+
+    public bool[] SkillAtkFlag
+    {
+        get { return this.skillAtkFlag; }
+        set { this.skillAtkFlag = value; }
+    }
+
     private void OnEnable()
     {
         gm = FindObjectOfType<TotalGM>();
@@ -48,11 +58,33 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnMove(InputValue movementValue)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log(movementValue);
-        inputV = movementValue.Get<Vector2>();
+        ///Debug.Log(context);
+        inputV = context.ReadValue<Vector2>();
     }
+
+    public void OnFirstSkill(InputAction.CallbackContext context)
+    {
+        Debug.Log(context);
+        if(skillAtkFlag[0] == false)
+        {
+            skillAtkFlag[0] = true;
+            Debug.Log("asik");
+        }
+    }
+
+    public void OnSecondSkill(InputAction.CallbackContext context)
+    {
+        Debug.Log(context);
+        if (skillAtkFlag[1] == false)
+        {
+            skillAtkFlag[1] = true;
+            Debug.Log("skill");
+        }
+    }
+
+
 
     public void InputSystemMove()
     {  
