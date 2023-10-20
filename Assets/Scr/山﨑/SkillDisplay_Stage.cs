@@ -41,10 +41,9 @@ public class SkillDisplay_Stage : MonoBehaviour
 
     }
 
-    //coolTime
     private void Update()
     {
-        if(/*player.SkillAtkFlag[0] &&*/ !skillCoolFlag[0])
+        if(player.SkillAtkFlag[0] && !skillCoolFlag[0])
         {
             skillCoolFlag[0] = false;
             ui[0].fillAmount -= 1.0f / coolTime[0] * Time.deltaTime;
@@ -57,7 +56,7 @@ public class SkillDisplay_Stage : MonoBehaviour
             }
         }
 
-        if (/*player.SkillAtkFlag[1] && */ !skillCoolFlag[1])
+        if (player.SkillAtkFlag[1] &&  !skillCoolFlag[1])
         {
             skillCoolFlag[1] = false;
             ui[1].fillAmount -= 1.0f / coolTime[1] * Time.deltaTime;
