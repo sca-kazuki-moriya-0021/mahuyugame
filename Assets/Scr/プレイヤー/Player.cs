@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     private bool[] skillAtkFlag = new bool[]{false,false };
 
+    private SkillDisplay_Stage skillDisplay;
 
 
     public bool[] SkillAtkFlag
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         gm = FindObjectOfType<TotalGM>();
+        skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
 
         //var scene = gm.MyGetScene();
 
@@ -54,12 +56,12 @@ public class Player : MonoBehaviour
         
         if(skillAtkFlag[0] == true)
         {
-            
+            skillAtkFlag[0] = false;
         }
 
         if (skillAtkFlag[1] == true)
         {
-            ;
+            skillAtkFlag[1] =  false;
         }
 
         if (gm.PlayerHp[0] == 0)
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
         Debug.Log(context);
-        if(skillAtkFlag[0] == false)
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0])
         {
             skillAtkFlag[0] = true;
             Debug.Log("asik");
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
         Debug.Log(context);
-        if (skillAtkFlag[1] == false)
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1])
         {
             skillAtkFlag[1] = true;
             Debug.Log("skill");
