@@ -19,16 +19,19 @@ public class SkillSelection : MonoBehaviour
     [Header("外枠＿サイズの値")]
     [SerializeField]float outLineSizeS;
     [SerializeField]float outLineSizeB;
-     private TotalGM totalGM;
+    private TotalGM totalGM;
+    private SkillClip skillClip;
 
     private void Awake()
     {
         totalGM = FindObjectOfType<TotalGM>();
+        
         PlayerReset();
     }
 
     void Start()
     {
+        skillClip = FindObjectOfType<SkillClip>();
         //ボタンが選択された状態になる
         button.Select();
         goStageButton.SetActive(false);
@@ -74,6 +77,7 @@ public class SkillSelection : MonoBehaviour
         }
         GoStage();
         Test();
+        skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_1_Click()
@@ -91,6 +95,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[1] = true;
         }
         GoStage(); Test();
+        skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_2_Click()
@@ -108,6 +113,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[2] = true;
         }
         GoStage(); Test();
+        skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_3_Click()
@@ -125,6 +131,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[3] = true;
         }
         GoStage(); Test();
+        skillClip.ButtonPush = true;
     }
     //ステージに行くボタンの表示・非表示
     private void GoStage()
