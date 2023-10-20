@@ -19,6 +19,8 @@ public class TotalGM : MonoBehaviour
     private bool[] playerSkill = new bool[]{false,false,false,false};
     private float[] skillTime = new float[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
+
+
     #region//ステージ管理
 
     //ステージ管理
@@ -112,6 +114,7 @@ public class TotalGM : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+       
     }
 
 
@@ -120,7 +123,6 @@ public class TotalGM : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
     }
 
     // Update is called once per frame
