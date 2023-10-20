@@ -15,9 +15,21 @@ public class Player : MonoBehaviour
     private Vector2 inputV;
     private TotalGM gm;
 
+    private bool[] skillAtkFlag = new bool[]{false,false };
+
+    private SkillDisplay_Stage skillDisplay;
+
+
+    public bool[] SkillAtkFlag
+    {
+        get { return this.skillAtkFlag; }
+        set { this.skillAtkFlag = value; }
+    }
+
     private void OnEnable()
     {
         gm = FindObjectOfType<TotalGM>();
+        skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
 
         //var scene = gm.MyGetScene();
 
@@ -41,17 +53,48 @@ public class Player : MonoBehaviour
     void Update()
     {
         InputSystemMove();
-        if(gm.PlayerHp[0] == 0)
+        
+        if(skillAtkFlag[0] == true)
+        {
+            skillAtkFlag[0] = false;
+        }
+
+        if (skillAtkFlag[1] == true)
+        {
+            skillAtkFlag[1] =  false;
+        }
+
+        if (gm.PlayerHp[0] == 0)
         {
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
     }
 
-    private void OnMove(InputValue movementValue)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log(movementValue);
-        inputV = movementValue.Get<Vector2>();
+        ///Debug.Log(context);
+        inputV = context.ReadValue<Vector2>();
+    }
+
+    public void OnFirstSkill(InputAction.CallbackContext context)
+    {
+        Debug.Log(context);
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0])
+        {
+            skillAtkFlag[0] = true;
+            Debug.Log("asik");
+        }
+    }
+
+    public void OnSecondSkill(InputAction.CallbackContext context)
+    {
+        Debug.Log(context);
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1])
+        {
+            skillAtkFlag[1] = true;
+            Debug.Log("skill");
+        }
     }
 
     public void InputSystemMove()
@@ -106,5 +149,11 @@ public class Player : MonoBehaviour
 
             gm.PlayerWeapon[3] = true;
         }*/
+    }
+
+    private IEnumerator SkillAtack()
+    {
+      
+        yield return null;
     }
 }
