@@ -24,8 +24,7 @@ public class SkillSelection : MonoBehaviour
 
     private void Awake()
     {
-        totalGM = FindObjectOfType<TotalGM>();
-        
+        totalGM = FindObjectOfType<TotalGM>();       
         PlayerReset();
     }
 
@@ -154,6 +153,7 @@ public class SkillSelection : MonoBehaviour
     public void GoStageScene()
     {
         SceneManager.LoadScene("Stage");
+        //nowTimeリセット
     }
     //スキルが２個選択されたときに選択されていないものを押せないようにする
     private void Test()

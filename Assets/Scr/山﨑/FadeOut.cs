@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FadeOut : MonoBehaviour
 {
-    [SerializeField]private GameObject[] stageFadeOut;
+    [SerializeField]private GameObject[] stageFadeInOut;
     [SerializeField]private Image gameOver;
     
     // Start is called before the first frame update
@@ -30,8 +30,9 @@ public class FadeOut : MonoBehaviour
     // Update is called once per frame
     void Stage_1()
     {
+
         gameOver.enabled = true;
-        stageFadeOut[0].transform.GetChild(0).DOMove(new Vector3(0f, 0f, 0f), 2f);
+        stageFadeInOut[0].transform.GetChild(0).DOMove(new Vector3(0f, 0f, 0f), 2f).SetDelay(3.0f);
     }
 
     //‚±‚±‚ÅGameOverŒŸ’m

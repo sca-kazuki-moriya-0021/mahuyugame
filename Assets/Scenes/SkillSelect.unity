@@ -2864,8 +2864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawImage: {fileID: 5465977190037668970}
-  ev: {fileID: 0}
-  videoPlayer: {fileID: 0}
+  ev: {fileID: 842889007}
+  videoPlayer: {fileID: 5465977189314500040}
   skillClip:
   - {fileID: 32900000, guid: 18501bddc51fa5748a24f714496fa752, type: 3}
   - {fileID: 32900000, guid: 9fb6fd257f2a51f4688db9a3390924b5, type: 3}

@@ -13,6 +13,7 @@ public class SkillClip : MonoBehaviour
     [SerializeField] private VideoClip[] skillClip;
     [SerializeField] private GameObject[] skill;
     [SerializeField] private Animator skillAnimator;
+    //[SerializeField] Button button;
     private TotalGM totalGM;
     private GameObject selectedSkill;//１F前に選択しているスキル
     private GameObject nowSelectSkill;//今選択しているスキル
@@ -34,6 +35,7 @@ public class SkillClip : MonoBehaviour
 
     void Start()
     {
+        //button.Select();
         //skillAnimator.keepAnimatorControllerStateOnDisable = false;
         nowSelectSkill = ev.currentSelectedGameObject;
         //selectedSkill = nowSelectSkill;
@@ -53,8 +55,7 @@ public class SkillClip : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {       
         nowSelectSkill = ev.currentSelectedGameObject;
         if (!One)
         {
@@ -94,10 +95,10 @@ public class SkillClip : MonoBehaviour
             {
                 //バグ対策///////////////
                 videoPlayer.enabled = true;
-                videoPlayer.time = 0;
-                videoPlayer.frame = 0;
-                videoPlayer.Stop();
-                reset = Video();
+                //videoPlayer.time = 0;
+                //videoPlayer.frame = 0;
+                //videoPlayer.Stop();
+                //reset = Video();
                 /////////////////////////
                 StartCoroutine(reset);
                 time = 0.0f;
