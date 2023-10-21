@@ -87,7 +87,24 @@ public class TransferStage : MonoBehaviour
     public void ReloadStage()
     {
         audioSource.PlayOneShot(soundE);
+        var scene = totalGM.BackScene;
+        switch (scene)
+        {
+            case TotalGM.StageCon.First:
+                totalGM.NowTime[0] = 0;
+                break;
+
+            case TotalGM.StageCon.Secound:
+                totalGM.NowTime[1] += 0;
+                break;
+
+            case TotalGM.StageCon.Thead:
+                totalGM.NowTime[2] += 0;
+                break;
+        }
         totalGM.ReloadClearScene();
+       
+
     }
 
     //ƒNƒŠƒA‰æ–Ê‚É‚¢‚­Žž
