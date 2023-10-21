@@ -44,4 +44,9 @@ public class A : MonoBehaviour
             }
         }
     }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }
