@@ -9,7 +9,7 @@ public class TotalGM : MonoBehaviour
 {
     //前回のタイムと今のタイム
     private float[] nowTime = new float[]{0,0,0};
-    private float[] lastTime = new float[] { 0, 0, 0 };
+    private float[] lastTime = new float[] { 10000, 10000, 10000 };
 
     //プレイヤー引継ぎ用
     //スキルはいらない可能性あるけど一応
