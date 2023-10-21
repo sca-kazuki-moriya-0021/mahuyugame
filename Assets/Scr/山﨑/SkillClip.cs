@@ -45,8 +45,8 @@ public class SkillClip : MonoBehaviour
         //バグ対策///////////////
         this.rawImage.enabled = false;
         reset = Video();
-        //videoPlayer.time = 0;
-        //videoPlayer.frame = 0;
+        videoPlayer.time = 0;
+        videoPlayer.frame = 0;
         videoPlayer.Stop();
         //////////////////////////
 
@@ -95,10 +95,10 @@ public class SkillClip : MonoBehaviour
             {
                 //バグ対策///////////////
                 videoPlayer.enabled = true;
-                //videoPlayer.time = 0;
-                //videoPlayer.frame = 0;
-                //videoPlayer.Stop();
-                //reset = Video();
+                videoPlayer.time = 0;
+                videoPlayer.frame = 0;
+                videoPlayer.Stop();
+                reset = Video();
                 /////////////////////////
                 StartCoroutine(reset);
                 time = 0.0f;

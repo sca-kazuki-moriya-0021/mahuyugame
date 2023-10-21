@@ -10,28 +10,28 @@ public class Enemy : MonoBehaviour
     GameObject deathBulletPoint;
     [SerializeField, Header("体力")]
     int hp;
-    public float speed;
-    Vector3 movePoint;
+    public Transform centerPoint;  // 回転の中心点
+    public float rotationSpeed = 30.0f;  // 移動速度（度/秒）
 
     void Start()
     {
         bulletPoint.SetActive(true);
-        movePoint = RandomMove();
     }
 
     void Update()
     {
-        if(movePoint == this.transform.position)
-        {
-            movePoint = RandomMove();
-        }
-        this.transform.position = Vector3.MoveTowards(this.transform.position,movePoint,speed * Time.deltaTime);
-    }
+        // 中心点を中心に時計回りに移動
+        Vector2 direction = (Vector2)(transform.position - centerPoint.position);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        angle -= rotationSpeed * Time.deltaTime;
 
-    private Vector3 RandomMove()
-    {
-        Vector3 randomPos = new Vector3(Random.Range(0,15),Random.Range(5,-4),0);
-        return randomPos;
+        // 新しい位置を計算
+        float radius = direction.magnitude;
+        float newX = centerPoint.position.x + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+        float newY = centerPoint.position.y + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
+
+        // キャラクターの位置を更新
+        transform.position = new Vector3(newX, newY, transform.position.z);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,14 +42,13 @@ public class Enemy : MonoBehaviour
             if (hp == 0)
             {
                 deathBulletPoint.SetActive(true);
-                //Invoke("Death", 3.0f);
+                Invoke("Death", 3.0f);
             }
         }
     }
 
-     void OnBecameInvisible()
+    private void Death()
     {
-        Debug.Log("aaa");
         Destroy(this.gameObject);
     }
 }
