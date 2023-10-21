@@ -11,9 +11,17 @@ public class TimeDisplay : MonoBehaviour
     private TotalGM gm;
     private TotalGM.StageCon stage;
 
+    private bool bossDidFlag = false;
+
     private float time;
 
     private int minute;
+
+    public bool BossDidFlag
+    {
+        get { return this.bossDidFlag; }
+        set { this.bossDidFlag = value; }
+    }
 
     private void Awake()
     {
@@ -30,31 +38,30 @@ public class TimeDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time +=Time.deltaTime;
-       
-
-        if (time > 60)
+        if(bossDidFlag == false)
         {
-            time = 0;
-            minute++;
+            time += Time.deltaTime;
+            if (time > 60)
+            {
+                time = 0;
+                minute++;
+            }
+            timerText.text = minute.ToString("00") + ":" + ((int)time).ToString("00");
+
+            switch (stage)
+            {
+                case TotalGM.StageCon.First:
+                    gm.NowTime[0] += Time.deltaTime;
+                    break;
+
+                case TotalGM.StageCon.Secound:
+                    gm.NowTime[1] += Time.deltaTime;
+                    break;
+
+                case TotalGM.StageCon.Thead:
+                    gm.NowTime[2] += Time.deltaTime;
+                    break;
+            }
         }
-
-        timerText.text = minute.ToString("00")+ ":"+ ((int)time).ToString("00");
-
-        switch (stage)
-        {
-            case TotalGM.StageCon.First:
-                gm.NowTime[0] += Time.deltaTime;
-                break;
-
-            case TotalGM.StageCon.Secound:
-                gm.NowTime[1] += Time.deltaTime;
-                break;
-
-            case TotalGM.StageCon.Thead:
-                gm.NowTime[2] += Time.deltaTime; 
-                break;
-        }
-
     }
 }
