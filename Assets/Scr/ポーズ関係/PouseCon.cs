@@ -123,12 +123,27 @@ public class PouseCon : MonoBehaviour
     public void StageReload()
     {
         audioSource.PlayOneShot(soundE);
-        myCanvas.enabled = false;
-        menuFlag = false;
+        var scene = totalGM.MyGetScene();
+        switch (scene)
+        {
+            case TotalGM.StageCon.First:
+                totalGM.NowTime[0] = 0;
+                break;
+
+            case TotalGM.StageCon.Secound:
+                totalGM.NowTime[1] += 0;
+                break;
+
+            case TotalGM.StageCon.Thead:
+                totalGM.NowTime[2] += 0;
+                break;
+        }
         //if (timeGM.TimeFlag == false)
         {
             Time.timeScale = 1f;
         }
+        myCanvas.enabled = false;
+        menuFlag = false;
         totalGM.BackScene = totalGM.MyGetScene();
         totalGM.ReloadCurrentScene();
         poseButton[1].enabled = false;

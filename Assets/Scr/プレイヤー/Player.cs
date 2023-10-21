@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
 
         if (gm.PlayerHp[0] == 0)
         {
+            gm.PlayerTransForm = this.transform.position;
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
