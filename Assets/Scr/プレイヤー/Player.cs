@@ -179,17 +179,37 @@ public class Player : MonoBehaviour
     {
         //var x = -1;
         var test = false;
-        //キャンパスなり、アニメーションでスキルカットイン起動
-        for (int i = 0; i < gm.PlayerSkill.Length; i++)
+        if(jKey)
         {
-             if (gm.PlayerSkill[i] == true && !test)
-             {
+            //キャンパスなり、アニメーションでスキルカットイン起動
+            for (int i = 0; i < gm.PlayerSkill.Length; i++)
+            {
+                if (gm.PlayerSkill[i] == true && !test)
+                {
                     //x++;
+                    Debug.Log("もりやくんおふろはいらないなんてありえないよねーーーーーーーーーーーーーーーーーー");
                     test = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
-                    
-             }
+
+                }
+            }
+        }
+        else
+        {
+            //キャンパスなり、アニメーションでスキルカットイン起動
+            for (int i = 3; i >= 0; i--)
+            {
+                if (gm.PlayerSkill[i] == true && !test)
+                {
+                    //x++;
+                    Debug.Log("めんど");
+                    test = true;
+                    //pImage[x].enabled = true;
+                    yield return new WaitForSeconds(3.0f);
+
+                }
+            }
         }
         if(jKey) skillDisplay.SkillCoolTime[0] = true;
         else skillDisplay.SkillCoolTime[1] = true;
