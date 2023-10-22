@@ -47,6 +47,8 @@ public class SkillDisplay_Stage : MonoBehaviour
                 }
             }
         }
+        ui[0].enabled = false;
+        ui[1].enabled = false;
     }
 
     //‚±‚±‚ÅƒXƒLƒ‹”­“®‚ÌŒŸ’m
@@ -64,25 +66,27 @@ public class SkillDisplay_Stage : MonoBehaviour
         }
         if (test[0])
         {
-            
+            ui[0].enabled = true;
             ui[0].fillAmount -= 1.0f / skillCoolTime[0] * Time.deltaTime;
             if (ui[0].fillAmount <= 0)
             {                
                 skillCoolFlag[0] = true;
                 ui[0].fillAmount = 1;
                 initialCoolTime[0] = 0;
+                ui[0].enabled = false;
                 test[0] = false;                
             }
         }
         if (test[1])
         {
-            Debug.Log("“ü‚Á‚½");
+            ui[1].enabled = true;
             ui[1].fillAmount -= 1.0f / skillCoolTime[1] * Time.deltaTime;
             if (ui[1].fillAmount <= 0)
             {
                 skillCoolFlag[1] = true;
                 ui[1].fillAmount = 1;
                 initialCoolTime[1] = 0;
+                ui[1].enabled = false;
                 test[1] = false;
             }
         }

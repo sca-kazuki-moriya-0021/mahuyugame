@@ -75,9 +75,9 @@ public class FadeOut : MonoBehaviour
 
     IEnumerator Test()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         playerPosition.transform.position = totalGM.PlayerTransForm;
         GameOver();
-        //Debug.Log(totalGM.PlayerTransForm);
+        Debug.Log(totalGM.PlayerTransForm);
     }
 }
