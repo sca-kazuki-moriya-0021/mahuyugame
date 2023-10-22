@@ -8,12 +8,14 @@ public class SkillDisplay_Stage : MonoBehaviour
     [SerializeField] private Sprite[] skillicon;
     [SerializeField] private Image[] skillPosition;
     [SerializeField] private Image[] ui;
-    private bool[] skillCoolFlag = new bool[] {true ,true};
+    private bool[] skillCoolFlag = new bool[] {false ,false};
     private bool[] test = new bool[] { false, false };
     [SerializeField] private float[] initialCoolTime = new float[] {0,0,0,0};//スキルの設定
     [SerializeField] private float[] skillCoolTime = new float [] {0,0};//ここに選択スキル入れる
     private Player player;
     private TotalGM totalGM;
+    private bool skillCheck;
+
     //int count;
     //int skillCount=0;
     //private bool[] playerSkill = new bool[] { false, false, false, false };
@@ -22,6 +24,8 @@ public class SkillDisplay_Stage : MonoBehaviour
         get { return this.skillCoolFlag; }
         set { this.skillCoolFlag = value; }
     }
+
+
 
     // Start is called before the first frame update
 
@@ -55,40 +59,49 @@ public class SkillDisplay_Stage : MonoBehaviour
 
     private void Update()
     {
-        if(player.SkillAtkFlag[0] && !skillCoolFlag[0])
+        /*
+        if(player.SkillAtkFlag[0] && skillCoolFlag[0] == false && !player.SkillAtkFlag[1])
         {
-            
-            test[0] = true;
+            StartCoroutine(SkillCatIN());
         }
-        if (player.SkillAtkFlag[1] &&  !skillCoolFlag[1])
+        if (player.SkillAtkFlag[1] && skillCoolFlag[1] == false && !player.SkillAtkFlag[0])
         {
-            test[1] = true;
+            StartCoroutine(SkillCatIN());
         }
-        if (test[0])
+        */
+
+
+        if (player.SkillAtkFlag[0] && skillCoolFlag[0])
         {
-            ui[0].enabled = true;
-            ui[0].fillAmount -= 1.0f / skillCoolTime[0] * Time.deltaTime;
-            if (ui[0].fillAmount <= 0)
-            {                
-                skillCoolFlag[0] = true;
-                ui[0].fillAmount = 1;
-                initialCoolTime[0] = 0;
-                ui[0].enabled = false;
-                test[0] = false;                
-            }
+                
+                ui[0].enabled = true;
+                ui[0].fillAmount -= 1.0f / skillCoolTime[0] * Time.deltaTime;
+
+                if (ui[0].fillAmount <= 0)
+                {
+                    ui[0].fillAmount = 1;
+                    initialCoolTime[0] = 0;
+                    ui[0].enabled = false;
+                    skillCoolFlag[0] = false;
+                    player.SkillAtkFlag[0] = false;
+                }
         }
-        if (test[1])
+
+        if (player.SkillAtkFlag[1] && skillCoolFlag[1] )
         {
+
             ui[1].enabled = true;
             ui[1].fillAmount -= 1.0f / skillCoolTime[1] * Time.deltaTime;
+            
             if (ui[1].fillAmount <= 0)
             {
-                skillCoolFlag[1] = true;
                 ui[1].fillAmount = 1;
                 initialCoolTime[1] = 0;
                 ui[1].enabled = false;
-                test[1] = false;
+                skillCoolFlag[1] = false;
+                player.SkillAtkFlag[1] = false;
             }
         }
     }
+
 }

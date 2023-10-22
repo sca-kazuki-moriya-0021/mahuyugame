@@ -15,6 +15,8 @@ public class FadeOut : MonoBehaviour
     [SerializeField]private Image playerImage;
     [SerializeField]private GameObject playerPosition;
     [SerializeField]private Light2D worldLight;
+    [SerializeField]private Animator fadeOutAnimator;
+    [SerializeField] private Image[] EnemyBoss;
     [SerializeField]private float worldLightTime;//ˆÃ‚­‚µ‚½‚¢ŽžŠÔŽw’è
     float elapsedTime = 0f;//Œo‰ßŽžŠÔ
     bool  worldLightFlag;
@@ -29,6 +31,7 @@ public class FadeOut : MonoBehaviour
     {
          
          StartCoroutine(Test());
+         gameOver.enabled = false;
     }
 
     void Update()
@@ -57,20 +60,18 @@ public class FadeOut : MonoBehaviour
     void Stage_1()
     {
         worldLightFlag = true;
-        gameOver.enabled = true;
+        
+
+        fadeOutAnimator.SetTrigger("Stage1");
+
         stageFadeInOut[0].transform.GetChild(0).DOMove(new Vector2(0f, 0f), 2f).SetDelay(3.0f).OnComplete(() => { 
             playerImage.DOFade(255,0f);
             playerPosition.transform.DOMove(new Vector2(0f, -2f), 2f).OnComplete(() => {
-                playerImage.DOFade(0, 3f).SetDelay(3.0f); });
+                playerImage.DOFade(0, 3f).SetDelay(3.0f); 
+                EnemyBoss[0].transform.DOMove(new Vector2(500,-160),1f);
+                });
         });
 
-    }
-
-    //‚±‚±‚ÅGameOverŒŸ’m
-    public void TestButton()
-    {
-        
-        
     }
 
     IEnumerator Test()
@@ -78,6 +79,6 @@ public class FadeOut : MonoBehaviour
         yield return new WaitForSeconds(1);
         playerPosition.transform.position = totalGM.PlayerTransForm;
         GameOver();
-        Debug.Log(totalGM.PlayerTransForm);
+        //Debug.Log(totalGM.PlayerTransForm);
     }
 }

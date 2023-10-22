@@ -17,7 +17,7 @@ public class TotalGM : MonoBehaviour
     private int[] playerLevel =new int[]{0,0};
     private bool[] playerWeapon = {false,false,false,false}; 
     private bool[] playerSkill = new bool[]{false,false,false,false};
-    private float[] skillTime = new float[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+    private float[] skillTime = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
     
     private Vector2 playerTransform;
 

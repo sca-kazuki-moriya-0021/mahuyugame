@@ -16,14 +16,26 @@ public class Player : MonoBehaviour
     private TotalGM gm;
 
     private bool[] skillAtkFlag = new bool[]{false,false };
+    private bool[] playerSkill = new bool[] {false,false,false,false};
+    private bool testFlag = false;
 
     private SkillDisplay_Stage skillDisplay;
+    private IEnumerator coroutine;
+    private bool jKey;
+   
 
+    //private Image[] pImage;
 
     public bool[] SkillAtkFlag
     {
         get { return this.skillAtkFlag; }
         set { this.skillAtkFlag = value; }
+    }
+
+    public IEnumerator Coroutine
+    {
+        get { return this.coroutine; }
+        set { this.coroutine = value; }
     }
 
     private void OnEnable()
@@ -46,32 +58,36 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int count = 0; count <= 3; count++)
+        {
+
+            if (gm.PlayerSkill[count] == true)
+            {
+                playerSkill[count] =gm.PlayerSkill[count];
+            }
+        }
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(testFlag && (skillAtkFlag[0] || skillAtkFlag[1]))
+        {
+            testFlag = false;
+            coroutine = SkillAtk();
+            StartCoroutine(SkillAtk());
+        }
         InputSystemMove();
         
-        if(skillAtkFlag[0] == true)
-        {
-            
-            skillAtkFlag[0] = false;
-        }
-
-        if (skillAtkFlag[1] == true)
-        {
-            
-            skillAtkFlag[1] =  false;
-        }
-
         if (gm.PlayerHp[0] == 0)
         {
             gm.PlayerTransForm = this.transform.position;
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -83,22 +99,23 @@ public class Player : MonoBehaviour
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
         //Debug.Log(context);
-        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0])
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0] == false)
         {
-            skillDisplay.SkillCoolTime[0] = false;
+            jKey = true;
             skillAtkFlag[0] = true;
-            Debug.Log("asik");
+            testFlag = true;
         }
     }
 
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
-        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1])
+        //Debug.Log(context);
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1] ==false)
         {
-            skillDisplay.SkillCoolTime[1] = false;
+            
             skillAtkFlag[1] = true;
-            Debug.Log("skill");
+            testFlag = true;
+            
         }
     }
 
@@ -156,9 +173,29 @@ public class Player : MonoBehaviour
         }*/
     }
 
-    private IEnumerator SkillAtack()
+
+
+    private IEnumerator SkillAtk()
     {
-      
-        yield return null;
+        //var x = -1;
+        var test = false;
+        //キャンパスなり、アニメーションでスキルカットイン起動
+        for (int i = 0; i < gm.PlayerSkill.Length; i++)
+        {
+             if (gm.PlayerSkill[i] == true && !test)
+             {
+                    //x++;
+                    test = true;
+                    //pImage[x].enabled = true;
+                    yield return new WaitForSeconds(3.0f);
+                    
+             }
+        }
+        if(jKey) skillDisplay.SkillCoolTime[0] = true;
+        else skillDisplay.SkillCoolTime[1] = true;
+        //coroutine = null;
+        jKey=false;
+        StopCoroutine(SkillAtk());
+
     }
 }
