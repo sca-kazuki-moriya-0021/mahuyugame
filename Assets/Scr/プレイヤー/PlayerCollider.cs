@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollider : MonoBehaviour
 {
@@ -48,15 +49,18 @@ public class PlayerCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Debug.Log(gm.PlayerWeapon[0]);
-       Debug.Log(gm.PlayerWeapon[1]);
-       Debug.Log(gm.PlayerWeapon[2]);
-       Debug.Log(gm.PlayerWeapon[3]);
 
         // ステートがダメージならリターン
         if (state == STATE.DAMAGED)
         {
             return;
+        }
+
+        if (gm.PlayerHp[0] == 0)
+        {
+            gm.PlayerTransForm = this.transform.position;
+            gm.BackScene = gm.MyGetScene();
+            SceneManager.LoadScene("GameOver");
         }
 
         if (test == false)
