@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     private TotalGM gm;
 
     private bool[] skillAtkFlag = new bool[]{false,false };
-    private bool[] playerSkill = new bool[] {false,false,false,false};
-    private bool testFlag = false;
+
+    private bool buttonPish = false;
 
     private SkillDisplay_Stage skillDisplay;
     private IEnumerator coroutine;
@@ -58,25 +58,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int count = 0; count <= 3; count++)
-        {
-
-            if (gm.PlayerSkill[count] == true)
-            {
-                playerSkill[count] =gm.PlayerSkill[count];
-            }
-        }
-        
-
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(testFlag && (skillAtkFlag[0] || skillAtkFlag[1]))
+        if(buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
-            testFlag = false;
-            coroutine = SkillAtk();
+            buttonPish = false;
+            //coroutine = SkillAtk();
             StartCoroutine(SkillAtk());
         }
         InputSystemMove();
@@ -103,7 +94,7 @@ public class Player : MonoBehaviour
         {
             jKey = true;
             skillAtkFlag[0] = true;
-            testFlag = true;
+            buttonPish = true;
         }
     }
 
@@ -112,10 +103,8 @@ public class Player : MonoBehaviour
         //Debug.Log(context);
         if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1] ==false)
         {
-            
             skillAtkFlag[1] = true;
-            testFlag = true;
-            
+            buttonPish = true;   
         }
     }
 
@@ -186,8 +175,6 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true && !test)
                 {
-                    //x++;
-                    Debug.Log("もりやくんおふろはいらないなんてありえないよねーーーーーーーーーーーーーーーーーー");
                     test = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
@@ -202,8 +189,7 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true && !test)
                 {
-                    //x++;
-                    Debug.Log("めんど");
+                 
                     test = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
@@ -216,6 +202,5 @@ public class Player : MonoBehaviour
         //coroutine = null;
         jKey=false;
         StopCoroutine(SkillAtk());
-
     }
 }
