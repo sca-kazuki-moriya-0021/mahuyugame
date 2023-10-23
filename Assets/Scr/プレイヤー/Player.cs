@@ -114,54 +114,6 @@ public class Player : MonoBehaviour
         transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 5f, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bellet") || collision.gameObject.CompareTag("EnemySkillBullet"))
-        {
-            gm.PlayerHp[0]--;
-        }
-
-        /*if (collision.gameObject.CompareTag("weaponItem0"))
-        {
-            for(int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[0] = true;
-        }
-
-        if (collision.gameObject.CompareTag("weaponItem1"))
-        {
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[1] = true;
-        }
-
-        if (collision.gameObject.CompareTag("weaponItem2"))
-        {
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[2] = true;
-        }
-
-        if (collision.gameObject.CompareTag("weaponItem3"))
-        {
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[3] = true;
-        }*/
-    }
-
 
 
     private IEnumerator SkillAtk()
