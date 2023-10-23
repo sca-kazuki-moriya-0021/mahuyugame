@@ -20,7 +20,7 @@ public class SkillDisplay_Stage : MonoBehaviour
     //int skillCount=0;
     //private bool[] playerSkill = new bool[] { false, false, false, false };
 
-    public bool[] SkillCoolTime {
+    public bool[] SkillCoolFlag {
         get { return this.skillCoolFlag; }
         set { this.skillCoolFlag = value; }
     }

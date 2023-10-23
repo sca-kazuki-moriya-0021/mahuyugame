@@ -198,9 +198,9 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[i] = false;
         }
 
-        for(int i = 0; i < totalGM.SkillTime.Length; i++)
+        for(int i = 0; i < totalGM.SkillCoolTimeCount.Length; i++)
         {
-            totalGM.SkillTime[i] = 0;
+            totalGM.SkillCoolTimeCount[i] = 0;
         }
     }
 }

@@ -17,10 +17,9 @@ public class TotalGM : MonoBehaviour
     private int[] playerLevel =new int[]{0,0};
     private bool[] playerWeapon = {false,false,false,false}; 
     private bool[] playerSkill = new bool[]{false,false,false,false};
-    private float[] skillTime = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
+    private float[] skillCoolTimeCount = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
     
     private Vector2 playerTransform;
-
 
     #region//ステージ管理
 
@@ -84,9 +83,9 @@ public class TotalGM : MonoBehaviour
         set {this.playerLevel = value; }
     }
 
-    public float[] SkillTime {
-        get { return this.skillTime; }
-        set { this.skillTime = value; }
+    public float[] SkillCoolTimeCount{
+        get { return this.skillCoolTimeCount; }
+        set { this.skillCoolTimeCount = value; }
     }
 
     public bool[] PlayerSkill {

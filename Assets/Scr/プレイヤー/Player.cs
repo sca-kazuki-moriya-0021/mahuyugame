@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
         //Debug.Log(context);
-        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolTime[0] == false)
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false)
         {
             jKey = true;
             skillAtkFlag[0] = true;
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
         //Debug.Log(context);
-        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolTime[1] ==false)
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] ==false)
         {
             skillAtkFlag[1] = true;
             buttonPish = true;   
@@ -147,8 +147,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if(jKey) skillDisplay.SkillCoolTime[0] = true;
-        else skillDisplay.SkillCoolTime[1] = true;
+        if(jKey) skillDisplay.SkillCoolFlag[0] = true;
+        else skillDisplay.SkillCoolFlag[1] = true;
         //coroutine = null;
         jKey=false;
         StopCoroutine(SkillAtk());

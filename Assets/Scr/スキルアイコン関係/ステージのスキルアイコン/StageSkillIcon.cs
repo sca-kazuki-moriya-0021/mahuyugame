@@ -25,18 +25,18 @@ public class StageSkillIcon : MonoBehaviour
         //同じシーンなら最初に読み込まれた状態に戻す
         if (scene == gm.BackScene)
         {
-            gm.SkillTime[0] = gm.SkillTime[1];
-            gm.SkillTime[2] = gm.SkillTime[3];
-            gm.SkillTime[4] = gm.SkillTime[5];
-            gm.SkillTime[6] = gm.SkillTime[7];
+            gm.SkillCoolTimeCount[0] = gm.SkillCoolTimeCount[1];
+            gm.SkillCoolTimeCount[2] = gm.SkillCoolTimeCount[3];
+            gm.SkillCoolTimeCount[4] = gm.SkillCoolTimeCount[5];
+            gm.SkillCoolTimeCount[6] = gm.SkillCoolTimeCount[7];
         }
         //違うシーンなら今の状態を保存する
         else if(scene != gm.BackScene)
         {
-            gm.SkillTime[1] = gm.SkillTime[0];
-            gm.SkillTime[3] = gm.SkillTime[2];
-            gm.SkillTime[5] = gm.SkillTime[4];
-            gm.SkillTime[7] = gm.SkillTime[6];
+            gm.SkillCoolTimeCount[1] = gm.SkillCoolTimeCount[0];
+            gm.SkillCoolTimeCount[3] = gm.SkillCoolTimeCount[2];
+            gm.SkillCoolTimeCount[5] = gm.SkillCoolTimeCount[4];
+            gm.SkillCoolTimeCount[7] = gm.SkillCoolTimeCount[6];
         }
     }
 
