@@ -56,7 +56,7 @@ public class PouseCon : MonoBehaviour
     void Update()
     {
         //Debug.Log(myCanvas.enabled);
-        if (Input.GetKeyDown(KeyCode.Escape) && menuFlag == false)
+        if (Input.GetKeyDown(KeyCode.Tab) && menuFlag == false)
         {
             menuFlag = true;
             Time.timeScale = 0f;

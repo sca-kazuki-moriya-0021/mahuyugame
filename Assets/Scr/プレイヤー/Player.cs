@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
+    private PouseCon pouseCon;
 
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false };
@@ -55,8 +56,8 @@ public class Player : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
+        pouseCon = FindObjectOfType<PouseCon>();
         
-
         gm.PlayerWeapon[0] = true;
 
         //var scene = gm.MyGetScene();
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         if(gm.PlayerWeapon[0] == true)
         {
             Debug.Log("aki");
-            currentTime += Time.deltaTime;
+           /* currentTime += Time.deltaTime;
             if (targetTime - gm.PlayerLevel[0] * 1f < currentTime )
             {
                 currentTime = 0;
@@ -98,13 +99,13 @@ public class Player : MonoBehaviour
                 cash.GreenPos = point;
                 cash.PlayerPos = transform.position+new Vector3(transform.position.x + 10f, transform.position.y, transform.position.z);
 
-            }
+            }*/
         }
         else if (gm.PlayerWeapon[1] == true)
         {
             Debug.Log("rinka");
             currentTime += Time.deltaTime;
-            if (targetTime - gm.PlayerLevel[0] * 1f < currentTime)
+           /* if (targetTime - gm.PlayerLevel[0] * 1f < currentTime)
             {
                 currentTime = 0;
                 var pos = transform.position;
@@ -117,7 +118,7 @@ public class Player : MonoBehaviour
                 var point = transform.position + new Vector3(transform.position.x - 5f, transform.position.y - 5f, transform.position.z);
                 cash.GreenPos = point;
                 cash.PlayerPos = transform.position + new Vector3(transform.position.x - 10f, transform.position.y, transform.position.z);
-            }
+            }*/
         }
         else if (gm.PlayerWeapon[2] == true)
         {
@@ -136,7 +137,11 @@ public class Player : MonoBehaviour
             StartCoroutine(SkillAtk());
         }
 
-        InputSystemMove();
+        //if(pouseCon.MenuFlag == false)
+        {
+            InputSystemMove();
+        }
+     
        
     }
 
@@ -176,15 +181,15 @@ public class Player : MonoBehaviour
     private IEnumerator SkillAtk()
     {
         //var x = -1;
-        var test = false;
+        var skill = false;
         if(jKey)
         {
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 0; i < gm.PlayerSkill.Length; i++)
             {
-                if (gm.PlayerSkill[i] == true && !test)
+                if (gm.PlayerSkill[i] == true && skill == false)
                 {
-                    test = true;
+                    skill = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
                 }
@@ -195,20 +200,26 @@ public class Player : MonoBehaviour
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 3; i >= 0; i--)
             {
-                if (gm.PlayerSkill[i] == true && !test)
+                if (gm.PlayerSkill[i] == true && skill == false)
                 {
                  
-                    test = true;
+                    skill = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
 
                 }
             }
         }
-        if(jKey) skillDisplay.SkillCoolFlag[0] = true;
-        else skillDisplay.SkillCoolFlag[1] = true;
-        //coroutine = null;
-        jKey=false;
+        if(jKey) 
+        {
+            skillDisplay.SkillCoolFlag[0] = true; 
+        }
+        else 
+        {
+           skillDisplay.SkillCoolFlag[1] = true;
+        }
+        skill = false;
+        jKey =false;
         StopCoroutine(SkillAtk());
     }
 }
