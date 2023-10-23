@@ -99,7 +99,8 @@ MonoBehaviour:
   bulletPoint: {fileID: 3300474553949450878, guid: 84ab2b94fe68ccc4fb5c4b3afab486aa, type: 3}
   deathBulletPoint: {fileID: 0}
   hp: 0
-  speed: 5
+  centerPoint: {fileID: 0}
+  rotationSpeed: 30
 --- !u!1001 &5300358080714365277
 PrefabInstance:
   m_ObjectHideFlags: 0

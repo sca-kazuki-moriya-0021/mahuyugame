@@ -6,8 +6,6 @@ public class RandomSpawn : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefabs;
-    Transform leftPos;
-    Transform rightPos;
     [SerializeField]
     private int enemyCount;
 
@@ -15,10 +13,12 @@ public class RandomSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minX = leftPos.position.x;
-        maxX = rightPos.position.x;
-        minY = leftPos.position.y;
-        maxY = rightPos.position.x;
+        GameObject LeftPos = GameObject.Find("LeftPos");
+        GameObject RightPos = GameObject.Find("RightPos");
+        minX = LeftPos.transform.position.x;
+        maxX = RightPos.transform.position.x;
+        minY = LeftPos.transform.position.y;
+        maxY = RightPos.transform.position.x;
 
         StartCoroutine(SpawnEnemy());
     }
