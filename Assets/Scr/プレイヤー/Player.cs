@@ -114,8 +114,6 @@ public class Player : MonoBehaviour
         transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 5f, 0);
     }
 
-
-
     private IEnumerator SkillAtk()
     {
         //var x = -1;
