@@ -48,7 +48,10 @@ public class PlayerCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       Debug.Log(gm.PlayerWeapon[0]);
+       Debug.Log(gm.PlayerWeapon[1]);
+       Debug.Log(gm.PlayerWeapon[2]);
+       Debug.Log(gm.PlayerWeapon[3]);
 
         // ステートがダメージならリターン
         if (state == STATE.DAMAGED)
@@ -56,7 +59,7 @@ public class PlayerCollider : MonoBehaviour
             return;
         }
 
-        /*if (test == false)
+        if (test == false)
         {
             if (isHit == false)
             {
@@ -65,13 +68,13 @@ public class PlayerCollider : MonoBehaviour
                 StartCoroutine(PlayerDameged());
             }
             test = true;
-        }*/
+        }
       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bellet") ||
+        /*if (collision.gameObject.CompareTag("Bellet") ||
             collision.gameObject.CompareTag("EnemySkillBullet") ||
             collision.gameObject.CompareTag("DestoryBullet"))
         {
@@ -79,11 +82,18 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerHp[0]--;
             state = STATE.DAMAGED;
             StartCoroutine(PlayerDameged());
+        }*/
+
+        if (collision.gameObject.CompareTag("BaffItem"))
+        {
+            collision.gameObject.SetActive(false);
+            gm.PlayerLevel[0] ++;
         }
 
-        /*if (collision.gameObject.CompareTag("weaponItem0"))
+        if (collision.gameObject.CompareTag("WeaponSwitchItem0"))
         {
-            for(int i = 0; i < gm.PlayerWeapon.Length; i++)
+            collision.gameObject.SetActive(false);
+            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
             {
                 gm.PlayerWeapon[i] = false;
             }
@@ -91,8 +101,9 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerWeapon[0] = true;
         }
 
-        if (collision.gameObject.CompareTag("weaponItem1"))
+        if (collision.gameObject.CompareTag("WeaponSwitchItem1"))
         {
+            collision.gameObject.SetActive(false);
             for (int i = 0; i < gm.PlayerWeapon.Length; i++)
             {
                 gm.PlayerWeapon[i] = false;
@@ -101,8 +112,9 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerWeapon[1] = true;
         }
 
-        if (collision.gameObject.CompareTag("weaponItem2"))
+        if (collision.gameObject.CompareTag("WeaponSwitchItem2"))
         {
+            collision.gameObject.SetActive(false);
             for (int i = 0; i < gm.PlayerWeapon.Length; i++)
             {
                 gm.PlayerWeapon[i] = false;
@@ -111,15 +123,16 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerWeapon[2] = true;
         }
 
-        if (collision.gameObject.CompareTag("weaponItem3"))
+        if (collision.gameObject.CompareTag("WeaponSwitchItem3"))
         {
+            collision.gameObject.SetActive(false);
             for (int i = 0; i < gm.PlayerWeapon.Length; i++)
             {
                 gm.PlayerWeapon[i] = false;
             }
 
             gm.PlayerWeapon[3] = true;
-        }*/
+        }
     }
 
     private IEnumerator PlayerDameged()
@@ -150,13 +163,13 @@ public class PlayerCollider : MonoBehaviour
             colliderSprite.enabled = true;
 
             //ループが5回まわったら
-            if (i > 5)
+            /* (i > 5)
             {
                 //stateをMUTEKIにする（点滅しながら動けるようになる）
                 state = STATE.MUTEKI;
                 //色を緑にする
                 characterSprite.color = Color.green;
-            }
+            }*/
         }
 
         //デフォルト状態にする
@@ -165,7 +178,7 @@ public class PlayerCollider : MonoBehaviour
         collider2D.enabled = true;
         //色を白にする
         characterSprite.color = Color.white;
-        characterSprite.color = Color.white;
+        colliderSprite.color = Color.white;
         
 
         //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)

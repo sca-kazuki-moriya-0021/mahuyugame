@@ -83,7 +83,8 @@ public class TotalGM : MonoBehaviour
         set {this.playerLevel = value; }
     }
 
-    public float[] SkillCoolTimeCount{
+    public float[] SkillCoolTimeCount
+    {
         get { return this.skillCoolTimeCount; }
         set { this.skillCoolTimeCount = value; }
     }

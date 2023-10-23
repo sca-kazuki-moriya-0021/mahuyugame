@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
 
+        gm.PlayerWeapon[0] = true;
+
         //var scene = gm.MyGetScene();
 
         /*if (scene == gm.BackScene)
@@ -58,18 +60,37 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
+        if(gm.PlayerWeapon[0] == true)
+        {
+            Debug.Log("aki");
+        }
+        else if (gm.PlayerWeapon[1] == true)
+        {
+            Debug.Log("mizuki");
+        }
+        else if (gm.PlayerWeapon[2] == true)
+        {
+            Debug.Log("arika");
+        }
+        else if (gm.PlayerWeapon[3] == true)
+        {
+            Debug.Log("sakina");
+        }
+
+
+        if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
             buttonPish = false;
             //coroutine = SkillAtk();
             StartCoroutine(SkillAtk());
         }
+
         InputSystemMove();
         
         if (gm.PlayerHp[0] == 0)
@@ -78,7 +99,6 @@ public class Player : MonoBehaviour
             gm.BackScene = gm.MyGetScene();
             SceneManager.LoadScene("GameOver");
         }
-
     }
 
     public void OnMove(InputAction.CallbackContext context)

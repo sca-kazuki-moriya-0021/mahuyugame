@@ -10,6 +10,11 @@ TagManager:
   - PlayerBullet
   - EnemySkillBullet
   - DestroyBullet
+  - BaffItem
+  - WeaponSwitchItem1
+  - WeaponSwitchItem2
+  - WeaponSwitchItem3
+  - WeaponSwitchItem0
   layers:
   - Default
   - TransparentFX
