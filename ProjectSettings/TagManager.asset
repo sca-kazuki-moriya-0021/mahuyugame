@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Bullet
   - Button
+  - PlayerSkillBullet
+  - PlayerBullet
+  - EnemySkillBullet
+  - DestroyBullet
   layers:
   - Default
   - TransparentFX
