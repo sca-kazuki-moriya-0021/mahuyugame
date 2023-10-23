@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bellet"))
+        if (collision.gameObject.CompareTag("Bellet") || collision.gameObject.CompareTag("EnemySkillBullet"))
         {
             gm.PlayerHp[0]--;
         }
