@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
 
+    private bool decelerationFlag = false;
+
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false };
 
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(decelerationFlag);
+
         if(gm.PlayerWeapon[0] == true)
         {
             Debug.Log("aki");
@@ -172,10 +176,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnDeceleration(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                // ボタンが押された時の処理
+                decelerationFlag = true;
+                break;
+
+            case InputActionPhase.Canceled:
+                // ボタンが離された時の処理
+                decelerationFlag = false;
+                break;
+        }
+    }
+
+
     public void InputSystemMove()
     {  
         var dire = new Vector3(inputV.x,inputV.y,0);
-        transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 5f, 0);
+        if(decelerationFlag == true)
+        transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
+        else
+        transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
     }
 
     private IEnumerator SkillAtk()

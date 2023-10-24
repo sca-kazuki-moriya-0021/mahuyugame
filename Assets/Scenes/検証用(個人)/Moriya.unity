@@ -1258,6 +1258,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99632b50-2a57-4d3d-87d5-bad6618c6acc
     m_ActionName: Player/OnSecondSkill[/Keyboard/k]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1908606187}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnDeceleration
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 29f17a2f-44be-4bc8-b22f-b1c510737e1e
+    m_ActionName: Player/Deceleration[/Keyboard/l]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
