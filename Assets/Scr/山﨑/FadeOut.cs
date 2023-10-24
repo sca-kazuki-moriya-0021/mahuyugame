@@ -14,14 +14,11 @@ public class FadeOut : MonoBehaviour
     [SerializeField]private TotalGM totalGM;
     [SerializeField]private Image playerImage;
     [SerializeField]private GameObject playerPosition;
-    [SerializeField]private Light2D worldLight;
+    [SerializeField]private Light2D spotLight;
     [SerializeField]private Animator fadeOutAnimator;
     [SerializeField] private Image[] EnemyBoss;
-    [SerializeField]private float worldLightTime;//暗くしたい時間指定
-    float elapsedTime = 0f;//経過時間
     bool  worldLightFlag;
-    float rate;//割合
-    float worldLightIntensity;
+
 
     //private Vector2 playerPosition;
 
@@ -36,18 +33,7 @@ public class FadeOut : MonoBehaviour
 
     void Update()
     {
-        if (worldLightFlag)
-        {
-            elapsedTime += Time.deltaTime;  // 経過時間の加算
-            rate = Mathf.Clamp01(elapsedTime / worldLightTime); // 割合計算   
-            worldLight.intensity = Mathf.Lerp(1.0f, 0.2f, rate);
-        }
-
-        if (elapsedTime >= worldLightTime)
-        {
-            worldLightFlag = false;
-            return;
-        }
+        
     }
 
     //ここでどのシーンで死んだか確認
@@ -59,19 +45,31 @@ public class FadeOut : MonoBehaviour
     // Update is called once per frame
     void Stage_1()
     {
-        worldLightFlag = true;
+        
         
 
         fadeOutAnimator.SetTrigger("Stage1");
 
         stageFadeInOut[0].transform.GetChild(0).DOMove(new Vector2(0f, 0f), 2f).SetDelay(3.0f).OnComplete(() => { 
-            playerImage.DOFade(255,0f);
-            playerPosition.transform.DOMove(new Vector2(0f, -2f), 2f).OnComplete(() => {
-                playerImage.DOFade(0, 3f).SetDelay(3.0f); 
-                EnemyBoss[0].transform.DOMove(new Vector2(500,-160),1f);
+            
+            IntensityChg();
+            playerImage.DOFade(255, 2f).SetDelay(1.0f);
+            playerPosition.transform.DOMove(new Vector2(0f, -2f), 2f).SetDelay(1.0f).OnComplete(() => {
+                playerImage.DOFade(0, 3f).SetDelay(3.0f);
+                
+                EnemyBoss[0].rectTransform.DOMove(new Vector2(5f,-1.6f),1f);
                 });
         });
 
+    }
+
+    private void IntensityChg()
+    {
+        DOTween.To(
+            () => spotLight.intensity,
+            num => spotLight.intensity = num,
+            0.6f,
+            3.0f);
     }
 
     IEnumerator Test()
