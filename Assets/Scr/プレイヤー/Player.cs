@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
         pBulletPool = FindObjectOfType<PlayerBulletPool>();
+
         
         gm.PlayerWeapon[0] = true;
 
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        pBulletPool.CreatePool(5);
     }
 
     // Update is called once per frame
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         waitTime += Time.deltaTime;
         if(waitTime > 1.0f)
         {
-            pBulletPool.poolBullet(transform.position);
+            pBulletPool.GetObject(transform.position);
             waitTime = 0f;
         }
 

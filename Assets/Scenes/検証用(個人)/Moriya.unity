@@ -694,6 +694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_Bullets:
   - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
+  - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
+  - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
+  - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
 --- !u!4 &824527658
 Transform:
   m_ObjectHideFlags: 0

@@ -13,42 +13,60 @@ public class PlayerBulletPool : MonoBehaviour
     //プールしたオブジェクトを入れるリスト
     List<GameObject> bullet_List = new List<GameObject>();
 
-    private void Start()
+    void Start()
     {
         gm = FindObjectOfType<TotalGM>();
     }
 
-    public GameObject poolBullet(Vector2 shotpos)
+    public void CreatePool(int maxCount)
     {
-        //発射したい弾を求める
-        GameObject n = null;
-        for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-        {
-            if(gm.PlayerWeapon[i] == true)
+        Debug.Log(gm);
+
+        bullet_List = new List<GameObject>();
+        GameObject obj = null;
+        for (int x = 0; x < gm.PlayerWeapon.Length; x++)
+        { 
+            if(gm.PlayerWeapon[x] == true)
             {
-                n = pool_Bullets[i];
+                obj = pool_Bullets[x];
                 break;
             }
         }
-
-        //プールから使うオブジェクトのナンバー。なければｰ1
-        int obj_No = bullet_List.FindIndex(b => b.activeSelf == false);
-
-        if (obj_No == -1)
+        for (int i = 0; i < maxCount; i++)
         {
-            //リストにないなら、新しく追加
-            bullet_List.Add((GameObject)Instantiate(n, shotpos, transform.rotation));
-            Debug.Log("aikis");
+            GameObject ins = Instantiate(obj);
+            ins.SetActive(false);
+            ins.transform.parent = this.gameObject.transform;
+            bullet_List.Add(ins);
+        }
+    }
 
-            //リストに追加したのを子オブジェクトに
-            obj_No = bullet_List.Count - 1;
-            bullet_List[obj_No].transform.parent = gameObject.transform;
+    public GameObject GetObject(Vector2 position)
+    {
+        for(int i = 0; i < bullet_List.Count; i++)
+        {
+            if(bullet_List[i].activeSelf == false)
+            {
+                GameObject ins = bullet_List[i];
+                ins.transform.position = position;
+                ins.SetActive(true);
+                return ins;
+            }
         }
 
-        //Listにあればそのオブジェクトをアクティブに
-        else bullet_List[obj_No].SetActive(true);
 
-        //使うオブジェクトを返す
-        return bullet_List[obj_No];
+        GameObject Obj = null;
+        for (int x = 0; x < gm.PlayerWeapon.Length; x++)
+        {
+            if (gm.PlayerWeapon[x] == true)
+                Obj = pool_Bullets[x];
+            break;
+        }
+        GameObject newObj = Instantiate(Obj,position,Quaternion.identity);
+        newObj.SetActive(false);
+        newObj.transform.parent = gameObject.transform;
+        bullet_List.Add(newObj);
+        Debug.Log("増えているよ");
+        return newObj;
     }
 }

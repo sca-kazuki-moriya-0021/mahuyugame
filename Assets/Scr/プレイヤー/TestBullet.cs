@@ -20,8 +20,8 @@ public class TestBullet : MonoBehaviour
     void Update()
     {
         //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
-        time += Time.deltaTime;
-        transform.Translate(Vector3.right * time);
+        
+        transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
     }
 
     void OnBecameInvisible()
