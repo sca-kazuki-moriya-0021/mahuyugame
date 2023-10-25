@@ -59,8 +59,11 @@ public class PlayerBulletPool : MonoBehaviour
         for (int x = 0; x < gm.PlayerWeapon.Length; x++)
         {
             if (gm.PlayerWeapon[x] == true)
+            {
                 Obj = pool_Bullets[x];
-            break;
+                break;
+            }
+              
         }
         GameObject newObj = Instantiate(Obj,position,Quaternion.identity);
         newObj.SetActive(false);
