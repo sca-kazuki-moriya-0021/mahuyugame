@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8140242345045008772}
   - component: {fileID: 3395556697722657979}
   m_Layer: 0
-  m_Name: BezierBullet
+  m_Name: TestBullet
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

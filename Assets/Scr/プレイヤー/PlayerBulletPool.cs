@@ -38,6 +38,7 @@ public class PlayerBulletPool : MonoBehaviour
         {
             //リストにないなら、新しく追加
             bullet_List.Add((GameObject)Instantiate(n, shotpos, transform.rotation));
+            Debug.Log("aikis");
 
             //リストに追加したのを子オブジェクトに
             obj_No = bullet_List.Count - 1;

@@ -15,15 +15,11 @@ public class Player : MonoBehaviour
     //方向取得用
     private Vector2 inputV;
 
-    private Vector3 target;
-    [SerializeField]
-    private GameObject bullet;
-    //弾を0.1秒ごとに打ち出す
-    private float targetTime = 2f;
-    private float currentTime = 0;
-    //中継地点を割り振るための変数
-    private int count = 0;
-
+    //時間計測用
+    private float waitTime = 0;
+    
+    //使うよう
+    private PlayerBulletPool pBulletPool;
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
@@ -59,6 +55,7 @@ public class Player : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
+        pBulletPool = FindObjectOfType<PlayerBulletPool>();
         
         gm.PlayerWeapon[0] = true;
 
@@ -83,56 +80,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(decelerationFlag);
-
-        if(gm.PlayerWeapon[0] == true)
+        waitTime += Time.deltaTime;
+        if(waitTime > 1.0f)
         {
-            Debug.Log("aki");
-           /* currentTime += Time.deltaTime;
-            if (targetTime - gm.PlayerLevel[0] * 1f < currentTime )
-            {
-                currentTime = 0;
-                var pos = transform.position;
-                var t = Instantiate(bullet) as GameObject;
-                t .gameObject.CompareTag("PlayerBullet");
-                t.transform.position = this.transform.position;
-                var cash = t.GetComponent<TestBullet>();
-                cash.CharaPos = this.transform.position;
-                //弾を一つ打ち出すたびに中継地点を変える
-                var point = transform.position +new Vector3(transform.position.x + 5f,transform.position.y + 5f ,transform.position.z);
-                cash.GreenPos = point;
-                cash.PlayerPos = transform.position+new Vector3(transform.position.x + 10f, transform.position.y, transform.position.z);
-
-            }*/
+            pBulletPool.poolBullet(transform.position);
+            waitTime = 0f;
         }
-        else if (gm.PlayerWeapon[1] == true)
-        {
-            Debug.Log("rinka");
-            currentTime += Time.deltaTime;
-           /* if (targetTime - gm.PlayerLevel[0] * 1f < currentTime)
-            {
-                currentTime = 0;
-                var pos = transform.position;
-                var t = Instantiate(bullet) as GameObject;
-                t.gameObject.CompareTag("PlayerBullet");
-                t.transform.position = this.transform.position;
-                var cash = t.GetComponent<TestBullet>();
-                cash.CharaPos = this.transform.position;
-                //弾を一つ打ち出すたびに中継地点を変える
-                var point = transform.position + new Vector3(transform.position.x - 5f, transform.position.y - 5f, transform.position.z);
-                cash.GreenPos = point;
-                cash.PlayerPos = transform.position + new Vector3(transform.position.x - 10f, transform.position.y, transform.position.z);
-            }*/
-        }
-        else if (gm.PlayerWeapon[2] == true)
-        {
-            Debug.Log("arika");
-        }
-        else if (gm.PlayerWeapon[3] == true)
-        {
-            Debug.Log("sakina");
-        }
-
 
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
@@ -141,12 +94,7 @@ public class Player : MonoBehaviour
             StartCoroutine(SkillAtk());
         }
 
-        //if(pouseCon.MenuFlag == false)
-        {
-            InputSystemMove();
-        }
-     
-       
+       InputSystemMove();
     }
 
     public void OnMove(InputAction.CallbackContext context)
