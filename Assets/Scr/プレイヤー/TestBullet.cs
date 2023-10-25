@@ -17,7 +17,7 @@ public class TestBullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
         
