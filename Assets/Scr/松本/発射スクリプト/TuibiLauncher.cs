@@ -25,7 +25,7 @@ public class TuibiLauncher : MonoBehaviour
             Shoot();
             shotsFired++;
 
-            if (shotsFired >= 5)
+            if (shotsFired >= 3)
             {
                 isInterval = true;
                 nextFireTime = Time.time + intervalDuration;
@@ -41,8 +41,6 @@ public class TuibiLauncher : MonoBehaviour
     {
         // 弾のプレハブから新しい弾を生成
         GameObject newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        // 生成した弾に速度やダメージなどの情報を設定できる場合、ここで設定
 
         // 生成した弾を発射
         Rigidbody2D bulletRB = newBullet.GetComponent<Rigidbody2D>();

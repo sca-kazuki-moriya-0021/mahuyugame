@@ -11,10 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField, Header("体力")]
     int hp;
     [SerializeField] float speed;  
-    Vector3 movePosition;  
+    Vector3 movePosition;
 
     void Start()
     {
+        GameObject LeftPos = GameObject.Find("LeftPos");
+        GameObject RightPos = GameObject.Find("RightPos");
         movePosition = moveRandomPosition();  
     }
 
@@ -24,12 +26,12 @@ public class Enemy : MonoBehaviour
         {
             movePosition = moveRandomPosition();
         }
-        this.transform.position = Vector3.MoveTowards(transform.position, movePosition, speed * Time.deltaTime);  //①②playerオブジェクトが, 目的地に移動, 移動速度
+        this.transform.position = Vector3.MoveTowards(transform.position, movePosition, speed * Time.deltaTime);
     }
 
     private Vector3 moveRandomPosition()
     {
-        Vector3 randomPosi = new Vector3(Random.Range(-7, 7), Random.Range(-4, 4), 5);
+        Vector3 randomPosi = new Vector3(Random.Range(9, 0), Random.Range(-5,5), 0);
         return randomPosi;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,5 +45,10 @@ public class Enemy : MonoBehaviour
                 Invoke("Death", 3.0f);
             }
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }

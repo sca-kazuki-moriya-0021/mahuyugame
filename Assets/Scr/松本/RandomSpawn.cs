@@ -18,7 +18,7 @@ public class RandomSpawn : MonoBehaviour
         minX = LeftPos.transform.position.x;
         maxX = RightPos.transform.position.x;
         minY = LeftPos.transform.position.y;
-        maxY = RightPos.transform.position.x;
+        maxY = RightPos.transform.position.y;
 
         StartCoroutine(SpawnEnemy());
     }
