@@ -10,12 +10,27 @@ public class PlayerBulletPool : MonoBehaviour
     [SerializeField]
     private GameObject[] pool_Bullets;
 
+    private bool[] bulletFlag = new bool[] {false,false,false,false}; 
+
+
     //プールしたオブジェクトを入れるリスト
     List<GameObject> bullet_List = new List<GameObject>();
 
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
+       
+        for(int i = 0; i < gm.PlayerWeapon.Length; i++){
+            if (gm.PlayerWeapon[i] == true)
+            {
+                bulletFlag[i] = true;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void CreatePool(int maxCount)
@@ -43,17 +58,26 @@ public class PlayerBulletPool : MonoBehaviour
 
     public GameObject GetObject(Vector2 position)
     {
-        for(int i = 0; i < bullet_List.Count; i++)
+        for (int i = 0; i < bullet_List.Count; i++)
         {
-            if(bullet_List[i].activeSelf == false)
+            GameObject ins = null;
+            for (int x = 0; x < gm.PlayerWeapon.Length; x++)
             {
-                GameObject ins = bullet_List[i];
-                ins.transform.position = position;
-                ins.SetActive(true);
+                if (gm.PlayerWeapon[x] == true)
+                {
+                    ins = pool_Bullets[x];
+                }
+            }
+             bullet_List[i] = ins;
+             Debug.Log(bullet_List[i]);
+            if (bullet_List[i].activeSelf == false)
+            {
+                Debug.Log("武器切り替え");
+                bullet_List[i].transform.position = position;
+                bullet_List[i].SetActive(true);
                 return ins;
             }
         }
-
 
         GameObject Obj = null;
         for (int x = 0; x < gm.PlayerWeapon.Length; x++)
@@ -63,7 +87,6 @@ public class PlayerBulletPool : MonoBehaviour
                 Obj = pool_Bullets[x];
                 break;
             }
-              
         }
         GameObject newObj = Instantiate(Obj,position,Quaternion.identity);
         newObj.SetActive(false);

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     //ŽžŠÔŒv‘ª—p
     private float waitTime = 0;
+    private float time =0;
     
     //Žg‚¤‚æ‚¤
     private PlayerBulletPool pBulletPool;
@@ -75,17 +76,25 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pBulletPool.CreatePool(5);
+        pBulletPool.CreatePool(10);
     }
 
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         waitTime += Time.deltaTime;
         if(waitTime > 1.0f)
         {
             pBulletPool.GetObject(transform.position);
             waitTime = 0f;
+        }
+
+        if(time > 5.0f)
+        {
+            Debug.Log("aski");
+            gm.PlayerWeapon[0] = false;
+            gm.PlayerWeapon[1] = true;
         }
 
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
