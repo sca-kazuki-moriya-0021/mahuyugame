@@ -9,6 +9,14 @@ public class PlayerBulletPool : MonoBehaviour
     //ƒv[ƒ‹‚µ‚Ä‚¨‚«‚½‚¢’e‚Ìí—Ş
     [SerializeField]
     private GameObject[] pool_Bullets;
+    
+    public enum Bullet
+    {
+        bullet,
+        bullet2,
+        bullet3,
+        bullet4,
+    }
 
     private bool[] bulletFlag = new bool[] {false,false,false,false}; 
 
@@ -66,16 +74,18 @@ public class PlayerBulletPool : MonoBehaviour
                 if (gm.PlayerWeapon[x] == true)
                 {
                     ins = pool_Bullets[x];
+                    ins.SetActive(false);
+                    Debug.Log("“ü‚Á‚Ä‚é‚æ");
                 }
             }
              bullet_List[i] = ins;
-             Debug.Log(bullet_List[i]);
-            if (bullet_List[i].activeSelf == false)
+             Debug.Log(bullet_List[i].name);
+            if (ins.activeSelf == false)
             {
                 Debug.Log("•ŠíØ‚è‘Ö‚¦");
                 bullet_List[i].transform.position = position;
                 bullet_List[i].SetActive(true);
-                return ins;
+                return bullet_List[i];
             }
         }
 

@@ -7,6 +7,7 @@ public class TestBullet : MonoBehaviour
 
     //それぞれの位置を保存する変数
     //スタート地点
+
     private Vector3 bulletPostion;
 
     private float time = 0;
@@ -26,6 +27,6 @@ public class TestBullet : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

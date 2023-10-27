@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1878082395865681159}
   - component: {fileID: 2828506950285541689}
   - component: {fileID: 5240401519065730127}
-  - component: {fileID: 1167718838165405358}
+  - component: {fileID: 3150243597443122863}
+  - component: {fileID: 3802770794044980748}
   m_Layer: 0
   m_Name: LaserBullet
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9209438781053329560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.398, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.11, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -208,7 +209,28 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1167718838165405358
+--- !u!50 &3150243597443122863
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209438781053329560}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &3802770794044980748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,6 +239,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9209438781053329560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c8dd7ac3e3e904c9becd2cf3849a76, type: 3}
+  m_Script: {fileID: 11500000, guid: a0234a5f92761954ca88f9709e342ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

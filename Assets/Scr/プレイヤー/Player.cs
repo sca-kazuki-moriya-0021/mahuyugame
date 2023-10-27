@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
     //方向取得用
     private Vector2 inputV;
 
+    //弾保存用
+    [SerializeField]
+    private GameObject[] bullets;
+
     //時間計測用
-    private float waitTime = 0;
-    private float time =0;
-    
+    private float waitTime = 0;  
     //使うよう
-    private PlayerBulletPool pBulletPool;
+    //private PlayerBulletPool pBulletPool;
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
@@ -56,9 +58,8 @@ public class Player : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
-        pBulletPool = FindObjectOfType<PlayerBulletPool>();
-
-        
+        //pBulletPool = FindObjectOfType<PlayerBulletPool>();
+ 
         gm.PlayerWeapon[0] = true;
 
         //var scene = gm.MyGetScene();
@@ -76,25 +77,19 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pBulletPool.CreatePool(10);
+        //pBulletPool.CreatePool(10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
         waitTime += Time.deltaTime;
         if(waitTime > 1.0f)
         {
-            pBulletPool.GetObject(transform.position);
+            //pBulletPool.GetObject(transform.position);
+            //Instantiate(bullets[0]);
+            Instantiate(bullets[1]);
             waitTime = 0f;
-        }
-
-        if(time > 5.0f)
-        {
-            Debug.Log("aski");
-            gm.PlayerWeapon[0] = false;
-            gm.PlayerWeapon[1] = true;
         }
 
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
