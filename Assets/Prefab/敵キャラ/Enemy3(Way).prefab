@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 911876188541745397}
   - component: {fileID: 3104994608631106204}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Enemy3(Way)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49c6eeefc26364479fea17cce78bd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPoint: {fileID: 958126071916355674}
   deathBulletPoint: {fileID: 0}
   hp: 0
   speed: 4
@@ -157,11 +156,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccf0055cdbca4ce41b14f8c5344c100b, type: 3}
---- !u!1 &958126071916355674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911416090118582126, guid: ccf0055cdbca4ce41b14f8c5344c100b, type: 3}
-  m_PrefabInstance: {fileID: 139033850394873652}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &958126071916355668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 911416090118582112, guid: ccf0055cdbca4ce41b14f8c5344c100b, type: 3}

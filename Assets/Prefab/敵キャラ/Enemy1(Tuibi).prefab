@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3843811280398692036}
   - component: {fileID: 1362197414581279917}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Enemy1(Tuibi)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,11 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49c6eeefc26364479fea17cce78bd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPoint: {fileID: 3300474553949450878, guid: 84ab2b94fe68ccc4fb5c4b3afab486aa, type: 3}
   deathBulletPoint: {fileID: 0}
   hp: 0
   speed: 4
-  destroyTime: 0
 --- !u!1001 &5300358080714365277
 PrefabInstance:
   m_ObjectHideFlags: 0

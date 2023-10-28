@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    [SerializeField, Header("弾の発射プレハブ")]
-    GameObject bulletPoint;
+{ 
     [SerializeField, Header("撃ち返し弾プレハブ")]
     GameObject deathBulletPoint;
     [SerializeField, Header("体力")]
