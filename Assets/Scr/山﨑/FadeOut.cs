@@ -10,14 +10,16 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class FadeOut : MonoBehaviour
 {
     [SerializeField]private GameObject[] stageFadeInOut;
-    [SerializeField]private Image gameOver;
+    [SerializeField]private Image[] backGround;
+    [SerializeField]private Image[] gameOver;
     [SerializeField]private TotalGM totalGM;
-    [SerializeField]private Image playerImage;
+    [SerializeField]private Image[] playerImage;
     [SerializeField]private GameObject playerPosition;
-    [SerializeField]private Light2D spotLight;
+    [SerializeField]private Light2D light2D;
+    [SerializeField] private Light2D WorldLight2D;
     [SerializeField]private Animator fadeOutAnimator;
     [SerializeField] private Image[] EnemyBoss;
-    bool  worldLightFlag;
+    
 
 
     //private Vector2 playerPosition;
@@ -26,9 +28,9 @@ public class FadeOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         
+         light2D.enabled = true;
          StartCoroutine(Test());
-         gameOver.enabled = false;
+         
     }
 
     void Update()
@@ -39,7 +41,9 @@ public class FadeOut : MonoBehaviour
     //ここでどのシーンで死んだか確認
     private void GameOver()
     {
-        Stage_1();
+        playerImage[2].transform.position = playerPosition.transform.position;//totalGM.PlayerTransForm;
+        //Stage_1();
+        Stage_3();
     }
 
     // Update is called once per frame
@@ -50,12 +54,12 @@ public class FadeOut : MonoBehaviour
 
         fadeOutAnimator.SetTrigger("Stage1");
 
-        stageFadeInOut[0].transform.GetChild(0).DOMove(new Vector2(0f, 0f), 2f).SetDelay(3.0f).OnComplete(() => { 
+        backGround[0].transform.DOMove(new Vector2(0f, 0f), 2f).SetDelay(3.0f).OnComplete(() => { 
             
             IntensityChg();
-            playerImage.DOFade(255, 2f).SetDelay(1.0f);
+            playerImage[0].DOFade(2.55f, 2f).SetDelay(1.0f);
             playerPosition.transform.DOMove(new Vector2(0f, -2f), 2f).SetDelay(1.0f).OnComplete(() => {
-                playerImage.DOFade(0, 3f).SetDelay(3.0f);
+                playerImage[0].DOFade(0, 3f).SetDelay(3.0f);
                 
                 EnemyBoss[0].rectTransform.DOMove(new Vector2(5f,-1.6f),1f);
                 });
@@ -63,11 +67,33 @@ public class FadeOut : MonoBehaviour
 
     }
 
+    private void Stage_3()
+    {
+        var brackColor = new Color(0f, 0f, 0f);
+        var whiteColor = new Color(255f, 255f, 255f);
+        gameOver[2].DOFade(2.55f,1.0f).OnComplete(() => { 
+            playerImage[2].enabled = true;
+            playerImage[2].DOColor(brackColor, 1.0f).OnComplete(() => {
+                WorldLight2D.enabled=false;
+                IntensityChg();
+                backGround[2].DOColor(whiteColor, 2.0f);
+                playerImage[2].transform.DOMove(new Vector2(0f, 0f), 2f).OnComplete(() => {
+                    
+                    playerImage[2].DOFade(255, 2f).SetDelay(1.0f).OnComplete(() => {
+                        fadeOutAnimator.SetTrigger("Stage3");
+                    });
+                });           
+            });
+        });
+        
+    }
+
+    //光の明るさ調整
     private void IntensityChg()
     {
         DOTween.To(
-            () => spotLight.intensity,
-            num => spotLight.intensity = num,
+            () => light2D.intensity,
+            num => light2D.intensity = num,
             0.6f,
             3.0f);
     }
@@ -75,7 +101,7 @@ public class FadeOut : MonoBehaviour
     IEnumerator Test()
     {
         yield return new WaitForSeconds(1);
-        playerPosition.transform.position = totalGM.PlayerTransForm;
+        
         GameOver();
         //Debug.Log(totalGM.PlayerTransForm);
     }
