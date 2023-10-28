@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnakeSpawn : MonoBehaviour
 {
     [SerializeField,Header("’e‚ÌƒvƒŒƒnƒu")]
-    GameObject SnakeBulletPrefab;
+    GameObject snakeBulletPrefab;
     [SerializeField,Header("”­ŽËŠÔŠu")]
     float fireRate = 0.2f;
     private float nextFireTime;
@@ -27,7 +27,7 @@ public class SnakeSpawn : MonoBehaviour
 
     void SpownSnakeBullet()
     {
-        GameObject bullet = Instantiate(SnakeBulletPrefab,transform.position,Quaternion.identity);
+        GameObject bullet = Instantiate(snakeBulletPrefab,transform.position,Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         rb.velocity = new Vector2(1,0);

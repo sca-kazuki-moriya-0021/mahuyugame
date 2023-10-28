@@ -9,7 +9,7 @@ public class AllBullet : MonoBehaviour
     public int numberOfShots;
     public int numberOfBullets;
     public float spreadAngle;
-    public float FireTime;
+    public float fireTime;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class AllBullet : MonoBehaviour
                 ShootBullets();
                 yield return new WaitForSeconds(0.2f);
             }
-            yield return new WaitForSeconds(FireTime);
+            yield return new WaitForSeconds(fireTime);
         }
     }
 
