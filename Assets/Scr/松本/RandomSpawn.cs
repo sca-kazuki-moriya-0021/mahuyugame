@@ -6,8 +6,6 @@ public class RandomSpawn : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefabs;
-    [SerializeField]
-    private int enemyCount;
 
     private float minX,maxX,minY,maxY;
     // Start is called before the first frame update

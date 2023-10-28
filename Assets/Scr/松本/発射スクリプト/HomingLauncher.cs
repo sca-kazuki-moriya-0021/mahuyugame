@@ -6,7 +6,7 @@ public class HomingLauncher : MonoBehaviour
 {
     [SerializeField]GameObject Fire1;
     [SerializeField]GameObject Fire2;
-    [SerializeField]GameObject HomingBullet;
+    [SerializeField]GameObject homingBullet;
     [SerializeField]float fireInterval = 1.0f;
 
     private float nextFireTime = 0.0f;
@@ -24,10 +24,10 @@ public class HomingLauncher : MonoBehaviour
 
     void ShootHomingBullet(GameObject firePoint)
     {
-        if (firePoint != null && HomingBullet != null)
+        if (firePoint != null && homingBullet != null)
         {
             // ホーミング弾のインスタンスを生成
-            GameObject bullet = Instantiate(HomingBullet, firePoint.transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(homingBullet, firePoint.transform.position, Quaternion.identity);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         }
     }

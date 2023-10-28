@@ -13,9 +13,9 @@ public class Launcher : MonoBehaviour
     [SerializeField, Header("’e‚ğ‘‚â‚·ŠÔ")] private float createBullet;
     [SerializeField, Header("Šp“x‚ğ‘‚â‚·ŠÔ")] private float timeAngle;
     [SerializeField, Header("‘‰ÁŠp“x")] private float yimespreadAngle;
-    [SerializeField, Header("Å‘å’e”")] private int MaxBullet;
+    [SerializeField, Header("Å‘å’e”")] private int maxBullet;
 
-    private float BulletsTime; // ’eŒo‰ßŠÔ
+    private float bulletsTime; // ’eŒo‰ßŠÔ
     private float elaTime; // Šp“xŒo‰ßŠÔ
     private int curBullet; // Œ»İ‚Ì’e
     private float curAngle; // Œ»İ‚ÌŠp“x
@@ -33,13 +33,13 @@ public class Launcher : MonoBehaviour
 
     void Update()
     {
-        BulletsTime += Time.deltaTime;
+        bulletsTime += Time.deltaTime;
         elaTime += Time.deltaTime;
-        if (curBullet < MaxBullet && BulletsTime >= createBullet)
+        if (curBullet < maxBullet && bulletsTime >= createBullet)
         {
             curBullet += bulletAmount;
             curAngle += yimespreadAngle;
-            BulletsTime = 0.0f;
+            bulletsTime = 0.0f;
         }
         if (elaTime >= timeAngle)
         {
