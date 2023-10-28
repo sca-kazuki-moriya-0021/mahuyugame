@@ -15,18 +15,26 @@ public class Player : MonoBehaviour
     //方向取得用
     private Vector2 inputV;
 
+    //画面内
+    [SerializeField]
+    private GameObject screenWithin;
+    private GameObject[] screenWithinChird =new GameObject[2] {null,null};
+
     //弾保存用
     [SerializeField]
     //private GameObject[] bullets;
 
     //時間計測用
     private float waitTime = 0;  
+
+
     //使うよう
     //private PlayerBulletPool pBulletPool;
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
 
+    //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
 
     //スキル使った時に使用するフラグ
@@ -78,6 +86,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         //pBulletPool.CreatePool(10);
+        for(int i = 0;i < screenWithinChird.Length;i++)
+        {
+            screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
+        }
+
     }
 
     // Update is called once per frame
@@ -148,11 +161,46 @@ public class Player : MonoBehaviour
 
     public void InputSystemMove()
     {  
-        var dire = new Vector3(inputV.x,inputV.y,0);
-        if(decelerationFlag == true)
-        transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
-        else
-        transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
+
+        if (screenWithinChird[0].transform.position.x  <= transform.position.x &&
+            screenWithinChird[1].transform.position.x  >= transform.position.x &&
+            screenWithinChird[0].transform.position.y >= transform.position.y &&
+            screenWithinChird[1].transform.position.y <= transform.position.y)
+        {
+            //低速移動
+            if (decelerationFlag == true)
+                transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
+            else
+                transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
+        }
+        else if(screenWithinChird[0].transform.position.x > transform.position.x)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[0].transform.position.x;
+            transform.position = a;
+        }
+        else if (screenWithinChird[0].transform.position.y < transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.y = screenWithinChird[0].transform.position.y;
+            transform.position = a;
+            
+        }
+        else if (screenWithinChird[1].transform.position.x < transform.position.x)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[1].transform.position.x;
+            transform.position = a;
+
+        }
+        else if (screenWithinChird[1].transform.position.y > transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.y = screenWithinChird[1].transform.position.y;
+            transform.position = a;
+        }
+
+
     }
 
     private IEnumerator SkillAtk()
