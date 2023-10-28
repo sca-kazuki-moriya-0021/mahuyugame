@@ -25,11 +25,10 @@ public class Tuibi : MonoBehaviour
     {
         if (target == null)
         {
-            // ターゲットが存在しない場合の処理（例: ターゲットを再検索するなど）
+            Destroy(gameObject);
             return;
         }
 
-        // Arriveアルゴリズムの実装（以前のコードと同じ）
         Vector3 desiredVelocity = (target.position - position);
         float distance = desiredVelocity.magnitude;
 

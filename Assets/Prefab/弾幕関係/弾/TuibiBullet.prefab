@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limit: 4
-  maxSpeed: 4
+  maxSpeed: 10
   slowingDistance: 4
   timeToTarget: 4

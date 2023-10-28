@@ -7,7 +7,7 @@ public class BulletSpawn : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField, Range(0, 360)] private float launchAngle = 45.0f;
-    [SerializeField] private float FireTime;
+    [SerializeField] private float fireTime;
 
     private float BulletTime = 0.0f;
 
@@ -19,7 +19,7 @@ public class BulletSpawn : MonoBehaviour
     void Update()
     {
         BulletTime += Time.deltaTime;
-        if(BulletTime > FireTime)
+        if(BulletTime > fireTime)
         {
             ShootBulletWithCustomDirection();
             BulletTime = 0.0f;
