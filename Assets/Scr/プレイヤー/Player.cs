@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     //’e•Û‘¶—p
     [SerializeField]
-    private GameObject[] bullets;
+    //private GameObject[] bullets;
 
     //ŽžŠÔŒv‘ª—p
     private float waitTime = 0;  
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         {
             //pBulletPool.GetObject(transform.position);
             //Instantiate(bullets[0]);
-            Instantiate(bullets[1]);
+            //Instantiate(bullets[1]);
             waitTime = 0f;
         }
 
