@@ -12,6 +12,7 @@ public class PlayerBulletCon : MonoBehaviour
     //弾の発射位置
     private GameObject[] bulletChilds = new GameObject[]{null,null,null};
 
+    //レーザー反射のスクリプト
     [SerializeField]
     private float velocity;
     [SerializeField]
@@ -71,8 +72,18 @@ public class PlayerBulletCon : MonoBehaviour
                     bullet_sc.Velocity = velocity;
                     bullet_sc.Angle = dir;
                 }
+            }
+
+            if(gm.PlayerWeapon[2] == true)
+            {
 
             }
+
+            if(gm.PlayerWeapon[3] == true)
+            {
+
+            }
+
             time = 0;
         }
        
