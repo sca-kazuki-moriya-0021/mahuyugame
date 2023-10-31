@@ -43,7 +43,6 @@ public class LaserLauncher : MonoBehaviour
                 //弾インスタンスを取得し、初速と発射角度を与える
                 GameObject bullet_obj = (GameObject)Instantiate(bullet, transform.position, transform.rotation);
                 LaserBullet bullet_sc = bullet_obj.GetComponent<LaserBullet>();
-                //bullet_sc.Theta = theta;
                 bullet_sc.Velocity = velocity;
             }
             time = 0f;
