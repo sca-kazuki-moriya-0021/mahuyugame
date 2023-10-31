@@ -10,17 +10,13 @@ public class PlayerBulletCon : MonoBehaviour
     [SerializeField]
     private GameObject[] bullets;
     //弾の発射位置
-    [SerializeField]
-    private GameObject[] bulletsPosition;
+    private GameObject[] bulletChilds = new GameObject[]{null,null,null};
 
     [SerializeField]
     private float velocity;
     [SerializeField]
-    private float degree;
-    [SerializeField]
-    private float angle_split;
+    private float[] angle;
 
-    private float theta;
     float PI = Mathf.PI;
 
     private float time;
@@ -32,6 +28,22 @@ public class PlayerBulletCon : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
+
+        //自分の子オブジェクトを取得
+        int childCount = this.gameObject.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+           Transform childTransform = this.gameObject.transform.GetChild(i);
+           bulletChilds[i] = childTransform.gameObject;
+           Debug.Log(bulletChilds[i]);
+        }
+
+        //角度をラジアンに変換
+        for(int i = 0; i < angle.Length; i++)
+        {
+            angle[i] = angle[i] * Mathf.Deg2Rad;
+
+        }
     }
 
     // Update is called once per frame
@@ -42,28 +54,22 @@ public class PlayerBulletCon : MonoBehaviour
         {
             if (gm.PlayerWeapon[0] == true)
             {
-                for (int i = 0; i < bulletsPosition.Length; i++)
+                for (int i = 0; i < bulletChilds.Length; i++)
                 {
-                    Instantiate(bullets[0], bulletsPosition[i].transform);
+                    Instantiate(bullets[0], bulletChilds[i].transform);
                 }
             }
 
             if (gm.PlayerWeapon[1] == true)
             {
-                for (int i = 0; i <= (angle_split - 1); i++)
+                for (int i = 0; i < angle.Length; i++)
                 {
-                    //n-way弾の端から端までの角度
-                    float AngleRange = PI * (degree / 180);
-
-                    //弾インスタンスに渡す角度の計算
-                    if (angle_split > 1) theta = (AngleRange / (angle_split - 1)) * i - 0.5f * AngleRange;
-                    else theta = 0;
-
+                   Vector2 dir = new Vector2(Mathf.Cos(angle[i]),Mathf.Sin(angle[i]));
                     //弾インスタンスを取得し、初速と発射角度を与える
-                    GameObject bullet_obj = (GameObject)Instantiate(bullets[1], transform.position, transform.rotation);
+                    GameObject bullet_obj = (GameObject)Instantiate(bullets[1],bulletChilds[i].transform.position , transform.rotation);
                     LaserBullet bullet_sc = bullet_obj.GetComponent<LaserBullet>();
-                    bullet_sc.Theta = theta;
                     bullet_sc.Velocity = velocity;
+                    bullet_sc.Angle = dir;
                 }
 
             }

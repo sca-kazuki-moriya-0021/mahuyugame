@@ -5,28 +5,24 @@ using UnityEngine;
 public class LaserBullet : MonoBehaviour
 {
     private float velocity;
-    private float theta;
+    private Vector2 angle;
 
     private Vector2 lastVelocity = Vector2.zero;
 
     private Rigidbody2D rb2d;
-    private CircleCollider2D collider2D;
 
     public float Velocity { get => velocity; set => velocity = value; }
-    public float Theta { get => theta; set => theta = value; }
+    public Vector2 Angle { get => angle; set => angle = value; }
 
     // Start is called before the first frame update
     void Start()
     {
        rb2d = GetComponent<Rigidbody2D>();
-       collider2D = GetComponent<CircleCollider2D>();
 
        //äpìxÇçló∂ÇµÇƒíeÇÃë¨ìxåvéZ
        Vector2 bulletV = rb2d.velocity;
-       bulletV.x = velocity * Mathf.Cos(theta);
-       bulletV.y = velocity * Mathf.Sin(theta);
+       bulletV = velocity * angle;
        rb2d.velocity = bulletV;
-
     }
 
     // Update is called once per frame
@@ -43,11 +39,9 @@ public class LaserBullet : MonoBehaviour
             Vector2 refrect = Vector2.Reflect(lastVelocity,normal);
             rb2d.velocity = refrect;
         }
-     
     }
 
-
-    void OnBecameInvisible()
+   void OnBecameInvisible()
     {
         Destroy(this.gameObject);
     }

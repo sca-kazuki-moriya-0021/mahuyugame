@@ -20,14 +20,6 @@ public class Player : MonoBehaviour
     private GameObject screenWithin;
     private GameObject[] screenWithinChird =new GameObject[2] {null,null};
 
-    //弾保存用
-    [SerializeField]
-    //private GameObject[] bullets;
-
-    //時間計測用
-    private float waitTime = 0;  
-
-
     //使うよう
     //private PlayerBulletPool pBulletPool;
     private TotalGM gm;
@@ -68,7 +60,7 @@ public class Player : MonoBehaviour
         pouseCon = FindObjectOfType<PouseCon>();
         //pBulletPool = FindObjectOfType<PlayerBulletPool>();
  
-        gm.PlayerWeapon[0] = true;
+        gm.PlayerWeapon[1] = true;
 
         //var scene = gm.MyGetScene();
 
@@ -95,16 +87,7 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        waitTime += Time.deltaTime;
-        if(waitTime > 1.0f)
-        {
-            //pBulletPool.GetObject(transform.position);
-            //Instantiate(bullets[0]);
-            //Instantiate(bullets[1]);
-            waitTime = 0f;
-        }
-
+    { 
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
             buttonPish = false;
