@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LaserBullet : MonoBehaviour
 {
+    [SerializeField] float lifeTime = 1.0f;
+
+    private int power =1;
+    private bool laser;
+    Renderer targetRenderer;
+
     private float velocity;
     private Vector2 angle;
 
@@ -18,7 +24,7 @@ public class LaserBullet : MonoBehaviour
     void Start()
     {
        rb2d = GetComponent<Rigidbody2D>();
-
+       targetRenderer = GetComponent<Renderer>();
        //äpìxÇçló∂ÇµÇƒíeÇÃë¨ìxåvéZ
        Vector2 bulletV = rb2d.velocity;
        bulletV = velocity * angle;
@@ -42,8 +48,16 @@ public class LaserBullet : MonoBehaviour
     }
 
    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
+   {
+        if(laser == false)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            power = 0;
+        }
+     
+   }
 
 }

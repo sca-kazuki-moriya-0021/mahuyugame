@@ -1225,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 291618117927990664, guid: 3aeecf495aea10d408ce461c2c9e11a7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 291618117927990667, guid: 3aeecf495aea10d408ce461c2c9e11a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
@@ -1462,7 +1466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenWithin: {fileID: 52677397}
-  waitTime: 0
 --- !u!4 &1908606188
 Transform:
   m_ObjectHideFlags: 0
