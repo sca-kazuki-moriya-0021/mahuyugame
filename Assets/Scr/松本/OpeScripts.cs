@@ -30,13 +30,11 @@ public class OpeScripts : MonoBehaviour
         {
             Panel.SetActive(false);
             audioSource.PlayOneShot(soundE);
-            //Time.timeScale = 1.0f;
         }
         else
         {
             Panel.SetActive(true);
             audioSource.PlayOneShot(soundE);
-            //Time.timeScale = 0.0f;
         }
     }
 }

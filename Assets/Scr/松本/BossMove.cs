@@ -4,69 +4,71 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
-    [SerializeField]
-    GameObject skill_1Prefab;
-    [SerializeField]
-    GameObject bulletSpawn;
-    [SerializeField]
-    GameObject skill_2Prefab;
+    [SerializeField] private GameObject[] skillPrefabs; // スキルの弾幕のプレハブ配列
+    [SerializeField] private float skillSwitchInterval = 30.0f; // スキル切り替えの間隔（秒）
+    [SerializeField] private GameObject normalBulletPrefab;
+    private float skillSwitchTimer = 0.0f; //スキル経過時間
+    private int currentSkillIndex = 0; // 現在のスキルのインデックス
+    private GameObject skillInstance;
     private float angle;
     private Vector3 startPos;
-    private float elapsedTime = 0.0f;
 
     public float speed = 2.0f; // 移動速度
     public float amplitudeX = 3.0f; // X軸の振幅
     public float amplitudeY = 1.0f; // Y軸の振幅
-    public float skill1Duration = 2.0f; // スキル1の終了時間
-    public float danmakuDuration = 2.0f; // 弾幕の持続時間
-    public float skill2Duration = 5.0f; // スキル2の持続時間
 
-    private bool skillFrag = false;
-    int count = 0;
     void Start()
     {
-        //GameObject Spawn = GameObject.Find("BulletSpawn");
-        startPos = transform.position;
-        
+        // 通常弾幕を撃つ処理をここに追加
+        Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
+        transform.SetParent(transform);
     }
 
     void Update()
     {
-        StartCoroutine(StartSkill());
-        elapsedTime += Time.deltaTime;
         angle += Time.deltaTime * speed;
         float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
         float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
         // Z軸の位置は固定（2D空間に固定）
         transform.position = new Vector3(x, y, 0);
-        if(elapsedTime >= danmakuDuration)
+        skillSwitchTimer += Time.deltaTime;
+        // スキル切り替えのタイミングを管理
+        if (skillSwitchTimer >= skillSwitchInterval)
         {
-            Debug.Log(skillFrag);
-            skillFrag = true;
-            elapsedTime = 0;
-            count++;
-        }else if (elapsedTime >= skill1Duration)
-        {
-            skillFrag = true;
+            SwitchSkill();
+            skillSwitchTimer = 0.0f;
         }
     }
 
-    private IEnumerator StartSkill()
+    // スキルを切り替えるメソッド
+    private void SwitchSkill()
     {
-        if (skillFrag == true)
+        // 現在のスキルを破棄
+        DestroyCurrentSkill();
+
+        // 次のスキルに切り替え
+        currentSkillIndex = (currentSkillIndex + 1) % skillPrefabs.Length;
+
+        // 新しいスキルを生成
+        InstantiateSkill();
+    }
+
+    // 現在のスキルを生成
+    private void InstantiateSkill()
+    {
+        GameObject skillPrefab = skillPrefabs[currentSkillIndex];
+        // スキルの生成と初期化をここに実装
+        skillInstance = Instantiate(skillPrefab, transform.position, Quaternion.identity);
+        skillInstance.transform.SetParent(transform);
+    }
+
+    // 現在のスキルを破棄
+    private void DestroyCurrentSkill()
+    {
+        if (skillInstance != null)
         {
-            Debug.Log(count);
-            Instantiate(skill_1Prefab, this.transform.position, Quaternion.identity);
-            skillFrag = false;
-            yield return new WaitForSeconds(1.0f);
-        }
-         if (skillFrag == true && count == 1)
-         {
-            Instantiate(skill_2Prefab, this.transform.position, Quaternion.identity);
-            skillFrag = false;
-            yield return new WaitForSeconds(20.0f);
+            Destroy(skillInstance);
         }
     }
-        //スタート→通常弾幕→スキル(ループ)
-       
+
 }
