@@ -76,7 +76,10 @@ public class PlayerBulletCon : MonoBehaviour
 
             if(gm.PlayerWeapon[2] == true)
             {
-
+                for (int i = 0; i < bulletChilds.Length; i++)
+                {
+                    Instantiate(bullets[2], bulletChilds[i].transform);
+                }
             }
 
             if(gm.PlayerWeapon[3] == true)
@@ -86,6 +89,5 @@ public class PlayerBulletCon : MonoBehaviour
 
             time = 0;
         }
-       
     }
 }
