@@ -47,8 +47,8 @@ public class LaserBullet : MonoBehaviour
         }
     }
 
-   void OnBecameInvisible()
-   {
+    void OnBecameInvisible()
+    {
         if(laser == false)
         {
             Destroy(this.gameObject);
@@ -57,7 +57,6 @@ public class LaserBullet : MonoBehaviour
         {
             power = 0;
         }
-     
-   }
+    }
 
 }

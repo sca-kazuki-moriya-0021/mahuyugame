@@ -62,16 +62,16 @@ public class Player : MonoBehaviour
  
         gm.PlayerWeapon[1] = true;
 
-        //var scene = gm.MyGetScene();
+        var scene = gm.MyGetScene();
 
-        /*if (scene == gm.BackScene)
+        if (scene == gm.BackScene)
         {
            gm.PlayerHp[0] = gm.PlayerHp[1];
         }
         else if (scene != gm.BackScene)
         {
            gm.PlayerHp[1] = gm.PlayerHp[0];
-        }*/
+        }
     }
 
     // Start is called before the first frame update
