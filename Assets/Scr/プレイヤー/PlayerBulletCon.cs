@@ -51,7 +51,8 @@ public class PlayerBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > 5)
+        //Debug.Log(time);
+        if(time > (6 - gm.PlayerLevel[0]))
         {
             if (gm.PlayerWeapon[0] == true)
             {
