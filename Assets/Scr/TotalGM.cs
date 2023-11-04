@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class TotalGM : MonoBehaviour
 {
+    public static TotalGM instance;
+
     //前回のタイムと今のタイム
     private float[] nowTime = new float[]{0,0,0};
     private float[] lastTime = new float[] { 0, 0, 0 };
@@ -120,8 +122,15 @@ public class TotalGM : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
-       
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 

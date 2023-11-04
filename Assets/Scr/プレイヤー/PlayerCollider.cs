@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class PlayerCollider : MonoBehaviour
 {
     private TotalGM gm;
-    
-    private bool test;
 
     //STATEå^ÇÃïœêî
     STATE state;
@@ -63,17 +61,6 @@ public class PlayerCollider : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
-        if (test == false)
-        {
-            if (isHit == false)
-            {
-                gm.PlayerHp[0]--;
-                state = STATE.DAMAGED;
-                StartCoroutine(PlayerDameged());
-            }
-            test = true;
-        }
-      
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
