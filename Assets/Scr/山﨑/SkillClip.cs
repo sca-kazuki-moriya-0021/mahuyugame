@@ -140,7 +140,7 @@ public class SkillClip : MonoBehaviour
     {
         if (buttonPush)
         {
-            Debug.Log("ÇÕÇ¢Ç¡ÇΩ");
+            //Debug.Log("ÇÕÇ¢Ç¡ÇΩ");
             time = 0;
             //ÉoÉOëŒçÙ///////////////
             videoPlay = false;

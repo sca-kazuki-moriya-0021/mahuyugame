@@ -151,9 +151,11 @@ public class Player : MonoBehaviour
             screenWithinChird[1].transform.position.y <= transform.position.y)
         {
             //’á‘¬ˆÚ“®
-            if (decelerationFlag == true)
+            if (decelerationFlag == true) { 
+                Debug.Log("’á‘¬");
                 transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
-            else
+            }
+                else
                 transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
         }
         else if(screenWithinChird[0].transform.position.x > transform.position.x)
