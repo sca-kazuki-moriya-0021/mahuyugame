@@ -41,6 +41,7 @@ public class FadeOut : MonoBehaviour
     //ここでどのシーンで死んだか確認
     private void GameOver()
     {
+        //playerImage[0].transform.position = playerPosition.transform.position;
         playerImage[2].transform.position = playerPosition.transform.position;//totalGM.PlayerTransForm;
         //Stage_1();
         Stage_3();
@@ -52,13 +53,13 @@ public class FadeOut : MonoBehaviour
         
         
 
-        fadeOutAnimator.SetTrigger("Stage1");
+        //fadeOutAnimator.SetTrigger("Stage1");
 
         backGround[0].transform.DOMove(new Vector2(0f, 0f), 2f).SetDelay(3.0f).OnComplete(() => { 
             
             IntensityChg();
             playerImage[0].DOFade(2.55f, 2f).SetDelay(1.0f);
-            playerPosition.transform.DOMove(new Vector2(0f, -2f), 2f).SetDelay(1.0f).OnComplete(() => {
+            playerImage[0].transform.DOMove(new Vector2(0f, -2f), 2f).SetDelay(1.0f).OnComplete(() => {
                 playerImage[0].DOFade(0, 3f).SetDelay(3.0f);
                 
                 EnemyBoss[0].rectTransform.DOMove(new Vector2(5f,-1.6f),1f);
