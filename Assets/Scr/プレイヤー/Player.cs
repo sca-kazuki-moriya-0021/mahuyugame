@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         pouseCon = FindObjectOfType<PouseCon>();
         //pBulletPool = FindObjectOfType<PlayerBulletPool>();
  
-        gm.PlayerWeapon[2] = true;
+        gm.PlayerWeapon[1] = true;
 
         //var scene = gm.MyGetScene();
 
