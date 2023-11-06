@@ -66,7 +66,8 @@ public class PlayerBulletCon : MonoBehaviour
             {
                 for (int i = 0; i < angle.Length; i++)
                 {
-                   Vector2 dir = new Vector2(Mathf.Cos(angle[i]),Mathf.Sin(angle[i]));
+                    Vector3 dir = new Vector2(Mathf.Cos(angle[i]),Mathf.Sin(angle[i]));
+                    dir.z = 0;
                     //’eƒCƒ“ƒXƒ^ƒ“ƒX‚ðŽæ“¾‚µA‰‘¬‚Æ”­ŽËŠp“x‚ð—^‚¦‚é
                     GameObject bullet_obj = (GameObject)Instantiate(bullets[1],bulletChilds[i].transform.position , transform.rotation);
                     LaserBullet bullet_sc = bullet_obj.GetComponent<LaserBullet>();

@@ -11,14 +11,14 @@ public class LaserBullet : MonoBehaviour
     Renderer targetRenderer;
 
     private float velocity;
-    private Vector2 angle;
+    private Vector3 angle;
 
-    private Vector2 lastVelocity = Vector2.zero;
+    private Vector3 lastVelocity = Vector3.zero;
 
     private Rigidbody2D rb2d;
 
     public float Velocity { get => velocity; set => velocity = value; }
-    public Vector2 Angle { get => angle; set => angle = value; }
+    public Vector3 Angle { get => angle; set => angle = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,9 @@ public class LaserBullet : MonoBehaviour
        rb2d = GetComponent<Rigidbody2D>();
        targetRenderer = GetComponent<Renderer>();
        //äpìxÇçló∂ÇµÇƒíeÇÃë¨ìxåvéZ
-       Vector2 bulletV = rb2d.velocity;
+       Vector3 bulletV = rb2d.velocity;
        bulletV = velocity * angle;
+       bulletV.z = 0;
        rb2d.velocity = bulletV;
     }
 
@@ -41,8 +42,9 @@ public class LaserBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("OutLine"))
         {
-            Vector2 normal = collision.contacts[0].normal;
-            Vector2 refrect = Vector2.Reflect(lastVelocity,normal);
+            Vector3 normal = collision.contacts[0].normal;
+            Vector3 refrect = Vector3.Reflect(lastVelocity,normal);
+            refrect.z = 0;
             rb2d.velocity = refrect;
         }
     }
