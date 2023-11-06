@@ -29,7 +29,7 @@ public class RandomSpawn : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 2; i++)
         {
             Vector2 position = new Vector2(Random.Range(minX,maxX),Random.Range(minY,maxY));
             GameObject enemy = enemyPrefabs[Random.Range(0,enemyPrefabs.Length)];
