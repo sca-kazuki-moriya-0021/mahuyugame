@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class TimeDisplay : MonoBehaviour
 {
     [SerializeField]
-    private Text timerText;
+    private TMP_Text timerText;
     
     private TotalGM gm;
     private TotalGM.StageCon stage;
