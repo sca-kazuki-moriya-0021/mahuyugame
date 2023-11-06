@@ -13610,8 +13610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99590ecd1d63da45aff09cf4ad7be5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashInterval: 0.5
-  loopCount: 7
+  flashInterval: 0.1
+  loopCount: 6
   characterSprite: {fileID: 2596074134276979178}
 --- !u!4 &2596074134863436489
 Transform:

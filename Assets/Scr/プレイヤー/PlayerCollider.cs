@@ -65,15 +65,16 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.gameObject.CompareTag("Bellet") ||
-            collision.gameObject.CompareTag("EnemySkillBullet") ||
-            collision.gameObject.CompareTag("DestoryBullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
+            //collision.gameObject.CompareTag("EnemySkillBullet") ||
+            //collision.gameObject.CompareTag("DestoryBullet"))
         {
             collision.gameObject.SetActive(false);
             gm.PlayerHp[0]--;
+            //Debug.Log(gm.PlayerHp[0]);
             state = STATE.DAMAGED;
             StartCoroutine(PlayerDameged());
-        }*/
+        }
 
         if (collision.gameObject.CompareTag("BaffItem"))
         {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6183957591451600137}
   - component: {fileID: 1778078767893096605}
   - component: {fileID: -4853232724361210750}
+  - component: {fileID: 4941939896152657046}
   m_Layer: 0
   m_Name: wayBullet
   m_TagString: Bullet
@@ -117,3 +118,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be3b7ae6c4f1aa4ba4493a44a52d841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4941939896152657046
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916243498200830483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

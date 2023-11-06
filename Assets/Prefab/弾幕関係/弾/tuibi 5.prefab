@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1126275170501721481}
   - component: {fileID: 7444650428700284320}
   - component: {fileID: 1309959449154140756}
+  - component: {fileID: -4851021005519422185}
   m_Layer: 0
   m_Name: tuibi 5
   m_TagString: Bullet
@@ -119,3 +120,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 5
   homingDuration: 0.5
+--- !u!58 &-4851021005519422185
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2236662224039286367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
