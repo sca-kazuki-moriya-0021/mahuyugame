@@ -38,22 +38,18 @@ public class Enemy : MonoBehaviour
     {
         if (gameObject.CompareTag("PlayerBullet"))
         {
-            //hp = hp - BulletPower;
-            if (hp == 0)
+            float startAngle = -spreadAngle / 2;
+
+            for (int i = 0; i < numberOfBullets; i++)
             {
-                float startAngle = -spreadAngle / 2;
+                float angle = startAngle + i * (spreadAngle / (numberOfBullets));
 
-                for (int i = 0; i < numberOfBullets; i++)
-                {
-                    float angle = startAngle + i * (spreadAngle / (numberOfBullets));
-
-                    // ’e‚ð”­ŽË
-                    Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
-                    Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
-                    bulletRigidbody.velocity = direction * bulletSpeed;
-                }
-                Destroy(gameObject);
+                // ’e‚ð”­ŽË
+                Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+                Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = direction * bulletSpeed;
             }
+            Destroy(gameObject);
         }
     }
 
