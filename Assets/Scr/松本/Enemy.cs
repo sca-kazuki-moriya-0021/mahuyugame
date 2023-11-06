@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
                     Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
                     bulletRigidbody.velocity = direction * bulletSpeed;
                 }
-                Destroy(gameObject, 1);
+                Destroy(gameObject);
             }
         }
     }
