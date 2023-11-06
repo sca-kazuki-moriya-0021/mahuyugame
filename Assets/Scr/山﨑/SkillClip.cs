@@ -187,7 +187,7 @@ public class SkillClip : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
 
             this.rawImage.enabled = true;
-            yield return new WaitForSeconds(7.0f);
+            //yield return new WaitForSeconds(7.0f);
         
     }
 
