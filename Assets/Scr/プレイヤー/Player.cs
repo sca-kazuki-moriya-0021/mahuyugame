@@ -82,7 +82,8 @@ public class Player : MonoBehaviour
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
-
+        //skillAtkFlag[0] = true;
+        //gm.PlayerSkill[0] = true;
     }
 
     // Update is called once per frame
@@ -202,6 +203,7 @@ public class Player : MonoBehaviour
                     skill = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
+                    skillDisplay.SkillCoolFlag[0] = true;
                 }
             }
         }
@@ -216,17 +218,9 @@ public class Player : MonoBehaviour
                     skill = true;
                     //pImage[x].enabled = true;
                     yield return new WaitForSeconds(3.0f);
-
+                    skillDisplay.SkillCoolFlag[1] = true;
                 }
             }
-        }
-        if(jKey) 
-        {
-            skillDisplay.SkillCoolFlag[0] = true; 
-        }
-        else 
-        {
-           skillDisplay.SkillCoolFlag[1] = true;
         }
         skill = false;
         jKey =false;
