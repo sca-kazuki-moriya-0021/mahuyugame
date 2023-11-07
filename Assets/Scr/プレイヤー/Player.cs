@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
 
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false };
-    //プレイヤーキャラのバフを使った時のフラグ
+
+    //たま消し用のフラグ
+    private bool bulletSeverFlag;
+    //プレイヤーキャラのバフを使用時のフラグ
     private bool pBaffSkillFlag = false;
     private float pBaffSkillTime;
 
@@ -55,6 +58,12 @@ public class Player : MonoBehaviour
     {
         get { return this.pBaffSkillFlag; }
         set { this.pBaffSkillFlag = value; }
+    }
+
+    public bool BulletSeverFlag
+    {
+        get { return this.bulletSeverFlag; }
+        set { this.bulletSeverFlag = value; }
     }
 
     public IEnumerator Coroutine
@@ -208,18 +217,16 @@ public class Player : MonoBehaviour
         if(jKey)
         {
             //キャンパスなり、アニメーションでスキルカットイン起動
-            for (int i = 0; i < gm.PlayerSkill.Length; i++)
+            for (int i = 0; i < gm.PlayerSkill.Length -1; i++)
             {
-                if (i == 3)
-                {
-                    Debug.Log("無効な数字です");
-                    break;
-                }
-
                 if (gm.PlayerSkill[i] == true && skill == false)
                 {
                     skill = true;
                     //pImage[x].enabled = true;
+                    if(i == 1)
+                    {
+
+                    }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[0] = true;
                 }
@@ -228,14 +235,8 @@ public class Player : MonoBehaviour
         else
         {
             //キャンパスなり、アニメーションでスキルカットイン起動
-            for (int i = 3; i >= 0; i--)
+            for (int i = 3; i > 0; i--)
             {
-                if (i == 0)
-                {
-                    Debug.Log("無効な数字です");
-                    break;
-                }
-
                 if (gm.PlayerSkill[i] == true && skill == false)
                 {
                     skill = true;
@@ -243,6 +244,14 @@ public class Player : MonoBehaviour
                     if(i == 3)
                     {
                         pBaffSkillFlag = true;
+                    }
+                    else if(i == 2)
+                    {
+                        
+                    }
+                    else if(i == 1)
+                    {
+                        bulletSeverFlag = true;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[1] = true;
