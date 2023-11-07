@@ -8,9 +8,12 @@ public class TestEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private TotalGM gm;
 
+    private int hp = 100;
+
     private float moveStoptime = 100.0f;
     private float countTime;
     private bool moveFlag = true;
+    private bool debuffFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,8 @@ public class TestEnemy : MonoBehaviour
         gm =FindObjectOfType<TotalGM>();
         rb = GetComponent<Rigidbody2D>();
 
+        //player.SkillAtkFlag[0] = true;
+        //gm.PlayerSkill[0] = true;
     }
 
     // Update is called once per frame
@@ -27,26 +32,39 @@ public class TestEnemy : MonoBehaviour
 
         if (moveFlag == true)
         {
-            rb.AddForce(Vector2.left * 0.5f);
+            Move();
         }
 
         if(player.SkillAtkFlag[0] == true && gm.PlayerSkill[0] == true)
         {
-            while(countTime <= moveStoptime)
+            if(countTime <= moveStoptime)
             {
                 Debug.Log("“ü‚Á‚Ä‚é");
                 countTime += Time.deltaTime;
-                Debug.Log(countTime);
+                //Debug.Log(countTime);
                 moveFlag = false;
                 if (countTime > moveStoptime )
                 {
                     countTime = 0;
                     moveFlag = true;
                     player.SkillAtkFlag[0] = false;
-                    break;
                 }
             }
         }
+
+        if(debuffFlag == true)
+        {
+
+        }
+
+    }
+
+    private void Move()
+    {
+        if (debuffFlag == true)
+            rb.AddForce(Vector2.left * 0.5f);
+        else
+            rb.AddForce(Vector2.left * 0.2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,16 +72,35 @@ public class TestEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            HitBullet();
+        }
+
+        if (collision.gameObject.CompareTag("PlayerSkillBullet"))
+        {
+            Destroy(collision.gameObject);
+            debuffFlag = true;
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            HitBullet();
         }
     }
+
+    private void HitBullet()
+    {
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        if (debuffFlag == true)
+            hp -= 2;
+        else
+            hp--;
+    } 
+
+    
 }
