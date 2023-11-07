@@ -71,7 +71,7 @@ public class SkillDisplay_Stage : MonoBehaviour
         */
 
 
-        if (player.SkillAtkFlag[0] && skillCoolFlag[0])
+        if (skillCoolFlag[0])
         {
                 
                 ui[0].enabled = true;
@@ -87,7 +87,7 @@ public class SkillDisplay_Stage : MonoBehaviour
                 }
         }
 
-        if (player.SkillAtkFlag[1] && skillCoolFlag[1] )
+        if (skillCoolFlag[1] )
         {
 
             ui[1].enabled = true;
