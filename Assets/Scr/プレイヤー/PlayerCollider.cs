@@ -42,6 +42,17 @@ public class PlayerCollider : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         collider2D = GetComponent<CircleCollider2D>();
         colliderSprite = GetComponent<SpriteRenderer>();
+
+        var scene = gm.MyGetScene();
+
+        if (scene == gm.BackScene)
+        {
+            gm.PlayerHp[0] = gm.PlayerHp[1];
+        }
+        else if (scene != gm.BackScene)
+        {
+            gm.PlayerHp[1] = gm.PlayerHp[0];
+        }
     }
 
     // Update is called once per frame
@@ -71,7 +82,6 @@ public class PlayerCollider : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             gm.PlayerHp[0]--;
-            //Debug.Log(gm.PlayerHp[0]);
             state = STATE.DAMAGED;
             StartCoroutine(PlayerDameged());
         }
@@ -79,7 +89,7 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.CompareTag("BaffItem"))
         {
             collision.gameObject.SetActive(false);
-            gm.PlayerLevel[0] ++;
+            gm.PlayerLevel[0]++;
         }
 
         if (collision.gameObject.CompareTag("WeaponSwitchItem0"))

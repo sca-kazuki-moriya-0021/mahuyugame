@@ -23,12 +23,14 @@ public class PlayerBulletCon : MonoBehaviour
     private float time;
 
     private TotalGM gm;
+    private Player player;
 
 
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
+        player = FindObjectOfType<Player>();
 
         //自分の子オブジェクトを取得
         int childCount = this.gameObject.transform.childCount;
@@ -52,6 +54,9 @@ public class PlayerBulletCon : MonoBehaviour
     {
         time += Time.deltaTime;
         //Debug.Log(time);
+        if (player.PBaffSkillFlag == true)
+            time += 0.01f;
+
         if(time > (6 - gm.PlayerLevel[0]))
         {
             if (gm.PlayerWeapon[0] == true)
@@ -71,7 +76,10 @@ public class PlayerBulletCon : MonoBehaviour
                     //弾インスタンスを取得し、初速と発射角度を与える
                     GameObject bullet_obj = (GameObject)Instantiate(bullets[1],bulletChilds[i].transform.position , transform.rotation);
                     LaserBullet bullet_sc = bullet_obj.GetComponent<LaserBullet>();
-                    bullet_sc.Velocity = velocity;
+                    if (player.PBaffSkillFlag == true)
+                        bullet_sc.Velocity = velocity * 1.5f;
+                    else
+                        bullet_sc.Velocity = velocity;
                     bullet_sc.Angle = dir;
                 }
             }

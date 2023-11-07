@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private GameObject screenWithin;
     private GameObject[] screenWithinChird =new GameObject[2] {null,null};
 
+
     //使うよう
     //private PlayerBulletPool pBulletPool;
     private TotalGM gm;
@@ -31,6 +32,9 @@ public class Player : MonoBehaviour
 
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false };
+    //プレイヤーキャラのバフを使った時のフラグ
+    private bool pBaffSkillFlag = false;
+    private float pBaffSkillTime;
 
     //ボタンが押されたときに使うフラグ
     private bool jKey;
@@ -45,6 +49,12 @@ public class Player : MonoBehaviour
     {
         get { return this.skillAtkFlag; }
         set { this.skillAtkFlag = value; }
+    }
+    
+    public bool PBaffSkillFlag
+    {
+        get { return this.pBaffSkillFlag; }
+        set { this.pBaffSkillFlag = value; }
     }
 
     public IEnumerator Coroutine
@@ -61,17 +71,6 @@ public class Player : MonoBehaviour
         //pBulletPool = FindObjectOfType<PlayerBulletPool>();
  
         gm.PlayerWeapon[1] = true;
-
-        var scene = gm.MyGetScene();
-
-        if (scene == gm.BackScene)
-        {
-           gm.PlayerHp[0] = gm.PlayerHp[1];
-        }
-        else if (scene != gm.BackScene)
-        {
-           gm.PlayerHp[1] = gm.PlayerHp[0];
-        }
     }
 
     // Start is called before the first frame update
@@ -82,6 +81,9 @@ public class Player : MonoBehaviour
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
+
+        //pBaffSkillFlag = true;
+
         //skillAtkFlag[0] = true;
         //gm.PlayerSkill[0] = true;
     }
@@ -94,6 +96,16 @@ public class Player : MonoBehaviour
             buttonPish = false;
             //coroutine = SkillAtk();
             StartCoroutine(SkillAtk());
+        }
+
+        if(pBaffSkillFlag == true)
+        {
+            pBaffSkillTime += Time.deltaTime;
+            if(pBaffSkillTime > 10)
+            {
+                pBaffSkillTime = 0;
+                pBaffSkillFlag = false;
+            }
         }
 
        InputSystemMove();
@@ -198,6 +210,12 @@ public class Player : MonoBehaviour
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 0; i < gm.PlayerSkill.Length; i++)
             {
+                if (i == 3)
+                {
+                    Debug.Log("無効な数字です");
+                    break;
+                }
+
                 if (gm.PlayerSkill[i] == true && skill == false)
                 {
                     skill = true;
@@ -212,11 +230,20 @@ public class Player : MonoBehaviour
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 3; i >= 0; i--)
             {
+                if (i == 0)
+                {
+                    Debug.Log("無効な数字です");
+                    break;
+                }
+
                 if (gm.PlayerSkill[i] == true && skill == false)
                 {
-                 
                     skill = true;
                     //pImage[x].enabled = true;
+                    if(i == 3)
+                    {
+                        pBaffSkillFlag = true;
+                    }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[1] = true;
                 }

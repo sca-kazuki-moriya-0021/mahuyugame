@@ -12,8 +12,11 @@ public class TestBullet : MonoBehaviour
 
     private float time = 0;
 
+    private Player player;
+
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         bulletPostion  = transform.position;
     }
 
@@ -21,8 +24,10 @@ public class TestBullet : MonoBehaviour
     void FixedUpdate()
     {
         //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
-        
-        transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
+        if(player.PBaffSkillFlag == true)
+            transform.Translate(Vector3.right * Time.deltaTime * 3.0f);
+        else
+            transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
     }
 
     void OnBecameInvisible()

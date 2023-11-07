@@ -15,10 +15,14 @@ public class TargetBullet : MonoBehaviour
     [SerializeField]
     private float period;
 
+    private Player player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         period = period + Random.Range(-0.1f,0.1f);
         searchNearObj = FindEnemy();
         position = transform.position;
@@ -56,7 +60,10 @@ public class TargetBullet : MonoBehaviour
         }
 
         velocity +=  accleration * Time.deltaTime;
-        position += velocity * Time.deltaTime;
+        if (player.PBaffSkillFlag == true)
+            position += velocity * Time.deltaTime * 2;
+        else
+            position += velocity * Time.deltaTime;
         transform.position = position;
     }
 
