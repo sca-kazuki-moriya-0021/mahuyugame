@@ -97,7 +97,10 @@ public class PlayerBulletCon : MonoBehaviour
 
             else if(gm.PlayerWeapon[3] == true)
             {
-
+                for (int i = 0; i < bulletChilds.Length; i++)
+                {
+                    Instantiate(bullets[3], bulletChilds[i].transform.position, Quaternion.identity);
+                }
             }
 
             time = 0;

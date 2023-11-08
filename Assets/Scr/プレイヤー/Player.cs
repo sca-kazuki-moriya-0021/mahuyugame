@@ -25,12 +25,13 @@ public class Player : MonoBehaviour
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
+    private SkillCutInCon skillCutinCon;
 
     //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
 
     //スキル使った時に使用するフラグ
-    private bool[] skillAtkFlag = new bool[]{false,false };
+    private bool[] skillAtkFlag = new bool[]{false,false};
 
     //移動停止用フラグ
     private bool bossMoveStopFlag;
@@ -92,6 +93,7 @@ public class Player : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
+        skillCutinCon = FindObjectOfType<SkillCutInCon>();
         //pBulletPool = FindObjectOfType<PlayerBulletPool>();
  
         gm.PlayerWeapon[1] = true;
@@ -106,7 +108,9 @@ public class Player : MonoBehaviour
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
 
-        debuffSkillFlag = true;
+        //jKey = true;
+        //skillAtkFlag[0] = true;
+        //gm.PlayerSkill[0] = true;
     }
 
     // Update is called once per frame
@@ -227,7 +231,6 @@ public class Player : MonoBehaviour
 
     //スキル発動本体
     private IEnumerator SkillAtk()
-
     {
         if(jKey)
         {
@@ -237,6 +240,7 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true)
                 {
+                    skillCutinCon.CutInDisplay(i);
                     if(i == 0)
                     {
                         Debug.Log("入った");
@@ -266,7 +270,7 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true)
                 {
-                    //pImage[x].enabled = true;
+                    skillCutinCon.CutInDisplay(i);
                     if (i == 3)
                     {
                         pBaffSkillFlag = true;

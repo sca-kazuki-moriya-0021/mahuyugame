@@ -81,6 +81,7 @@ public class PlayerCollider : MonoBehaviour
             collision.gameObject.CompareTag("DestoryBullet"))
         {
             Destroy(collision.gameObject);
+            
             gm.PlayerHp[0]--;
             state = STATE.DAMAGED;
             StartCoroutine(PlayerDameged());
