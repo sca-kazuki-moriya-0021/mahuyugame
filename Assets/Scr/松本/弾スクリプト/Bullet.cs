@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
-       
+       player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }

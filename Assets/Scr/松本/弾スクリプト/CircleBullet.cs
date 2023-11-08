@@ -7,7 +7,13 @@ public class CircleBullet : MonoBehaviour
     public float speed = 5.0f; // ’e‚Ì‘¬“x
     public float rotationSpeed = 45.0f; // ‰ñ“]‘¬“x
 
+    private Player player;
     private Vector2 direction;
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     void Update()
     {
@@ -32,7 +38,7 @@ public class CircleBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }
@@ -40,7 +46,7 @@ public class CircleBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }

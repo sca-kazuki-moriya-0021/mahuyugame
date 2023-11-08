@@ -10,9 +10,10 @@ public class A : MonoBehaviour
     private Rigidbody2D rb;
     private float homingTimer = 0.0f;
     private bool isHoming = true;
-
+    private Player player;
     void Start()
     {
+        player = FindObjectOfType<Player>();
         // 追尾対象を設定（通常はプレイヤー）
         target = GameObject.FindWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
@@ -47,7 +48,7 @@ public class A : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }
@@ -55,7 +56,7 @@ public class A : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }

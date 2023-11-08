@@ -15,6 +15,7 @@ public class HomingBullet : MonoBehaviour
     private bool homingEnabled = true;
     private float homingTimer = 0.0f;
     private Vector3 forwardDirection;
+    private Player player;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class HomingBullet : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<Player>();
         if (target == null)
         {
             Debug.LogWarning("ターゲットが見つかりませんでした");
@@ -75,7 +77,7 @@ public class HomingBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }
@@ -83,7 +85,7 @@ public class HomingBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
         {
             Destroy(gameObject);
         }
