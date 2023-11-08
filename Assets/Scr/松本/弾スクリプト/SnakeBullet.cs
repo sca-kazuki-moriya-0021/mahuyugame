@@ -31,23 +31,13 @@ public class SnakeBullet : MonoBehaviour
         //âEï˚å¸Ç…êiÇﬂÇΩÇ¢Ç»ÇÁVector3.rightÇ…ïœçXÇ∑ÇÈ
 
         transform.position = new Vector3(transform.position.x,newPosition.y,transform.position.z);
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
+        if(player.BulletSeverFlag == true)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void OnBecameInvisible()
     {

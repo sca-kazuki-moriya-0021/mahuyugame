@@ -14,23 +14,12 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
+       if(player.BulletSeverFlag == true)
+       {
+            Destroy(this.gameObject);
+       }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void OnBecameInvisible()
     {

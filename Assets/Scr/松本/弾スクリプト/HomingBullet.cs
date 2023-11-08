@@ -60,6 +60,11 @@ public class HomingBullet : MonoBehaviour
         {
             Forward();
         }
+
+        if(player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Homing()
@@ -73,22 +78,6 @@ public class HomingBullet : MonoBehaviour
     {
         Vector3 velocity = forwardDirection * speed;
         transform.position += velocity * Time.deltaTime;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnBecameInvisible()

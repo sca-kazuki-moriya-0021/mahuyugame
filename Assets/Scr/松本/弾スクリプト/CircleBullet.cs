@@ -22,6 +22,11 @@ public class CircleBullet : MonoBehaviour
 
         // ’e‚ğ‰ñ“]
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+
+        if(player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // ’e‚Ì•ûŒü‚ğİ’è‚·‚éƒƒ\ƒbƒh
@@ -34,22 +39,6 @@ public class CircleBullet : MonoBehaviour
     public void SetRotationSpeed(float newRotationSpeed)
     {
         rotationSpeed = newRotationSpeed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("DestroyBullet") && player.BulletSeverFlag)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnBecameInvisible()

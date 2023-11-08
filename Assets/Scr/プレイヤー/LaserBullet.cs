@@ -47,6 +47,23 @@ public class LaserBullet : MonoBehaviour
             refrect.z = 0;
             rb2d.velocity = refrect;
         }
+
+        if (collision.gameObject.CompareTag("DestroyBullet"))
+        {
+            power = 0;
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DestroyBullet"))
+        {
+            power = 0;
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 
     void OnBecameInvisible()
