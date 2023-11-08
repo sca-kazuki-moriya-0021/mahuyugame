@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false };
 
+    //移動停止用フラグ
+    private bool bossMoveStopFlag;
     //たま消し用のフラグ
     private bool bulletSeverFlag;
     //プレイヤーキャラのバフを使用時のフラグ
@@ -52,6 +54,12 @@ public class Player : MonoBehaviour
     {
         get { return this.skillAtkFlag; }
         set { this.skillAtkFlag = value; }
+    }
+
+    public bool BussMoveStopFlag
+    {
+        get { return this.bossMoveStopFlag; }
+        set { this.bossMoveStopFlag = value; }
     }
     
     public bool PBaffSkillFlag
@@ -173,12 +181,10 @@ public class Player : MonoBehaviour
             screenWithinChird[1].transform.position.y <= transform.position.y)
         {
             //低速移動
-            if (decelerationFlag == true) { 
-                Debug.Log("低速");
-                transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
-            }
-                else
-                transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
+            if (decelerationFlag == true) 
+               transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
+            else
+               transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
         }
         else if(screenWithinChird[0].transform.position.x > transform.position.x)
         {
@@ -212,23 +218,33 @@ public class Player : MonoBehaviour
 
     private IEnumerator SkillAtk()
     {
-        //var x = -1;
-        var skill = false;
         if(jKey)
         {
+            jKey = false;
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 0; i < gm.PlayerSkill.Length -1; i++)
             {
-                if (gm.PlayerSkill[i] == true && skill == false)
+                if (gm.PlayerSkill[i] == true)
                 {
-                    skill = true;
-                    //pImage[x].enabled = true;
-                    if(i == 1)
+                    if(i == 0)
+                    {
+                        Debug.Log("入った");
+                        bossMoveStopFlag = true;
+                    }
+                    else if (i == 1)
+                    {
+                        Debug.Log("haita");
+                        bulletSeverFlag =true;
+                        yield return new WaitForSeconds(1f);
+                        bulletSeverFlag = false;
+                    }
+                    else if(i == 2)
                     {
 
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[0] = true;
+                    break;
                 }
             }
         }
@@ -237,11 +253,10 @@ public class Player : MonoBehaviour
             //キャンパスなり、アニメーションでスキルカットイン起動
             for (int i = 3; i > 0; i--)
             {
-                if (gm.PlayerSkill[i] == true && skill == false)
+                if (gm.PlayerSkill[i] == true)
                 {
-                    skill = true;
                     //pImage[x].enabled = true;
-                    if(i == 3)
+                    if (i == 3)
                     {
                         pBaffSkillFlag = true;
                     }
@@ -251,15 +266,17 @@ public class Player : MonoBehaviour
                     }
                     else if(i == 1)
                     {
+                        Debug.Log(i);
                         bulletSeverFlag = true;
+                        yield return new WaitForSeconds(1f);
+                        bulletSeverFlag = false;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[1] = true;
+                    break;
                 }
             }
         }
-        skill = false;
-        jKey =false;
         StopCoroutine(SkillAtk());
     }
 }

@@ -38,7 +38,7 @@ public class PlayerBulletCon : MonoBehaviour
         {
            Transform childTransform = this.gameObject.transform.GetChild(i);
            bulletChilds[i] = childTransform.gameObject;
-           Debug.Log(bulletChilds[i]);
+           //Debug.Log(bulletChilds[i]);
         }
 
         //Šp“x‚ðƒ‰ƒWƒAƒ“‚É•ÏŠ·

@@ -10,7 +10,7 @@ public class TestEnemy : MonoBehaviour
 
     private int hp = 100;
 
-    private float moveStoptime = 100.0f;
+    private float moveStoptime = 5.0f;
     private float countTime;
     private bool moveFlag = true;
     private bool debuffFlag = false;
@@ -35,19 +35,16 @@ public class TestEnemy : MonoBehaviour
             Move();
         }
 
-        if(player.SkillAtkFlag[0] == true && gm.PlayerSkill[0] == true)
+        if(player.BussMoveStopFlag == true)
         {
             if(countTime <= moveStoptime)
             {
-                Debug.Log("“ü‚Á‚Ä‚é");
-                countTime += Time.deltaTime;
-                //Debug.Log(countTime);
                 moveFlag = false;
                 if (countTime > moveStoptime )
                 {
                     countTime = 0;
                     moveFlag = true;
-                    player.SkillAtkFlag[0] = false;
+                    player.BussMoveStopFlag = false;
                 }
             }
         }
