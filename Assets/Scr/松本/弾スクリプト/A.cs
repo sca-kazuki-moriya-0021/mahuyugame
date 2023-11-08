@@ -44,4 +44,25 @@ public class A : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DestroyBullet"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DestroyBullet"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }
