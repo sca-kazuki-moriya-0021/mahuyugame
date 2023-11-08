@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     private GameObject screenWithin;
     private GameObject[] screenWithinChird =new GameObject[2] {null,null};
 
-
     //使うよう
     //private PlayerBulletPool pBulletPool;
     private TotalGM gm;
@@ -37,9 +36,11 @@ public class Player : MonoBehaviour
     private bool bossMoveStopFlag;
     //たま消し用のフラグ
     private bool bulletSeverFlag;
-    //プレイヤーキャラのバフを使用時のフラグ
+    //プレイヤーキャラのバフ使用時のフラグ
     private bool pBaffSkillFlag = false;
     private float pBaffSkillTime;
+    //デバフ発射時のフラグ
+    private bool debuffSkillFlag;
 
     //ボタンが押されたときに使うフラグ
     private bool jKey;
@@ -74,6 +75,12 @@ public class Player : MonoBehaviour
         set { this.bulletSeverFlag = value; }
     }
 
+    public bool DebuffSkillFlag
+    {
+        get { return this.debuffSkillFlag; }
+        set { this.debuffSkillFlag = value; }
+    }
+
     public IEnumerator Coroutine
     {
         get { return this.coroutine; }
@@ -98,6 +105,8 @@ public class Player : MonoBehaviour
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
+
+        debuffSkillFlag = true;
     }
 
     // Update is called once per frame
@@ -218,6 +227,7 @@ public class Player : MonoBehaviour
 
     //スキル発動本体
     private IEnumerator SkillAtk()
+
     {
         if(jKey)
         {
@@ -241,7 +251,7 @@ public class Player : MonoBehaviour
                     }
                     else if(i == 2)
                     {
-
+                        debuffSkillFlag = true;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[0] = true;
@@ -263,7 +273,7 @@ public class Player : MonoBehaviour
                     }
                     else if(i == 2)
                     {
-                        
+                        debuffSkillFlag = true;
                     }
                     else if(i == 1)
                     {

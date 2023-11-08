@@ -9,6 +9,11 @@ public class PlayerBulletCon : MonoBehaviour
     //弾保存用
     [SerializeField]
     private GameObject[] bullets;
+
+    //スキル弾保存用
+    [SerializeField]
+    private GameObject skillBullet;
+
     //弾の発射位置
     private GameObject[] bulletChilds = new GameObject[]{null,null,null};
 
@@ -34,7 +39,7 @@ public class PlayerBulletCon : MonoBehaviour
 
         //自分の子オブジェクトを取得
         int childCount = this.gameObject.transform.childCount;
-        for(int i = 0; i < childCount; i++)
+        for(int i = 0; i < childCount-1; i++)
         {
            Transform childTransform = this.gameObject.transform.GetChild(i);
            bulletChilds[i] = childTransform.gameObject;
@@ -63,11 +68,10 @@ public class PlayerBulletCon : MonoBehaviour
             {
                 for (int i = 0; i < bulletChilds.Length; i++)
                 {
-                    Instantiate(bullets[0], bulletChilds[i].transform);
+                    Instantiate(bullets[0], bulletChilds[i].transform.position, Quaternion.identity);
                 }
             }
-
-            if (gm.PlayerWeapon[1] == true)
+            else if (gm.PlayerWeapon[1] == true)
             {
                 for (int i = 0; i < angle.Length; i++)
                 {
@@ -83,21 +87,30 @@ public class PlayerBulletCon : MonoBehaviour
                     bullet_sc.Angle = dir;
                 }
             }
-
-            if(gm.PlayerWeapon[2] == true)
+            else if(gm.PlayerWeapon[2] == true)
             {
                 for (int i = 0; i < bulletChilds.Length; i++)
                 {
-                    Instantiate(bullets[2], bulletChilds[i].transform);
+                    Instantiate(bullets[2], bulletChilds[i].transform.position, Quaternion.identity);
                 }
             }
 
-            if(gm.PlayerWeapon[3] == true)
+            else if(gm.PlayerWeapon[3] == true)
             {
 
             }
 
             time = 0;
+        }
+
+        if(player.DebuffSkillFlag == true)
+        {
+            int childCount = this.gameObject.transform.childCount - 1;
+            Transform v = this.gameObject.transform.GetChild(childCount);
+            GameObject v2 = v.gameObject;
+            Debug.Log(v2);
+            Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
+            player.DebuffSkillFlag = false;
         }
     }
 }
