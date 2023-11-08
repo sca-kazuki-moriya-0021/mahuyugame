@@ -13,12 +13,17 @@ public class BossMove : MonoBehaviour
     private float angle;
     private Vector3 startPos;
 
+    //プレイヤー取得
+    private Player player;
+
     public float speed = 2.0f; // 移動速度
     public float amplitudeX = 3.0f; // X軸の振幅
     public float amplitudeY = 1.0f; // Y軸の振幅
 
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         // 通常弾幕を撃つ処理をここに追加
         Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
         transform.SetParent(transform);
@@ -26,11 +31,15 @@ public class BossMove : MonoBehaviour
 
     void Update()
     {
-        angle += Time.deltaTime * speed;
-        float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
-        float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
-        // Z軸の位置は固定（2D空間に固定）
-        transform.position = new Vector3(x, y, 0);
+        //プレイヤーの移動停止スキルが発動していなかった時は動く
+        if(player.BussMoveStopFlag == false)
+        {
+            angle += Time.deltaTime * speed;
+            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
+            float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
+            // Z軸の位置は固定（2D空間に固定）
+            transform.position = new Vector3(x, y, 0);
+        }
         skillSwitchTimer += Time.deltaTime;
         // スキル切り替えのタイミングを管理
         if (skillSwitchTimer >= skillSwitchInterval)

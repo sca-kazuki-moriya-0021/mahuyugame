@@ -98,23 +98,19 @@ public class Player : MonoBehaviour
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
-
-        //pBaffSkillFlag = true;
-
-        //skillAtkFlag[0] = true;
-        //gm.PlayerSkill[0] = true;
     }
 
     // Update is called once per frame
     void Update()
     { 
+        //スキル実行
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
             buttonPish = false;
             //coroutine = SkillAtk();
             StartCoroutine(SkillAtk());
         }
-
+        //バフスキル時
         if(pBaffSkillFlag == true)
         {
             pBaffSkillTime += Time.deltaTime;
@@ -124,16 +120,18 @@ public class Player : MonoBehaviour
                 pBaffSkillFlag = false;
             }
         }
-
-       InputSystemMove();
+        //移動用関数
+        InputSystemMove();
     }
 
+    //WASD移動の入力取得
     public void OnMove(InputAction.CallbackContext context)
     {
         ///Debug.Log(context);
         inputV = context.ReadValue<Vector2>();
     }
 
+    //スキル1発動トリガー
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
         //Debug.Log(context);
@@ -145,6 +143,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //スキル2発動トリガー
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
         //Debug.Log(context);
@@ -155,6 +154,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //低速移動
     public void OnDeceleration(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    //移動用関数
     public void InputSystemMove()
     {  
 
@@ -216,6 +216,7 @@ public class Player : MonoBehaviour
 
     }
 
+    //スキル発動本体
     private IEnumerator SkillAtk()
     {
         if(jKey)
