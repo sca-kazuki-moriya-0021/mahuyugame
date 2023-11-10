@@ -21,10 +21,7 @@ public class A : MonoBehaviour
 
     void Update()
     {
-        if(player.BulletSeverFlag == true)
-        {
-            Destroy(this.gameObject);
-        }
+        
 
         if (isHoming)
         {
@@ -48,6 +45,10 @@ public class A : MonoBehaviour
                 // 追尾対象が破壊された場合、追尾を終了して画面外に向かって進む
                 isHoming = false;
             }
+        }
+        if (player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
         }
     }
 
