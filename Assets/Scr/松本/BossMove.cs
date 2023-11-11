@@ -10,12 +10,15 @@ public class BossMove : MonoBehaviour
     [SerializeField] private GameObject[] skillPrefabs; // スキルの弾幕のプレハブ配列
     [SerializeField] private float skillSwitchInterval = 30.0f; // スキル切り替えの間隔（秒）
     [SerializeField] private GameObject normalBulletPrefab;
+    [SerializeField]private float stopTime;
+    private float countTime;
     private float skillSwitchTimer = 0.0f; //スキル経過時間
     private int currentSkillIndex = 0; // 現在のスキルのインデックス
     private GameObject skillInstance;
     private GameObject normalPrefab;
     private float angle;
     private Vector3 startPos;
+    private bool isMoving = true;
 
     //プレイヤー取得
     private Player player;
@@ -27,18 +30,20 @@ public class BossMove : MonoBehaviour
         // 通常弾幕を撃つ処理をここに追加
         normalPrefab = Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
         normalPrefab.transform.SetParent(transform);
+        //止まるかテストよう
+       // player.BussMoveStopFlag = true;
     }
 
     void Update()
     {
-        //プレイヤーの移動停止スキルが発動していなかった時は動く
-        if(player.BussMoveStopFlag == false)
+        if(isMoving == true)
         {
-            angle += Time.deltaTime * speed;
-            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
-            float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
-            // Z軸の位置は固定（2D空間に固定）
-            transform.position = new Vector3(x, y, 0);
+            Move();
+        }
+        //プレイヤーの移動停止スキルが発動していなかった時は動く
+        if (player.BussMoveStopFlag == true)
+        {
+            StopMove();
         }
         skillSwitchTimer += Time.deltaTime;
         // スキル切り替えのタイミングを管理
@@ -46,6 +51,29 @@ public class BossMove : MonoBehaviour
         {
             SwitchSkill();
             skillSwitchTimer = 0.0f;
+        }
+    }
+
+    private void Move()
+    {
+        angle += Time.deltaTime * speed;
+        float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
+        float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
+        // Z軸の位置は固定（2D空間に固定）
+        transform.position = new Vector3(x, y, 0);
+    }
+
+    private void StopMove()
+    {
+        if(countTime <= stopTime)
+        {
+            isMoving = false;
+            if (countTime > stopTime)
+            {
+                countTime = 0;
+                isMoving = true;
+                player.BussMoveStopFlag = false;
+            }
         }
     }
 
