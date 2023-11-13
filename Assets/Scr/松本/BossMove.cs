@@ -68,11 +68,22 @@ public class BossMove : MonoBehaviour
 
     private void Move()
     {
-        angle += Time.deltaTime * speed;
-        float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
-        float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
-        // Z軸の位置は固定（2D空間に固定）
-        transform.position = new Vector3(x, y, 0);
+        if(debuffFlag == true)
+        {
+            angle += Time.deltaTime * 0.5f;
+            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX * 0.5f;
+            float y = startPos.y + Mathf.Sin(angle) * amplitudeY * 0.5f;
+            // Z軸の位置は固定（2D空間に固定）
+            transform.position = new Vector3(x, y, 0);
+        }
+        else
+        {
+            angle += Time.deltaTime * speed;
+            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
+            float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
+            // Z軸の位置は固定（2D空間に固定）
+            transform.position = new Vector3(x, y, 0);
+        }
     }
 
     private void StopMove()
