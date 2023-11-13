@@ -28,20 +28,26 @@ public class BossMove : MonoBehaviour
 
     //プレイヤー取得
     private Player player;
+    private SoundManager soundManager;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
+        soundManager = FindObjectOfType<SoundManager>();
         startPos = transform.position;
         // 通常弾幕を撃つ処理をここに追加
         normalPrefab = Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
         normalPrefab.transform.SetParent(transform);
+        soundManager.BossActiveFlag = true;
         //止まるかテストよう
-       // player.BussMoveStopFlag = true;
+        // player.BussMoveStopFlag = true;
     }
 
     void Update()
     {
+        Debug.Log(isMoving);
+        Debug.Log(player.BussMoveStopFlag);
+
         if(isMoving == true)
         {
             Move();
@@ -71,18 +77,20 @@ public class BossMove : MonoBehaviour
         if(debuffFlag == true)
         {
             angle += Time.deltaTime * 0.5f;
-            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX * 0.5f;
+            float x = startPos.x + Mathf.Sin(angle) * amplitudeX * 0.5f;
             float y = startPos.y + Mathf.Sin(angle) * amplitudeY * 0.5f;
             // Z軸の位置は固定（2D空間に固定）
             transform.position = new Vector3(x, y, 0);
+            //transform.Translate(x,y,0);
         }
         else
         {
             angle += Time.deltaTime * speed;
-            float x = startPos.x + Mathf.Sin(angle * 2) * amplitudeX;
+            float x = startPos.x + Mathf.Sin(angle) * amplitudeX;
             float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
             // Z軸の位置は固定（2D空間に固定）
             transform.position = new Vector3(x, y, 0);
+            //transform.Translate(x, y, 0);
         }
     }
 
@@ -110,7 +118,7 @@ public class BossMove : MonoBehaviour
             if (debuffCountTime > debuffTime)
             {
                 debuffCountTime = 0;
-                debuffFlag = true;
+                debuffFlag = false;
             }
         }
     }
@@ -125,6 +133,7 @@ public class BossMove : MonoBehaviour
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
+            Debug.Log("デバフ入った");
             Destroy(collision.gameObject);
             debuffFlag = true;
         }

@@ -17,6 +17,7 @@ TagManager:
   - WeaponSwitchItem0
   - OutLine
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX

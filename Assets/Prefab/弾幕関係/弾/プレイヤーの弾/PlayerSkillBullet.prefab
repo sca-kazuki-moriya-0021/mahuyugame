@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1625514678026247623}
   - component: {fileID: 1625514678026247620}
   - component: {fileID: 1625514678026247621}
-  - component: {fileID: 1452584232790235167}
+  - component: {fileID: 5799519062364415718}
   m_Layer: 0
   m_Name: PlayerSkillBullet
   m_TagString: PlayerSkillBullet
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.1881812
---- !u!114 &1452584232790235167
+--- !u!114 &5799519062364415718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625514678026247618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c8dd7ac3e3e904c9becd2cf3849a76, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bf51041b48e2bc4aba2bc16f7409cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
