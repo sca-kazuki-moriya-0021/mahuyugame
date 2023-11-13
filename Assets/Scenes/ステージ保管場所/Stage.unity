@@ -1001,6 +1001,7 @@ MonoBehaviour:
   skillPrefabs: []
   skillSwitchInterval: 30
   normalBulletPrefab: {fileID: 5515865212590755900, guid: dd4e599bf32e255428192c09c5d6aea7, type: 3}
+  stopTime: 0
 --- !u!212 &1119519812
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1287,6 +1288,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9040951738805921616, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: texts.Array.data[2]
+      value: "\u96DB\u898B\u6CA2\u75C7\u767A\u75C5"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040951738805921616, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: skillSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d0644da61d84964c96b3964f1b12205, type: 3}
+    - target: {fileID: 9040951738805921616, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: skillSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 34b835ae1fa86d349b6a90679aac4b75, type: 3}
     - target: {fileID: 9040951738805921618, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_Camera
       value: 
