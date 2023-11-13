@@ -37,7 +37,7 @@ public class SkillCutInCon : MonoBehaviour
         if(cutInFlag == true)
         {
             time += Time.unscaledDeltaTime;
-            if (time > 3f)
+            if (time >= 3f)
             {
                 time = 0;
                 Time.timeScale = 1f;
@@ -50,6 +50,7 @@ public class SkillCutInCon : MonoBehaviour
     {
        Debug.Log("asuki");
        myCanvas.enabled = true;
+       time = 0;
        Time.timeScale = 0f;
        getImage.sprite = skillSprites[i];
        getText.text = texts[i];
