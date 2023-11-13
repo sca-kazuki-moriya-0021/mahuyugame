@@ -17,8 +17,10 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] private Image outLine;
     int skillCount;
     [Header("外枠＿サイズの値")]
-    [SerializeField]float outLineSizeS;
-    [SerializeField]float outLineSizeB;
+    [SerializeField] float outLineSizeS_X;
+    [SerializeField] float outLineSizeS_Y;
+    [SerializeField] float outLineSizeB_X;
+    [SerializeField] float outLineSizeB_Y;
     private TotalGM totalGM;
     private SkillClip skillClip;
 
@@ -45,7 +47,7 @@ public class SkillSelection : MonoBehaviour
     
     void FixedUpdate()
     {
-        //Debug.Log(Cursor.lockState);
+        Debug.Log(ev.currentSelectedGameObject);
         //選ばれているオブジェクトを格納している
        
         if (selectedObj == null)
@@ -175,11 +177,11 @@ public class SkillSelection : MonoBehaviour
     {
         if(selectedObj.gameObject.CompareTag("Button"))
         {
-            outLine.transform.localScale = new Vector2 (outLineSizeS,outLineSizeS);
+            outLine.transform.localScale = new Vector2 (outLineSizeS_X,outLineSizeS_Y);
         }
         else
         {
-            outLine.transform.localScale = new Vector2 (outLineSizeB,outLineSizeB);
+            outLine.transform.localScale = new Vector2 (outLineSizeB_X,outLineSizeB_Y);
         }
     }
 
