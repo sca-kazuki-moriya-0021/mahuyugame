@@ -10,10 +10,12 @@ public class TestEnemy : MonoBehaviour
 
     private int hp = 100;
 
-    private float moveStoptime = 5.0f;
-    private float countTime;
     private bool moveFlag = true;
+    private float moveStoptime = 5.0f;
+    private float moveStopCountTime;
     private bool debuffFlag = false;
+    private float debuffTime;
+    private float debuffCountTime;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +39,13 @@ public class TestEnemy : MonoBehaviour
 
         if(player.BussMoveStopFlag == true)
         {
-            if(countTime <= moveStoptime)
+            if(moveStopCountTime <= moveStoptime)
             {
+                moveStopCountTime += Time.deltaTime;
                 moveFlag = false;
-                if (countTime > moveStoptime )
+                if (moveStopCountTime > moveStoptime )
                 {
-                    countTime = 0;
+                    moveStopCountTime = 0;
                     moveFlag = true;
                     player.BussMoveStopFlag = false;
                 }
@@ -51,7 +54,16 @@ public class TestEnemy : MonoBehaviour
 
         if(debuffFlag == true)
         {
-
+            if (debuffCountTime <= debuffTime)
+            {
+                debuffCountTime+=Time.deltaTime;
+                
+                if (debuffCountTime > debuffTime)
+                {
+                    debuffCountTime = 0;
+                    debuffFlag = true;
+                }
+            }
         }
 
     }

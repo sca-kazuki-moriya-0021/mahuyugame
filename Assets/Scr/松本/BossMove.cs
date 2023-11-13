@@ -67,6 +67,7 @@ public class BossMove : MonoBehaviour
     {
         if(countTime <= stopTime)
         {
+            countTime +=Time.deltaTime;
             isMoving = false;
             if (countTime > stopTime)
             {
