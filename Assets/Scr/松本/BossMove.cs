@@ -10,8 +10,10 @@ public class BossMove : MonoBehaviour
     [SerializeField] private GameObject[] skillPrefabs; // スキルの弾幕のプレハブ配列
     [SerializeField] private float skillSwitchInterval = 30.0f; // スキル切り替えの間隔（秒）
     [SerializeField] private GameObject normalBulletPrefab;
-    [SerializeField]private float stopTime;
-    private float countTime;
+    [SerializeField] private float stopTime;
+    [SerializeField] private float debuffTime;
+    private float stopCountTime;
+    private float debuffCountTime;
     private float skillSwitchTimer = 0.0f; //スキル経過時間
     private int currentSkillIndex = 0; // 現在のスキルのインデックス
     private GameObject skillInstance;
@@ -19,6 +21,10 @@ public class BossMove : MonoBehaviour
     private float angle;
     private Vector3 startPos;
     private bool isMoving = true;
+    private bool debuffFlag;
+
+    [SerializeField]
+    private float hp;
 
     //プレイヤー取得
     private Player player;
@@ -45,6 +51,12 @@ public class BossMove : MonoBehaviour
         {
             StopMove();
         }
+
+        if (debuffFlag == true)
+        {
+            Debuff();
+        }
+        
         skillSwitchTimer += Time.deltaTime;
         // スキル切り替えのタイミングを管理
         if (skillSwitchTimer >= skillSwitchInterval)
@@ -65,18 +77,68 @@ public class BossMove : MonoBehaviour
 
     private void StopMove()
     {
-        if(countTime <= stopTime)
+        if(stopCountTime <= stopTime)
         {
-            countTime +=Time.deltaTime;
+            stopCountTime +=Time.deltaTime;
             isMoving = false;
-            if (countTime > stopTime)
+            if (stopCountTime > stopTime)
             {
-                countTime = 0;
+                stopCountTime = 0;
                 isMoving = true;
                 player.BussMoveStopFlag = false;
             }
         }
     }
+
+    private void Debuff()
+    {
+        if (debuffCountTime <= debuffTime)
+        {
+            debuffCountTime += Time.deltaTime;
+
+            if (debuffCountTime > debuffTime)
+            {
+                debuffCountTime = 0;
+                debuffFlag = true;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            Destroy(collision.gameObject);
+            HitBullet();
+        }
+
+        if (collision.gameObject.CompareTag("PlayerSkillBullet"))
+        {
+            Destroy(collision.gameObject);
+            debuffFlag = true;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            Destroy(collision.gameObject);
+            HitBullet();
+        }
+    }
+
+    private void HitBullet()
+    {
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        if (debuffFlag == true)
+            hp -= 2;
+        else
+            hp--;
+    }
+
 
     // スキルを切り替えるメソッド
     private void SwitchSkill()
