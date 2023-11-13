@@ -5,13 +5,14 @@ using UnityEngine;
 public class BossMove : MonoBehaviour
 {
     [SerializeField] private float speed = 2.0f; // 移動速度
-    [SerializeField] private float amplitudeX = 3.0f; // X軸の振幅
-    [SerializeField] private float amplitudeY = 1.0f; // Y軸の振幅
+    [SerializeField] private float amplitudeX; // X軸の振幅
+    [SerializeField] private float amplitudeY; // Y軸の振幅
     [SerializeField] private GameObject[] skillPrefabs; // スキルの弾幕のプレハブ配列
     [SerializeField] private float skillSwitchInterval = 30.0f; // スキル切り替えの間隔（秒）
     [SerializeField] private GameObject normalBulletPrefab;
     [SerializeField] private float stopTime;
     [SerializeField] private float debuffTime;
+    [SerializeField] private Transform centerObject;
     private float stopCountTime;
     private float debuffCountTime;
     private float skillSwitchTimer = 0.0f; //スキル経過時間
@@ -36,15 +37,10 @@ public class BossMove : MonoBehaviour
         player = FindObjectOfType<Player>();
         soundManager = FindObjectOfType<SoundManager>();
         areaManager = FindObjectOfType<AreaManager>();
-        startPos = transform.position;
-        // 通常弾幕を撃つ処理をここに追加
         normalPrefab = Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
         normalPrefab.transform.SetParent(transform);
         soundManager.BossPhaseFlag = true;
         areaManager.BossActiveFlag = true;
-
-        //止まるかテストよう
-        // player.BussMoveStopFlag = true;
     }
 
     void Update()
@@ -78,25 +74,30 @@ public class BossMove : MonoBehaviour
 
     private void Move()
     {
+        
         if(debuffFlag == true)
         {
-            angle += Time.deltaTime * 0.5f;
-            float x = startPos.x + Mathf.Sin(angle) * amplitudeX * 0.5f;
-            float y = startPos.y + Mathf.Sin(angle) * amplitudeY * 0.5f;
+            angle += Time.deltaTime * speed * 0.1f;
+            float x = Mathf.Sin(angle * 2) * amplitudeX * 0.5f;
+            float y = Mathf.Sin(angle) * amplitudeY * 0.5f;
             // Z軸の位置は固定（2D空間に固定）
-            transform.position = new Vector3(x, y, 0);
-            //transform.Translate(x,y,0);
+            Vector3 offset = new Vector3(x, y, 0);
+            Vector3 newPosition = centerObject.position + offset;
+
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 1f);
         }
         else
         {
             angle += Time.deltaTime * speed;
-            float x = startPos.x + Mathf.Sin(angle) * amplitudeX;
-            float y = startPos.y + Mathf.Sin(angle) * amplitudeY;
+            float x = Mathf.Sin(angle * 2) * amplitudeX;
+            float y = Mathf.Sin(angle) * amplitudeY;
             // Z軸の位置は固定（2D空間に固定）
-            transform.position = new Vector3(x, y, 0);
-            //transform.Translate(x, y, 0);
-        }
-    }
+            Vector3 offset = new Vector3(x, y, 0);
+            Vector3 newPosition = centerObject.position + offset;
+
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 1f);
+        } 
+    }     
 
     private void StopMove()
     {
@@ -104,11 +105,11 @@ public class BossMove : MonoBehaviour
         {
             stopCountTime +=Time.deltaTime;
             isMoving = false;
-            if (stopCountTime > stopTime)
+            if (stopCountTime >= stopTime)
             {
                 stopCountTime = 0;
-                isMoving = true;
                 player.BussMoveStopFlag = false;
+                isMoving = true;
             }
         }
     }
@@ -194,5 +195,4 @@ public class BossMove : MonoBehaviour
             Destroy(skillInstance);
         }
     }
-
 }
