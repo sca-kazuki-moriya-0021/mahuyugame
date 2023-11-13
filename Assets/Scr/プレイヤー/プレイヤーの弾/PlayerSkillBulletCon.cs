@@ -12,19 +12,30 @@ public class PlayerSkillBulletCon : MonoBehaviour
     private GameObject boss;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-      boss = GameObject.FindGameObjectWithTag("Boss");
+       boss = GameObject.FindGameObjectWithTag("Boss");
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = boss.transform.position - transform.position;
-        var dir = pos.normalized;
-        //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
-        transform.Translate(dir * Time.unscaledDeltaTime * 10.0f);
+        if(boss != null)
+        {
+            Vector3 pos = boss.transform.position - transform.position;
+            var dir = pos.normalized;
+            //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
+            transform.Translate(dir * Time.unscaledDeltaTime * 10.0f);
+        }
+        else
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * 3.0f);
+        }
+       
     }
 
     void OnBecameInvisible()

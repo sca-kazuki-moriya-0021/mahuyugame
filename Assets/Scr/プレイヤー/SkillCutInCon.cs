@@ -48,7 +48,6 @@ public class SkillCutInCon : MonoBehaviour
     
     public void CutInDisplay(int i)
     {
-       Debug.Log("asuki");
        myCanvas.enabled = true;
        time = 0;
        Time.timeScale = 0f;

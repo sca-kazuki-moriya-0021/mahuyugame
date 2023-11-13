@@ -29,16 +29,20 @@ public class BossMove : MonoBehaviour
     //プレイヤー取得
     private Player player;
     private SoundManager soundManager;
+    private AreaManager areaManager;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
         soundManager = FindObjectOfType<SoundManager>();
+        areaManager = FindObjectOfType<AreaManager>();
         startPos = transform.position;
         // 通常弾幕を撃つ処理をここに追加
         normalPrefab = Instantiate(normalBulletPrefab, transform.position, Quaternion.identity);
         normalPrefab.transform.SetParent(transform);
-        soundManager.BossActiveFlag = true;
+        soundManager.BossPhaseFlag = true;
+        areaManager.BossActiveFlag = true;
+
         //止まるかテストよう
         // player.BussMoveStopFlag = true;
     }

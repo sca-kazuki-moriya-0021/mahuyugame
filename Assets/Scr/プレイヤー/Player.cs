@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
     private SkillCutInCon skillCutinCon;
+    private AreaManager areaManager;
 
     //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
@@ -94,8 +95,8 @@ public class Player : MonoBehaviour
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<SkillCutInCon>();
-        //pBulletPool = FindObjectOfType<PlayerBulletPool>();
- 
+        areaManager = FindObjectOfType<AreaManager>();
+         
         gm.PlayerWeapon[1] = true;
     }
 
@@ -240,21 +241,28 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true)
                 {
-                    skillCutinCon.CutInDisplay(i);
-                    if(i == 0)
+                    if(i == 0 && areaManager.BossActiveFlag == true)
                     {
-                        Debug.Log("入った");
+                        Debug.Log("ボス発見");
+                        skillCutinCon.CutInDisplay(i);
                         bossMoveStopFlag = true;
                     }
-                    else if (i == 1)
+                    else if(i == 0 && areaManager.BossActiveFlag == false)
                     {
-                        Debug.Log("haita");
+                        Debug.Log("意味ないよ");
+                        skillAtkFlag[0] = false;
+                        break;
+                    }
+                    if (i == 1)
+                    {
+                        skillCutinCon.CutInDisplay(i);
                         bulletSeverFlag =true;
                         yield return new WaitForSeconds(1f);
                         bulletSeverFlag = false;
                     }
-                    else if(i == 2)
+                    if(i == 2)
                     {
+                        skillCutinCon.CutInDisplay(i);
                         debuffSkillFlag = true;
                     }
                     yield return new WaitForSeconds(3.0f);

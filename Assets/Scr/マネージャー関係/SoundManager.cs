@@ -10,12 +10,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioClips;
 
-    private bool bossActiveFlag = false;
+    private bool bossPhaseFlag = false;
 
-    public bool BossActiveFlag
+    public bool BossPhaseFlag
     {
-        get { return this.bossActiveFlag; }
-        set { this.bossActiveFlag = value; }
+        get { return this.bossPhaseFlag; }
+        set { this.bossPhaseFlag = value; }
     }
 
     private void Awake()
@@ -34,11 +34,11 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bossActiveFlag == true)
+        if(bossPhaseFlag == true)
         {
             audioSource.clip = audioClips[1];
             audioSource.Play();
-            bossActiveFlag = false;
+            bossPhaseFlag = false;
         }
     }
 }
