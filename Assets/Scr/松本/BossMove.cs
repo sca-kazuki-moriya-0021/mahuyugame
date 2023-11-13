@@ -21,7 +21,7 @@ public class BossMove : MonoBehaviour
     private float angle;
     private Vector3 startPos;
     private bool isMoving = true;
-    private bool debuffFlag;
+    private bool debuffFlag = false;
 
     [SerializeField]
     private float hp;
