@@ -8,7 +8,6 @@ public class LaserBullet : MonoBehaviour
 
     private int power =1;
     private bool laser;
-    Renderer targetRenderer;
 
     private float velocity;
     private Vector3 angle;
@@ -24,7 +23,6 @@ public class LaserBullet : MonoBehaviour
     void Start()
     {
        rb2d = GetComponent<Rigidbody2D>();
-       targetRenderer = GetComponent<Renderer>();
        //Šp“x‚ğl—¶‚µ‚Ä’e‚Ì‘¬“xŒvZ
        Vector3 bulletV = rb2d.velocity;
        bulletV = velocity * angle;
