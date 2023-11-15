@@ -1126,6 +1126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300754159946293154, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 170.2901
+      objectReference: {fileID: 0}
     - target: {fileID: 6791071093662665574, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1545,6 +1549,14 @@ PrefabInstance:
     - target: {fileID: 7142765053106575631, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: laserAngle.Array.data[2]
       value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142765053398746266, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142765053670353600, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06818d60de682b643827dc2704b8127a, type: 3}

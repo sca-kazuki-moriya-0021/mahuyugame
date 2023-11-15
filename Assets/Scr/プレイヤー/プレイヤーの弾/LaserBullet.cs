@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LaserBullet : MonoBehaviour
 {
-    [SerializeField] float lifeTime = 1.0f;
-
     private int power =1;
     private bool laser;
 
@@ -33,6 +31,7 @@ public class LaserBullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(rb2d.velocity);
        lastVelocity = rb2d.velocity;
     }
 

@@ -17,16 +17,19 @@ public class PlayerBulletCon : MonoBehaviour
     //弾の発射位置
     private GameObject[] bulletChilds = new GameObject[]{null,null,null};
 
-    //レーザー反射のスクリプト
+    //レーザー弾設定用変数
     [SerializeField, Header("レーザーの速度")]
     private float laserVelocity;
     [SerializeField,Header("レーザーの発射角度")]
     private float[] laserAngle;
 
+    //ブーメラン弾設定用変数
     [SerializeField,Header("ブーメランの速度")]
     private float boomerangVelocity;
     [SerializeField,Header("ブーメランの発射角度")]
     private float[] boomerangAngle;
+    //ブーメランの帰って来る角度
+    private float[] boomerangReveseAngle;
 
     float PI = Mathf.PI;
 
@@ -83,7 +86,7 @@ public class PlayerBulletCon : MonoBehaviour
             }
             else if (gm.PlayerWeapon[1] == true)
             {
-                for (int i = 0; i < laserAngle.Length; i++)
+                for (int i = 0; i < 1; /*laserAngle.Length*/ i++)
                 {
                     Vector3 dir = new Vector2(Mathf.Cos(laserAngle[i]),Mathf.Sin(laserAngle[i]));
                     dir.z = 0;
@@ -109,22 +112,28 @@ public class PlayerBulletCon : MonoBehaviour
             {
                 for (int i = 0; i < boomerangAngle.Length; i++)
                 {
-                    bool non = false;
-                    if(boomerangAngle[i] > 0)
+                    if(boomerangAngle[i] > 0 || boomerangAngle[i] < 0)
                     {
-                        
+                        boomerangReveseAngle[i] = boomerangAngle[i] * -1;
+                    }
+                    else if(boomerangAngle[i] == 0)
+                    {
+                        boomerangReveseAngle[i] = boomerangAngle[i];
                     }
 
                     Vector3 dir = new Vector2(Mathf.Cos(boomerangAngle[i]), Mathf.Sin(boomerangAngle[i]));
                     dir.z = 0;
+                    Vector3 reveseDir = new Vector2(Mathf.Cos(boomerangReveseAngle[i]),Mathf.Sin(boomerangReveseAngle[i]));
+                    reveseDir.z = 0;
                     //弾インスタンスを取得し、初速と発射角度を与える
-                    GameObject bullet_obj = (GameObject)Instantiate(bullets[1], bulletChilds[i].transform.position, transform.rotation);
-                    LaserBullet bullet_sc = bullet_obj.GetComponent<LaserBullet>();
+                    GameObject bullet_obj = (GameObject)Instantiate(bullets[3], bulletChilds[i].transform.position, transform.rotation);
+                    BoomerangBullet bullet_sc = bullet_obj.GetComponent<BoomerangBullet>();
                     if (player.PBaffSkillFlag == true)
                         bullet_sc.Velocity = boomerangVelocity * 1.5f;
                     else
                         bullet_sc.Velocity = boomerangVelocity;
                     bullet_sc.Angle = dir;
+                    bullet_sc.ReverseAngle = reveseDir;
                 }
             }
 
