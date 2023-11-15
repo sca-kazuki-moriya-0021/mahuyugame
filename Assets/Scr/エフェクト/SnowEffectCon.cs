@@ -21,7 +21,8 @@ public class SnowEffectCon : MonoBehaviour
     {
         if(areaManager.BossActiveFlag == true)
         {
-            
+            var main = particleSystem.main;
+            main.simulationSpeed = 3;
         }
     }
 

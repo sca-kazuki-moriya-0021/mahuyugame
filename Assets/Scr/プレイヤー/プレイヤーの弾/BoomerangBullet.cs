@@ -7,9 +7,10 @@ public class BoomerangBullet : MonoBehaviour
     //Šp“xŒvŽZ‚Æ‘¬“x
     private float velocity;
     private Vector3 angle;
+    private int number;
+    private Vector3 endPosition;
 
-   
-
+    private Vector3 middlePostion;
 
     private GameObject player;
 
@@ -22,12 +23,13 @@ public class BoomerangBullet : MonoBehaviour
 
     public float Velocity { get => velocity; set => velocity = value; }
     public Vector3 Angle { get => angle; set => angle = value; }
+    public int Number {get => number; set => number = value; }
+    public Vector3 EndPosition {get => endPosition; set => endPosition = value;}
 
     enum STATE
     {
         Start,
-        Middle,
-        Final,
+        End,
     }
 
     // Start is called before the first frame update
@@ -42,25 +44,55 @@ public class BoomerangBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime; 
+        var p = player.transform.position;
         if(state == STATE.Start)
         {
-            transform.Translate(transform.position.x * angle.x * Time.deltaTime,transform.position.y * angle.y * Time.deltaTime,0);
-           
+            switch (number)
+            {
+                case 0:
+                    middlePostion = new Vector3(angle.x,angle.y+5f,0);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    middlePostion = new Vector3(angle.x,angle.y-5f,0);
+                 break;
+            }
+            var a = Vector3.Lerp(player.transform.position,middlePostion,time);
+            var b = Vector3.Lerp(middlePostion,endPosition,time);
+            this.transform.position = Vector3.Lerp(a,b,time);
+
+            if(transform.position == endPosition)
+            {
+                state = STATE.End;
+                time = 0;
+            }
         }
 
-        if(state == STATE.Middle)
+        if(state == STATE.End)
         {
-            Vector2 now = new Vector2(transform.position.x,transform.position.y);
+            switch (number)
+            {
+                case 0:
+                    middlePostion = new Vector3(angle.x, angle.y - 5f, 0);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    middlePostion = new Vector3(angle.x, angle.y + 5f, 0);
+                    break;
+            }
 
+            var a = Vector3.Lerp(endPosition, middlePostion, time);
+            var b = Vector3.Lerp(middlePostion, p, time);
+            this.transform.position = Vector3.Lerp(a, b,time);
 
-        }
-
-        if(state == STATE.Final)
-        {
-            Vector2 a = rb2d.velocity;
-            Vector2 b = transform.position - player.transform.position;
-            a = b * velocity *1.5f;
-            rb2d.velocity = a;
+            if(player.transform.position == transform.position)
+            {
+                Debug.Log("ˆê‰ž");
+                Destroy(this.gameObject);
+            }
         }
     }
 

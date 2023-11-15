@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
         areaManager = FindObjectOfType<AreaManager>();
          
-        gm.PlayerWeapon[1] = true;
+        gm.PlayerWeapon[3] = true;
     }
 
     // Start is called before the first frame update
@@ -226,8 +226,6 @@ public class Player : MonoBehaviour
             a.y = screenWithinChird[1].transform.position.y;
             transform.position = a;
         }
-
-
     }
 
     //ƒXƒLƒ‹”­“®–{‘Ì
