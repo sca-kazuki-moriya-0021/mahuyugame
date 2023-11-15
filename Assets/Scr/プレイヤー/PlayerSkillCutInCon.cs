@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillCutInCon : MonoBehaviour
+public class PlayerSkillCutInCon : MonoBehaviour
 {
     [SerializeField, Header("スキルカットインのイラスト")]
     private Sprite[] skillSprites;
@@ -46,7 +46,7 @@ public class SkillCutInCon : MonoBehaviour
         }
     }
     
-    public void CutInDisplay(int i)
+    public void PlayerCutInDisplay(int i)
     {
        myCanvas.enabled = true;
        time = 0;

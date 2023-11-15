@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
-    private SkillCutInCon skillCutinCon;
+    private PlayerSkillCutInCon skillCutinCon;
     private AreaManager areaManager;
 
     //低速ボタンが押されているかどうか
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
-        skillCutinCon = FindObjectOfType<SkillCutInCon>();
+        skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
         areaManager = FindObjectOfType<AreaManager>();
          
         gm.PlayerWeapon[1] = true;
@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
                     if(i == 0 && areaManager.BossActiveFlag == true)
                     {
                         Debug.Log("ボス発見");
-                        skillCutinCon.CutInDisplay(i);
+                        skillCutinCon.PlayerCutInDisplay(i);
                         bossMoveStopFlag = true;
                     }
                     else if(i == 0 && areaManager.BossActiveFlag == false)
@@ -255,14 +255,14 @@ public class Player : MonoBehaviour
                     }
                     if (i == 1)
                     {
-                        skillCutinCon.CutInDisplay(i);
+                        skillCutinCon.PlayerCutInDisplay(i);
                         bulletSeverFlag =true;
                         yield return new WaitForSeconds(1f);
                         bulletSeverFlag = false;
                     }
                     if(i == 2)
                     {
-                        skillCutinCon.CutInDisplay(i);
+                        skillCutinCon.PlayerCutInDisplay(i);
                         debuffSkillFlag = true;
                     }
                     yield return new WaitForSeconds(3.0f);
@@ -278,7 +278,7 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true)
                 {
-                    skillCutinCon.CutInDisplay(i);
+                    skillCutinCon.PlayerCutInDisplay(i);
                     if (i == 3)
                     {
                         pBaffSkillFlag = true;
