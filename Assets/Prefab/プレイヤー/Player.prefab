@@ -391,10 +391,7 @@ MonoBehaviour:
   - 0
   - -40
   boomerangVelocity: 10
-  boomerangAngle:
-  - 45
-  - 0
-  - -45
+  boomerangPoint: {fileID: 0}
 --- !u!1 &7142765053398746266
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99590ecd1d63da45aff09cf4ad7be5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashInterval: 0.5
-  loopCount: 7
+  flashInterval: 0.2
+  loopCount: 2
   characterSprite: {fileID: 7142765052044347872}
 --- !u!1 &7142765053670353600
 GameObject:
