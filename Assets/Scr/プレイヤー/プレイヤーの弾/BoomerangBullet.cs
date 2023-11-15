@@ -6,10 +6,10 @@ public class BoomerangBullet : MonoBehaviour
 {
     //Šp“xŒvŽZ‚Æ‘¬“x
     private float velocity;
-    private Vector3 reverseAngle;
     private Vector3 angle;
 
-    private Vector3 reversePostion;
+   
+
 
     private GameObject player;
 
@@ -22,7 +22,6 @@ public class BoomerangBullet : MonoBehaviour
 
     public float Velocity { get => velocity; set => velocity = value; }
     public Vector3 Angle { get => angle; set => angle = value; }
-    public Vector3 ReverseAngle {get => reverseAngle; set => reverseAngle = value; }
 
     enum STATE
     {
@@ -37,12 +36,6 @@ public class BoomerangBullet : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform.GetChild(1).gameObject;
 
-
-        Vector3 bulletV = rb2d.velocity;
-        bulletV = velocity * angle;
-        bulletV.z = 0;
-        rb2d.velocity = bulletV;
-
         state = STATE.Start;
     }
 
@@ -51,14 +44,8 @@ public class BoomerangBullet : MonoBehaviour
     {
         if(state == STATE.Start)
         {
-            time += Time.deltaTime;
-            reversePostion = velocity * reversePostion;
-            if(time >= 5f)
-            {
-                rb2d.velocity = Vector2.zero;
-                state = STATE.Middle;
-                time = 0;
-            }
+            transform.Translate(transform.position.x * angle.x * Time.deltaTime,transform.position.y * angle.y * Time.deltaTime,0);
+           
         }
 
         if(state == STATE.Middle)

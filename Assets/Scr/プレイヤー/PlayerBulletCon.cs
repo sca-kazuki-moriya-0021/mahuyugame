@@ -28,8 +28,8 @@ public class PlayerBulletCon : MonoBehaviour
     private float boomerangVelocity;
     [SerializeField,Header("ブーメランの発射角度")]
     private float[] boomerangAngle;
-    //ブーメランの帰って来る角度
-    private float[] boomerangReveseAngle;
+    [SerializeField, Header("ブーメランの中間地点")]
+    private Transform boomerangPoint;
 
     float PI = Mathf.PI;
 
@@ -112,19 +112,8 @@ public class PlayerBulletCon : MonoBehaviour
             {
                 for (int i = 0; i < boomerangAngle.Length; i++)
                 {
-                    if(boomerangAngle[i] > 0 || boomerangAngle[i] < 0)
-                    {
-                        boomerangReveseAngle[i] = boomerangAngle[i] * -1;
-                    }
-                    else if(boomerangAngle[i] == 0)
-                    {
-                        boomerangReveseAngle[i] = boomerangAngle[i];
-                    }
-
                     Vector3 dir = new Vector2(Mathf.Cos(boomerangAngle[i]), Mathf.Sin(boomerangAngle[i]));
                     dir.z = 0;
-                    Vector3 reveseDir = new Vector2(Mathf.Cos(boomerangReveseAngle[i]),Mathf.Sin(boomerangReveseAngle[i]));
-                    reveseDir.z = 0;
                     //弾インスタンスを取得し、初速と発射角度を与える
                     GameObject bullet_obj = (GameObject)Instantiate(bullets[3], bulletChilds[i].transform.position, transform.rotation);
                     BoomerangBullet bullet_sc = bullet_obj.GetComponent<BoomerangBullet>();
@@ -133,7 +122,6 @@ public class PlayerBulletCon : MonoBehaviour
                     else
                         bullet_sc.Velocity = boomerangVelocity;
                     bullet_sc.Angle = dir;
-                    bullet_sc.ReverseAngle = reveseDir;
                 }
             }
 
