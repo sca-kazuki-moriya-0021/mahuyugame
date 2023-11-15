@@ -383,12 +383,18 @@ MonoBehaviour:
   - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
   - {fileID: 9209438781053329560, guid: 7f4fdda2344bd5345930dd5e87435b53, type: 3}
   - {fileID: 771961700306280124, guid: a3b964758ca19b249877610a7aafecc7, type: 3}
+  - {fileID: 771961700306280124, guid: a3b964758ca19b249877610a7aafecc7, type: 3}
   skillBullet: {fileID: 1625514678026247618, guid: e1faa920372e95e49bce916815fc0134, type: 3}
-  velocity: 10
-  angle:
+  laserVelocity: 10
+  laserAngle:
   - 45
   - 0
   - -40
+  boomerangVelocity: 10
+  boomerangAngle:
+  - 45
+  - 0
+  - -45
 --- !u!1 &7142765053398746266
 GameObject:
   m_ObjectHideFlags: 0

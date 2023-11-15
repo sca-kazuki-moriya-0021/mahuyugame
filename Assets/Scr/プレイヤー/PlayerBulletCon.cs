@@ -86,7 +86,7 @@ public class PlayerBulletCon : MonoBehaviour
             }
             else if (gm.PlayerWeapon[1] == true)
             {
-                for (int i = 0; i < 1; /*laserAngle.Length*/ i++)
+                for (int i = 0; i < laserAngle.Length; i++)
                 {
                     Vector3 dir = new Vector2(Mathf.Cos(laserAngle[i]),Mathf.Sin(laserAngle[i]));
                     dir.z = 0;

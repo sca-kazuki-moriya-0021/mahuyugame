@@ -81,7 +81,7 @@ public class BoomerangBullet : MonoBehaviour
     {
         if(collision.gameObject == player)
         {
-            Debug.Log("è¡Ç¶ÇÈÇÊ");
+            Debug.Log("è¡Ç¶ÇÈ");
             Destroy(this.gameObject);
         }
     }

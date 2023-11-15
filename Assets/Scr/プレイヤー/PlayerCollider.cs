@@ -76,9 +76,9 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")||
+        if (collision.gameObject.CompareTag("Bullet"))
             //collision.gameObject.CompareTag("EnemySkillBullet") ||
-            collision.gameObject.CompareTag("DestoryBullet"))
+            //collision.gameObject.CompareTag("DestoryBullet"))
         {
             Destroy(collision.gameObject);
             
