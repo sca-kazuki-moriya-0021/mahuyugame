@@ -48,8 +48,9 @@ public class PlayerCollider : MonoBehaviour
         if(gm.BackScene == scene)
         {
             gm.PlayerLevel[0] = gm.PlayerLevel[1];
+            gm.PlayerHp[0] = gm.PlayerHp[1];
         }
-        if(gm.BackScene != scene)
+        if(gm.BackScene != scene || gm.BackScene == null)
         {
             gm.PlayerHp[1] = gm.PlayerHp[0];
             gm.PlayerLevel[1] = gm.PlayerLevel[0];
@@ -71,7 +72,6 @@ public class PlayerCollider : MonoBehaviour
         {
             gm.PlayerTransForm = this.transform.position;
             gm.BackScene = gm.MyGetScene();
-            gm.PlayerLevel[1] = gm.PlayerLevel[0];
             SceneManager.LoadScene("GameOver");
         }
 
