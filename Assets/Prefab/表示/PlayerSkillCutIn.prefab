@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 300754159946293154}
   - component: {fileID: 7099465605615601939}
   - component: {fileID: 6936539249852464227}
+  - component: {fileID: 2474744355676886498}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PlayerSkillText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,6 +80,25 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\u3042\n"
+--- !u!95 &2474744355676886498
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643367639825826060}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba3234514bca9274fb91d0749a8e1d46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6791071092220203697
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +110,9 @@ GameObject:
   - component: {fileID: 6791071092220203696}
   - component: {fileID: 6791071092220203694}
   - component: {fileID: 6791071092220203695}
+  - component: {fileID: 8664024405420620161}
   m_Layer: 5
-  m_Name: skill
+  m_Name: PlayerSkillImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,6 +175,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &8664024405420620161
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791071092220203697}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d51b09d8fd7b8e641b7dd577814e826f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6791071093662665578
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,3 +320,6 @@ MonoBehaviour:
   - "\u96DB\u898B\u6CA2\u75C7\u767A\u75C5"
   - "\u96DB\u898B\u6CA2\u75C7\u767A\u75C5"
   getText: {fileID: 6936539249852464227}
+  skillAnimator:
+  - {fileID: 8664024405420620161}
+  - {fileID: 2474744355676886498}

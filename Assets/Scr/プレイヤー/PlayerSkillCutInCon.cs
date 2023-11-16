@@ -17,6 +17,9 @@ public class PlayerSkillCutInCon : MonoBehaviour
     [SerializeField,Header("取得したい文章")]
     private Text getText;
 
+    [SerializeField,Header("スキルカットインのアニメーション")]
+    private Animator[] skillAnimator;
+
     private Canvas myCanvas;
 
     private bool cutInFlag;
@@ -48,6 +51,11 @@ public class PlayerSkillCutInCon : MonoBehaviour
     
     public void PlayerCutInDisplay(int i)
     {
+       for(int x = 0;x< skillAnimator.Length; x++)
+       {
+            Debug.Log("入ったお");
+            skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
+       }
        myCanvas.enabled = true;
        time = 0;
        Time.timeScale = 0f;
