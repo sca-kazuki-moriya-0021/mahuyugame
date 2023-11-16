@@ -51,9 +51,10 @@ public class PlayerCollider : MonoBehaviour
         }
         if(gm.BackScene != scene)
         {
+            gm.PlayerHp[1] = gm.PlayerHp[0];
             gm.PlayerLevel[1] = gm.PlayerLevel[0];
         }
-        gm.PlayerHp[0] = 3;
+        
     }
 
     // Update is called once per frame
