@@ -7,26 +7,35 @@ public class PlayerSkillBulletCon : MonoBehaviour
 
     private float time = 0;
 
-    private Player player;
+    private GameObject middlePos;
+
+    private GameObject player;
     
     private GameObject boss;
+
+    public GameObject MiddlePos
+    {
+        get { return this.middlePos; }
+        set { this.middlePos = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
        boss = GameObject.FindGameObjectWithTag("Boss");
-      
+       player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(middlePos);
         if(boss != null)
         {
-            Vector3 pos = boss.transform.position - transform.position;
-            var dir = pos.normalized;
-            //íeÇÃêiÇﬁäÑçáÇTime.deltaTimeÇ≈åàÇﬂÇÈ
-            transform.Translate(dir * Time.unscaledDeltaTime * 10.0f);
+            time += Time.unscaledDeltaTime * 0.5f;
+            var a = Vector3.Lerp(player.transform.position, middlePos.transform.position, time);
+            var b = Vector3.Lerp(middlePos.transform.position,boss.transform.position,time);
+            this.transform.position = Vector3.Lerp(a,b,time);
         }
     }
 

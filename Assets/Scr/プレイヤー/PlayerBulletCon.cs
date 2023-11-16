@@ -13,6 +13,8 @@ public class PlayerBulletCon : MonoBehaviour
     //ƒXƒLƒ‹’e•Û‘¶—p
     [SerializeField]
     private GameObject skillBullet;
+    [SerializeField]
+    private GameObject skillBulletMiddlePos;
 
     //’e‚Ì”­ŽËˆÊ’u
     private GameObject[] bulletChilds = new GameObject[]{null,null,null};
@@ -131,7 +133,9 @@ public class PlayerBulletCon : MonoBehaviour
             int childCount = this.gameObject.transform.childCount - 1;
             Transform v = this.gameObject.transform.GetChild(childCount);
             GameObject v2 = v.gameObject;
-            Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
+            GameObject bullet_obj =(GameObject)Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
+            PlayerSkillBulletCon bullet_sc = bullet_obj.GetComponent<PlayerSkillBulletCon>();
+            bullet_sc.MiddlePos = skillBulletMiddlePos;
             player.DebuffSkillFlag = false;
         }
     }
