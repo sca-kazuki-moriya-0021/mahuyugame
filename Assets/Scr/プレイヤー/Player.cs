@@ -101,15 +101,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //pBulletPool.CreatePool(10);
         for(int i = 0;i < screenWithinChird.Length;i++)
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
         }
-
-        //jKey = true;
-        //skillAtkFlag[0] = true;
-        //gm.PlayerSkill[0] = true;
     }
 
     // Update is called once per frame
@@ -139,14 +134,12 @@ public class Player : MonoBehaviour
     //WASD移動の入力取得
     public void OnMove(InputAction.CallbackContext context)
     {
-        ///Debug.Log(context);
         inputV = context.ReadValue<Vector2>();
     }
 
     //スキル1発動トリガー
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
-        //Debug.Log(context);
         if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false)
         {
             jKey = true;
@@ -158,7 +151,6 @@ public class Player : MonoBehaviour
     //スキル2発動トリガー
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
-        //Debug.Log(context);
         if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] ==false)
         {
             skillAtkFlag[1] = true;
@@ -256,10 +248,16 @@ public class Player : MonoBehaviour
                         yield return new WaitForSeconds(1f);
                         bulletSeverFlag = false;
                     }
-                    if(i == 2)
+                    if(i == 2 && areaManager.BossActiveFlag == true)
                     {
                         skillCutinCon.PlayerCutInDisplay(i);
                         debuffSkillFlag = true;
+                    }
+                    else if (i == 2 && areaManager.BossActiveFlag == false)
+                    {
+                        Debug.Log("意味ないよ");
+                        skillAtkFlag[0] = false;
+                        break;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[0] = true;
@@ -274,18 +272,25 @@ public class Player : MonoBehaviour
             {
                 if (gm.PlayerSkill[i] == true)
                 {
-                    skillCutinCon.PlayerCutInDisplay(i);
                     if (i == 3)
                     {
+                        skillCutinCon.PlayerCutInDisplay(i);
                         pBaffSkillFlag = true;
                     }
-                    else if(i == 2)
+                    else if(i == 2 && areaManager.BossActiveFlag == true)
                     {
+                        skillCutinCon.PlayerCutInDisplay(i);
                         debuffSkillFlag = true;
+                    }
+                    else if (i == 2 && areaManager.BossActiveFlag == false)
+                    {
+                        Debug.Log("意味ないよ");
+                        skillAtkFlag[1] = false;
+                        break;
                     }
                     else if(i == 1)
                     {
-                        Debug.Log(i);
+                        skillCutinCon.PlayerCutInDisplay(i);;
                         bulletSeverFlag = true;
                         yield return new WaitForSeconds(1f);
                         bulletSeverFlag = false;

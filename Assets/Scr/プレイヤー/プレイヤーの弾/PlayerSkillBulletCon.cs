@@ -11,9 +11,6 @@ public class PlayerSkillBulletCon : MonoBehaviour
     
     private GameObject boss;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -31,16 +28,6 @@ public class PlayerSkillBulletCon : MonoBehaviour
             //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
             transform.Translate(dir * Time.unscaledDeltaTime * 10.0f);
         }
-        else
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * 3.0f);
-        }
-       
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
