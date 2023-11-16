@@ -28,6 +28,7 @@ public class PlayerCollider : MonoBehaviour
     //private static float invincibleCounttime = 0;
     #endregion
 
+
     //プレイヤーの状態用列挙型（ノーマル、ダメージ、無敵の3種類）
     enum STATE
     {
@@ -44,15 +45,15 @@ public class PlayerCollider : MonoBehaviour
         colliderSprite = GetComponent<SpriteRenderer>();
 
         var scene = gm.MyGetScene();
-
-        if (scene == gm.BackScene)
+        if(gm.BackScene == scene)
         {
-            gm.PlayerHp[0] = gm.PlayerHp[1];
+            gm.PlayerLevel[0] = gm.PlayerLevel[1];
         }
-        else if (scene != gm.BackScene)
+        if(gm.BackScene != scene)
         {
-            gm.PlayerHp[1] = gm.PlayerHp[0];
+            gm.PlayerLevel[1] = gm.PlayerLevel[0];
         }
+        gm.PlayerHp[0] = 3;
     }
 
     // Update is called once per frame
@@ -69,6 +70,7 @@ public class PlayerCollider : MonoBehaviour
         {
             gm.PlayerTransForm = this.transform.position;
             gm.BackScene = gm.MyGetScene();
+            gm.PlayerLevel[1] = gm.PlayerLevel[0];
             SceneManager.LoadScene("GameOver");
         }
 

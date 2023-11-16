@@ -96,8 +96,6 @@ public class Player : MonoBehaviour
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
         areaManager = FindObjectOfType<AreaManager>();
-         
-        gm.PlayerWeapon[3] = true;
     }
 
     // Start is called before the first frame update

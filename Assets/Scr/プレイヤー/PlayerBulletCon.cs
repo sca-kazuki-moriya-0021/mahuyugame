@@ -62,13 +62,6 @@ public class PlayerBulletCon : MonoBehaviour
         {
             laserAngle[i] = laserAngle[i] * Mathf.Deg2Rad;
         }
-
-        /*for(int i = 0; i < boomerangAngle.Length; i++)
-        {
-           boomerangAngle[i] = boomerangAngle[i] * Mathf.Deg2Rad;
-        }*/
-
-      
     }
 
     // Update is called once per frame
