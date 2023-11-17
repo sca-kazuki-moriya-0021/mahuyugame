@@ -20,7 +20,7 @@ public class PlayerSkillBulletCon : MonoBehaviour
        boss = GameObject.FindGameObjectWithTag("Boss");
        player = GameObject.FindGameObjectWithTag("Player");
        middlePos = (boss.transform.position - player.transform.position) / 2;
-       middlePos.y += 10f;
+       middlePos.y += 15f;
     }
 
     // Update is called once per frame
