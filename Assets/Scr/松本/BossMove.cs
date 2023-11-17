@@ -14,6 +14,7 @@ public class BossMove : MonoBehaviour
     private float debuffCountTime;
     private bool bossAttack1 = false;
     private bool bossAttack2 = false;
+    private float a = 0f;
    
     private float angle;
     
@@ -55,7 +56,7 @@ public class BossMove : MonoBehaviour
         //Debug.Log(isMoving);
         //Debug.Log(player.BussMoveStopFlag);
         
-        if(isMoving == true)
+        if(bossAttack1 == false && isMoving == true)
         {
             Move();
         }
@@ -73,6 +74,7 @@ public class BossMove : MonoBehaviour
 
     private void Move()
     {
+        var a = 0f;
         if (debuffFlag == true)
         {
             angle += Time.deltaTime * speed * 0.1f;
@@ -87,17 +89,13 @@ public class BossMove : MonoBehaviour
         else
         {
             angle += Time.deltaTime * speed;
-            float x = Mathf.Cos(angle * 2) * amplitudeX;
+            float x = Mathf.Sin(angle * 2) * amplitudeX;
             float y = Mathf.Sin(angle) * amplitudeY;
-            //Debug.Log(y);
             // Zé≤ÇÃà íuÇÕå≈íËÅi2DãÛä‘Ç…å≈íËÅj
             Vector3 offset = new Vector3(x, y, 0);
             Vector3 newPosition = centerObject.position + offset;
 
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 5f);
-            
-            
-            //Debug.Log(transform.position);
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 10f);
         }
     }     
 

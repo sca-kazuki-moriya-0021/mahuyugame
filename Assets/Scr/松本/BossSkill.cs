@@ -13,7 +13,7 @@ public class BossSkill : MonoBehaviour
     private float skillTimerCount = 0f;// スキル発動タイミング
     private GameObject skillInstance;
     private GameObject normalPrefab;
-
+    private bool[] test = new bool[]{false,false };
     private BossMove bossMove;
     // Start is called before the first frame update
     void Start()
@@ -28,14 +28,16 @@ public class BossSkill : MonoBehaviour
     {
         skillTimerCount += Time.deltaTime;
 
-        if (skillTimerCount >= 5f)
+        if (skillTimerCount > 45f && test[0] == false)
         {
-           bossMove.BossAttack1 = true;
+            bossMove.BossAttack1 = true;
+            test[0] = true;
         }
 
-        if(skillTimerCount >= 10f)
+        if(skillTimerCount == 80f && test[1] == false)
         {
             bossMove.BossAttack2 = true;
+            test[1] = true;
         }
 
         skillSwitchTimer += Time.deltaTime;

@@ -1570,15 +1570,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9117281272463106070, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: speed
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -9117281272463106070, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: amplitudeX
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -9117281272463106070, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: amplitudeY
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -9117281272463106070, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: centerObject
@@ -1631,6 +1631,22 @@ PrefabInstance:
     - target: {fileID: 734082111278169932, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: m_Name
       value: "\u30DC\u30B9(\u4EEE)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 840336711944478174, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
+      propertyPath: attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 840336711944478174, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
+      propertyPath: returnDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 840336711944478174, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
+      propertyPath: returnSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 840336711944478174, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
+      propertyPath: maxBulletCount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}

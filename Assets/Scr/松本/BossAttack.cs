@@ -7,7 +7,6 @@ public class BossAttack : MonoBehaviour
     [SerializeField] private float attackSpeed; // ボスの突撃速度
     [SerializeField] private float returnSpeed; // ボスが元の位置に戻る速度
     [SerializeField] private float returnDelay; // 元の位置に戻るまでの遅延時間
-    [SerializeField] private float distanceToPlayer; // プレイヤーからの距離
 
     [SerializeField] private GameObject danmakuPre1; // 弾幕1のプレハブ
     [SerializeField] private GameObject danmakuPre2; // 弾幕2のプレハブ
@@ -39,7 +38,7 @@ public class BossAttack : MonoBehaviour
 
     void Update()
     {
-        if (bossMove.BossAttack1 == true)
+        if (bossMove.BossAttack1 == true && isAttacking == false)
         {
             StartCoroutine(AttackPlayerCoroutine());
         }
@@ -77,7 +76,8 @@ public class BossAttack : MonoBehaviour
     }
 
     //スキルの移動本体
-    private IEnumerator MoveToPosition(Vector3 targetPosition, float speed)
+    /*
+     private IEnumerator MoveToPosition(Vector3 targetPosition, float speed)
     {
         float startTime = Time.time;
         float journeyLength = Vector3.Distance(transform.position, targetPosition);
@@ -89,8 +89,8 @@ public class BossAttack : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, fracJourney);
             yield return null;
         }
-    }
-    
+    }*/
+
 
     /// <summary>
     /// スキル1の移動管理
@@ -98,47 +98,38 @@ public class BossAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackPlayerCoroutine()
     {
+        isAttacking = true;
+        float startTime = 0.0f;
 
-        Vector3 targetPosition = playerObject.transform.position - playerObject.transform.right * distanceToPlayer;
+        Vector3 targetPosition = playerObject.transform.position;
 
-        float startTime = Time.time;
         float journeyLength = Vector3.Distance(transform.position, targetPosition);
-
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        Debug.Log(journeyLength);
+        while (startTime < 1)
         {
-            float journeyFraction = (Time.time - startTime) * attackSpeed / journeyLength;
+            startTime += Time.deltaTime;
+            float journeyFraction = startTime * attackSpeed / journeyLength;
             transform.position = Vector3.Lerp(transform.position, targetPosition, journeyFraction);
             yield return null;
         }
 
         // プレイヤーに到達した後の処理
         yield return new WaitForSeconds(returnDelay);
-
-        startTime = Time.time;
+        startTime = 0.0f;
         journeyLength = Vector3.Distance(transform.position, initialPosition);
 
-        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
+        while (startTime < 1)
         {
-            float journeyFraction = (Time.time - startTime) * returnSpeed / journeyLength;
-            transform.position = Vector3.Lerp(transform.position, initialPosition, journeyFraction);
+            startTime += Time.deltaTime;
+            float journeyFraction = startTime * returnSpeed / journeyLength;
+            transform.position = Vector3.Lerp(transform.position, initialPosition, journeyFraction); 
             yield return null;
+            //Debug.Log(startTime);
         }
-
-        // 初期位置に戻った後の処理
-        yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));
-
+        
+        //yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));
         bossMove.BossAttack1 = false;
+        isAttacking = false;
+        StopCoroutine(AttackPlayerCoroutine());
     }
-        /*
-        void MoveDanmaku(GameObject danmakuInstance, Transform cenPos)
-        {
-            if (danmakuInstance != null && cenPos != null)
-            {
-                float x = cenPos.position.x;
-                float y = cenPos.position.y;
-
-                danmakuInstance.transform.position = new Vector3(x, y, 0f);
-            }
-        }
-        */
 }
