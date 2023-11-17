@@ -9,7 +9,7 @@ public class BossMove : MonoBehaviour
     [SerializeField] private float amplitudeY; // Y軸の振幅
     [SerializeField] private float stopTime;
     [SerializeField] private float debuffTime;
-    [SerializeField] private GameObject centerObject;
+    [SerializeField] private Transform centerObject;
     private float stopCountTime;
     private float debuffCountTime;
     private bool bossAttack1 = false;
@@ -80,7 +80,7 @@ public class BossMove : MonoBehaviour
             float y = Mathf.Sin(angle) * amplitudeY * 0.5f;
             // Z軸の位置は固定（2D空間に固定）
             Vector3 offset = new Vector3(x, y, 0);
-            Vector3 newPosition = centerObject.transform.position + offset;
+            Vector3 newPosition = centerObject.position + offset;
 
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 1f);
         }
@@ -92,7 +92,7 @@ public class BossMove : MonoBehaviour
             //Debug.Log(y);
             // Z軸の位置は固定（2D空間に固定）
             Vector3 offset = new Vector3(x, y, 0);
-            Vector3 newPosition = centerObject.transform.position + offset;
+            Vector3 newPosition = centerObject.position + offset;
 
             this.transform.position = Vector3.Lerp(this.transform.position, newPosition, Time.deltaTime * 1f);
             
