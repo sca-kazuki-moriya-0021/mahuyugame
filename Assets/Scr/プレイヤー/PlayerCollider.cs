@@ -52,7 +52,7 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerLevel[0] = gm.PlayerLevel[1];
             gm.PlayerHp[0] = gm.PlayerHp[1];
         }
-        if(gm.BackScene != scene || gm.BackScene == null)
+        if(gm.BackScene != scene || gm.BackScene == TotalGM.StageCon.No)
         {
             gm.PlayerHp[1] = gm.PlayerHp[0];
             gm.PlayerLevel[1] = gm.PlayerLevel[0];

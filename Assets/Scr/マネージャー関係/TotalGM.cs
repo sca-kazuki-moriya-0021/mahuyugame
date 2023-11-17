@@ -28,6 +28,7 @@ public class TotalGM : MonoBehaviour
     //ステージ管理
     public enum StageCon
     {
+        No,
         Title = 0,
         SkillSelect,
         First,

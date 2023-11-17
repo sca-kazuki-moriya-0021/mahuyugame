@@ -188,6 +188,7 @@ public class SkillSelection : MonoBehaviour
     //èâä˙âª
     private void PlayerReset()
     {
+
         totalGM.PlayerHp[0] = 3;
         totalGM.PlayerHp[1] = 0;
 
@@ -204,5 +205,9 @@ public class SkillSelection : MonoBehaviour
         {
             totalGM.SkillCoolTimeCount[i] = 0;
         }
+
+        totalGM.BackScene = TotalGM.StageCon.No;
+
+
     }
 }
