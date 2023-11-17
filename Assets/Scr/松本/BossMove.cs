@@ -17,9 +17,11 @@ public class BossMove : MonoBehaviour
     private float debuffCountTime;
     private float skillSwitchTimer = 0.0f; //スキル経過時間
     private int currentSkillIndex = 0; // 現在のスキルのインデックス
+    private float bossAttack1Timer = 45.0f;
+    private float bossAttack2Timer = 80.0f;
+    private float angle;
     private GameObject skillInstance;
     private GameObject normalPrefab;
-    private float angle;
     private Vector3 startPos;
     private bool isMoving = true;
     private bool debuffFlag = false;
@@ -31,6 +33,9 @@ public class BossMove : MonoBehaviour
     private Player player;
     private SoundManager soundManager;
     private AreaManager areaManager;
+
+    public bool BossAttack1 { get; set; } = false;
+    public bool BossAttack2 { get; set; } = true;
 
     void Start()
     {
@@ -47,7 +52,8 @@ public class BossMove : MonoBehaviour
     {
         Debug.Log(isMoving);
         Debug.Log(player.BussMoveStopFlag);
-
+        bossAttack1Timer -= Time.deltaTime;
+        bossAttack2Timer -= Time.deltaTime;
         if(isMoving == true)
         {
             Move();
@@ -57,10 +63,30 @@ public class BossMove : MonoBehaviour
         {
             StopMove();
         }
-
+        //デバフで移動速度の低下
         if (debuffFlag == true)
         {
             Debuff();
+        }
+        if(bossAttack1Timer <= 0)
+        {
+            BossAttack1 = true;
+            isMoving = false;
+            bossAttack1Timer = 5.0f;
+        }
+        else
+        {
+            BossAttack1 = false;
+            isMoving = true;
+        }
+        if(bossAttack2Timer <= 0)
+        {
+            BossAttack2 = true;
+            bossAttack2Timer = 10.0f;
+        }
+        else
+        {
+            BossAttack2 = false;
         }
         
         skillSwitchTimer += Time.deltaTime;
