@@ -23,7 +23,7 @@ public class TitleLight2d : MonoBehaviour
         DOTween.To(
             () => pointLight2d.intensity,
             num => pointLight2d.intensity = num,
-            0.5f,
+            0.25f,
             2f
             ).OnComplete(() =>
                 DOTween.To(

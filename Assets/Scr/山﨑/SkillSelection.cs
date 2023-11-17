@@ -164,11 +164,11 @@ public class SkillSelection : MonoBehaviour
         {
             if(!skillSelect[i].activeSelf&&skillCount==2)
             {
-                skill[i].interactable = false;
+                skill[i].enabled = false;
             }
             else
             {
-                skill[i].interactable = true;
+                skill[i].enabled = true;//interactable‚É‚·‚é‚Æ”¼“§–¾‰»
             }
         }
     }
