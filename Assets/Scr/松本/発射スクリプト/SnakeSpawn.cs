@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class SnakeSpawn : MonoBehaviour
 {
-    [SerializeField,Header("’e‚ÌƒvƒŒƒnƒu")]
-    GameObject snakeBulletPrefab;
-    [SerializeField,Header("”­ŽËŠÔŠu")]
+    [SerializeField]
+    GameObject waveBuuletPrefab;
+    [SerializeField]
     float fireRate = 0.2f;
+    [SerializeField]
+    Transform spawnPoint;
     private float nextFireTime;
     // Start is called before the first frame update
     void Start()
     {
-       
+        StartCoroutine(StartWaveBulletPattern());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextFireTime)
-        {
-            nextFireTime = Time.time + fireRate;
-            SpownSnakeBullet();
-        }
+        
     }
 
-    void SpownSnakeBullet()
+    private IEnumerator StartWaveBulletPattern()
     {
-        GameObject bullet = Instantiate(snakeBulletPrefab,transform.position,Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        while (true)
+        {
+            GameObject waveBullet = Instantiate(waveBuuletPrefab,spawnPoint.position,Quaternion.identity);
+            WaveBullet waveScript = waveBullet.GetComponent<WaveBullet>();
+            waveScript.startPosition = spawnPoint.position;
 
-        rb.velocity = new Vector2(1,0);
+            yield return new WaitForSeconds(1.0f / fireRate);
+        }
     }
 }
