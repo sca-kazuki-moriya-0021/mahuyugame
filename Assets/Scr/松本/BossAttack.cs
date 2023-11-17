@@ -98,7 +98,7 @@ public class BossAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackPlayerCoroutine()
     {
- 
+
         Vector3 targetPosition = playerObject.transform.position - playerObject.transform.right * distanceToPlayer;
 
         float startTime = Time.time;
@@ -106,49 +106,39 @@ public class BossAttack : MonoBehaviour
 
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
-            float distCovered = (Time.time - startTime) * attackSpeed;
-            float fracJourney = distCovered / journeyLength;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, fracJourney);
+            float journeyFraction = (Time.time - startTime) * attackSpeed / journeyLength;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, journeyFraction);
             yield return null;
         }
 
-        yield return null;
-
+        // プレイヤーに到達した後の処理
         yield return new WaitForSeconds(returnDelay);
 
         startTime = Time.time;
-
         journeyLength = Vector3.Distance(transform.position, initialPosition);
 
         while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
         {
-            float distCovered = (Time.time - startTime) * attackSpeed;
-            float fracJourney = distCovered / journeyLength;
-            transform.position = Vector3.Lerp(transform.position, initialPosition, fracJourney);
+            float journeyFraction = (Time.time - startTime) * returnSpeed / journeyLength;
+            transform.position = Vector3.Lerp(transform.position, initialPosition, journeyFraction);
             yield return null;
         }
 
-
+        // 初期位置に戻った後の処理
         yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));
 
-
         bossMove.BossAttack1 = false;
-
-        StopCoroutine(AttackPlayerCoroutine());
-
-        //Debug.Log(bossMove.BossAttack1);
     }
-
-    /*
-    void MoveDanmaku(GameObject danmakuInstance, Transform cenPos)
-    {
-        if (danmakuInstance != null && cenPos != null)
+        /*
+        void MoveDanmaku(GameObject danmakuInstance, Transform cenPos)
         {
-            float x = cenPos.position.x;
-            float y = cenPos.position.y;
+            if (danmakuInstance != null && cenPos != null)
+            {
+                float x = cenPos.position.x;
+                float y = cenPos.position.y;
 
-            danmakuInstance.transform.position = new Vector3(x, y, 0f);
+                danmakuInstance.transform.position = new Vector3(x, y, 0f);
+            }
         }
-    }
-    */
+        */
 }
