@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class BossAttack : MonoBehaviour
 {
     [SerializeField] private float attackSpeed; // ボスの突撃速度
@@ -33,40 +34,49 @@ public class BossAttack : MonoBehaviour
 
         cenPos1 = cenPosObject1 != null ? cenPosObject1.transform : null;
         cenPos2 = cenPosObject2 != null ? cenPosObject2.transform : null;
-
-        if (bossMove.BossAttack1 == true)
-        {
-            StartCoroutine(AttackPlayerCoroutine());
-        }
+        
     }
 
     void Update()
     {
-        if (bossMove.BossAttack2 && currentBulletCount < maxBulletCount)
+        if (bossMove.BossAttack1 == true)
         {
-            // Instantiate danmaku1
-            GameObject danmakuInstance1 = Instantiate(danmakuPre1, transform.position, Quaternion.identity);
-
-            // Get the Danmaku component and set the cenPos
-            Danmaku danmaku1 = danmakuInstance1.GetComponent<Danmaku>();
-            if (danmaku1 != null)
+            StartCoroutine(AttackPlayerCoroutine());
+        }
+        //スキル2
+        if (bossMove.BossAttack2 )
+        {
+            if(currentBulletCount < maxBulletCount)
             {
-                danmaku1.SetCenPos(cenPos1);
-            }
+                // Instantiate danmaku1
+                GameObject danmakuInstance1 = Instantiate(danmakuPre1, transform.position, Quaternion.identity);
 
-            // Do the same for danmaku2
-            GameObject danmakuInstance2 = Instantiate(danmakuPre2, transform.position, Quaternion.identity);
-            Danmaku danmaku2 = danmakuInstance2.GetComponent<Danmaku>();
-            if (danmaku2 != null)
+                // Get the Danmaku component and set the cenPos
+                Danmaku danmaku1 = danmakuInstance1.GetComponent<Danmaku>();
+                if (danmaku1 != null)
+                {
+                    danmaku1.SetCenPos(cenPos1);
+                }
+
+                // Do the same for danmaku2
+                GameObject danmakuInstance2 = Instantiate(danmakuPre2, transform.position, Quaternion.identity);
+                Danmaku danmaku2 = danmakuInstance2.GetComponent<Danmaku>();
+                if (danmaku2 != null)
+                {
+                    danmaku2.SetCenPos(cenPos2);
+                }
+
+                // インスタンスされた弾の数を増やす
+                currentBulletCount += 2; // 弾幕1と弾幕2で2つ生成するため
+            }
+            else
             {
-                danmaku2.SetCenPos(cenPos2);
+                bossMove.BossAttack2 = false;
             }
-
-            // インスタンスされた弾の数を増やす
-            currentBulletCount += 2; // 弾幕1と弾幕2で2つ生成するため
         }
     }
 
+    //スキルの移動本体
     private IEnumerator MoveToPosition(Vector3 targetPosition, float speed)
     {
         float startTime = Time.time;
@@ -80,25 +90,56 @@ public class BossAttack : MonoBehaviour
             yield return null;
         }
     }
+    
 
+    /// <summary>
+    /// スキル1の移動管理
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator AttackPlayerCoroutine()
     {
-        while (true)
+ 
+        Vector3 targetPosition = playerObject.transform.position - playerObject.transform.right * distanceToPlayer;
+
+        float startTime = Time.time;
+        float journeyLength = Vector3.Distance(transform.position, targetPosition);
+
+        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
-            Vector3 targetPosition = playerObject.transform.position - playerObject.transform.right * distanceToPlayer;
-
-            yield return StartCoroutine(MoveToPosition(targetPosition, attackSpeed));
-
-            isAttacking = true;
-
-            yield return new WaitForSeconds(returnDelay);
-
-            yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));
-
-            isAttacking = false;
+            float distCovered = (Time.time - startTime) * attackSpeed;
+            float fracJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, fracJourney);
+            yield return null;
         }
+
+        yield return null;
+
+        yield return new WaitForSeconds(returnDelay);
+
+        startTime = Time.time;
+
+        journeyLength = Vector3.Distance(transform.position, initialPosition);
+
+        while (Vector3.Distance(transform.position, initialPosition) > 0.1f)
+        {
+            float distCovered = (Time.time - startTime) * attackSpeed;
+            float fracJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(transform.position, initialPosition, fracJourney);
+            yield return null;
+        }
+
+
+        yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));
+
+
+        bossMove.BossAttack1 = false;
+
+        StopCoroutine(AttackPlayerCoroutine());
+
+        //Debug.Log(bossMove.BossAttack1);
     }
 
+    /*
     void MoveDanmaku(GameObject danmakuInstance, Transform cenPos)
     {
         if (danmakuInstance != null && cenPos != null)
@@ -109,4 +150,5 @@ public class BossAttack : MonoBehaviour
             danmakuInstance.transform.position = new Vector3(x, y, 0f);
         }
     }
+    */
 }

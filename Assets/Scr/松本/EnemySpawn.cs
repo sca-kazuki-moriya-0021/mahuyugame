@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSpawn : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefabs;
@@ -29,7 +29,7 @@ public class RandomSpawn : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 5; i++)
         {
             Vector2 position = new Vector2(Random.Range(minX,maxX),Random.Range(minY,maxY));
             GameObject enemy = enemyPrefabs[Random.Range(0,enemyPrefabs.Length)];
