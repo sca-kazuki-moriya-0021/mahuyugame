@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 734082111278169933}
   - component: {fileID: 3689399312649321111}
   - component: {fileID: -9117281272463106070}
-  - component: {fileID: 4922862693917940482}
   m_Layer: 0
   m_Name: "\u30DC\u30B9(\u4EEE)"
   m_TagString: Boss
@@ -203,25 +202,6 @@ MonoBehaviour:
   debuffTime: 5
   centerObject: {fileID: 0}
   hp: 8
---- !u!114 &4922862693917940482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734082111278169932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acb30a512496914e91d9b9a1b473f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSpeed: 0
-  returnSpeed: 0
-  returnDelay: 0
-  distanceToPlayer: 0
-  danmakuPre1: {fileID: 0}
-  danmakuPre2: {fileID: 0}
-  maxBulletCount: 5
 --- !u!1 &6385080715151189593
 GameObject:
   m_ObjectHideFlags: 0

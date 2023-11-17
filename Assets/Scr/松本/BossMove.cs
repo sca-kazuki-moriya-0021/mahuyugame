@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 2.0f; // à⁄ìÆë¨ìx
+    [SerializeField] private float speed; // à⁄ìÆë¨ìx
     [SerializeField] private float amplitudeX; // Xé≤ÇÃêUïù
     [SerializeField] private float amplitudeY; // Yé≤ÇÃêUïù
     [SerializeField] private float stopTime;
@@ -86,7 +86,7 @@ public class BossMove : MonoBehaviour
         }
         else
         {
-            angle += 0.05f * speed;
+            angle += Time.deltaTime * speed;
             float x = Mathf.Sin(angle * 2) * amplitudeX;
             float y = Mathf.Sin(angle) * amplitudeY;
             //Debug.Log(y);
@@ -94,7 +94,7 @@ public class BossMove : MonoBehaviour
             Vector3 offset = new Vector3(x, y, 0);
             Vector3 newPosition = centerObject.transform.position + offset;
 
-            this.transform.position = Vector3.Lerp(this.transform.position, newPosition, 5 * 1f);
+            this.transform.position = Vector3.Lerp(this.transform.position, newPosition, Time.deltaTime * 1f);
             
             
             //Debug.Log(transform.position);
