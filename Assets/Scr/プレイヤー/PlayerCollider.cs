@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Spine.Unity;
+using Spine;
 
 public class PlayerCollider : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class PlayerCollider : MonoBehaviour
 
     // 画像描画用のコンポーネント
     [SerializeField]
-    private SpriteRenderer characterSprite;
+    private MeshRenderer SpineRenderer;
     private SpriteRenderer colliderSprite;
 
     #region//無敵関係
@@ -55,7 +57,6 @@ public class PlayerCollider : MonoBehaviour
             gm.PlayerHp[1] = gm.PlayerHp[0];
             gm.PlayerLevel[1] = gm.PlayerLevel[0];
         }
-        
     }
 
     // Update is called once per frame
@@ -146,8 +147,10 @@ public class PlayerCollider : MonoBehaviour
         isHit = true;
         collider2D.enabled = false;
 
-        characterSprite.color = Color.black;
-        colliderSprite .color = Color.black;
+        SpineRenderer.material.color = Color.black;
+        colliderSprite.color = Color.black;
+        
+        Debug.Log("a");
 
         //点滅ループ開始
         for (int i = 0; i < loopCount; i++)
@@ -159,13 +162,13 @@ public class PlayerCollider : MonoBehaviour
             //flashInterval待ってから
             yield return new WaitForSeconds(flashInterval);
             //spriteRendererをオフ
-            characterSprite.enabled = false;
+            SpineRenderer.enabled = false;
             colliderSprite.enabled = false;
 
             //flashInterval待ってから
             yield return new WaitForSeconds(flashInterval);
             //spriteRendererをオン
-            characterSprite.enabled = true;
+            SpineRenderer.enabled = true;
             colliderSprite.enabled = true;
 
             //ループが5回まわったら
@@ -183,7 +186,7 @@ public class PlayerCollider : MonoBehaviour
         //当たり判定をオンにする
         collider2D.enabled = true;
         //色を白にする
-        characterSprite.color = Color.white;
+        SpineRenderer.material.color = Color.white;
         colliderSprite.color = Color.white;
         
 

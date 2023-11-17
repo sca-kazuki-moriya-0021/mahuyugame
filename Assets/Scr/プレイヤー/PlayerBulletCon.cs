@@ -13,8 +13,6 @@ public class PlayerBulletCon : MonoBehaviour
     //スキル弾保存用
     [SerializeField]
     private GameObject skillBullet;
-    [SerializeField]
-    private GameObject skillBulletMiddlePos;
 
     //弾の発射位置
     private GameObject[] bulletChilds = new GameObject[]{null,null,null};
@@ -33,7 +31,6 @@ public class PlayerBulletCon : MonoBehaviour
     //private float[] boomerangAngle;
     [SerializeField,Header("ブーメランの中間位置")]
     private GameObject boomerangPoint;
-
 
     float PI = Mathf.PI;
 
@@ -135,7 +132,6 @@ public class PlayerBulletCon : MonoBehaviour
             GameObject v2 = v.gameObject;
             GameObject bullet_obj =(GameObject)Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
             PlayerSkillBulletCon bullet_sc = bullet_obj.GetComponent<PlayerSkillBulletCon>();
-            bullet_sc.MiddlePos = skillBulletMiddlePos;
             player.DebuffSkillFlag = false;
         }
     }
