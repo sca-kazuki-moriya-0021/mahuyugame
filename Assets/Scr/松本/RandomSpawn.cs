@@ -34,8 +34,7 @@ public class RandomSpawn : MonoBehaviour
             Vector2 position = new Vector2(Random.Range(minX,maxX),Random.Range(minY,maxY));
             GameObject enemy = enemyPrefabs[Random.Range(0,enemyPrefabs.Length)];
             Instantiate(enemy,position,Quaternion.identity,transform);
-
-            yield return new WaitForSeconds(3.0f);
         }
+        yield return new WaitForSeconds(20.0f);
     }
 }
