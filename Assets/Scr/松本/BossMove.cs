@@ -27,7 +27,6 @@ public class BossMove : MonoBehaviour
 
     //ƒvƒŒƒCƒ„[æ“¾
     private Player player;
-    private SoundManager soundManager;
     private AreaManager areaManager;
 
     public bool BossAttack1
@@ -44,10 +43,8 @@ public class BossMove : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        soundManager = FindObjectOfType<SoundManager>();
         areaManager = FindObjectOfType<AreaManager>();
-        
-        soundManager.BossPhaseFlag = true;
+        areaManager.BossPhaseFlag = true;
         areaManager.BossActiveFlag = true;
     }
 

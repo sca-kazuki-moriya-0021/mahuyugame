@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class AreaManager : MonoBehaviour
 {
-    private bool bossActiveFlag;
+    private bool bossActiveFlag = false;
+    private bool bossPhaseFlag = false;
 
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip[] audioClips;
 
-    private bool bossPhaseFlag = false;
+    //ボスオブジェクト
+    //[SerializeField]
+    //private GameObject bossObject;
+
+    //雑魚オブジェクトの配列
+    //[SerializeField]
+    //private GameObject[] enemyObeject;
+
+    //中ボスオブジェクト
+    //[SerializeField]
+    //private GameObject underBossObject
+
+    private TotalGM gm;
 
 
     public bool BossActiveFlag
@@ -29,9 +42,12 @@ public class AreaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClips[0];
         audioSource.Play();
+
+        //敵の出現をコルーチンで書いていく
     }
 
     // Update is called once per frame
