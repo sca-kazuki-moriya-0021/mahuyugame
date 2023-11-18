@@ -56,7 +56,7 @@ public class PouseCon : MonoBehaviour
     void Update()
     {
         //Debug.Log(myCanvas.enabled);
-        if (Input.GetKeyDown(KeyCode.Tab) && menuFlag == false)
+        //if (GetKeyDown(KeyCode.P) && menuFlag == false)
         {
             Debug.Log("É|Å[ÉYíÜ");
 
