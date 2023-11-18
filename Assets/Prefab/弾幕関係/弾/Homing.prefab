@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3986100d3624947b5020930972ec96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  homingDuration: 5
+  speed: 5
+  homingDuration: 0.5
   targetTag: Player
 --- !u!50 &1258152047926118693
 Rigidbody2D:

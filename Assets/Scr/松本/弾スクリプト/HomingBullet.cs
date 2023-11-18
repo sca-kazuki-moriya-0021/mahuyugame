@@ -5,9 +5,9 @@ using UnityEngine;
 public class HomingBullet : MonoBehaviour
 {
     [Header("弾の速度")]
-    [SerializeField] float speed = 5f;
+    [SerializeField] float speed;
     [Header("ホーミングが有効な時間")]
-    [SerializeField] float homingDuration = 2.0f;
+    [SerializeField] float homingDuration;
     [Header("ターゲットのタグ")]
     [SerializeField] string targetTag = "Player"; // ターゲットのタグ
 

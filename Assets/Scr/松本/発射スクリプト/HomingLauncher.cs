@@ -8,7 +8,6 @@ public class HomingLauncher : MonoBehaviour
     [SerializeField]GameObject Fire2;
     [SerializeField]GameObject homingBullet;
     [SerializeField]float fireInterval = 1.0f;
-
     private float nextFireTime = 0.0f;
 
     void Update()

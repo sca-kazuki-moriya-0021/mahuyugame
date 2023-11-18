@@ -21,7 +21,7 @@ public class CircleLauncher : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
             CircleBullet bulletController = bullet.GetComponent<CircleBullet>();
             bulletController.SetDirection(Quaternion.Euler(0, 0, angle) * Vector2.right);
-            bulletController.SetRotationSpeed(rotationSpeed);
+            //bulletController.SetRotationSpeed(rotationSpeed);
         }
     }
 }

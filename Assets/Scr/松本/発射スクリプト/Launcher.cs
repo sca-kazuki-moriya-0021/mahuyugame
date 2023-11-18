@@ -9,6 +9,7 @@ public class Launcher : MonoBehaviour
     [SerializeField, Header("最初の弾の数")] private int numberOfBullets;
     [SerializeField, Header("最初の放射状の角度")] private float spreadAngle;
     [SerializeField, Header("発射間隔")] private float bulletSpacing;
+    [SerializeField, Header("変更用発射間隔")] private float maxbulletSpacing;
     [SerializeField, Header("一回の弾の増加量")] private int bulletAmount;
     [SerializeField, Header("弾を増やす時間")] private float createBullet;
     [SerializeField, Header("角度を増やす時間")] private float timeAngle;
@@ -41,6 +42,10 @@ public class Launcher : MonoBehaviour
             curAngle += yimespreadAngle;
             bulletsTime = 0.0f;
         }
+        if(curBullet == maxBullet)
+        {
+            maxbulletSpacing = 0.5f;
+        }
         if (elaTime >= timeAngle)
         {
             Debug.Log("a");
@@ -56,7 +61,7 @@ public class Launcher : MonoBehaviour
         float initialAngle = transform.eulerAngles.z - (curAngle / 2);
         bulletSpacing += Time.deltaTime;
 
-        if (bulletSpacing > 2.0f)
+        if (bulletSpacing > maxbulletSpacing)
         {
             Vector2 playerPosition = player.position; // プレイヤーの位置を取得
 

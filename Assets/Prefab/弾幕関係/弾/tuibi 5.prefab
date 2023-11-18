@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5aa206a33ef1a54e93aae583fa0c235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
-  homingDuration: 0.5
+  bulletSpeed: 10
+  homingDuration: 0.1
 --- !u!58 &-4851021005519422185
 CircleCollider2D:
   m_ObjectHideFlags: 0
