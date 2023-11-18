@@ -1413,6 +1413,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6399580716559669440, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 86b06ad498efbbd4485c6cae7a744985, type: 2}
+    - target: {fileID: 6399580716559669441, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce65a79b1cddb384e8abd9c1311ea4da, type: 2}
     - target: {fileID: 6399580716559669442, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_Mesh
       value: 
