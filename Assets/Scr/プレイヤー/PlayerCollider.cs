@@ -90,7 +90,7 @@ public class PlayerCollider : MonoBehaviour
             Destroy(collision.gameObject);
             
             gm.PlayerHp[0]--;
-            if(gm.PlayerHp[0] != 0)
+            if(gm.PlayerHp[0] > 0)
             {
                 state = STATE.DAMAGED;
                 StartCoroutine(PlayerDameged());
@@ -205,7 +205,7 @@ public class PlayerCollider : MonoBehaviour
         gm.PlayerTransForm = this.transform.position;
         gm.BackScene = gm.MyGetScene();
 
-        TrackEntry track= spineAnimationState.SetAnimation(0, deathAnimation, true);
+        TrackEntry track= spineAnimationState.SetAnimation(0, deathAnimation, false);
         
 
         yield return new WaitForSecondsRealtime(3f);
