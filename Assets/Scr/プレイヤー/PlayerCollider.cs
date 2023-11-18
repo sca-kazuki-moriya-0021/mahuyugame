@@ -205,7 +205,8 @@ public class PlayerCollider : MonoBehaviour
 
     private IEnumerator PlayerDeath()
     {
-        gm.PlayerTransForm = this.transform.position;
+        colliderSprite.enabled = false;
+        gm.PlayerTransForm = transform.position;
         gm.BackScene = gm.MyGetScene();
 
         spineAnimationState.SetAnimation(0, deathAnimation, false);

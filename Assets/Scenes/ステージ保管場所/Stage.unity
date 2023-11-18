@@ -389,10 +389,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3671980639654199104, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3671980639654199104, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: _animationName
+      value: uku
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942377789783565186, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399580715127631710, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: boomerangPoint
+      value: 
+      objectReference: {fileID: 901165657}
+    - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: SpineRenderer
+      value: 
+      objectReference: {fileID: 276832247}
     - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: deathAnimation
-      value: taorey
+      value: taoreru
       objectReference: {fileID: 0}
+    - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: skeletonAnimation
+      value: 
+      objectReference: {fileID: 276832248}
     - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: screenWithin
       value: 
@@ -459,6 +483,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+--- !u!23 &276832247 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7109463590719251207, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 276832246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &276832248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3671980639654199104, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 276832246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &451494700
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7d3e21c64993c04d8ce497f5cc6d198, type: 3}
+--- !u!1 &901165657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3140293216854753719, guid: a7d3e21c64993c04d8ce497f5cc6d198, type: 3}
+  m_PrefabInstance: {fileID: 901165656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &956952691
 GameObject:
   m_ObjectHideFlags: 0
