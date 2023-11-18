@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInterval: 0.2
   loopCount: 2
+  deathAnimation: taoreru
+  skeletonAnimation: {fileID: 6399580716559669440}
   SpineRenderer: {fileID: 6399580716559669441}
 --- !u!1 &6399580715944071599
 GameObject:

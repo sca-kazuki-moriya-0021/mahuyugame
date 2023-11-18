@@ -19,17 +19,19 @@ public class PlayerCollider : MonoBehaviour
     //当たったかどうかのフラグ
     private bool isHit;
 
+    //死亡するアニメーション名
+    [SerializeField]
+    private string deathAnimation;
+    //ゲームオブジェクトに設定されているSkeletonAnimation
+    [SerializeField]
+    private SkeletonAnimation skeletonAnimation = default;
+    //Spineアニメーションを適用するために必要なAnimationState
+    private Spine.AnimationState spineAnimationState = default;
+
     // 画像描画用のコンポーネント
     [SerializeField]
     private MeshRenderer SpineRenderer;
     private SpriteRenderer colliderSprite;
-
-    #region//無敵関係
-    //private bool invincibleFlag = false;
-    private static float invincibleCount = 5.0f;
-    //private static float invincibleCounttime = 0;
-    #endregion
-
 
     //プレイヤーの状態用列挙型（ノーマル、ダメージ、無敵の3種類）
     enum STATE
@@ -45,6 +47,9 @@ public class PlayerCollider : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         collider2D = GetComponent<CircleCollider2D>();
         colliderSprite = GetComponent<SpriteRenderer>();
+
+        // SkeletonAnimationからAnimationStateを取得
+        spineAnimationState = skeletonAnimation.AnimationState;
 
         var scene = gm.MyGetScene();
         if(gm.BackScene == scene)
@@ -71,9 +76,7 @@ public class PlayerCollider : MonoBehaviour
 
         if (gm.PlayerHp[0] == 0)
         {
-            gm.PlayerTransForm = this.transform.position;
-            gm.BackScene = gm.MyGetScene();
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine(PlayerDeath());
         }
 
     }
@@ -87,8 +90,11 @@ public class PlayerCollider : MonoBehaviour
             Destroy(collision.gameObject);
             
             gm.PlayerHp[0]--;
-            state = STATE.DAMAGED;
-            StartCoroutine(PlayerDameged());
+            if(gm.PlayerHp[0] != 0)
+            {
+                state = STATE.DAMAGED;
+                StartCoroutine(PlayerDameged());
+            }
         }
 
         if (collision.gameObject.CompareTag("BaffItem"))
@@ -194,6 +200,18 @@ public class PlayerCollider : MonoBehaviour
         isHit = false;
     }
 
+    private IEnumerator PlayerDeath()
+    {
+        gm.PlayerTransForm = this.transform.position;
+        gm.BackScene = gm.MyGetScene();
 
+        TrackEntry track= spineAnimationState.SetAnimation(0, deathAnimation, true);
+        
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        SceneManager.LoadScene("GameOver");
+        StopCoroutine(PlayerDeath());
+    }
 }
 
