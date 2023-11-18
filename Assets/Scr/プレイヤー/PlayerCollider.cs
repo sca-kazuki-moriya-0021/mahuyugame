@@ -18,6 +18,8 @@ public class PlayerCollider : MonoBehaviour
     private CircleCollider2D collider2D;
     //当たったかどうかのフラグ
     private bool isHit;
+    //死亡フラグ
+    private bool deathFlag = false;
 
     //死亡するアニメーション名
     [SerializeField]
@@ -74,8 +76,9 @@ public class PlayerCollider : MonoBehaviour
             return;
         }
 
-        if (gm.PlayerHp[0] == 0)
+        if (gm.PlayerHp[0] <= 0 && deathFlag == false)
         {
+            deathFlag = true;
             StartCoroutine(PlayerDeath());
         }
 
@@ -205,12 +208,12 @@ public class PlayerCollider : MonoBehaviour
         gm.PlayerTransForm = this.transform.position;
         gm.BackScene = gm.MyGetScene();
 
-        TrackEntry track= spineAnimationState.SetAnimation(0, deathAnimation, false);
+        spineAnimationState.SetAnimation(0, deathAnimation, false);
         
-
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene("GameOver");
+        deathFlag = false;
         StopCoroutine(PlayerDeath());
     }
 }

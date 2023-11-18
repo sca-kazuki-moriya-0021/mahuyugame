@@ -19,6 +19,14 @@ public class StockText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stockText.text = "Stock:" + gm.PlayerHp[0].ToString();
+        if (gm.PlayerHp[0] >= 0)
+        {
+            stockText.text = "Stock:" + gm.PlayerHp[0].ToString();
+        }
+        else if (gm.PlayerHp[0] < 0)
+        {
+            stockText.text = "Stock:" + 0.ToString();
+        }
+      
     }
 }

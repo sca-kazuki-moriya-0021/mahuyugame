@@ -389,6 +389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: deathAnimation
+      value: taorey
+      objectReference: {fileID: 0}
     - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: screenWithin
       value: 
@@ -403,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399580715944071586, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15819073
+      value: -5.08
       objectReference: {fileID: 0}
     - target: {fileID: 6399580715944071586, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -440,6 +444,14 @@ PrefabInstance:
     - target: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399580716559669440, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399580716559669440, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: _animationName
+      value: uku
       objectReference: {fileID: 0}
     - target: {fileID: 6399580716559669442, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_Mesh
@@ -2401,14 +2413,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!81 &11424169976383522
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11424169976383548}
-  m_Enabled: 1
 --- !u!114 &11424169976383523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,7 +2543,6 @@ GameObject:
   - component: {fileID: 11424169976383551}
   - component: {fileID: 11424169976383523}
   - component: {fileID: 11424169976383525}
-  - component: {fileID: 11424169976383522}
   m_Layer: 5
   m_Name: PouseDisplay
   m_TagString: Untagged

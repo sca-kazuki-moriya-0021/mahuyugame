@@ -1414,6 +1414,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6399580716559669440, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: _animationName
+      value: uku
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399580716559669440, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: skeletonDataAsset
       value: 
       objectReference: {fileID: 11400000, guid: 86b06ad498efbbd4485c6cae7a744985, type: 2}
