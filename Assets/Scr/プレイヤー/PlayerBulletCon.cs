@@ -39,6 +39,7 @@ public class PlayerBulletCon : MonoBehaviour
 
     private TotalGM gm;
     private Player player;
+    private PlayerCollider playerCollider;
 
 
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class PlayerBulletCon : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
         player = FindObjectOfType<Player>();
+        playerCollider = FindObjectOfType<PlayerCollider>();
 
         //自分の子オブジェクトを取得
         int childCount = this.gameObject.transform.childCount;
@@ -73,7 +75,7 @@ public class PlayerBulletCon : MonoBehaviour
         if (player.PBaffSkillFlag == true)
             time += 0.01f;
 
-        if(time > (6 - gm.PlayerLevel[0]))
+        if(time > (4 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
         {
             if (gm.PlayerWeapon[0] == true)
             {
