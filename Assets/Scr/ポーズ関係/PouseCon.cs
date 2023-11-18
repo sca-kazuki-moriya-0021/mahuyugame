@@ -58,6 +58,8 @@ public class PouseCon : MonoBehaviour
         //Debug.Log(myCanvas.enabled);
         if (Input.GetKeyDown(KeyCode.Tab) && menuFlag == false)
         {
+            Debug.Log("É|Å[ÉYíÜ");
+
             menuFlag = true;
             Time.timeScale = 0f;
             myCanvas.enabled = true;
