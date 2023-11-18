@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3675660968648826392}
   - component: {fileID: 8839176162218300957}
   - component: {fileID: 4365485565297766826}
-  - component: {fileID: 2283064656674398589}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Bullet
@@ -120,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  rotationSpeed: 90
+  rotationSpeed: 360
 --- !u!58 &4365485565297766826
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,21 +136,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2283064656674398589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7507862092339352173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78691cba6f04db542b14e0bf2956f0d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7916243498200830483, guid: 00ea14ef650885e41bc113b011074734, type: 3}
-  bulletSpeed: 10
-  numberOfShots: 2
-  numberOfBullets: 8
-  spreadAngle: 360
-  fireTime: 1
