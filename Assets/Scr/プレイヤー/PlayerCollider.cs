@@ -35,6 +35,12 @@ public class PlayerCollider : MonoBehaviour
     private MeshRenderer SpineRenderer;
     private SpriteRenderer colliderSprite;
 
+    public bool DeathFlag
+    {
+        get { return this.deathFlag; }
+        set { this.deathFlag = value; }
+    }
+
     //プレイヤーの状態用列挙型（ノーマル、ダメージ、無敵の3種類）
     enum STATE
     {

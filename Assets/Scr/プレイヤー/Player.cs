@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private PouseCon pouseCon;
     private PlayerSkillCutInCon skillCutinCon;
     private AreaManager areaManager;
+    private PlayerCollider playerCollider;
 
     //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
         areaManager = FindObjectOfType<AreaManager>();
+        playerCollider = FindObjectOfType<PlayerCollider>();
     }
 
     // Start is called before the first frame update
@@ -128,6 +130,7 @@ public class Player : MonoBehaviour
             }
         }
         //移動用関数
+        if (playerCollider.DeathFlag == false)
         InputSystemMove();
     }
 
@@ -135,6 +138,12 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         inputV = context.ReadValue<Vector2>();
+    }
+
+    //ポーズ発動
+    public void OnPouse(InputAction.CallbackContext context)
+    {
+        pouseCon.Pouse();
     }
 
     //スキル1発動トリガー

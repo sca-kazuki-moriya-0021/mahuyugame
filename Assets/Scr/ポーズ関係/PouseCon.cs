@@ -55,8 +55,12 @@ public class PouseCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(myCanvas.enabled);
-        //if (GetKeyDown(KeyCode.P) && menuFlag == false)
+       
+    }
+
+    public void Pouse()
+    {
+        if (menuFlag == false)
         {
             Debug.Log("É|Å[ÉYíÜ");
 
