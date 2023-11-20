@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class TargetBullet : MonoBehaviour
 {
-    private Vector3 position;
     private GameObject target;
     private Queue<GameObject> searchObjects;
     private Player player;
-
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +16,13 @@ public class TargetBullet : MonoBehaviour
         //íTÇµÇƒÇ´ÇΩ0î‘ñ⁄ÇÃìGÇñ⁄ïWÇ…Ç∑ÇÈ
         target = searchObjects.Peek();
         //Debug.Log(target);
-        position = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update:" + target);
+        Debug.Log("Update" + target);
+        Debug.Log(searchObjects);
 
         if(target == null)
         {
@@ -42,8 +40,6 @@ public class TargetBullet : MonoBehaviour
             else
                 transform.Translate(dir * Time.deltaTime * 10.0f);
         }
-
-
     }
 
     //ìGÇíTÇµÇƒï€ë∂Ç∑ÇÈä÷êî
@@ -71,24 +67,24 @@ public class TargetBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("misu");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
             if(collision.gameObject == target)
             {
                 searchObjects.Dequeue();
                 target = searchObjects.Peek();
+                Debug.Log(searchObjects.Peek());
                 Debug.Log("éüÇÃñ⁄ïW: " +  target);
             }
+            Destroy(collision.gameObject);
+            //Destroy(this.gameObject);
         }
-
 
         if (collision.gameObject.CompareTag("Boss"))
         {
            //Destroy(collision.gameObject);
-            Destroy(this.gameObject);
-           
+            Destroy(this.gameObject);          
         }
 
         if (collision.gameObject.CompareTag("DestroyBullet"))
@@ -105,11 +101,6 @@ public class TargetBullet : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
         }
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
     }
 
 }
