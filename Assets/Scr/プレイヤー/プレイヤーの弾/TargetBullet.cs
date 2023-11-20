@@ -8,28 +8,48 @@ public class TargetBullet : MonoBehaviour
     private Queue<GameObject> searchObjects;
     private Player player;
 
+    private int count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
         searchObjects = FindEnemy();
         //’T‚µ‚Ä‚«‚½0”Ô–Ú‚Ì“G‚ð–Ú•W‚É‚·‚é
-        target = searchObjects.Peek();
-        //Debug.Log(target);
+        if(searchObjects != null)
+        {
+            target = searchObjects.Peek();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update" + target);
-        Debug.Log(searchObjects);
-
-        if(target == null)
+        if(searchObjects == null)
         {
             if (player.PBaffSkillFlag == true)
                 transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
             else
                 transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
+        }
+
+
+        if(target == null)
+        {
+            searchObjects.Dequeue();
+            Debug.Log(searchObjects.Count);
+            if (searchObjects.Peek() != null)
+            {
+                target = searchObjects.Peek();
+            }
+            if(searchObjects.Peek() == null)
+            {
+                if (player.PBaffSkillFlag == true)
+                    transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
+                else
+                    transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
+            }
+            
         }
         else if(target != null)
         {
@@ -57,6 +77,9 @@ public class TargetBullet : MonoBehaviour
                 queue.Enqueue(gos[i]);
             }
         }
+        else{
+            queue = null;
+        }
 
         if(boss != null)
         {
@@ -70,15 +93,9 @@ public class TargetBullet : MonoBehaviour
         Debug.Log("misu");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if(collision.gameObject == target)
-            {
-                searchObjects.Dequeue();
-                target = searchObjects.Peek();
-                Debug.Log(searchObjects.Peek());
-                Debug.Log("ŽŸ‚Ì–Ú•W: " +  target);
-            }
+
             Destroy(collision.gameObject);
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Boss"))
