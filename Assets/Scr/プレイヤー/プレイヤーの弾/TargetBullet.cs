@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class TargetBullet : MonoBehaviour
 {
-    private Vector3 velocity;
     private Vector3 position;
-    private Vector3 accleration;
-    //É^Å[ÉQÉbÉgÇ™ë∂ç›ÇµÇ»Ç¢éûÇÃñ⁄ïWà íu
-    private Vector3 randomPos;
-    private Transform target;
-    private GameObject searchNearObj;
-    //íÖíeÇ‹Ç≈ÇÃéûä‘
-    [SerializeField]
-    private float period;
-
+    private GameObject target;
+    private Queue<GameObject> searchObjects;
     private Player player;
 
 
@@ -22,69 +14,59 @@ public class TargetBullet : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-
-        period = period + Random.Range(-0.1f,0.1f);
-        searchNearObj = FindEnemy();
+        searchObjects = FindEnemy();
+        //íTÇµÇƒÇ´ÇΩ0î‘ñ⁄ÇÃìGÇñ⁄ïWÇ…Ç∑ÇÈ
+        target = searchObjects.Peek();
+        //Debug.Log(target);
         position = transform.position;
-        if(searchNearObj != null)
-        {
-              
-          target = searchNearObj.transform;
-            
-        }
-
-        randomPos = new Vector3(4.0f,Random.Range(-1.5f,1.5f),0);
-        velocity = new Vector3(Random.Range(-1.0f,-1.5f),Random.Range(-2.0f,2.0f),0);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        accleration = Vector3.zero;
-        if(searchNearObj != null)
+        Debug.Log("Update:" + target);
+
+        if(target == null)
         {
-            Vector3 diff = target.position - position;
-            accleration += (diff - velocity * period) / (period * period);
+            if (player.PBaffSkillFlag == true)
+                transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
+            else
+                transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
         }
-        else
+        else if(target != null)
         {
-            Vector3 diff = randomPos - position;
-            accleration += (diff - velocity * period) * 2f /(period * period); 
+            var dir = target.transform.position - transform.position;
+            dir = dir.normalized;
+            if (player.PBaffSkillFlag == true)
+                transform.Translate(dir * Time.deltaTime * 15.0f);
+            else
+                transform.Translate(dir * Time.deltaTime * 10.0f);
         }
 
-        period -= Time.deltaTime;
-        if(period < 0f)
-        {
-            return;
-        }
 
-        velocity +=  accleration * Time.deltaTime;
-        if (player.PBaffSkillFlag == true)
-            position += velocity * Time.deltaTime * 2;
-        else
-            position += velocity * Time.deltaTime;
-        transform.position = position;
     }
 
-    public GameObject FindEnemy()
+    //ìGÇíTÇµÇƒï€ë∂Ç∑ÇÈä÷êî
+    private Queue<GameObject> FindEnemy()
     {
         GameObject[] gos;
+        GameObject boss;
         gos = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        foreach(GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
+        boss = GameObject.FindGameObjectWithTag("Boss");
+        Queue<GameObject> queue = new Queue<GameObject>();
 
-            if(curDistance < distance)
+        if(gos != null){
+            for (int i = 0; i < gos.Length; i++)
             {
-                closest = go;
-                distance = curDistance;
+                queue.Enqueue(gos[i]);
             }
         }
-        return closest;
+
+        if(boss != null)
+        {
+            queue.Enqueue(boss);
+        }
+        return queue;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,6 +75,20 @@ public class TargetBullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            if(collision.gameObject == target)
+            {
+                searchObjects.Dequeue();
+                target = searchObjects.Peek();
+                Debug.Log("éüÇÃñ⁄ïW: " +  target);
+            }
+        }
+
+
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+           //Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+           
         }
 
         if (collision.gameObject.CompareTag("DestroyBullet"))
