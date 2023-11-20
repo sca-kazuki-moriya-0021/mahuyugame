@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 229823435}
   - component: {fileID: 229823434}
   m_Layer: 5
-  m_Name: ' OperationCanvas'
+  m_Name: OperationCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21808,7 +21808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7498579064858636527
 GameObject:
   m_ObjectHideFlags: 0
