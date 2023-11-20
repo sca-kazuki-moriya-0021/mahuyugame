@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: _animationName
       value: uku
       objectReference: {fileID: 0}
+    - target: {fileID: 5792304310914756442, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5942377789783565186, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_Mesh
       value: 
