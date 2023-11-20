@@ -1357,6 +1357,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3671980639654199104, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: _animationName
+      value: uku
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942377789783565186, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6399580715127631710, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: boomerangPoint
       value: 
