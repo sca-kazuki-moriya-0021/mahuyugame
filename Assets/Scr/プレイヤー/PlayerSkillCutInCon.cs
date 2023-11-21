@@ -53,9 +53,8 @@ public class PlayerSkillCutInCon : MonoBehaviour
     {
        for(int x = 0; x < skillAnimator.Length; x++)
        {
-
-          skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
-            
+           skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
+           //Debug.Log(skillAnimator[x].updateMode);
        }
        myCanvas.enabled = true;
        time = 0;
