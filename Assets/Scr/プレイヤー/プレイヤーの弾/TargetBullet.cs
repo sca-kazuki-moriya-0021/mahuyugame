@@ -8,8 +8,6 @@ public class TargetBullet : MonoBehaviour
     private Queue<GameObject> searchObjects;
     private Player player;
 
-    private int count = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,22 +24,13 @@ public class TargetBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(searchObjects.Count == 0)
-        {
-            if (player.PBaffSkillFlag == true)
-                transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
-            else
-                transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
-        }
-
-
         if(target == null)
         {
             if (searchObjects.Count != 0)
             {
                 searchObjects.Dequeue();
+                if(searchObjects.Count != 0)
                 target = searchObjects.Peek();
-                
             }
             else if(searchObjects.Count == 0)
             {
@@ -78,8 +67,6 @@ public class TargetBullet : MonoBehaviour
                 queue.Enqueue(gos[i]);
             }
         }
-
-
         if(boss != null)
         {
             queue.Enqueue(boss);
@@ -89,10 +76,8 @@ public class TargetBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("misu");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
