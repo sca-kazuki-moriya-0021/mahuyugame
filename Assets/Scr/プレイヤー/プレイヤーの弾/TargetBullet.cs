@@ -15,8 +15,9 @@ public class TargetBullet : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         searchObjects = FindEnemy();
+        Debug.Log(searchObjects);
         //’T‚µ‚Ä‚«‚½0”Ô–Ú‚Ì“G‚ð–Ú•W‚É‚·‚é
-        if(searchObjects != null)
+        if(searchObjects.Count != 0)
         {
             target = searchObjects.Peek();
         }
@@ -25,7 +26,7 @@ public class TargetBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(searchObjects == null)
+        if(searchObjects.Count == 0)
         {
             if (player.PBaffSkillFlag == true)
                 transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
@@ -36,13 +37,13 @@ public class TargetBullet : MonoBehaviour
 
         if(target == null)
         {
-            searchObjects.Dequeue();
-            Debug.Log(searchObjects.Count);
-            if (searchObjects.Peek() != null)
+            if (searchObjects.Count != 0)
             {
+                searchObjects.Dequeue();
                 target = searchObjects.Peek();
+                
             }
-            if(searchObjects.Peek() == null)
+            else if(searchObjects.Count == 0)
             {
                 if (player.PBaffSkillFlag == true)
                     transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
@@ -77,9 +78,7 @@ public class TargetBullet : MonoBehaviour
                 queue.Enqueue(gos[i]);
             }
         }
-        else{
-            queue = null;
-        }
+
 
         if(boss != null)
         {
