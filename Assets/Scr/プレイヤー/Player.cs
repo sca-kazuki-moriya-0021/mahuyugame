@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     private AreaManager areaManager;
     private PlayerCollider playerCollider;
 
+    [SerializeField]
+    private Rigidbody2D rb;
+
     //’á‘¬ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
     private bool decelerationFlag = false;
 
@@ -187,7 +190,6 @@ public class Player : MonoBehaviour
     //ˆÚ“®—pŠÖ”
     public void InputSystemMove()
     {  
-
         if (screenWithinChird[0].transform.position.x  <= transform.position.x &&
             screenWithinChird[1].transform.position.x  >= transform.position.x &&
             screenWithinChird[0].transform.position.y >= transform.position.y &&
@@ -195,9 +197,9 @@ public class Player : MonoBehaviour
         {
             //’á‘¬ˆÚ“®
             if (decelerationFlag == true) 
-               transform.Translate(inputV.x * Time.deltaTime * 2f, inputV.y * Time.deltaTime * 2f, 0);
+               rb.velocity = inputV * 3f;
             else
-               transform.Translate(inputV.x * Time.deltaTime * 5f, inputV.y * Time.deltaTime * 5f, 0);
+               rb.velocity = inputV * 5f;
         }
         else if(screenWithinChird[0].transform.position.x > transform.position.x)
         {
@@ -210,14 +212,12 @@ public class Player : MonoBehaviour
             Vector3 a = transform.position;
             a.y = screenWithinChird[0].transform.position.y;
             transform.position = a;
-            
         }
         else if (screenWithinChird[1].transform.position.x < transform.position.x)
         {
             Vector3 a = transform.position;
             a.x = screenWithinChird[1].transform.position.x;
             transform.position = a;
-
         }
         else if (screenWithinChird[1].transform.position.y > transform.position.y)
         {

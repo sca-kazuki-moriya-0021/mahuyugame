@@ -435,6 +435,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 276832248}
     - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 276832249}
+    - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: screenWithin
       value: 
       objectReference: {fileID: 8887822584964274662}
@@ -516,6 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &276832249 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3790261367096651559, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 276832246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &451494700
 GameObject:
   m_ObjectHideFlags: 0
