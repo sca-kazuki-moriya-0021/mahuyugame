@@ -62,8 +62,6 @@ public class PouseCon : MonoBehaviour
     {
         if (menuFlag == false)
         {
-            Debug.Log("ポーズ中");
-
             menuFlag = true;
             Time.timeScale = 0f;
             myCanvas.enabled = true;
@@ -89,7 +87,6 @@ public class PouseCon : MonoBehaviour
                 else
                 {
                     selectedObj = ev.currentSelectedGameObject;
-                    //アウトラインをここで入れる
                 }
             }
             yield return null;

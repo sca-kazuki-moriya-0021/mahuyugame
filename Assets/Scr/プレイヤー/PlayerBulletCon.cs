@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using static PlayerBulletPool;
-//using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class PlayerBulletCon : MonoBehaviour
 {
@@ -125,7 +123,6 @@ public class PlayerBulletCon : MonoBehaviour
                     bullet_sc.EndPosition = boomerangPoint.transform.position;
                 }
             }
-
             time = 0;
         }
 

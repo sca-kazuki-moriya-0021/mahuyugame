@@ -165,8 +165,6 @@ public class PlayerCollider : MonoBehaviour
         SpineRenderer.material.color = Color.black;
         colliderSprite.color = Color.black;
         
-        Debug.Log("a");
-
         //点滅ループ開始
         for (int i = 0; i < loopCount; i++)
         {
@@ -185,15 +183,6 @@ public class PlayerCollider : MonoBehaviour
             //spriteRendererをオン
             SpineRenderer.enabled = true;
             colliderSprite.enabled = true;
-
-            //ループが5回まわったら
-            /* (i > 5)
-            {
-                //stateをMUTEKIにする（点滅しながら動けるようになる）
-                state = STATE.MUTEKI;
-                //色を緑にする
-                characterSprite.color = Color.green;
-            }*/
         }
 
         //デフォルト状態にする
@@ -204,7 +193,6 @@ public class PlayerCollider : MonoBehaviour
         SpineRenderer.material.color = Color.white;
         colliderSprite.color = Color.white;
         
-
         //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)
         isHit = false;
     }

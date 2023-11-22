@@ -55,8 +55,6 @@ public class Player : MonoBehaviour
     //使うかは知らん
     private IEnumerator coroutine;
  
-    //private Image[] pImage;
-
     public bool[] SkillAtkFlag
     {
         get { return this.skillAtkFlag; }
@@ -119,7 +117,6 @@ public class Player : MonoBehaviour
         if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
         {
             buttonPish = false;
-            //coroutine = SkillAtk();
             StartCoroutine(SkillAtk());
         }
         //バフスキル時
@@ -134,7 +131,7 @@ public class Player : MonoBehaviour
         }
         //移動用関数
         if (playerCollider.DeathFlag == false)
-        InputSystemMove();
+            InputSystemMove();
     }
 
     //WASD移動の入力取得
@@ -175,13 +172,12 @@ public class Player : MonoBehaviour
     {
         switch (context.phase)
         {
+            //ボタンが押されたらTrue・離されたらFalse
             case InputActionPhase.Performed:
-                // ボタンが押された時の処理
                 decelerationFlag = true;
                 break;
 
             case InputActionPhase.Canceled:
-                // ボタンが離された時の処理
                 decelerationFlag = false;
                 break;
         }

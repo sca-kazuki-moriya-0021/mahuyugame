@@ -39,7 +39,6 @@ public class TargetBullet : MonoBehaviour
                 else
                     transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
             }
-            
         }
         else if(target != null)
         {
@@ -84,7 +83,6 @@ public class TargetBullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Boss"))
         {
-           //Destroy(collision.gameObject);
             Destroy(this.gameObject);          
         }
 
@@ -103,5 +101,4 @@ public class TargetBullet : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
 }
