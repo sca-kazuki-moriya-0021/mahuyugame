@@ -9,7 +9,7 @@ public class TotalGM : MonoBehaviour
 {
     public static TotalGM instance;
 
-    //前回のタイムと今のタイム
+    //ハイスコアと今のスコア
     private float[] nowScore = new float[]{0,0,0};
     private float[] highScore = new float[] { 0, 0, 0 };
 
@@ -21,7 +21,10 @@ public class TotalGM : MonoBehaviour
     private bool[] playerSkill = new bool[]{false,false,false,false};
     private float[] skillCoolTimeCount = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
 
+    //ゲームオーバーになった回数
     private int gameOverCount = 0;
+    //裏面にいくかどうかのフラグ
+    private bool backSideFlag = false;
     
     private Vector2 playerTransform;
 
@@ -125,6 +128,12 @@ public class TotalGM : MonoBehaviour
     {
         get { return this.playerTransform; }
         set { this.playerTransform = value; }
+    }
+
+    public bool BackSideFlag
+    {
+        get { return this.backSideFlag; }
+        set { this.backSideFlag = value; }
     }
 
 

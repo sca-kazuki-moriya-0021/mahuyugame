@@ -63,6 +63,14 @@ public class TransferStage : MonoBehaviour
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
+        var scene = totalGM.MyGetScene();
+        if(scene == TotalGM.StageCon.Clear)
+        {
+            if(totalGM.BackSideFlag == false)
+                totalGM.BackSideFlag = true;
+            else
+                totalGM.BackSideFlag = false;
+        }
         audioSource.PlayOneShot(soundE);
         SceneManager.LoadScene("SkillSelect", LoadSceneMode.Single);
     }
@@ -126,6 +134,8 @@ public class TransferStage : MonoBehaviour
         audioSource.PlayOneShot(SE);
         SceneManager.LoadScene("Stage", LoadSceneMode.Single);
     }*/
+
+    //パネル操作
     public void Opetrue()
     {
         if (Panel.activeSelf)
