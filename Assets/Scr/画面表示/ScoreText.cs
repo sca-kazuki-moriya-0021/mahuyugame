@@ -25,6 +25,7 @@ public class ScoreText : MonoBehaviour
     void Start()
     {
         stage = gm.MyGetScene();
+        scoreText.text = 0.ToString();
     }
 
     // Update is called once per frame
@@ -53,6 +54,7 @@ public class ScoreText : MonoBehaviour
 
     private void ScoreCount(int i)
     {
-        gm.NowScore[i] = gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
+        gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
+        scoreText.text = gm.NowScore[i].ToString();
     }
 }

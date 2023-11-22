@@ -1055,7 +1055,7 @@ RectTransform:
   m_Children:
   - {fileID: 2097316891}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8490,7 +8490,7 @@ GameObject:
   - component: {fileID: 801320674214070807}
   - component: {fileID: 801320674214070806}
   m_Layer: 5
-  m_Name: ScoreDisplay
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8629,24 +8629,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &801320674494119506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801320674494119512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ad8ad0842be9546af38856cc81e3a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 801320674214070806}
-  gm: {fileID: 0}
-  stage: 0
-  bossDidFlag: 0
-  time: 0
-  minute: 0
 --- !u!1 &801320674494119512
 GameObject:
   m_ObjectHideFlags: 0
@@ -8660,7 +8642,7 @@ GameObject:
   - component: {fileID: 801320674494119518}
   - component: {fileID: 801320674494119513}
   - component: {fileID: 801320674494119517}
-  - component: {fileID: 801320674494119506}
+  - component: {fileID: 801320674494119514}
   m_Layer: 5
   m_Name: Stock&ScoreDisplay
   m_TagString: Untagged
@@ -8685,6 +8667,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &801320674494119514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801320674494119512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aff2403f4c7cc64bb23244d839089af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 801320674214070806}
 --- !u!224 &801320674494119516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8699,7 +8694,7 @@ RectTransform:
   - {fileID: 801320673324189967}
   - {fileID: 801320674214070794}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8860,7 +8855,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!198 &2151932369058080605
 ParticleSystem:
