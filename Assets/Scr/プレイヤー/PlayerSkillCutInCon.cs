@@ -20,30 +20,37 @@ public class PlayerSkillCutInCon : MonoBehaviour
     [SerializeField,Header("スキルカットインのアニメーション")]
     private Animator[] skillAnimator;
 
+    [SerializeField]
     private Canvas myCanvas;
 
     private bool cutInFlag;
 
-    private float time;
+    private float time = 0;
+
+    public bool CutInFlag
+    {
+        get { return this.cutInFlag; }
+        set { this.cutInFlag = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        myCanvas = this.GetComponent<Canvas>();
-
         myCanvas.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cutInFlag == true)
+
+        if (cutInFlag == true)
         {
             time += Time.unscaledDeltaTime;
-            if (time >= 2f)
+            if (time >= 3f)
             {
                 time = 0;
                 Time.timeScale = 1f;
+                cutInFlag = false;
                 myCanvas.enabled = false;
             }
         }
@@ -53,11 +60,10 @@ public class PlayerSkillCutInCon : MonoBehaviour
     {
        for(int x = 0; x < skillAnimator.Length; x++)
        {
-           skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
-           //Debug.Log(skillAnimator[x].updateMode);
+            skillAnimator[x].Rebind();
+            skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
        }
        myCanvas.enabled = true;
-       time = 0;
        Time.timeScale = 0f;
        getImage.sprite = skillSprites[i];
        getText.text = texts[i];

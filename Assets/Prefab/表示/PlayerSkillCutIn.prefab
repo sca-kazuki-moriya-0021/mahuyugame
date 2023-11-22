@@ -323,3 +323,4 @@ MonoBehaviour:
   skillAnimator:
   - {fileID: 8664024405420620161}
   - {fileID: 2474744355676886498}
+  myCanvas: {fileID: 6791071093662665578}
