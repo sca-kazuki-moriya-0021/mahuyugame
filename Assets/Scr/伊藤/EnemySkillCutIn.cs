@@ -24,7 +24,7 @@ public class EnemySkillCutIn : MonoBehaviour
 
     private bool cutInFlagEnemy;
 
-    private float time;
+    private float time = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +54,10 @@ public class EnemySkillCutIn : MonoBehaviour
     {
         for(int x = 0; x < EnemyskillAnimator.Length; x++)
         {
-            Debug.Log("ƒXƒLƒ‹”­“®");
+            EnemyskillAnimator[x].Rebind();
             EnemyskillAnimator[x].updateMode=AnimatorUpdateMode.UnscaledTime;
         }
         EnemyCanvas.enabled=true;
-        time=0;
         Time.timeScale=0f;
         getImage.sprite=EnemyskillSprites[i];
         getEnemyText.text=Enemytexts[i];
