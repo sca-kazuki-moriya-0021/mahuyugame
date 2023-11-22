@@ -1685,6 +1685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u30DC\u30B9(\u4EEE)"
       objectReference: {fileID: 0}
+    - target: {fileID: 734082111278169932, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 840336711944478174, guid: d49c5c88c35cdd645a68d4fb051ee9a0, type: 3}
       propertyPath: attackSpeed
       value: 1
