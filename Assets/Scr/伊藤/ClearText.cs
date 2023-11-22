@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class ClearText : MonoBehaviour
 {
     [SerializeField]
-    private Text[] nowTime;
+    private Text[] nowScoreText;
     [SerializeField]
-    private Text[] bestTime;
+    private Text[] highScoreText;
     private TotalGM gm;
-    private float minute;
 
     private void Awake()
     {
@@ -19,22 +18,12 @@ public class ClearText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < nowTime.Length; i++)
+        for(int i = 0; i < nowScoreText.Length; i++)
         {
-           var m = gm.NowTime[i] % 60;
-           minute = (gm.NowTime[i] - m) /60;
-           nowTime[i].text=minute.ToString("00")+":"+m.ToString("00");
-            if (gm.NowTime[i] < gm.LastTime[i])
-            {
-                gm.LastTime[i]=gm.NowTime[i];
-                bestTime[i].text=nowTime[i].text;
-            }
-            else
-            {
-                var mg = gm.LastTime[i] % 60;
-                minute = (gm.LastTime[i] - mg) / 60;
-                bestTime[i].text = minute.ToString("00") + ":" + mg.ToString("00");
-            }
+            nowScoreText[i].text = gm.NowScore[i].ToString();
+            if (gm.NowScore[i] > gm.HighScore[i])
+                gm.HighScore[i] = gm.NowScore[i];
+            highScoreText[i].text=gm.HighScore[i].ToString();
         }
     }
 

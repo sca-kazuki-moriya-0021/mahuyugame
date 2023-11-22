@@ -4,56 +4,55 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour
+
+public class ScoreText : MonoBehaviour
 {
+
     [SerializeField]
     private TMP_Text scoreText;
-
-    private float score;
-
-
-    private float time;
+    private float baseScore = 1000;
+    private float time = 0;
 
     private TotalGM gm;
     private TotalGM.StageCon stage;
 
-    private bool bossDidFlag = false;
+    private void Awake()
+    {
+        gm = FindObjectOfType<TotalGM>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        gm = FindObjectOfType<TotalGM>();
-
         stage = gm.MyGetScene();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (bossDidFlag == false)
+        time += Time.deltaTime;
+        if(time > 1)
         {
-            time += Time.deltaTime;
-            if (time > 60)
-            {
-                time = 0;
-            }
-            scoreText.text = score.ToString();
-
             switch (stage)
             {
                 case TotalGM.StageCon.First:
-                    gm.NowTime[0] += Time.deltaTime;
+                    ScoreCount(0);
                     break;
 
                 case TotalGM.StageCon.Secound:
-                    gm.NowTime[1] += Time.deltaTime;
+                    ScoreCount(1);
                     break;
 
                 case TotalGM.StageCon.Thead:
-                    gm.NowTime[2] += Time.deltaTime;
+                    ScoreCount(2);
                     break;
             }
+            time = 0;
         }
+    }
+
+    private void ScoreCount(int i)
+    {
+        gm.NowScore[i] = gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
     }
 }

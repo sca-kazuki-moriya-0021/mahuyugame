@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7853689368166345402}
   - component: {fileID: 1470588519572379760}
   - component: {fileID: 925958433749980561}
+  - component: {fileID: 805842501267606537}
   m_Layer: 5
-  m_Name: ClearTime
+  m_Name: ScoreDisPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +106,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &805842501267606537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912362217439208145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c94a37d60252f242bae7e6574cb72bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowScoreText:
+  - {fileID: 3146103730184636278}
+  - {fileID: 3372710778442956914}
+  - {fileID: 4506762595650427501}
+  highScoreText:
+  - {fileID: 6961048887120061013}
+  - {fileID: 8635480641898132167}
+  - {fileID: 6757313329429125342}
 --- !u!1 &2521689874027175741
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +138,7 @@ GameObject:
   - component: {fileID: 2918490213526164088}
   - component: {fileID: 3372710778442956914}
   m_Layer: 5
-  m_Name: nowTime3
+  m_Name: NowScore2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -528.5, y: 154}
+  m_AnchoredPosition: {x: -528.5, y: -30.299988}
   m_SizeDelta: {x: 250, y: 60.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2918490213526164088
@@ -196,7 +217,7 @@ GameObject:
   - component: {fileID: 1976722470199484537}
   - component: {fileID: 8635480641898132167}
   m_Layer: 5
-  m_Name: bestTime1
+  m_Name: HighScore2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -528.5, y: 154}
+  m_AnchoredPosition: {x: -6.4, y: -30.3}
   m_SizeDelta: {x: 250, y: 60.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1976722470199484537
@@ -275,7 +296,7 @@ GameObject:
   - component: {fileID: 8072362197662276055}
   - component: {fileID: 6961048887120061013}
   m_Layer: 5
-  m_Name: nowTime2
+  m_Name: HighScore1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +375,7 @@ GameObject:
   - component: {fileID: 8396635197370006752}
   - component: {fileID: 6757313329429125342}
   m_Layer: 5
-  m_Name: bestTime3
+  m_Name: HighScore3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,7 +397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -528.5, y: 154}
+  m_AnchoredPosition: {x: 0, y: -208}
   m_SizeDelta: {x: 250, y: 60.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8396635197370006752
@@ -433,7 +454,7 @@ GameObject:
   - component: {fileID: 4146604388269318450}
   - component: {fileID: 3146103730184636278}
   m_Layer: 5
-  m_Name: nowTime1
+  m_Name: NowScore1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +533,7 @@ GameObject:
   - component: {fileID: 6262720022427237074}
   - component: {fileID: 4506762595650427501}
   m_Layer: 5
-  m_Name: bestTime2
+  m_Name: NowScore3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -528.5, y: 154}
+  m_AnchoredPosition: {x: -528.5, y: -208}
   m_SizeDelta: {x: 250, y: 60.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6262720022427237074

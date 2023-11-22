@@ -10,8 +10,8 @@ public class TotalGM : MonoBehaviour
     public static TotalGM instance;
 
     //前回のタイムと今のタイム
-    private float[] nowTime = new float[]{0,0,0};
-    private float[] lastTime = new float[] { 0, 0, 0 };
+    private float[] nowScore = new float[]{0,0,0};
+    private float[] highScore = new float[] { 0, 0, 0 };
 
     //プレイヤー引継ぎ用
     //スキルはいらない可能性あるけど一応
@@ -20,6 +20,8 @@ public class TotalGM : MonoBehaviour
     private bool[] playerWeapon = {false,false,false,false}; 
     private bool[] playerSkill = new bool[]{false,false,false,false};
     private float[] skillCoolTimeCount = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
+
+    private int gameOverCount = 0;
     
     private Vector2 playerTransform;
 
@@ -103,14 +105,20 @@ public class TotalGM : MonoBehaviour
         set { this.playerWeapon = value; }
     }
 
-    public float[] NowTime {
-        get { return this.nowTime; }
-        set { this.nowTime = value; }
+    public float[] NowScore {
+        get { return this.nowScore; }
+        set { this.nowScore = value; }
     }
 
-    public float[] LastTime {
-        get { return this.lastTime; }
-        set { this.lastTime = value; }
+    public float[] HighScore{
+        get { return this.highScore; }
+        set { this.highScore = value; }
+    }
+
+    public int GameOverCount
+    {
+        get { return this.gameOverCount; }
+        set { this.gameOverCount = value; }
     }
 
     public Vector2 PlayerTransForm
@@ -118,6 +126,7 @@ public class TotalGM : MonoBehaviour
         get { return this.playerTransform; }
         set { this.playerTransform = value; }
     }
+
 
     #endregion
 

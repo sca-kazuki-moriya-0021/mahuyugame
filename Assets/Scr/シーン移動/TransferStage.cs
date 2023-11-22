@@ -91,20 +91,19 @@ public class TransferStage : MonoBehaviour
         switch (scene)
         {
             case TotalGM.StageCon.First:
-                totalGM.NowTime[0] = 0;
+                totalGM.NowScore[0] = 0;
                 break;
 
             case TotalGM.StageCon.Secound:
-                totalGM.NowTime[1] += 0;
+                totalGM.NowScore[1] = 0;
                 break;
 
             case TotalGM.StageCon.Thead:
-                totalGM.NowTime[2] += 0;
+                totalGM.NowScore[2] = 0;
                 break;
         }
+        totalGM.GameOverCount++;
         totalGM.ReloadClearScene();
-       
-
     }
 
     //ƒNƒŠƒA‰æ–Ê‚É‚¢‚­Žž

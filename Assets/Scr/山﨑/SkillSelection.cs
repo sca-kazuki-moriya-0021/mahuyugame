@@ -206,6 +206,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.SkillCoolTimeCount[i] = 0;
         }
 
+        totalGM.GameOverCount = 0;
         totalGM.BackScene = TotalGM.StageCon.No;
 
 
