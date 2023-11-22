@@ -241,7 +241,6 @@ public class Player : MonoBehaviour
                     switch (i)
                     {
                         case 0 when areaManager.BossActiveFlag == true:
-                            Debug.Log("É{ÉXî≠å©");
                             skillCutinCon.PlayerCutInDisplay(i);
                             bossMoveStopFlag = true;
                         break;
