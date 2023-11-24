@@ -23,11 +23,12 @@ public class TestBullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        time += Time.deltaTime; 
         //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
         if(player.PBaffSkillFlag == true)
-            transform.Translate(Vector3.right * Time.deltaTime * 3.0f);
+            transform.Translate(Vector3.right * Time.deltaTime * 7.0f * time);
         else
-            transform.Translate(Vector3.right * Time.deltaTime * 1.5f);
+            transform.Translate(Vector3.right * Time.deltaTime * 5.0f * time);
     }
 
     void OnBecameInvisible()

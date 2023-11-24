@@ -15,6 +15,9 @@ public class LaserBullet : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
+    //•Ç‚Æ‚½‚Ü‚É“–‚½‚Á‚½‰ñ”
+    private int count = 0;
+
     public float Velocity { get => velocity; set => velocity = value; }
     public Vector3 Angle { get => angle; set => angle = value; }
 
@@ -33,6 +36,8 @@ public class LaserBullet : MonoBehaviour
     void Update()
     {
        lastVelocity = rb2d.velocity;
+        if(count >= 2)
+            Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +49,7 @@ public class LaserBullet : MonoBehaviour
             refrect.z = 0;
             rb2d.velocity = refrect;
             lastVelocity = Vector3.zero;
+            count ++;
         }
 
         if (collision.gameObject.CompareTag("DestroyBullet"))

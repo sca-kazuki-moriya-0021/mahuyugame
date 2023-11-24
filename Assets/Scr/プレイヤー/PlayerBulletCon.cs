@@ -53,7 +53,6 @@ public class PlayerBulletCon : MonoBehaviour
         {
            Transform childTransform = this.gameObject.transform.GetChild(i);
            bulletChilds[i] = childTransform.gameObject;
-           //Debug.Log(bulletChilds[i]);
         }
 
         //Šp“x‚ðƒ‰ƒWƒAƒ“‚É•ÏŠ·
@@ -62,7 +61,7 @@ public class PlayerBulletCon : MonoBehaviour
             laserAngle[i] = laserAngle[i] * Mathf.Deg2Rad;
         }
 
-        gm.PlayerWeapon[1] =true;
+        gm.PlayerWeapon[0] =true;
     }
 
     // Update is called once per frame
@@ -72,7 +71,7 @@ public class PlayerBulletCon : MonoBehaviour
         if (player.PBaffSkillFlag == true)
             time += 0.0001f;
 
-        if(time > (1 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
+        if(time > (0.5 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
         {
             if (gm.PlayerWeapon[0] == true)
             {
