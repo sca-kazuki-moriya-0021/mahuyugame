@@ -7,18 +7,19 @@ using UnityEngine.SceneManagement;
 
 public class NowLoading : MonoBehaviour
 {
-    [SerializeField]private Image backGround;
+    [SerializeField]
+    private Sprite sprite;
+    private Image backGround;
     private TotalGM totalGM;
     // Start is called before the first frame update
 
-
-
     void Start()
     {
+        backGround = GetComponent<Image>();
+        backGround.sprite = sprite;
         //”O‚Ì‚½‚ß
         backGround.enabled = false;
-        totalGM = FindObjectOfType<TotalGM>();
-        //Loading();
+        totalGM = FindObjectOfType<TotalGM>();;
         FadeOut();
     }
 
@@ -27,10 +28,11 @@ public class NowLoading : MonoBehaviour
     {
         
     }
+
     public void  FadeIn()
     {
         backGround.enabled=true;
-        backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
+        backGround.material.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
         { 
             var scene = totalGM.MyGetScene();
             switch (scene)
@@ -48,9 +50,10 @@ public class NowLoading : MonoBehaviour
             
         });
     }
+
     private void FadeOut()
     {
-        backGround.DOFade(0f, 2.0f).SetEase(Ease.Linear);
+        backGround.material.DOFade(0f, 2.0f).SetEase(Ease.Linear);
     }
     
 }
