@@ -69,11 +69,10 @@ public class PlayerBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        //Debug.Log(time);
         if (player.PBaffSkillFlag == true)
-            time += 0.01f;
+            time += 0.0001f;
 
-        if(time > (4 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
+        if(time > (1 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
         {
             if (gm.PlayerWeapon[0] == true)
             {
