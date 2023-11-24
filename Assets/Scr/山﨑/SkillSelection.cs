@@ -201,6 +201,11 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[i] = false;
         }
 
+        for(int i = 0; i < totalGM.NowScore.Length; i++)
+        {
+            totalGM.NowScore[i] = 0;
+        }
+
         for(int i = 0; i < totalGM.SkillCoolTimeCount.Length; i++)
         {
             totalGM.SkillCoolTimeCount[i] = 0;
@@ -208,7 +213,5 @@ public class SkillSelection : MonoBehaviour
 
         totalGM.GameOverCount = 0;
         totalGM.BackScene = TotalGM.StageCon.No;
-
-
     }
 }

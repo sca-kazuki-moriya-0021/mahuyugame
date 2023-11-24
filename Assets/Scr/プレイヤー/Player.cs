@@ -132,6 +132,8 @@ public class Player : MonoBehaviour
         //ˆÚ“®—pŠÖ”
         if (playerCollider.DeathFlag == false)
             InputSystemMove();
+        else if(playerCollider.DeathFlag == true)
+            rb.velocity =  Vector3.zero;
     }
 
     //WASDˆÚ“®‚Ì“ü—Íæ“¾

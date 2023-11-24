@@ -64,11 +64,12 @@ public class TransferStage : MonoBehaviour
     public void SkillSelect()
     {
         var scene = totalGM.MyGetScene();
+        //ƒNƒŠƒA‰æ–Ê‚Å— –Ê‚É‚¢‚­‚©‚Ç‚¤‚©‚Ìif•¶
         if(scene == TotalGM.StageCon.Clear)
         {
-            if(totalGM.BackSideFlag == false)
+            if(totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
                 totalGM.BackSideFlag = true;
-            else
+            else if(totalGM.BackSideFlag == true || totalGM.GameOverCount > 0)
                 totalGM.BackSideFlag = false;
         }
         audioSource.PlayOneShot(soundE);
