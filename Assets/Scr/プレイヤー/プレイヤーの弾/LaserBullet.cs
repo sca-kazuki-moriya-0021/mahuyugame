@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserBullet : MonoBehaviour
 {
     private int power =1;
+    //エフェクト部分が消えたかどうか
     private bool laser;
 
     private float velocity;
@@ -29,20 +30,20 @@ public class LaserBullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Debug.Log(rb2d.velocity);
        lastVelocity = rb2d.velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("OutLine"))
+        if (collision.gameObject.CompareTag("OutLine") || collision.gameObject.CompareTag("PlayerBullet"))
         {
             Vector3 normal = collision.contacts[0].normal;
             Vector3 refrect = Vector3.Reflect(lastVelocity,normal);
             refrect.z = 0;
             rb2d.velocity = refrect;
+            lastVelocity = Vector3.zero;
         }
 
         if (collision.gameObject.CompareTag("DestroyBullet"))

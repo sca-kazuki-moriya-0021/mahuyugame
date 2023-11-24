@@ -1276,6 +1276,22 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 6791071093662665575, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
   m_PrefabInstance: {fileID: 1700800260}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1998555738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3671980639654199104, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 6399580715785480552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &1998555739 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7109463590719251207, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 6399580715785480552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307294850873513039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1403,18 @@ PrefabInstance:
       propertyPath: boomerangPoint
       value: 
       objectReference: {fileID: 500508771}
+    - target: {fileID: 6399580715127631710, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: laserAngle.Array.data[2]
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: SpineRenderer
+      value: 
+      objectReference: {fileID: 1998555739}
+    - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: skeletonAnimation
+      value: 
+      objectReference: {fileID: 1998555738}
     - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: screenWithin
       value: 
