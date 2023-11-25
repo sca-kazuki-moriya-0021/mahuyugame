@@ -238,29 +238,26 @@ public class Player : MonoBehaviour
                 {
                     switch (i)
                     {
-                        case 0 when areaManager.BossActiveFlag == true:
+                        case 0:
                             skillCutinCon.PlayerCutInDisplay(i);
                             bossMoveStopFlag = true;
-                        break;
+                            break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);
                             bulletSeverFlag = true;
                             yield return new WaitForSeconds(1f);
                             bulletSeverFlag = false;
-                        break;
-                        case 2 when areaManager.BossActiveFlag == true:
+                            break;
+                        case 2:
                             skillCutinCon.PlayerCutInDisplay(i);
                             debuffSkillFlag = true;
-                        break;
-                        case 0 when areaManager.BossActiveFlag == false:
-                        case 2 when areaManager.BossActiveFlag == false:
-                            skillAtkFlag[0] = false;
-                        goto endLeep;
+                            break;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[0] = true;
                     break;
                 }
+               
             }
         }
         else
@@ -275,20 +272,17 @@ public class Player : MonoBehaviour
                         case 3:
                             skillCutinCon.PlayerCutInDisplay(i);
                             pBaffSkillFlag = true;
-                        break;
-                        case 2 when areaManager.BossActiveFlag == true:
+                            break;
+                        case 2:
                             skillCutinCon.PlayerCutInDisplay(i);
                             debuffSkillFlag = true;
-                        break;
-                        case 2 when areaManager.BossActiveFlag == false:
-                            SkillAtkFlag[1] = false;
-                        goto endLeep;
+                            break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);
                             bulletSeverFlag = true;
                             yield return new WaitForSeconds(1f);
                             bulletSeverFlag = false;
-                        break;
+                            break;
                     }
                     yield return new WaitForSeconds(3.0f);
                     skillDisplay.SkillCoolFlag[1] = true;
@@ -296,8 +290,28 @@ public class Player : MonoBehaviour
                 }
             }
         }
-       endLeep:
-
        StopCoroutine(SkillAtk());
     }
+
+
+    /*private void SkillSelect(int i)
+    {
+            switch (i)
+            {
+                case 0:
+                    skillCutinCon.PlayerCutInDisplay(i);
+                    bossMoveStopFlag = true;
+                    break;
+                case 1:
+                    skillCutinCon.PlayerCutInDisplay(i);
+                    bulletSeverFlag = true;
+                    yield return new WaitForSeconds(1f);
+                    bulletSeverFlag = false;
+                    break;
+                case 2:
+                    skillCutinCon.PlayerCutInDisplay(i);
+                    debuffSkillFlag = true;
+                    break;
+            }
+    }*/
 }

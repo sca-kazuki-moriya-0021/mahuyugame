@@ -44,8 +44,6 @@ public class BossMove : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         areaManager = FindObjectOfType<AreaManager>();
-        areaManager.BossPhaseFlag = true;
-        areaManager.BossActiveFlag = true;
     }
 
     void Update()

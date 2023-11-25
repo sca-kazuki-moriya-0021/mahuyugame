@@ -14,17 +14,13 @@ public class SnowEffectCon : MonoBehaviour
     void Start()
     {
         areaManager = FindObjectOfType<AreaManager>();
+        var main = particleSystem.main;
+        main.simulationSpeed = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(areaManager.BossActiveFlag == true)
-        {
-            var main = particleSystem.main;
-            main.simulationSpeed = 3;
-        }
+
     }
-
-
 }
