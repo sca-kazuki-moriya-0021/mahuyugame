@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54843875}
+  - component: {fileID: 54843876}
   m_Layer: 0
   m_Name: AmaLauncher
   m_TagString: Untagged
@@ -147,12 +148,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54843874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5454857, y: 0.036831293, z: -9.637958}
+  m_LocalPosition: {x: -7.14, y: -0.25, z: -9.637958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &54843876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54843874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed097a689e6c3e469b21ebce8e94c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmaBullet: {fileID: 763852955531077982, guid: e704887c2ceaa9a408370c2fd2c88c90, type: 3}
+  numberOfAma: 5
+  spawnInterval: 3
+  spawnHeightMin: -5
+  spawnHeightMax: 5
 --- !u!1001 &96642109
 PrefabInstance:
   m_ObjectHideFlags: 0
