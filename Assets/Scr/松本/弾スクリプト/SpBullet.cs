@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpBullet : MonoBehaviour
 {
+
     public float bulletSpeed = 5f;  // ’e‚Ì‘¬‚³
     public float angularSpeed = 2f;  // Šp‘¬“x
     public float radiusIncrement = 0.1f;  // —†ù‚Ì”¼Œa‚Ì‘‰Á—Ê
