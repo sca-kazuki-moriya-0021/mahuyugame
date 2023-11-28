@@ -7,6 +7,7 @@ using Spine;
 public class PlayerCollider : MonoBehaviour
 {
     private TotalGM gm;
+    private NowLoading nowLoading;
 
     //STATE型の変数
     STATE state;
@@ -53,6 +54,7 @@ public class PlayerCollider : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
+        nowLoading = FindObjectOfType<NowLoading>();
         collider2D = GetComponent<CircleCollider2D>();
         colliderSprite = GetComponent<SpriteRenderer>();
 
@@ -67,6 +69,11 @@ public class PlayerCollider : MonoBehaviour
         }
         if(gm.BackScene != scene || gm.BackScene == TotalGM.StageCon.No)
         {
+            //体力0のまま、次ステージに移行したら体力1回復する
+            if(gm.PlayerHp[0] == 0)
+            {
+                gm.PlayerHp[0]++;
+            }
             gm.PlayerHp[1] = gm.PlayerHp[0];
             gm.PlayerLevel[1] = gm.PlayerLevel[0];
         }
@@ -75,14 +82,13 @@ public class PlayerCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // ステートがダメージならリターン
         if (state == STATE.DAMAGED)
         {
             return;
         }
 
-        if (gm.PlayerHp[0] <= 0 && deathFlag == false)
+        if (gm.PlayerHp[0] <= 0 && deathFlag == false && nowLoading.FadeInFlag == false)
         {
             deathFlag = true;
             StartCoroutine(PlayerDeath());

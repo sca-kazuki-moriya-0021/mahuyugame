@@ -31,6 +31,7 @@ public class BossMove : MonoBehaviour
     //ÉvÉåÉCÉÑÅ[éÊìæ
     private Player player;
     private AreaManager areaManager;
+    private NowLoading nowLoading;
 
     public bool BossAttack1
     {
@@ -47,6 +48,7 @@ public class BossMove : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         areaManager = FindObjectOfType<AreaManager>();
+        nowLoading = FindObjectOfType<NowLoading>();
     }
 
     void Update()
@@ -171,6 +173,7 @@ public class BossMove : MonoBehaviour
             yield return null;
         }
         Destroy(this.gameObject);
+        nowLoading.FadeIn();
         yield return new WaitForSeconds(1f);
         StopCoroutine(DropItemInstance());
     }

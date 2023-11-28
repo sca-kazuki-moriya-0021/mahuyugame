@@ -16,8 +16,13 @@ public class ScoreText : MonoBehaviour
     private TotalGM gm;
     private TotalGM.StageCon stage;
 
+    private PlayerCollider playerCollider;
+    private NowLoading nowLoading;
+
     private void Awake()
     {
+        playerCollider =FindObjectOfType<PlayerCollider>();
+        nowLoading = FindObjectOfType<NowLoading>();
         gm = FindObjectOfType<TotalGM>();
     }
 
@@ -54,7 +59,11 @@ public class ScoreText : MonoBehaviour
 
     private void ScoreCount(int i)
     {
-        gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
-        scoreText.text = gm.NowScore[i].ToString();
+        if(playerCollider.DeathFlag == false && nowLoading.FadeInFlag == false)
+        {
+            gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
+            scoreText.text = gm.NowScore[i].ToString();
+        }
+       
     }
 }
