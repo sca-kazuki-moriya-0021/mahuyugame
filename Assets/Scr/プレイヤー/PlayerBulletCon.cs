@@ -61,7 +61,7 @@ public class PlayerBulletCon : MonoBehaviour
             laserAngle[i] = laserAngle[i] * Mathf.Deg2Rad;
         }
 
-        gm.PlayerWeapon[0] =true;
+        gm.PlayerWeapon[2] =true;
     }
 
     // Update is called once per frame
