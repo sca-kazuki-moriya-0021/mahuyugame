@@ -24,6 +24,9 @@ public class BossMove : MonoBehaviour
 
     [SerializeField]
     private float hp;
+    //自分が撃破された時にドロップするアイテム
+    [SerializeField]
+    private GameObject dropItem;
 
     //プレイヤー取得
     private Player player;
@@ -151,11 +154,24 @@ public class BossMove : MonoBehaviour
     {
         if (hp <= 0)
         {
+            StartCoroutine(DropItemInstance());
             Destroy(this.gameObject);
         }
         if (debuffFlag == true)
             hp -= 2;
         else
             hp--;
+    }
+
+    //アイテムドロップ
+    private IEnumerator DropItemInstance()
+    {
+        for(int i = 0;i < 10; i++)
+        {
+            Instantiate(dropItem,transform.position,Quaternion.identity);
+            yield return null;
+        }
+
+        StopCoroutine(DropItemInstance());
     }
 }

@@ -18,6 +18,7 @@ TagManager:
   - OutLine
   - Enemy
   - Boss
+  - ScoreAdditionItem
   layers:
   - Default
   - TransparentFX

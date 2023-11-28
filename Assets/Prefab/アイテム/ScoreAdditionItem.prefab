@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5140409669143678579}
   - component: {fileID: 5140409669143678582}
   - component: {fileID: 5140409669143678581}
+  - component: {fileID: 4551355887357236817}
   m_Layer: 0
-  m_Name: BaffItem
-  m_TagString: BaffItem
+  m_Name: ScoreAdditionItem
+  m_TagString: ScoreAdditionItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,3 +132,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4551355887357236817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140409669143678578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b71b03eeaed73246aa9c4e6a96e2415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -106,10 +106,22 @@ public class PlayerCollider : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("BaffItem"))
+        if (collision.gameObject.CompareTag("ScoreAdditionItem"))
         {
             collision.gameObject.SetActive(false);
-            gm.PlayerLevel[0]++;
+            var scene = gm.MyGetScene();
+            switch (scene)
+            {
+                case TotalGM.StageCon.First:
+                    gm.NowScore[0] += 5000;
+                    break;
+                case TotalGM.StageCon.Secound:
+                    gm.NowScore[1] += 5000;
+                    break;
+                case TotalGM.StageCon.Thead:
+                    gm.NowScore[2] += 5000;
+                    break;
+            }
         }
 
         if (collision.gameObject.CompareTag("WeaponSwitchItem0"))
