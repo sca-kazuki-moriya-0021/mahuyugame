@@ -155,7 +155,6 @@ public class BossMove : MonoBehaviour
         if (hp <= 0)
         {
             StartCoroutine(DropItemInstance());
-            Destroy(this.gameObject);
         }
         if (debuffFlag == true)
             hp -= 2;
@@ -171,7 +170,8 @@ public class BossMove : MonoBehaviour
             Instantiate(dropItem,transform.position,Quaternion.identity);
             yield return null;
         }
-
+        Destroy(this.gameObject);
+        yield return new WaitForSeconds(1f);
         StopCoroutine(DropItemInstance());
     }
 }
