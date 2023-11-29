@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7109463590719251207}
   - component: {fileID: 3671980639654199104}
   - component: {fileID: 3683041826127162501}
+  - component: {fileID: 2569769375042720172}
   m_Layer: 8
   m_Name: Spine GameObject (syuzinko_SD_anime)
   m_TagString: Untagged
@@ -136,6 +137,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929350493499358213}
   m_CullTransparentMesh: 1
+--- !u!114 &2569769375042720172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929350493499358213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26947ae098a8447408d80c0c86e35b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonRenderer: {fileID: 3671980639654199104}
+  customSlotMaterials: []
+  customMaterialOverrides:
+  - overrideDisabled: 1
+    originalMaterial: {fileID: 2100000, guid: 6b9ec0ad3de3c27468349c9ab506c8f7, type: 2}
+    replacementMaterial: {fileID: 2100000, guid: 867ed471608b84947a7711f5785ce670, type: 2}
 --- !u!1 &959894519392879170
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,8 +549,8 @@ MonoBehaviour:
   flashInterval: 0.2
   loopCount: 2
   deathAnimation: taoreru
-  skeletonAnimation: {fileID: 0}
-  SpineRenderer: {fileID: 0}
+  skeletonAnimation: {fileID: 3671980639654199104}
+  spineRenderer: {fileID: 7109463590719251207}
 --- !u!1 &6399580715944071599
 GameObject:
   m_ObjectHideFlags: 0

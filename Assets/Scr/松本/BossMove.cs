@@ -22,6 +22,8 @@ public class BossMove : MonoBehaviour
     //private Vector3 startPos;
     private bool isMoving = true;
     private bool debuffFlag = false;
+    //死亡フラグ
+    private bool deathFlag = false;
 
     [SerializeField]
     private float hp;
@@ -72,8 +74,8 @@ public class BossMove : MonoBehaviour
         {
             Move();
         }
-        //プレイヤーの移動停止スキルが発動していなかった時は動く
-        if (player.BussMoveStopFlag == true)
+        //プレイヤーの移動停止スキルが発動していなかった時、死んでいなかった時は動く
+        if (player.BussMoveStopFlag == true || deathFlag == true)
         {
             StopMove();
         }
@@ -179,6 +181,7 @@ public class BossMove : MonoBehaviour
     //アイテムドロップ
     private IEnumerator DropItemInstance()
     {
+        deathFlag = true;
         for(int i = 0;i < 10; i++)
         {
             Instantiate(dropItem,transform.position,Quaternion.identity);
@@ -186,6 +189,7 @@ public class BossMove : MonoBehaviour
         }
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
+        deathFlag = false;
         Destroy(this.gameObject);
         nowLoading.FadeIn();
         StopCoroutine(DropItemInstance());

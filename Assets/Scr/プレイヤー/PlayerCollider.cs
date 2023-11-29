@@ -33,7 +33,7 @@ public class PlayerCollider : MonoBehaviour
 
     // 画像描画用のコンポーネント
     [SerializeField]
-    private MeshRenderer SpineRenderer;
+    private MeshRenderer spineRenderer;
     private SpriteRenderer colliderSprite;
 
     public bool DeathFlag
@@ -76,6 +76,7 @@ public class PlayerCollider : MonoBehaviour
             }
             gm.PlayerHp[1] = gm.PlayerHp[0];
         }
+        skeletonAnimation.timeScale = 3f;
     }
 
     // Update is called once per frame
@@ -92,7 +93,6 @@ public class PlayerCollider : MonoBehaviour
             deathFlag = true;
             StartCoroutine(PlayerDeath());
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -136,7 +136,7 @@ public class PlayerCollider : MonoBehaviour
         isHit = true;
         collider2D.enabled = false;
 
-        SpineRenderer.material.color = Color.black;
+        spineRenderer.material.color = Color.black;
         colliderSprite.color = Color.black;
         
         //点滅ループ開始
@@ -149,13 +149,13 @@ public class PlayerCollider : MonoBehaviour
             //flashInterval待ってから
             yield return new WaitForSeconds(flashInterval);
             //spriteRendererをオフ
-            SpineRenderer.enabled = false;
+            spineRenderer.enabled = false;
             colliderSprite.enabled = false;
 
             //flashInterval待ってから
             yield return new WaitForSeconds(flashInterval);
             //spriteRendererをオン
-            SpineRenderer.enabled = true;
+            spineRenderer.enabled = true;
             colliderSprite.enabled = true;
         }
 
@@ -164,7 +164,7 @@ public class PlayerCollider : MonoBehaviour
         //当たり判定をオンにする
         collider2D.enabled = true;
         //色を白にする
-        SpineRenderer.material.color = Color.white;
+        spineRenderer.material.color = Color.white;
         colliderSprite.color = Color.white;
         
         //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)
