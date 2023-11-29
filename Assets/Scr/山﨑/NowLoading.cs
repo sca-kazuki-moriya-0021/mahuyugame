@@ -13,18 +13,22 @@ public class NowLoading : MonoBehaviour
 
     private bool fadeInFlag = false;
 
+    private BossMove bossMove;
+
     public bool FadeInFlag
     {
         get { return this.fadeInFlag; }
-        set { this.fadeInFlag= value; }
+        set { this.fadeInFlag = value; }
     }
+
     // Start is called before the first frame update
 
     void Start()
     {
         //”O‚Ì‚½‚ß
         //backGround.enabled = false;
-        totalGM = FindObjectOfType<TotalGM>();;
+        bossMove = FindObjectOfType<BossMove>();
+        totalGM = FindObjectOfType<TotalGM>();
         FadeOut();
     }
 
@@ -34,12 +38,13 @@ public class NowLoading : MonoBehaviour
         
     }
 
-    public void  FadeIn()
+    public void FadeIn()
     {
         fadeInFlag = true;
         backGround.enabled=true;
         backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
         { 
+            bossMove.BossDeathFlag = false;
             var scene = totalGM.MyGetScene();
             switch (scene)
             {
@@ -62,7 +67,6 @@ public class NowLoading : MonoBehaviour
 
     private void FadeOut()
     {
-
         backGround.DOFade(endValue:0f,duration:1.0f);//.SetEase(Ease.Linear);
     }
     

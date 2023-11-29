@@ -23,7 +23,7 @@ public class BossMove : MonoBehaviour
     private bool isMoving = true;
     private bool debuffFlag = false;
     //死亡フラグ
-    private bool deathFlag = false;
+    private bool bossDeathFlag = false;
 
     [SerializeField]
     private float hp;
@@ -41,8 +41,15 @@ public class BossMove : MonoBehaviour
 
     //スクリプト取得
     private Player player;
+    private PlayerCollider playerCollider;
     private AreaManager areaManager;
     private NowLoading nowLoading;
+
+    public bool BossDeathFlag
+    {
+        get { return this.bossDeathFlag; }
+        set { this.bossDeathFlag = value; }
+    }
 
     public bool BossAttack1
     {
@@ -60,6 +67,7 @@ public class BossMove : MonoBehaviour
         player = FindObjectOfType<Player>();
         areaManager = FindObjectOfType<AreaManager>();
         nowLoading = FindObjectOfType<NowLoading>();
+        playerCollider = FindObjectOfType<PlayerCollider>();
 
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
@@ -75,7 +83,7 @@ public class BossMove : MonoBehaviour
             Move();
         }
         //プレイヤーの移動停止スキルが発動していなかった時、死んでいなかった時は動く
-        if (player.BussMoveStopFlag == true || deathFlag == true)
+        if (player.BussMoveStopFlag == true || bossDeathFlag == true)
         {
             StopMove();
         }
@@ -147,14 +155,20 @@ public class BossMove : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
+            //プレイヤーの体力が0じゃない時
+            if(playerCollider.DeathFlag == false)
             HitBullet();
         }
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
-            Debug.Log("デバフ入った");
             Destroy(collision.gameObject);
-            debuffFlag = true;
+            //上と同じ
+            if (playerCollider.DeathFlag == false)
+            {
+                debuffFlag = true;
+                Debug.Log("デバフ入った");
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -181,7 +195,7 @@ public class BossMove : MonoBehaviour
     //アイテムドロップ
     private IEnumerator DropItemInstance()
     {
-        deathFlag = true;
+        bossDeathFlag = true;
         for(int i = 0;i < 10; i++)
         {
             Instantiate(dropItem,transform.position,Quaternion.identity);
@@ -189,7 +203,6 @@ public class BossMove : MonoBehaviour
         }
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
-        deathFlag = false;
         Destroy(this.gameObject);
         nowLoading.FadeIn();
         StopCoroutine(DropItemInstance());

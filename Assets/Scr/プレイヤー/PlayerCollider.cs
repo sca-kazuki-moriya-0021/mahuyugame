@@ -7,7 +7,7 @@ using Spine;
 public class PlayerCollider : MonoBehaviour
 {
     private TotalGM gm;
-    private NowLoading nowLoading;
+    private BossMove bossMove;
 
     //STATE型の変数
     STATE state;
@@ -54,9 +54,9 @@ public class PlayerCollider : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
-        nowLoading = FindObjectOfType<NowLoading>();
         collider2D = GetComponent<CircleCollider2D>();
         colliderSprite = GetComponent<SpriteRenderer>();
+        bossMove = FindObjectOfType<BossMove>();
 
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
@@ -88,7 +88,7 @@ public class PlayerCollider : MonoBehaviour
             return;
         }
         //プレイヤーHpが0以下かつフェードインしてなかったら
-        if (gm.PlayerHp[0] <= 0 && deathFlag == false && nowLoading.FadeInFlag == false)
+        if (gm.PlayerHp[0] <= 0 && deathFlag == false && bossMove.BossDeathFlag == false)
         {
             deathFlag = true;
             StartCoroutine(PlayerDeath());
@@ -103,12 +103,14 @@ public class PlayerCollider : MonoBehaviour
             //collision.gameObject.CompareTag("DestoryBullet"))
         {
             Destroy(collision.gameObject);
-            
-            gm.PlayerHp[0]--;
-            if(gm.PlayerHp[0] > 0)
+            if(bossMove.BossDeathFlag == false)
             {
-                state = STATE.DAMAGED;
-                StartCoroutine(PlayerDameged());
+                gm.PlayerHp[0]--;
+                if (gm.PlayerHp[0] > 0)
+                {
+                    state = STATE.DAMAGED;
+                    StartCoroutine(PlayerDameged());
+                }
             }
         }
         //スコア加算アイテム取った時
@@ -174,6 +176,10 @@ public class PlayerCollider : MonoBehaviour
     //プレイヤーが死んだとき
     private IEnumerator PlayerDeath()
     {
+        if(bossMove.BossDeathFlag == true)
+        {
+            StopCoroutine(PlayerDeath());
+        }
         colliderSprite.enabled = false;
         gm.PlayerTransForm = transform.position;
         gm.BackScene = gm.MyGetScene();

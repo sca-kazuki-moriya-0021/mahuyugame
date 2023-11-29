@@ -22,8 +22,8 @@ public class ScoreText : MonoBehaviour
     private void Awake()
     {
         playerCollider =FindObjectOfType<PlayerCollider>();
-        nowLoading = FindObjectOfType<NowLoading>();
         gm = FindObjectOfType<TotalGM>();
+        nowLoading = FindObjectOfType<NowLoading>();
     }
 
     // Start is called before the first frame update
