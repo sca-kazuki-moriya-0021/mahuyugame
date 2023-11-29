@@ -16,7 +16,6 @@ public class TotalGM : MonoBehaviour
     //プレイヤー引継ぎ用
     //スキルはいらない可能性あるけど一応
     private int[] playerHp = new int[]{3,0};
-    private int[] playerLevel =new int[]{0,0};
     private bool[] playerWeapon = {false,false,false,false}; 
     private bool[] playerSkill = new bool[]{false,false,false,false};
     private float[] skillCoolTimeCount = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
@@ -25,7 +24,7 @@ public class TotalGM : MonoBehaviour
     private int gameOverCount = 0;
     //裏面にいくかどうかのフラグ
     private bool backSideFlag = false;
-    
+    //プレイヤーが死んだ時の座標取得
     private Vector2 playerTransform;
 
     #region//ステージ管理
@@ -84,11 +83,6 @@ public class TotalGM : MonoBehaviour
     public int[] PlayerHp {
         get { return this.playerHp; }
         set { this.playerHp = value; }
-    }
-
-    public int[] PlayerLevel {
-        get {return this.playerLevel; }
-        set {this.playerLevel = value; }
     }
 
     public float[] SkillCoolTimeCount

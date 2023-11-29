@@ -188,12 +188,8 @@ public class SkillSelection : MonoBehaviour
     //èâä˙âª
     private void PlayerReset()
     {
-
         totalGM.PlayerHp[0] = 3;
         totalGM.PlayerHp[1] = 0;
-
-        totalGM.PlayerLevel[0] = 0;
-        totalGM.PlayerLevel[1] = 0;
 
         for (int i = 0; i <= 3; i++)
         {

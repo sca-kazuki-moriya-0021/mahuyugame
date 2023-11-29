@@ -71,7 +71,7 @@ public class PlayerBulletCon : MonoBehaviour
         if (player.PBaffSkillFlag == true)
             time += 0.0001f;
 
-        if(time > (0.5 - gm.PlayerLevel[0]) && playerCollider.DeathFlag == false)
+        if(time > 0.5 && playerCollider.DeathFlag == false)
         {
             if (gm.PlayerWeapon[0] == true)
             {
