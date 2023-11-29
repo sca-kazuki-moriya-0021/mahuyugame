@@ -47,7 +47,7 @@ public class SkillSelection : MonoBehaviour
     
     void FixedUpdate()
     {
-        Debug.Log(ev.currentSelectedGameObject);
+        //Debug.Log(ev.currentSelectedGameObject);
         //選ばれているオブジェクトを格納している
        
         if (selectedObj == null)
@@ -66,7 +66,7 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_0_Click()
     {
-        if (skillSelect[0].activeSelf) { 
+        if (totalGM.PlayerSkill[0]) { 
             skillSelect[0].SetActive(false);
             skillCount--;
             totalGM.PlayerSkill[0] = false;
@@ -77,13 +77,14 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[0] = true;
         }
         GoStage();
+        //OneSkillCheck();
         Test();
         skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_1_Click()
     {
-        if (skillSelect[1].activeSelf)
+        if (totalGM.PlayerSkill[1])
         {
             skillSelect[1].SetActive(false);
             skillCount--;
@@ -95,13 +96,15 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[1] = true;
         }
-        GoStage(); Test();
+        GoStage();  
+        //OneSkillCheck(); 
+        Test();
         skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_2_Click()
     {
-        if (skillSelect[2].activeSelf)
+        if (totalGM.PlayerSkill[2])
         {
             skillSelect[2].SetActive(false);
             skillCount--;
@@ -113,13 +116,15 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[2] = true;
         }
-        GoStage(); Test();
+        GoStage();  
+        //OneSkillCheck(); 
+        Test();
         skillClip.ButtonPush = true;
     }
     //押されたときの処理
     public void Skill_3_Click()
     {
-        if (skillSelect[3].activeSelf)
+        if (totalGM.PlayerSkill[3])
         {
             skillSelect[3].SetActive(false);
             skillCount--;
@@ -131,8 +136,36 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[3] = true;
         }
-        GoStage(); Test();
+        GoStage();   
+        //OneSkillCheck(); 
+        Test(); //NoSkillCheck();
         skillClip.ButtonPush = true;
+    }
+
+    void NoSkillCheck()
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            if (!totalGM.PlayerSkill[i]&&skillCount==0)
+            {
+                skillSelect[i].SetActive(false);
+            }
+        }
+    }
+
+    void OneSkillCheck()
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            if (!totalGM.PlayerSkill[i])
+            {
+                skillSelect[i].SetActive(false);
+            }
+            else
+            {
+                skillSelect[i].SetActive(true);
+            }
+        }
     }
     //ステージに行くボタンの表示・非表示
     private void GoStage()
@@ -162,13 +195,31 @@ public class SkillSelection : MonoBehaviour
     {
         for (int i = 0; i <= 3; i++)
         {
-            if(!skillSelect[i].activeSelf&&skillCount==2)
+            if(!totalGM.PlayerSkill[i] && skillCount == 2)
             {
+                //Debug.Log(skillSelect[i]);
                 skill[i].enabled = false;
+                skillSelect[i].SetActive(true);
             }
-            else
+            else if(totalGM.PlayerSkill[i] && skillCount == 2)
             {
                 skill[i].enabled = true;//interactableにすると半透明化
+                skillSelect[i].SetActive(false);
+            }
+
+            if(!totalGM.PlayerSkill[i]&&skillCount==1)
+            {
+                //Debug.Log("スキル1ッコ");
+                skillSelect[i].SetActive(false);
+            }
+            else if(totalGM.PlayerSkill[i] && skillCount == 1)
+            {
+                skillSelect[i].SetActive(true);
+            }
+
+            if(skillCount==0)
+            {
+                skillSelect[i].SetActive(false);
             }
         }
     }
