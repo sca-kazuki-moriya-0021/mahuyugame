@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
         //移動用関数
         if (playerCollider.DeathFlag == false)
             InputSystemMove();
+        //ゲームオーバーになったら放物線を描いて落ちる
         else if(playerCollider.DeathFlag == true)
         {
             rb.velocity = Vector3.zero;
