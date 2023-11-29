@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    private float time;
     //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
     //スキル使った時に使用するフラグ
@@ -127,7 +128,15 @@ public class Player : MonoBehaviour
         if (playerCollider.DeathFlag == false)
             InputSystemMove();
         else if(playerCollider.DeathFlag == true)
-            rb.velocity =  Vector3.zero;
+        {
+            rb.velocity = Vector3.zero;
+            time += Time.deltaTime;
+            var endpos = new Vector3(transform.position.x - 5f ,transform.position.y - 10f);
+            var midpos = new Vector3(transform.position.x - 3f, transform.position.y - 5f);
+            Vector3 a = Vector3.Lerp(transform.position,midpos,time);
+            Vector3 b = Vector3.Lerp(midpos,endpos,time);
+            rb.velocity = Vector3.Lerp(a,b,time);
+        }
     }
 
     //WASD移動の入力取得
@@ -287,24 +296,4 @@ public class Player : MonoBehaviour
        StopCoroutine(SkillAtk());
     }
 
-    /*private void SkillSelect(int i)
-    {
-            switch (i)
-            {
-                case 0:
-                    skillCutinCon.PlayerCutInDisplay(i);
-                    bossMoveStopFlag = true;
-                    break;
-                case 1:
-                    skillCutinCon.PlayerCutInDisplay(i);
-                    bulletSeverFlag = true;
-                    yield return new WaitForSeconds(1f);
-                    bulletSeverFlag = false;
-                    break;
-                case 2:
-                    skillCutinCon.PlayerCutInDisplay(i);
-                    debuffSkillFlag = true;
-                    break;
-            }
-    }*/
 }
