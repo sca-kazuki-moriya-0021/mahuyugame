@@ -71,15 +71,18 @@ public class PlayerBulletCon : MonoBehaviour
         if (player.PBaffSkillFlag == true)
             time += 0.0001f;
 
+        //一定時間かつプレイヤーが死んでなかったら
         if(time > 0.5 && playerCollider.DeathFlag == false)
         {
+            //選択された0番目の弾を発射する
             if (gm.PlayerWeapon[0] == true)
             {
                 for (int i = 0; i < bulletChilds.Length; i++)
                 {
-                    Instantiate(bullets[0], bulletChilds[i].transform.position, Quaternion.identity);
+                    BulletInstans(0,i);
                 }
             }
+            //選択された1番目の弾を発射する
             else if (gm.PlayerWeapon[1] == true)
             {
                 for (int i = 0; i < laserAngle.Length; i++)
@@ -96,15 +99,16 @@ public class PlayerBulletCon : MonoBehaviour
                     bullet_sc.Angle = dir;
                 }
             }
-            else if(gm.PlayerWeapon[2] == true)
+            //選択された2番目の弾を発射する
+            else if (gm.PlayerWeapon[2] == true)
             {
                 for (int i = 0; i < bulletChilds.Length; i++)
                 {
-                    Instantiate(bullets[2], bulletChilds[i].transform.position, Quaternion.identity);
+                    BulletInstans(2,i);
                 }
             }
-
-            else if(gm.PlayerWeapon[3] == true)
+            //選択された3番目の弾を発射する
+            else if (gm.PlayerWeapon[3] == true)
             {
                 for (int i = 0; i < bulletChilds.Length; i++)
                 {
@@ -123,7 +127,7 @@ public class PlayerBulletCon : MonoBehaviour
             }
             time = 0;
         }
-
+        //スキル弾幕用
         if(player.DebuffSkillFlag == true)
         {
             int childCount = this.gameObject.transform.childCount - 1;
@@ -133,5 +137,10 @@ public class PlayerBulletCon : MonoBehaviour
             PlayerSkillBulletCon bullet_sc = bullet_obj.GetComponent<PlayerSkillBulletCon>();
             player.DebuffSkillFlag = false;
         }
+    }
+    //弾の生成
+    private void BulletInstans(int bullet,int i)
+    {
+        Instantiate(bullets[bullet], bulletChilds[i].transform.position, Quaternion.identity);
     }
 }

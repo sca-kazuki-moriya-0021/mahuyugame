@@ -8,19 +8,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5792304310914756442}
+  - component: {fileID: 2615246165076635033}
   - component: {fileID: 5942377789783565186}
   - component: {fileID: 7109463590719251207}
   - component: {fileID: 3671980639654199104}
-  m_Layer: 0
+  - component: {fileID: 3683041826127162501}
+  m_Layer: 8
   m_Name: Spine GameObject (syuzinko_SD_anime)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5792304310914756442
-Transform:
+--- !u!224 &2615246165076635033
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33,6 +34,11 @@ Transform:
   m_Father: {fileID: 6399580715944071586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &5942377789783565186
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b9ec0ad3de3c27468349c9ab506c8f7, type: 2}
+  - {fileID: 2100000, guid: af6481523fee95845838bef547b0270d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,15 +119,26 @@ MonoBehaviour:
   calculateTangents: 0
   maskInteraction: 0
   maskMaterials:
-    materialsMaskDisabled: []
-    materialsInsideMask: []
-    materialsOutsideMask: []
+    materialsMaskDisabled:
+    - {fileID: 2100000, guid: 6b9ec0ad3de3c27468349c9ab506c8f7, type: 2}
+    materialsInsideMask:
+    - {fileID: 2100000, guid: af6481523fee95845838bef547b0270d, type: 2}
+    materialsOutsideMask:
+    - {fileID: 2100000, guid: cbe985c4c3aee25409d7d508e1df65dc, type: 2}
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
   _animationName: uku
   loop: 0
   timeScale: 1
+--- !u!222 &3683041826127162501
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929350493499358213}
+  m_CullTransparentMesh: 1
 --- !u!1 &3863538302076312974
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8150515202828147112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SkillFiringPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6399580715127631709}
   - component: {fileID: 6399580715127631710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580715403096780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPosition2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580715704048786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPosition3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +301,7 @@ GameObject:
   - component: {fileID: 6399580715835281263}
   - component: {fileID: 6399580715835281262}
   - component: {fileID: 6399580715835281248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -401,7 +418,7 @@ GameObject:
   - component: {fileID: 6399580715944071585}
   - component: {fileID: 6399580715944071584}
   - component: {fileID: 3790261367096651559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +436,7 @@ Transform:
   m_LocalPosition: {x: 0.23, y: 1.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5792304310914756442}
+  - {fileID: 2615246165076635033}
   - {fileID: 6399580715835281261}
   - {fileID: 6399580715127631709}
   m_Father: {fileID: 0}
@@ -627,7 +644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580716671568876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FiringPosition1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,19 +14,16 @@ public class Player : MonoBehaviour
 {
     //方向取得用
     private Vector2 inputV;
-
-    //画面内
+    //移動制限用
     [SerializeField]
     private GameObject screenWithin;
     private GameObject[] screenWithinChird =new GameObject[2] {null,null};
 
-    //使うよう
-    //private PlayerBulletPool pBulletPool;
+    //スクリプト取得用
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
     private PlayerSkillCutInCon skillCutinCon;
-    private AreaManager areaManager;
     private PlayerCollider playerCollider;
 
     [SerializeField]
@@ -97,13 +94,13 @@ public class Player : MonoBehaviour
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
-        areaManager = FindObjectOfType<AreaManager>();
         playerCollider = FindObjectOfType<PlayerCollider>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        //移動制限の座標検知
         for(int i = 0;i < screenWithinChird.Length;i++)
         {
             screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
@@ -187,7 +184,7 @@ public class Player : MonoBehaviour
 
     //移動用関数
     public void InputSystemMove()
-    {  
+    {  　//移動できる時
         if (screenWithinChird[0].transform.position.x  <= transform.position.x &&
             screenWithinChird[1].transform.position.x  >= transform.position.x &&
             screenWithinChird[0].transform.position.y >= transform.position.y &&
@@ -228,10 +225,11 @@ public class Player : MonoBehaviour
     //スキル発動本体
     private IEnumerator SkillAtk()
     {
+        //スキル1が使われたら
         if(jKey)
         {
             jKey = false;
-            //キャンパスなり、アニメーションでスキルカットイン起動
+            //スキル発動とスキルカットイン発動
             for (int i = 0; i < gm.PlayerSkill.Length -1; i++)
             {
                 if (gm.PlayerSkill[i] == true)
@@ -257,13 +255,12 @@ public class Player : MonoBehaviour
                     skillDisplay.SkillCoolFlag[0] = true;
                     break;
                 }
-               
             }
         }
         else
         {
-            //キャンパスなり、アニメーションでスキルカットイン起動
-            for (int i = 3; i > 0; i--)
+            //スキル発動とスキルカットイン発動
+            for (int i = gm.PlayerSkill.Length -1; i > 0; i--)
             {
                 if (gm.PlayerSkill[i] == true)
                 {
@@ -292,7 +289,6 @@ public class Player : MonoBehaviour
         }
        StopCoroutine(SkillAtk());
     }
-
 
     /*private void SkillSelect(int i)
     {

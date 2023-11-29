@@ -42,7 +42,7 @@ public class PlayerSkillCutInCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //カットイン時間制限用
         if (cutInFlag == true)
         {
             time += Time.unscaledDeltaTime;
@@ -56,8 +56,10 @@ public class PlayerSkillCutInCon : MonoBehaviour
         }
     }
     
+    //プレイヤーのスキルカットイン
     public void PlayerCutInDisplay(int i)
     {
+        //アニメーション初期化用
        for(int x = 0; x < skillAnimator.Length; x++)
        {
             skillAnimator[x].Rebind();

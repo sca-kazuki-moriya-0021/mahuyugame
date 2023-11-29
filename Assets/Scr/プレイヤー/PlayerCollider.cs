@@ -61,6 +61,7 @@ public class PlayerCollider : MonoBehaviour
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
 
+        //プレイヤーのHp初期化
         var scene = gm.MyGetScene();
         if(gm.BackScene == scene)
         {
@@ -85,7 +86,7 @@ public class PlayerCollider : MonoBehaviour
         {
             return;
         }
-
+        //プレイヤーHpが0以下かつフェードインしてなかったら
         if (gm.PlayerHp[0] <= 0 && deathFlag == false && nowLoading.FadeInFlag == false)
         {
             deathFlag = true;
@@ -96,6 +97,7 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //敵の弾に当たった時
         if (collision.gameObject.CompareTag("Bullet"))
             //collision.gameObject.CompareTag("EnemySkillBullet") ||
             //collision.gameObject.CompareTag("DestoryBullet"))
@@ -109,7 +111,7 @@ public class PlayerCollider : MonoBehaviour
                 StartCoroutine(PlayerDameged());
             }
         }
-
+        //スコア加算アイテム取った時
         if (collision.gameObject.CompareTag("ScoreAdditionItem"))
         {
             collision.gameObject.SetActive(false);
@@ -127,52 +129,8 @@ public class PlayerCollider : MonoBehaviour
                     break;
             }
         }
-
-        if (collision.gameObject.CompareTag("WeaponSwitchItem0"))
-        {
-            collision.gameObject.SetActive(false);
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[0] = true;
-        }
-
-        if (collision.gameObject.CompareTag("WeaponSwitchItem1"))
-        {
-            collision.gameObject.SetActive(false);
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[1] = true;
-        }
-
-        if (collision.gameObject.CompareTag("WeaponSwitchItem2"))
-        {
-            collision.gameObject.SetActive(false);
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[2] = true;
-        }
-
-        if (collision.gameObject.CompareTag("WeaponSwitchItem3"))
-        {
-            collision.gameObject.SetActive(false);
-            for (int i = 0; i < gm.PlayerWeapon.Length; i++)
-            {
-                gm.PlayerWeapon[i] = false;
-            }
-
-            gm.PlayerWeapon[3] = true;
-        }
     }
-
+    //プレイヤーがダメージ受けたら
     private IEnumerator PlayerDameged()
     {
         isHit = true;
@@ -213,6 +171,7 @@ public class PlayerCollider : MonoBehaviour
         isHit = false;
     }
 
+    //プレイヤーが死んだとき
     private IEnumerator PlayerDeath()
     {
         colliderSprite.enabled = false;

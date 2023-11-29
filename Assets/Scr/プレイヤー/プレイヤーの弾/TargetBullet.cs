@@ -13,7 +13,6 @@ public class TargetBullet : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         searchObjects = FindEnemy();
-        Debug.Log(searchObjects);
         //’T‚µ‚Ä‚«‚½0”Ô–Ú‚Ì“G‚ð–Ú•W‚É‚·‚é
         if(searchObjects.Count != 0)
         {
