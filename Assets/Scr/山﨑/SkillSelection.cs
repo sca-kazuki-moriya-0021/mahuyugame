@@ -245,6 +245,7 @@ public class SkillSelection : MonoBehaviour
         for (int i = 0; i <= 3; i++)
         {
             totalGM.PlayerWeapon[i] = false;
+            totalGM.PlayerSubWeapon[i] = false;
             totalGM.PlayerSkill[i] = false;
         }
 

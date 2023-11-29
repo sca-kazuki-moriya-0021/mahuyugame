@@ -16,7 +16,8 @@ public class TotalGM : MonoBehaviour
     //プレイヤー引継ぎ用
     //スキルはいらない可能性あるけど一応
     private int[] playerHp = new int[]{3,0};
-    private bool[] playerWeapon = {false,false,false,false}; 
+    private bool[] playerWeapon = {false,false,false,false};
+    private bool[] playerSubWeapon = {false,false,false,false};
     private bool[] playerSkill = new bool[]{false,false,false,false};
     private float[] skillCoolTimeCount = new float[] { 5, 10, 15, 20, 0, 0, 0, 0 };
 
@@ -102,6 +103,12 @@ public class TotalGM : MonoBehaviour
         set { this.playerWeapon = value; }
     }
 
+    public bool[] PlayerSubWeapon
+    {
+        get { return this.playerSubWeapon; }
+        set { this.playerSubWeapon = value; }
+    }
+
     public float[] NowScore {
         get { return this.nowScore; }
         set { this.nowScore = value; }
@@ -129,8 +136,6 @@ public class TotalGM : MonoBehaviour
         get { return this.backSideFlag; }
         set { this.backSideFlag = value; }
     }
-
-
     #endregion
 
     private void Awake()
@@ -145,7 +150,6 @@ public class TotalGM : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
 
     // Start is called before the first frame update
     void Start()

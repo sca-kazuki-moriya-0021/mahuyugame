@@ -31,10 +31,8 @@ public class Player : MonoBehaviour
 
     //低速ボタンが押されているかどうか
     private bool decelerationFlag = false;
-
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false};
-
     //移動停止用フラグ
     private bool bossMoveStopFlag;
     //たま消し用のフラグ
@@ -44,8 +42,7 @@ public class Player : MonoBehaviour
     private float pBaffSkillTime;
     //デバフ発射時のフラグ
     private bool debuffSkillFlag;
-
-    //ボタンが押されたときに使うフラグ
+    //スキルボタンが押されたときに使うフラグ
     private bool jKey;
     private bool buttonPish = false;
 
