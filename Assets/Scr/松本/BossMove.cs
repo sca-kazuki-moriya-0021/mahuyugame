@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
+using Spine;
 
 public class BossMove : MonoBehaviour
 {
@@ -14,8 +16,7 @@ public class BossMove : MonoBehaviour
     private float debuffCountTime;
     private bool bossAttack1 = false;
     private bool bossAttack2 = false;
-    private float a = 0f;
-   
+
     private float angle;
     
     //private Vector3 startPos;
@@ -27,8 +28,16 @@ public class BossMove : MonoBehaviour
     //自分が撃破された時にドロップするアイテム
     [SerializeField]
     private GameObject dropItem;
+    //死亡するアニメーション名
+    [SerializeField]
+    private string deathAnimation;
+    //ゲームオブジェクトに設定されているSkeletonAnimation
+    [SerializeField]
+    private SkeletonAnimation skeletonAnimation = default;
+    //Spineアニメーションを適用するために必要なAnimationState
+    private Spine.AnimationState spineAnimationState = default;
 
-    //プレイヤー取得
+    //スクリプト取得
     private Player player;
     private AreaManager areaManager;
     private NowLoading nowLoading;
@@ -49,6 +58,9 @@ public class BossMove : MonoBehaviour
         player = FindObjectOfType<Player>();
         areaManager = FindObjectOfType<AreaManager>();
         nowLoading = FindObjectOfType<NowLoading>();
+
+        // SkeletonAnimationからAnimationStateを取得
+        spineAnimationState = skeletonAnimation.AnimationState;
     }
 
     void Update()
@@ -172,9 +184,10 @@ public class BossMove : MonoBehaviour
             Instantiate(dropItem,transform.position,Quaternion.identity);
             yield return null;
         }
+        spineAnimationState.SetAnimation(0, deathAnimation, false);
+        yield return new WaitForSeconds(2f);
         Destroy(this.gameObject);
         nowLoading.FadeIn();
-        yield return new WaitForSeconds(1f);
         StopCoroutine(DropItemInstance());
     }
 }
