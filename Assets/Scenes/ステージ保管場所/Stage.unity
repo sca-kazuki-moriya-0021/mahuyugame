@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: bullets.Array.data[3]
       value: 
       objectReference: {fileID: 6821192672417811572, guid: 2c58f2b98a097474e8c6e2a2c5ac5593, type: 3}
+    - target: {fileID: 6399580715127631710, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: subBulletPos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: SpineRenderer
       value: 
