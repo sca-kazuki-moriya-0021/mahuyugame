@@ -201,6 +201,7 @@ public class BossMove : MonoBehaviour
             Instantiate(dropItem,transform.position,Quaternion.identity);
             yield return null;
         }
+        spineAnimationState.TimeScale = 0.2f;
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
         Destroy(this.gameObject);
