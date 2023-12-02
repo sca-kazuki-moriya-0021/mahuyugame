@@ -11,10 +11,12 @@ public class AmaBullet : MonoBehaviour
     [SerializeField,Header("âÊñ â°ïùÇÃâ∫å¿")] private float minWidth;
 
     private Vector3 direction;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
         direction = new Vector3(Random.Range(0f,1f),Random.Range(0.5f,1f),0).normalized;
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,11 @@ public class AmaBullet : MonoBehaviour
         if((direction.x > 0 && transform.position.x >= maxWidth) || (direction.x < 0 && transform.position.x <= minWidth))
         {
             direction = new Vector3(-direction.x,direction.y,0);
+        }
+
+        if (player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
         }
     }
 

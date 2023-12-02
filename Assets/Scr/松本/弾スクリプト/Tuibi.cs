@@ -11,10 +11,11 @@ public class Tuibi : MonoBehaviour
     [SerializeField] float maxSpeed; // 最大速度
     [SerializeField] float slowingDistance; // 到達減速を始める距離
     [SerializeField] float timeToTarget; // 目標に到達する時間
-
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         target = GameObject.FindWithTag("Player").transform;
         // ミサイルの初期位置を設定
         position = transform.position;
@@ -56,5 +57,10 @@ public class Tuibi : MonoBehaviour
         velocity += acceleration * Time.deltaTime;
         position += velocity * Time.deltaTime;
         transform.position = position;
+
+        if (player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
