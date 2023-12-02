@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SnowFairyMove : MonoBehaviour
 {
-    private float time = 0f;
+    private float speed = 1f;
     [SerializeField]
     private GameObject movePos;
     private GameObject[] movePosChild = new GameObject[]{null,null,null,null};
     private int count = 0;
 
     private Rigidbody2D rigidbody;
+    private Coroutine startCol;
 
     // Start is called before the first frame update
     void Start()
@@ -28,23 +29,39 @@ public class SnowFairyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(transform.position);
+        //à⁄ìÆä«óù
+        switch (count%4)
+        {
+            case 0 when startCol == null:
+                startCol = StartCoroutine(MovePosition(1));
+            break;
+            case 1 when startCol == null:
+                startCol = StartCoroutine(MovePosition(2));
+            break;
+            case 2 when startCol == null:
+                startCol = StartCoroutine(MovePosition(3));
+            break;
+            case 3 when startCol == null:
+                startCol = StartCoroutine(MovePosition(0));
+            break;
+        }
+    }
 
-        time += Time.deltaTime * 0.0001f;
-        if (time < 0.5f)
+    //à⁄ìÆí≤êÆ
+    private IEnumerator MovePosition(int i)
+    {
+        Debug.Log("haita");
+        float dir = Mathf.Abs(Vector3.Distance(transform.position, movePosChild[i].transform.position));
+        //float pos = (Time.time * speed) / dir;
+        while (movePosChild[i].transform.position != transform.position)
         {
-            var a = Vector3.Lerp(movePosChild[0].transform.position,movePosChild[1].transform.position,time);
-            var b = Vector3.Lerp(movePosChild[1].transform.position,movePosChild[2].transform.position,time);
-            rigidbody.velocity = Vector3.Lerp(a,b,time);
+            float pos = (Time.time * speed) / dir;
+            rigidbody.velocity = Vector3.Lerp(transform.position, movePosChild[i].transform.position, pos);
+            yield return null;
         }
-        else if(time >0.5f && time <1.0f)
-        {
-            var a = Vector3.Lerp(movePosChild[2].transform.position, movePosChild[3].transform.position, time);
-            var b = Vector3.Lerp(movePosChild[3].transform.position, movePosChild[0].transform.position, time);
-            rigidbody.velocity = Vector3.Lerp(a,b,time);
-        }
-        else if(time >= 1.0f)
-        {
-            time = 0;
-        }
+        count++;
+        startCol = null;
+        StopCoroutine(MovePosition(i));
     }
 }
