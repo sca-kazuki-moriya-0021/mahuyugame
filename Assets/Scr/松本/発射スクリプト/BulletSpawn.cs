@@ -6,7 +6,7 @@ public class BulletSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
-    [SerializeField, Range(0, 360)] private float launchAngle = 45.0f;
+    [SerializeField, Range(0, 360)] private float launchAngle;
     [SerializeField] private float fireTime;
 
     private float bulletTime = 0.0f;

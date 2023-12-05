@@ -48,4 +48,4 @@ MonoBehaviour:
   numberOfShots: 3
   numberOfBullets: 8
   spreadAngle: 360
-  FireTime: 1
+  fireTime: 0.1

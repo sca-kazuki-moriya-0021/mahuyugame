@@ -18,8 +18,8 @@ public class tokei : MonoBehaviour
 
         if (timer >= timeBetweenShots)
         {
-            //Right();
-            //Left();
+            Right();
+            Left();
             Up();
             Down();
             Revright();
@@ -28,7 +28,7 @@ public class tokei : MonoBehaviour
         }
     }
 
-    /*private void Right()
+    private void Right()
     {
         Vector3 spawnPosition = transform.position;
         GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
@@ -46,7 +46,7 @@ public class tokei : MonoBehaviour
 
         Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.left;
         rb.velocity = direction * bulletSpeed;
-    }*/
+    }
 
     private void Up()
     {
