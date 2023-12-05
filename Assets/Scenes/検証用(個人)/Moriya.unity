@@ -506,6 +506,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c16336ceef5bb40858a5eb6fdf508b, type: 3}
+--- !u!114 &1489705515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4908588441602728491, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  m_PrefabInstance: {fileID: 6399580715785480552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1604165374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1312,7 @@ PrefabInstance:
     - target: {fileID: 6399580715835281248, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: skeletonAnimation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1489705515}
     - target: {fileID: 6399580715835281260, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1547,7 +1558,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.10311985, y: 0.05892551}
@@ -1584,7 +1595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7319420840826400442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -0.22, z: 0}
+  m_LocalPosition: {x: 7.55, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 668600204140231402}

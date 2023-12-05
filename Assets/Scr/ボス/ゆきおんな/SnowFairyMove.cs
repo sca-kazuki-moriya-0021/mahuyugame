@@ -9,59 +9,63 @@ public class SnowFairyMove : MonoBehaviour
     private GameObject movePos;
     private GameObject[] movePosChild = new GameObject[]{null,null,null,null};
     private int count = 0;
+    private float time =0;
 
     private Rigidbody2D rigidbody;
-    private Coroutine startCol;
+    private bool moveColFlag;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+
         for(int i = 0; i < movePosChild.Length; i++)
-        movePosChild[i] = movePos.transform.GetChild(i).gameObject;
+        {
+            movePosChild[i] = movePos.transform.GetChild(i).gameObject;
+        }
 
-        for (int i = 0; i < movePosChild.Length; i++)
-          Debug.Log( movePosChild[i].transform.position);
-
-        transform.position = movePosChild[0].transform.position;
+        transform.position = movePosChild[0].transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.position);
+
         //ˆÚ“®ŠÇ—
         switch (count%4)
         {
-            case 0 when startCol == null:
-                startCol = StartCoroutine(MovePosition(1));
+            case 0 when moveColFlag == false:
+                StartCoroutine(MovePosition(0,1));
             break;
-            case 1 when startCol == null:
-                startCol = StartCoroutine(MovePosition(2));
+            case 1 when moveColFlag == false:
+                StartCoroutine(MovePosition(1,2));
             break;
-            case 2 when startCol == null:
-                startCol = StartCoroutine(MovePosition(3));
+            case 2 when moveColFlag == false:
+                StartCoroutine(MovePosition(2,3));
             break;
-            case 3 when startCol == null:
-                startCol = StartCoroutine(MovePosition(0));
+            case 3 when moveColFlag == false:
+                StartCoroutine(MovePosition(3,0));
             break;
         }
     }
 
     //ˆÚ“®’²®
-    private IEnumerator MovePosition(int i)
+    private IEnumerator MovePosition(int a ,int b)
     {
-        Debug.Log("haita");
-        float dir = Mathf.Abs(Vector3.Distance(transform.position, movePosChild[i].transform.position));
+        moveColFlag = true;
+        float dir = Mathf.Abs(Vector3.Distance(movePosChild[a].transform.position,movePosChild[b].transform.position));
+        Debug.Log(dir);
         //float pos = (Time.time * speed) / dir;
-        while (movePosChild[i].transform.position != transform.position)
+        while (movePosChild[b].transform.position != transform.position)
         {
-            float pos = (Time.time * speed) / dir;
-            rigidbody.velocity = Vector3.Lerp(transform.position, movePosChild[i].transform.position, pos);
+            time += Time.deltaTime;
+            float pos = (time * speed) / dir;
+            transform.position = Vector3.Lerp(movePosChild[a].transform.position, movePosChild[b].transform.position, pos);
             yield return null;
         }
         count++;
-        startCol = null;
-        StopCoroutine(MovePosition(i));
+        time =0;
+        moveColFlag = false;
+        StopCoroutine(MovePosition(a,b));
     }
 }
