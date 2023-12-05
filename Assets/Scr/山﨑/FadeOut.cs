@@ -28,9 +28,7 @@ public class FadeOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         light2D.enabled = true;
-         StartCoroutine(Test());
-         
+         GameOver();
     }
 
     void Update()
@@ -41,56 +39,6 @@ public class FadeOut : MonoBehaviour
     //ここでどのシーンで死んだか確認
     private void GameOver()
     {
-        
-        playerImage[2].transform.position = playerPosition.transform.position;//totalGM.PlayerTransForm;
-        Stage_1();
-        //Stage_3();
-    }
-
-    // Update is called once per frame
-    void Stage_1()
-    {
-        
-
-
-    }
-
-    private void Stage_3()
-    {
-        var brackColor = new Color(0f, 0f, 0f);
-        var whiteColor = new Color(255f, 255f, 255f);
-        gameOver[2].DOFade(2.55f,1.0f).OnComplete(() => { 
-            playerImage[2].enabled = true;
-            playerImage[2].DOColor(brackColor, 1.0f).OnComplete(() => {
-                WorldLight2D.enabled=false;
-                IntensityChg();
-                backGround[2].DOColor(whiteColor, 2.0f);
-                playerImage[2].transform.DOMove(new Vector2(0f, 0f), 2f).OnComplete(() => {
-                    
-                    playerImage[2].DOFade(255, 2f).SetDelay(1.0f).OnComplete(() => {
-                        fadeOutAnimator.SetTrigger("Stage3");
-                    });
-                });           
-            });
-        });
-        
-    }
-
-    //光の明るさ調整
-    private void IntensityChg()
-    {
-        DOTween.To(
-            () => light2D.intensity,
-            num => light2D.intensity = num,
-            0.6f,
-            3.0f);
-    }
-
-    IEnumerator Test()
-    {
-        yield return new WaitForSeconds(1);
-        
-        GameOver();
-        //Debug.Log(totalGM.PlayerTransForm);
+        fadeOutAnimator.SetTrigger("Stage3");
     }
 }
