@@ -24,6 +24,8 @@ public class tokei : MonoBehaviour
             Down();
             Revright();
             Revleft();
+            ReUp();
+            ReDown();
             timer = 0f;
         }
     }
@@ -85,6 +87,26 @@ public class tokei : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z) * Vector2.left;
+        rb.velocity = direction * bulletSpeed;
+    }
+
+    private void ReUp()
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab1, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z) * Vector2.up;
+        rb.velocity = direction * bulletSpeed;
+    }
+
+    private void ReDown()
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab1, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z) * Vector2.down;
         rb.velocity = direction * bulletSpeed;
     }
 
