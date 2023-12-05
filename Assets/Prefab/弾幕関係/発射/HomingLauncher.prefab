@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fire1: {fileID: 4849661683320903076}
   Fire2: {fileID: 4849661684446254774}
-  HomingBullet: {fileID: 6877360328184477702, guid: 64f148d169318a741b3d1a36c1bc2b22, type: 3}
-  fireInterval: 1
+  homingBullet: {fileID: 6877360328184477702, guid: 64f148d169318a741b3d1a36c1bc2b22, type: 3}
+  fireInterval: 0.25
 --- !u!1 &4849661683320903076
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4849661683320903076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4849661683155212914}
@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4849661684446254774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4849661683155212914}
