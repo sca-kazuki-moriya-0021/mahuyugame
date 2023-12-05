@@ -176,7 +176,9 @@ public class BossMove : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
-            HitBullet();
+            //ƒvƒŒƒCƒ„[‚Ì‘Ì—Í‚ª0‚¶‚á‚È‚¢
+            if (playerCollider.DeathFlag == false)
+                HitBullet();
         }
     }
 
