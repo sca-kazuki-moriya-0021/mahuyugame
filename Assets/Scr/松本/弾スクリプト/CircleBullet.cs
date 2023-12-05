@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CircleBullet : MonoBehaviour
 {
-    public float speed = 5.0f; // ’e‚Ì‘¬“x
-    public float rotationSpeed = 45.0f; // ‰ñ“]‘¬“x
-
+    [SerializeField] float speed; // ’e‚Ì‘¬“x
+    [SerializeField] float rotationSpeed; // ‰ñ“]‘¬“x
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] int numberOfBullets;
+    [SerializeField] float spreadAngle;
     private Player player;
     private Vector2 direction;
 
@@ -23,8 +25,19 @@ public class CircleBullet : MonoBehaviour
         // ’e‚ð‰ñ“]
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
 
-        if(player.BulletSeverFlag == true)
+        if (player.BulletSeverFlag == true)
         {
+            float startAngle = -spreadAngle / 2;
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                float angle = startAngle + i * (spreadAngle / (numberOfBullets));
+
+                // ’e‚ð”­ŽË
+                Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+                Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = direction * speed;
+            }
             Destroy(this.gameObject);
         }
     }
