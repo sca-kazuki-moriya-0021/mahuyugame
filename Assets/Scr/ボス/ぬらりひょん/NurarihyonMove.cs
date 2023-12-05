@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnowFairyMove : MonoBehaviour
+public class NurarihyonMove : MonoBehaviour
 {
     private float speed = 1f;
     [SerializeField]
     private float stopTime;
     private float stopCountTime;
 
-    //移動指定の親オブジェクト
-    [SerializeField]
-    private GameObject movePos;
-    private GameObject[] movePosChild = new GameObject[] { null, null, null, null };
-    //動き制御
-    private int moveCount = 0;
-
     private Rigidbody2D rigidbody;
-    private bool moveColFlag;
 
     private Player player;
     private BossCollder bossCollder;
+
+    [SerializeField]
+    private GameObject movePos;
+    private GameObject[] movePosChild = new GameObject[] { null, null, null};
+    private bool moveColFlag;
+    //動き制御
+    private int moveCount = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class SnowFairyMove : MonoBehaviour
         player = FindObjectOfType<Player>();
         rigidbody = GetComponent<Rigidbody2D>();
         bossCollder = FindObjectOfType<BossCollder>();
-        for(int i = 0; i < movePosChild.Length;i++)
+        for (int i = 0; i < movePosChild.Length; i++)
         {
             movePosChild[i] = movePos.transform.GetChild(i).gameObject;
         }
@@ -38,12 +38,13 @@ public class SnowFairyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //移動プログラム
         if(bossCollder.BossDeathFlag == false &&  player.BussMoveStopFlag == false)
         {
             if (moveCount <= 120)
             {
                 //移動管理
-                switch (moveCount % 4)
+                switch (moveCount % 3)
                 {
                     case 0 when moveColFlag == false:
                         StartCoroutine(MovePosition(0, 1));
@@ -52,17 +53,14 @@ public class SnowFairyMove : MonoBehaviour
                         StartCoroutine(MovePosition(1, 2));
                         break;
                     case 2 when moveColFlag == false:
-                        StartCoroutine(MovePosition(2, 3));
-                        break;
-                    case 3 when moveColFlag == false:
-                        StartCoroutine(MovePosition(3, 0));
+                        StartCoroutine(MovePosition(2, 0));
                         break;
                 }
             }
             else
             {
                 //移動管理
-                switch (moveCount % 4)
+                switch (moveCount % 3)
                 {
                     case 0 when moveColFlag == false:
                         StartCoroutine(MovePosition(0, 2));
@@ -71,17 +69,14 @@ public class SnowFairyMove : MonoBehaviour
                         StartCoroutine(MovePosition(2, 1));
                         break;
                     case 2 when moveColFlag == false:
-                        StartCoroutine(MovePosition(1, 3));
-                        break;
-                    case 3 when moveColFlag == false:
-                        StartCoroutine(MovePosition(3, 0));
+                        StartCoroutine(MovePosition(1, 0));
                         break;
                 }
             }
         }
         //時とめしたら
-        if(player.BussMoveStopFlag == true)
-        StopMove();
+        if (player.BussMoveStopFlag == true)
+            StopMove();
     }
 
     //動き停止
@@ -97,14 +92,14 @@ public class SnowFairyMove : MonoBehaviour
             }
         }
     }
-    
+
     //移動調整
-    private IEnumerator MovePosition(int a ,int b)
+    private IEnumerator MovePosition(int a, int b)
     {
         float time = 0;
-        var i = 0; 
+        var i = 0;
         moveColFlag = true;
-        float dir = Mathf.Abs(Vector3.Distance(movePosChild[a].transform.position,movePosChild[b].transform.position));
+        float dir = Mathf.Abs(Vector3.Distance(movePosChild[a].transform.position, movePosChild[b].transform.position));
         if (bossCollder.BossDebuffFlag == true)
             i = 2;
         else
@@ -120,6 +115,6 @@ public class SnowFairyMove : MonoBehaviour
         }
         moveCount++;
         moveColFlag = false;
-        StopCoroutine(MovePosition(a,b));
+        StopCoroutine(MovePosition(a, b));
     }
 }
