@@ -9,23 +9,31 @@ public class TestLineR : MonoBehaviour
     [SerializeField]
     private Vector3[] linePos;
 
+    private List<Vector2> linePoints = new List<Vector2>();
+
     private void OnEnable()
     {
-
-        lineRenderer.useWorldSpace = true;
+        foreach (Vector3 i in linePos)
+        {
+            linePoints.Add(i);
+        }
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
-        lineRenderer.startColor = new Color(0, 0, 0, 0);
-        lineRenderer.endColor = new Color(0, 0, 0, 0);
-
-        lineRenderer.positionCount = linePos.Length;
         lineRenderer.SetPositions(linePos);
+        var lineObj = lineRenderer.gameObject.GetComponent<EdgeCollider2D>();
+        lineObj.transform.position = transform.TransformPoint(lineObj.transform.position);
+        lineObj.SetPoints(linePoints);
+        lineObj.isTrigger = true;
+
         lineRenderer.gameObject.layer = 9;
+       
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
