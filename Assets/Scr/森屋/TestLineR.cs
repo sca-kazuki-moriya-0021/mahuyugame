@@ -20,6 +20,7 @@ public class TestLineR : MonoBehaviour
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.SetPositions(linePos);
+        lineRenderer.startColor = Color.green;
         var lineObj = lineRenderer.gameObject.GetComponent<EdgeCollider2D>();
         lineObj.transform.position = transform.TransformPoint(lineObj.transform.position);
         lineObj.SetPoints(linePoints);
@@ -27,7 +28,6 @@ public class TestLineR : MonoBehaviour
 
         lineRenderer.gameObject.layer = 9;
        
-
     }
 
     // Start is called before the first frame update
