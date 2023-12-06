@@ -47,7 +47,7 @@ public class PlayerBulletCon : MonoBehaviour
     private TotalGM gm;
     private Player player;
     private PlayerCollider playerCollider;
-    private BossMove bossMove;
+    private BossCollder bossCollder;
 
 
     // Start is called before the first frame update
@@ -56,7 +56,7 @@ public class PlayerBulletCon : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         player = FindObjectOfType<Player>();
         playerCollider = FindObjectOfType<PlayerCollider>();
-        bossMove = FindObjectOfType<BossMove>();
+        bossCollder = FindObjectOfType<BossCollder>();
 
         //子オブジェクトを取得
         for(int i = 0; i < 3; i++)
@@ -92,7 +92,7 @@ public class PlayerBulletCon : MonoBehaviour
             time += 0.0001f;
 
         //一定時間かつプレイヤーが死んでなかったら
-        if(time > 0.5 && playerCollider.DeathFlag == false && bossMove.BossDeathFlag == false)
+        if(time > 0.5 && playerCollider.DeathFlag == false && bossCollder.BossDeathFlag == false)
         {
             MainBullet();
             SubBullet();

@@ -14,7 +14,6 @@ public class BossCollder : MonoBehaviour
     private float debuffCountTime;
 
     //スクリプト取得
-    private Player player;
     private PlayerCollider playerCollider;
     private NowLoading nowLoading;
 
@@ -50,9 +49,10 @@ public class BossCollder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
         nowLoading = FindObjectOfType<NowLoading>();
         playerCollider = FindObjectOfType<PlayerCollider>();
+        // SkeletonAnimationからAnimationStateを取得
+        spineAnimationState = skeletonAnimation.AnimationState;
     }
 
     // Update is called once per frame
@@ -64,13 +64,11 @@ public class BossCollder : MonoBehaviour
         }
     }
 
-
     private void Debuff()
     {
         if (debuffCountTime <= debuffTime)
         {
             debuffCountTime += Time.deltaTime;
-
             if (debuffCountTime > debuffTime)
             {
                 debuffCountTime = 0;
@@ -84,18 +82,14 @@ public class BossCollder : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             hitObject(collision.gameObject);
-            //上と同じ
-            if (playerCollider.DeathFlag == false)
-            {
-                debuffFlag = true;
-            }
         }
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
             hitObject(collision.gameObject);
+            if (debuffFlag == false)
+                debuffFlag = true;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -108,7 +102,8 @@ public class BossCollder : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
             hitObject(collision.gameObject);
-            debuffFlag = true;
+            if (debuffFlag == false)
+                debuffFlag = true;
         }
     }
 

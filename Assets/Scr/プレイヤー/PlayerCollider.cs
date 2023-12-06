@@ -7,7 +7,7 @@ using Spine;
 public class PlayerCollider : MonoBehaviour
 {
     private TotalGM gm;
-    private BossMove bossMove;
+    private BossCollder bossCollder;
 
     //STATE型の変数
     STATE state;
@@ -56,7 +56,7 @@ public class PlayerCollider : MonoBehaviour
         gm = FindObjectOfType<TotalGM>();
         collider2D = GetComponent<CircleCollider2D>();
         colliderSprite = GetComponent<SpriteRenderer>();
-        bossMove = FindObjectOfType<BossMove>();
+        bossCollder = FindObjectOfType<BossCollder>();
 
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
@@ -88,7 +88,7 @@ public class PlayerCollider : MonoBehaviour
             return;
         }
         //プレイヤーHpが0以下かつフェードインしてなかったら
-        if (gm.PlayerHp[0] <= 0 && deathFlag == false && bossMove.BossDeathFlag == false)
+        if (gm.PlayerHp[0] <= 0 && deathFlag == false && bossCollder.BossDeathFlag == false)
         {
             deathFlag = true;
             StartCoroutine(PlayerDeath());
@@ -103,7 +103,7 @@ public class PlayerCollider : MonoBehaviour
             //collision.gameObject.CompareTag("DestoryBullet"))
         {
             Destroy(collision.gameObject);
-            if(bossMove.BossDeathFlag == false)
+            if(bossCollder.BossDeathFlag == false)
             {
                 gm.PlayerHp[0]--;
                 if (gm.PlayerHp[0] > 0)
@@ -176,7 +176,7 @@ public class PlayerCollider : MonoBehaviour
     //プレイヤーが死んだとき
     private IEnumerator PlayerDeath()
     {
-        if(bossMove.BossDeathFlag == true)
+        if(bossCollder.BossDeathFlag == true)
         {
             StopCoroutine(PlayerDeath());
         }

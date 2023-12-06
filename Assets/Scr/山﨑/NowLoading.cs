@@ -13,7 +13,7 @@ public class NowLoading : MonoBehaviour
 
     private bool fadeInFlag = false;
 
-    private BossMove bossMove;
+    private BossCollder bossCollder;
 
     public bool FadeInFlag
     {
@@ -27,7 +27,6 @@ public class NowLoading : MonoBehaviour
     {
         //”O‚Ì‚½‚ß
         //backGround.enabled = false;
-        bossMove = FindObjectOfType<BossMove>();
         totalGM = FindObjectOfType<TotalGM>();
         FadeOut();
     }
@@ -44,7 +43,7 @@ public class NowLoading : MonoBehaviour
         backGround.enabled=true;
         backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
         { 
-            bossMove.BossDeathFlag = false;
+            bossCollder.BossDeathFlag = false;
             var scene = totalGM.MyGetScene();
             switch (scene)
             {
