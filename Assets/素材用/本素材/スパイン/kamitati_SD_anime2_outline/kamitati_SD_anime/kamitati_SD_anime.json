@@ -1,0 +1,442 @@
+{
+"skeleton": {
+	"hash": "HnvVjbPvSLQ",
+	"spine": "4.1.24",
+	"x": -588,
+	"y": -725,
+	"width": 1271,
+	"height": 1372,
+	"images": "./images/",
+	"audio": "D:/ゲーム制作/kamitati_SD"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "asimoto", "parent": "root", "x": -283.26, "y": -710.41, "color": "ffa700ff" },
+	{ "name": "Center", "parent": "asimoto", "x": 356.41, "y": 718.01, "color": "ff0000ff" },
+	{
+		"name": "body",
+		"parent": "asimoto",
+		"length": 417.08,
+		"rotation": 127.29,
+		"x": 334.09,
+		"y": 775.19,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "body2",
+		"parent": "body",
+		"length": 66.81,
+		"rotation": -9.54,
+		"x": 475.42,
+		"y": -9.04,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "body3",
+		"parent": "body",
+		"length": 271.7,
+		"rotation": 106.68,
+		"x": -87.7,
+		"y": 40.11,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "head",
+		"parent": "body",
+		"length": 149.62,
+		"rotation": 5.35,
+		"x": 469.33,
+		"y": -71.92,
+		"color": "7cff00ff"
+	},
+	{
+		"name": "sippo",
+		"parent": "asimoto",
+		"length": 191.62,
+		"rotation": -25.18,
+		"x": 406.2,
+		"y": 445.72,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "sippo1",
+		"parent": "sippo",
+		"length": 249.68,
+		"rotation": 68.14,
+		"x": 220.95,
+		"y": 26.75,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "sippo2",
+		"parent": "sippo1",
+		"length": 263.5,
+		"rotation": 40.01,
+		"x": 298.46,
+		"y": 18.21,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "leg_L",
+		"parent": "body3",
+		"length": 374.72,
+		"rotation": -5.53,
+		"x": 310.78,
+		"y": 159.76,
+		"color": "2eff00ff"
+	},
+	{
+		"name": "leg_R",
+		"parent": "body3",
+		"length": 247.5,
+		"rotation": -24.96,
+		"x": 307.89,
+		"y": -69.74,
+		"color": "8dff00ff"
+	},
+	{
+		"name": "Uam_L",
+		"parent": "body",
+		"length": 122.97,
+		"rotation": 133.85,
+		"x": 319.75,
+		"y": -80.66,
+		"color": "46ff00ff"
+	},
+	{
+		"name": "am_L",
+		"parent": "Uam_L",
+		"length": 136.43,
+		"rotation": -140.59,
+		"x": 164.62,
+		"y": -1.71,
+		"color": "46ff00ff"
+	},
+	{
+		"name": "Uam_R",
+		"parent": "body",
+		"length": 112.79,
+		"rotation": 124.58,
+		"x": 296.82,
+		"y": 47.22,
+		"color": "ff0000ff"
+	},
+	{
+		"name": "am_R",
+		"parent": "Uam_R",
+		"length": 112.09,
+		"rotation": -119.97,
+		"x": 157.6,
+		"y": -23.01,
+		"color": "ff0000ff"
+	}
+],
+"slots": [
+	{ "name": "sippo", "bone": "sippo", "attachment": "sippo" },
+	{ "name": "am_kansetu_R", "bone": "Uam_R", "attachment": "am_kansetu_R" },
+	{ "name": "Uam_R", "bone": "Uam_R", "attachment": "Uam_R" },
+	{ "name": "am_R", "bone": "am_R", "attachment": "am_R" },
+	{ "name": "leg_R", "bone": "leg_R", "attachment": "leg_R" },
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "leg_L", "bone": "leg_L", "attachment": "leg_L" },
+	{ "name": "am_kansetu_L", "bone": "Uam_L", "attachment": "am_kansetu_L" },
+	{ "name": "Uam_L", "bone": "Uam_L", "attachment": "Uam_L" },
+	{ "name": "am_L", "bone": "am_L", "attachment": "am_L" },
+	{ "name": "head", "bone": "head", "attachment": "head" },
+	{ "name": "mouth_closes", "bone": "head", "attachment": "mouth_taoreru" },
+	{ "name": "eyes_closes", "bone": "head", "attachment": "eyes_open" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"am_kansetu_L": {
+				"am_kansetu_L": { "x": 172.02, "y": -9.38, "rotation": 98.86, "width": 127, "height": 127 }
+			},
+			"am_kansetu_R": {
+				"am_kansetu_R": { "x": 159.65, "y": -27.1, "rotation": 108.12, "width": 112, "height": 112 }
+			},
+			"am_L": {
+				"am_L": { "x": 43.97, "y": 136.94, "rotation": -137.67, "width": 263, "height": 526 }
+			},
+			"am_R": {
+				"am_R": { "x": 32.32, "y": 147.06, "rotation": -131.91, "width": 287, "height": 547 }
+			},
+			"body": {
+				"body": {
+					"type": "mesh",
+					"uvs": [ 0, 0, 0.40235, 0, 0.40822, 0.0691, 0.79737, 0.22627, 1, 0.44639, 1, 0.68233, 0.83618, 0.99596, 0.23338, 1, 0.13977, 0.74851, 0.44573, 0.54997, 0.17342, 0.28099, 0, 0.1903 ],
+					"triangles": [ 9, 4, 5, 7, 8, 6, 8, 9, 6, 6, 9, 5, 9, 3, 4, 9, 10, 3, 3, 10, 2, 10, 11, 2, 2, 0, 1, 2, 11, 0 ],
+					"vertices": [ 1, 4, 196.81, 106.56, 1, 1, 4, 68.82, -136.62, 1, 2, 4, 0.66, -105.28, 0.6659, 3, 458.64, -112.97, 0.3341, 2, 3, 162.05, -221.19, 0.95818, 2, 55.46, 320.12, 0.04182, 3, 3, -111.62, -186.72, 0.33445, 2, 193.86, 81.51, 0.5504, 5, -210.42, 88.02, 0.11516, 1, 5, -3.57, 238.45, 1, 1, 5, 337.18, 347.92, 1, 1, 5, 582.88, 17.53, 1, 1, 5, 400.02, -194.52, 1, 3, 3, 28.42, 182.48, 0.2092, 2, -184.71, -30.78, 0.46141, 5, 103.05, -152.1, 0.32939, 2, 4, -127.9, 143.61, 0.08765, 3, 373.08, 153.77, 0.91235, 2, 4, 14.26, 202.63, 0.64909, 3, 523.06, 188.43, 0.35091 ],
+					"hull": 12,
+					"edges": [ 0, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 0, 22, 20, 22 ],
+					"width": 703,
+					"height": 1104
+				}
+			},
+			"eyes_closes": {
+				"eyes_closes": { "x": 120.42, "y": 82.37, "rotation": -132.65, "width": 59, "height": 31 },
+				"eyes_open": { "x": 124.44, "y": 79.35, "rotation": -132.65, "width": 60, "height": 49 },
+				"eyes_taoreru": { "x": 116.92, "y": 81.52, "rotation": -132.65, "width": 53, "height": 63 }
+			},
+			"head": {
+				"head": { "x": 104.92, "y": 72.18, "rotation": -132.65, "width": 329, "height": 274 }
+			},
+			"leg_L": {
+				"leg_L": { "x": 195.95, "y": -50.08, "rotation": 131.56, "width": 578, "height": 474 }
+			},
+			"leg_R": {
+				"leg_R": { "x": 178.82, "y": -45.74, "rotation": 150.99, "width": 488, "height": 302 }
+			},
+			"mouth_closes": {
+				"mouth_closes": { "x": 131.39, "y": 185.79, "rotation": -132.65, "width": 76, "height": 67 },
+				"mouth_sabun": { "x": 134.7, "y": 182.74, "rotation": -132.65, "width": 76, "height": 58 },
+				"mouth_taoreru": { "x": 127.62, "y": 191.3, "rotation": -132.65, "width": 73, "height": 80 }
+			},
+			"sippo": {
+				"sippo": {
+					"type": "mesh",
+					"uvs": [ 0, 0.70019, 0, 0.82305, 0.22331, 1, 0.56797, 1, 0.89285, 0.79448, 1, 0.48875, 1, 0.24303, 0.88438, 0, 0.64142, 0, 0.6386, 0.23731, 0.59057, 0.51733, 0.31371, 0.7802, 0.13574, 0.68876 ],
+					"triangles": [ 4, 10, 5, 5, 10, 9, 5, 9, 8, 6, 5, 8, 8, 7, 6, 3, 10, 4, 3, 11, 10, 2, 11, 3, 1, 12, 2, 2, 12, 11, 1, 0, 12 ],
+					"vertices": [ 1, 7, -77.6, 21.83, 1, 1, 7, -45.5, -46.44, 1, 1, 7, 126.22, -85.76, 1, 2, 7, 319.92, 5.29, 0.00454, 8, 16.93, -99.84, 0.99546, 2, 8, 250.57, -145, 0.89679, 9, -141.61, -94.22, 0.10321, 2, 8, 427.2, -52.98, 0.0174, 9, 52.84, -137.29, 0.9826, 1, 9, 202.58, -118.83, 1, 1, 9, 341.89, -29.31, 1, 1, 9, 323.43, 120.43, 1, 1, 9, 178.6, 104.34, 1, 2, 8, 229.19, 107.47, 0.52271, 9, 4.32, 112.9, 0.47729, 2, 7, 119.61, 60.26, 0.78088, 8, -6.63, 106.54, 0.21912, 1, 7, -4.3, 64.04, 1 ],
+					"hull": 13,
+					"edges": [ 0, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 24, 0, 24 ],
+					"width": 641,
+					"height": 634
+				}
+			},
+			"Uam_L": {
+				"Uam_L": { "x": 73.09, "y": -4.55, "rotation": 98.86, "width": 153, "height": 236 }
+			},
+			"Uam_R": {
+				"Uam_R": { "x": 70.07, "y": -13.8, "rotation": 108.12, "width": 167, "height": 214 }
+			}
+		}
+	}
+],
+"animations": {
+	"taoreru": {
+		"slots": {
+			"eyes_closes": {
+				"attachment": [
+					{ "name": "eyes_taoreru" },
+					{ "time": 0.9, "name": "eyes_closes" }
+				]
+			},
+			"mouth_closes": {
+				"attachment": [
+					{ "time": 0.9, "name": "mouth_closes" }
+				]
+			}
+		},
+		"bones": {
+			"asimoto": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -90 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -6.95 }
+				]
+			},
+			"body3": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 13.44 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": -4.62 },
+					{ "time": 1, "value": 10.51 }
+				]
+			},
+			"sippo": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": 12.34 },
+					{ "time": 1, "value": 16.29 }
+				]
+			},
+			"sippo1": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": 7.57 },
+					{ "time": 1, "value": 14.91 }
+				]
+			},
+			"sippo2": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": 9.14 },
+					{ "time": 1, "value": 12.08 }
+				]
+			},
+			"leg_L": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": -14.62 },
+					{ "time": 1, "value": 1.38 }
+				]
+			},
+			"leg_R": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": -30.88 },
+					{ "time": 1, "value": 18.4 }
+				]
+			},
+			"Uam_L": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": -14.88 }
+				]
+			},
+			"am_L": {
+				"rotate": [
+					{ "value": -6.67 },
+					{ "time": 0.5667, "value": 26.53 },
+					{ "time": 1, "value": 45.07 }
+				]
+			},
+			"Uam_R": {
+				"rotate": [
+					{},
+					{ "time": 0.5667, "value": -6.32 }
+				]
+			},
+			"am_R": {
+				"rotate": [
+					{ "value": -12.46 },
+					{ "time": 0.5667, "value": 20.81 },
+					{ "time": 1, "value": 50.24 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"offsets": [
+					{ "slot": "am_L", "offset": 1 }
+				]
+			}
+		]
+	},
+	"uku": {
+		"slots": {
+			"eyes_closes": {
+				"attachment": [
+					{ "time": 0.9667, "name": "eyes_closes" },
+					{ "time": 1.0667, "name": "eyes_open" }
+				]
+			},
+			"mouth_closes": {
+				"attachment": [
+					{ "name": "mouth_closes" }
+				]
+			}
+		},
+		"bones": {
+			"body": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 1.83 },
+					{ "time": 2 }
+				]
+			},
+			"body3": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -4.34 },
+					{ "time": 2 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 3.75 },
+					{ "time": 2 }
+				]
+			},
+			"sippo": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 4.8 },
+					{ "time": 2 }
+				]
+			},
+			"sippo1": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 4.94 },
+					{ "time": 2 }
+				]
+			},
+			"sippo2": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 12.31 },
+					{ "time": 2 }
+				]
+			},
+			"leg_L": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -9.44 },
+					{ "time": 2 }
+				]
+			},
+			"leg_R": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -18.52 },
+					{ "time": 2 }
+				]
+			},
+			"Uam_L": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -5.89 },
+					{ "time": 2 }
+				]
+			},
+			"am_L": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": 16.02 },
+					{ "time": 2 }
+				]
+			},
+			"Uam_R": {
+				"rotate": [
+					{},
+					{ "time": 1, "value": -6.35 },
+					{ "time": 2 }
+				]
+			},
+			"am_R": {
+				"rotate": [
+					{ "value": -16.86 },
+					{ "time": 1, "value": 9.67 },
+					{ "time": 2, "value": -16.86 }
+				]
+			},
+			"asimoto": {
+				"rotate": [
+					{ "value": -4.72 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"offsets": [
+					{ "slot": "am_L", "offset": 1 }
+				]
+			}
+		]
+	}
+}
+}

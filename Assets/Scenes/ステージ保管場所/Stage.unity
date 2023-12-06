@@ -849,7 +849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 10
+      value: 11000
       objectReference: {fileID: 0}
     - target: {fileID: 4159991655382006285, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: m_Mesh

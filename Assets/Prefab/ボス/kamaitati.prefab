@@ -165,7 +165,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 29c2158b916cdaa4780e4cd607edbe25, type: 2}
+  - {fileID: 2100000, guid: 3d30f77a1bc82cb4ea9d02cc086341e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: efa546311d5c1684ea5c6de66d46a2ed, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: db204244bcc4d6c4e9ac3837276ee88e, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 6789395543317647096}
   - component: {fileID: 6118516621447908556}
   m_Layer: 0
-  m_Name: Kamaitati
+  m_Name: kamaitati
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
