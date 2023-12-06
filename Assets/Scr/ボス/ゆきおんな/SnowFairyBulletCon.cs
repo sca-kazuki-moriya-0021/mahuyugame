@@ -53,7 +53,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         GameObject bullet = Instantiate(bullets[0], transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 dir = new Vector2(Mathf.Cos(i),Mathf.Sin(i));
-        Debug.Log(count);
+        //Debug.Log(count);
 
         // 弾の向きをカスタマイズするために、弾の角度を変更
        // bullet.transform.rotation = Quaternion.Euler(0, 0, launchAngle[0] + i);
