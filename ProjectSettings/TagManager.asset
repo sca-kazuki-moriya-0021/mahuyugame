@@ -19,6 +19,7 @@ TagManager:
   - Enemy
   - Boss
   - ScoreAdditionItem
+  - SkillBulletOutLine
   layers:
   - Default
   - TransparentFX

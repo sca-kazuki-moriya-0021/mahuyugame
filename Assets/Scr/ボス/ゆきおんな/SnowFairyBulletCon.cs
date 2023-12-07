@@ -33,6 +33,7 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         if(time > fireTime)
         {
+            //Instantiate(bullets[1],transform.position,Quaternion.identity);
             ShootBulletWithCustomDirection(count);
             ShootBulletWithCustomDirection(-count);
             count += 1;

@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 1757787406}
   m_Layer: 0
   m_Name: Line1
-  m_TagString: Untagged
+  m_TagString: SkillBulletOutLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1174,7 +1174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1978235342
 Transform:
   m_ObjectHideFlags: 0
@@ -1664,7 +1664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 713371873187468053, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7292156682679633728, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: _animationName
@@ -1682,5 +1682,13 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: df08a0ad5e0991e41989a5e60b6ab5c0, type: 2}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bullets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 5299815778685564277, guid: f4e90ec4a7c646647b0089a0db4b775a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
