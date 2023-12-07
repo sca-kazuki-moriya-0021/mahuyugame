@@ -1683,6 +1683,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: df08a0ad5e0991e41989a5e60b6ab5c0, type: 2}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: fireTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bullets.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1690,5 +1694,13 @@ PrefabInstance:
       propertyPath: bullets.Array.data[1]
       value: 
       objectReference: {fileID: 5299815778685564277, guid: f4e90ec4a7c646647b0089a0db4b775a, type: 3}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bulletSpeed.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bulletSpeed.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
