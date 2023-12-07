@@ -21,12 +21,6 @@ public class AllspiralLauncher : MonoBehaviour
         StartCoroutine(ShootMultiSpread());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator ShootMultiSpread()
     {
         while (true)
@@ -39,7 +33,20 @@ public class AllspiralLauncher : MonoBehaviour
 
             shotCount++;
             yield return new WaitForSeconds(shootInterval);
+
+            UpdateSpiral();
         }
+    }
+
+    private void UpdateSpiral()
+    {
+        int newRotationSpeed = Random.Range(180,450);
+        float newSpiralDistance = Random.Range(5f,10f);
+        int newSpeed = Random.Range(3,7);
+
+        bulletSpeed = newSpeed;
+        spiralRotationSpeed = newRotationSpeed;
+        spiralDistance = newSpiralDistance;
     }
 
     private void ShootBullets()
