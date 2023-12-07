@@ -241,7 +241,7 @@ MonoBehaviour:
   - 3
   launchAngle:
   - 0
-  - 0
+  - 180
   fireTime: 0.01
 --- !u!1 &7815339138307165863
 GameObject:

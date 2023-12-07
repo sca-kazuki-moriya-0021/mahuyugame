@@ -33,25 +33,25 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         if(time > fireTime)
         {
-            //Instantiate(bullets[1],transform.position,Quaternion.identity);
-            ShootBulletWithCustomDirection(count);
-            ShootBulletWithCustomDirection(-count);
+            ShootBulletWithCustomDirection(count,1);
+            //ShootBulletWithCustomDirection(count,0);
+            //ShootBulletWithCustomDirection(-count,0);
             count += 1;
             time = 0;
         }
 
         if(time > 120)
         {
-
+           
         }
 
 
     }
 
-    private void ShootBulletWithCustomDirection(int i)
+    private void ShootBulletWithCustomDirection(int i,int number)
     {
         // 弾を生成して、初期位置を設定
-        GameObject bullet = Instantiate(bullets[0], transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 dir = new Vector2(Mathf.Cos(i),Mathf.Sin(i));
         //Debug.Log(count);
@@ -61,6 +61,6 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         // 弾の速度ベクトルを設定して、指定された角度に飛ばす
         //var bulletDirection = Quaternion.Euler(0, 0, launchAngle[0] + i);
-        rb.velocity = dir * bulletSpeed[0];
+        rb.velocity = dir * bulletSpeed[number];
     }
 }
