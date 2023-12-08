@@ -6,8 +6,9 @@ public class TestLineBullet : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
     private float speed = 2f;
-    private Vector3 vec = Vector3.one;
-    
+    private float time =0;
+
+    private int count =0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,11 @@ public class TestLineBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vec = rigidbody.velocity;
-        Debug.Log(vec);
+        time += Time.deltaTime *3;
+        if(count == 2)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,8 +31,31 @@ public class TestLineBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("SkillBulletOutLine"))
         {
             Debug.Log("‚ ‚½‚Á‚½‚æ");
-            var v = 
-            rigidbody.velocity = rigidbody.velocity *-1;
+            StartCoroutine(DirectionChange());
+           
         }
+    }
+
+    private IEnumerator DirectionChange()
+    {
+        var vec = transform.position;
+
+        yield return null;
+
+        var vec2 = transform.position;
+
+        var dir = vec2 - vec;
+       
+        transform.position = new Vector2(dir.x  + transform.position.x * -1,dir.y + transform.position.y * -1); 
+
+        //rigidbody.velocity = rigidbody.velocity * -1;
+
+        count++;
+        StopCoroutine(DirectionChange());
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

@@ -10,9 +10,16 @@ public class SnowFairyBulletCon : MonoBehaviour
     //弾のスピード
     [SerializeField]
     private float[] bulletSpeed;
-    //弾の発射角度
-    [SerializeField, Range(0, 360)]
-    private float[] launchAngle;
+    //Way弾の発射角度
+    [SerializeField]
+    private float launchWayAngle;
+    //発射するWay弾の数
+    [SerializeField]
+    private int launchWaySpilt;
+
+    private float _theta;
+    float PI= Mathf.PI;
+
     //弾の発射感覚
     [SerializeField]
     private float fireTime;
@@ -33,7 +40,7 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         if(time > fireTime)
         {
-            ShootBulletWithCustomDirection(count,1);
+            ShootWayBullet();
             //ShootBulletWithCustomDirection(count,0);
             //ShootBulletWithCustomDirection(-count,0);
             count += 1;
@@ -54,13 +61,22 @@ public class SnowFairyBulletCon : MonoBehaviour
         GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 dir = new Vector2(Mathf.Cos(i),Mathf.Sin(i));
-        //Debug.Log(count);
-
-        // 弾の向きをカスタマイズするために、弾の角度を変更
-       // bullet.transform.rotation = Quaternion.Euler(0, 0, launchAngle[0] + i);
-
-        // 弾の速度ベクトルを設定して、指定された角度に飛ばす
-        //var bulletDirection = Quaternion.Euler(0, 0, launchAngle[0] + i);
         rb.velocity = dir * bulletSpeed[number];
+    }
+
+    private void ShootWayBullet()
+    {
+        for(int i = 0; i<= (launchWaySpilt -1); i++)
+        {
+            //n-way弾の端から端までの角度
+            float AngleRange = PI * (launchWayAngle / 180);
+            if(AngleRange>1) _theta = (AngleRange/(launchWaySpilt- 1)) *i + 0.5f*(PI - AngleRange);
+            else _theta = 0.5f* PI;
+
+            GameObject bullet = Instantiate(bullets[1],transform.position, transform.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            var bulletv = new Vector2(bulletSpeed[1] * Mathf.Cos(_theta),bulletSpeed[1] * Mathf.Sin(_theta));
+            rb.velocity = bulletv;
+        }
     }
 }

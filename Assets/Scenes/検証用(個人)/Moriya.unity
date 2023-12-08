@@ -1612,11 +1612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 713371873187468048, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.55
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 713371873187468048, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 713371873187468048, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1656,7 +1656,7 @@ PrefabInstance:
       objectReference: {fileID: 1978235341}
     - target: {fileID: 713371873187468051, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 713371873187468053, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_Name
@@ -1685,6 +1685,14 @@ PrefabInstance:
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: fireTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: launchWayAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: launchWaySpilt
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bullets.Array.size
