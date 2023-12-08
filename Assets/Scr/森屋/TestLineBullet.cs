@@ -5,10 +5,17 @@ using UnityEngine;
 public class TestLineBullet : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
-    private float speed = 2f;
+    private float speed;
     private float time =0;
 
+    private Vector3 oldVeloctiy;
+
     private int count =0;
+
+    public float BulletSpeed
+    {
+        set => speed = value;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +26,19 @@ public class TestLineBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime *3;
-        if(count == 2)
-        {
-            Destroy(this.gameObject);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("SkillBulletOutLine"))
         {
-            Debug.Log("‚ ‚½‚Á‚½‚æ");
+            count++;
+            Debug.Log(count);
+            if (count == 3)
+            {
+                Destroy(this.gameObject);
+            }
             StartCoroutine(DirectionChange());
            
         }
@@ -38,19 +46,28 @@ public class TestLineBullet : MonoBehaviour
 
     private IEnumerator DirectionChange()
     {
-        var vec = transform.position;
+
+        Debug.Log("‚Í‚¢‚Á‚½‚æ");
+        //rigidbody.velocity = Vector3.zero;
+        var t = transform.position;
 
         yield return null;
 
-        var vec2 = transform.position;
+        var t2 = transform.position;
 
-        var dir = vec2 - vec;
-       
-        transform.position = new Vector2(dir.x  + transform.position.x * -1,dir.y + transform.position.y * -1); 
+        var dir = (t2 -t) * 50;
 
-        //rigidbody.velocity = rigidbody.velocity * -1;
+        if (count < 2)
+        { 
+            transform.position = new Vector2(transform.position.x + (dir.x), transform.position.y + (dir.y));
+            Debug.Log(transform.position);
+        }
+            
+        else if (count == 2)
+            transform.position = new Vector2(transform.position.x - (dir.x), transform.position.y - (dir.y));
 
-        count++;
+        rigidbody.velocity = rigidbody.velocity * -1;
+
         StopCoroutine(DirectionChange());
     }
 

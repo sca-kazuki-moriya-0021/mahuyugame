@@ -75,6 +75,8 @@ public class SnowFairyBulletCon : MonoBehaviour
 
             GameObject bullet = Instantiate(bullets[1],transform.position, transform.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            TestLineBullet testLineBullet = bullet.GetComponent<TestLineBullet>();
+            testLineBullet.BulletSpeed = bulletSpeed[1];
             var bulletv = new Vector2(bulletSpeed[1] * Mathf.Cos(_theta),bulletSpeed[1] * Mathf.Sin(_theta));
             rb.velocity = bulletv;
         }

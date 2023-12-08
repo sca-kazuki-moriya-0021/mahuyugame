@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2911542393421429061}
   - component: {fileID: 3193769451087386858}
-  - component: {fileID: 1225583332806202580}
   - component: {fileID: 9150013666247530914}
   - component: {fileID: 2158680273933833026}
   - component: {fileID: 5299815778685564278}
+  - component: {fileID: 4497985760685062948}
   m_Layer: 0
   m_Name: ka
   m_TagString: Bullet
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5299815778685564277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.282, y: -0.169, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.11, z: 1}
+  m_LocalPosition: {x: -1.4297, y: -0.3395, z: 0}
+  m_LocalScale: {x: 0.04091, y: 0.041808307, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1225583332806202580
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5299815778685564277}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0069881976, y: -0.022825869}
-  serializedVersion: 2
-  m_Radius: 2.1289086
 --- !u!96 &9150013666247530914
 TrailRenderer:
   serializedVersion: 2
@@ -242,3 +226,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58368657fe1930c4c828c68a449f60f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4497985760685062948
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299815778685564277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5000002
