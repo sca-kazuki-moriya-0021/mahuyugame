@@ -35,6 +35,7 @@ public class TestLineBullet : MonoBehaviour
         {
             count++;
             Debug.Log(count);
+            Debug.Log(transform.position);
             if (count == 3)
             {
                 Destroy(this.gameObject);
@@ -51,18 +52,19 @@ public class TestLineBullet : MonoBehaviour
         //rigidbody.velocity = Vector3.zero;
         var t = transform.position;
 
-        yield return null;
+        yield return new WaitForSeconds(0.01f);
 
         var t2 = transform.position;
+        Debug.Log("1få„ÇÃç¿ï\"+t2);
 
         var dir = (t2 -t) * 50;
+
 
         if (count < 2)
         { 
             transform.position = new Vector2(transform.position.x + (dir.x), transform.position.y + (dir.y));
             Debug.Log(transform.position);
         }
-            
         else if (count == 2)
             transform.position = new Vector2(transform.position.x - (dir.x), transform.position.y - (dir.y));
 

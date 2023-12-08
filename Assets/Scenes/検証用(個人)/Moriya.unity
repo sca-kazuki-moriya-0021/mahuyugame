@@ -1658,11 +1658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: launchWayAngle
-      value: 360
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: launchWaySpilt
-      value: 18
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bullets.Array.size
