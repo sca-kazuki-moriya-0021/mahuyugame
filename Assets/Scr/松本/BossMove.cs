@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Spine.Unity;
-using Spine;
 
 public class BossMove : MonoBehaviour
 {
@@ -43,9 +41,6 @@ public class BossMove : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(isMoving);
-        //Debug.Log(player.BussMoveStopFlag);
-        
         if(bossAttack1 == false && isMoving == true && bossCollder.BossDeathFlag == false)
         {
             Move();
@@ -60,28 +55,24 @@ public class BossMove : MonoBehaviour
     private void Move()
     {
         if (bossCollder.BossDebuffFlag == true)
-        {
-            angle += Time.deltaTime * speed * 0.1f;
-            float x = Mathf.Sin(angle * 2) * amplitudeX * 0.5f;
-            float y = Mathf.Sin(angle) * amplitudeY * 0.5f;
-            // Z軸の位置は固定（2D空間に固定）
-            Vector3 offset = new Vector3(x, y, 0);
-            Vector3 newPosition = centerObject.position + offset;
-
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 1f);
-        }
+            transform.position = NewPosition(0.1f,0.5f,1f);
         else
-        {
-            angle += Time.deltaTime * speed;
-            float x = Mathf.Sin(angle * 2) * amplitudeX;
-            float y = Mathf.Sin(angle) * amplitudeY;
-            // Z軸の位置は固定（2D空間に固定）
-            Vector3 offset = new Vector3(x, y, 0);
-            Vector3 newPosition = centerObject.position + offset;
+            transform.position = NewPosition(1f, 1f, 1f);
+    }
 
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * 10f);
-        }
-    }     
+    //移動の速さと座標計算
+    private Vector3 NewPosition(float angleSpeed,float speed,float moveSpeed)
+    {
+        angle += Time.deltaTime * speed * angleSpeed;
+        float x = Mathf.Sin(angle * 2) * amplitudeX * speed;
+        float y = Mathf.Sin(angle) * amplitudeY * speed;
+        // Z軸の位置は固定（2D空間に固定）
+        Vector3 offset = new Vector3(x, y, 0);
+        Vector3 newPosition = centerObject.position + offset;
+        //座標更新
+        Vector3 pos = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
+        return pos;
+    }
 
     private void StopMove()
     {

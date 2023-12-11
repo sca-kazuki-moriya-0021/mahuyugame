@@ -27,10 +27,18 @@ public class SnowFairyBulletCon : MonoBehaviour
     private float time = 0;
     private int count = 0;
 
+    enum STATE
+    {
+        No,
+        Normal,
+        Skill,
+        End,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
