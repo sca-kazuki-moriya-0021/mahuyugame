@@ -785,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 11000
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4159991655382006285, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: m_Mesh
@@ -11749,6 +11749,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3505443891620434976, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_text
+      value: a
+      objectReference: {fileID: 0}
     - target: {fileID: 3505443891950674025, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
       propertyPath: m_Camera
       value: 

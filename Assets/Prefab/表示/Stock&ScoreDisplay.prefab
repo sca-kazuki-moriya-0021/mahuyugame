@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3505443891620435004}
-  - component: {fileID: 3505443891620435006}
   - component: {fileID: 3505443891620434977}
   - component: {fileID: 3505443891620434976}
   m_Layer: 5
@@ -38,14 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: -21, y: -22.26001}
   m_SizeDelta: {x: 215.94, y: 41.12}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3505443891620435006
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3505443891620434979}
-  m_CullTransparentMesh: 1
 --- !u!23 &3505443891620434977
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -317,7 +308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3505443893045352249}
-  - component: {fileID: 3505443893045352251}
   - component: {fileID: 3505443893045352231}
   - component: {fileID: 3505443893045352230}
   m_Layer: 5
@@ -346,14 +336,6 @@ RectTransform:
   m_AnchoredPosition: {x: -85.31995, y: -66.70001}
   m_SizeDelta: {x: 170.64, y: 32.08}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3505443893045352251
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3505443893045352248}
-  m_CullTransparentMesh: 1
 --- !u!23 &3505443893045352231
 MeshRenderer:
   m_ObjectHideFlags: 0
