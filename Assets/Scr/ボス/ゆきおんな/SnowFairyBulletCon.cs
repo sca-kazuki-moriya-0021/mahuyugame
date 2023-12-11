@@ -35,10 +35,12 @@ public class SnowFairyBulletCon : MonoBehaviour
         End,
     }
 
+    private STATE state;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        state = STATE.Normal;
     }
 
     // Update is called once per frame
