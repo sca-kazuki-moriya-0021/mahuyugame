@@ -17,6 +17,11 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int launchWaySpilt;
 
+    [SerializeField]
+    private float leftAngle;
+    [SerializeField]
+    private float rightAngle;
+
     private float _theta;
     float PI= Mathf.PI;
 
@@ -50,6 +55,8 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         if(time > fireTime)
         {
+            ShootBarrier(leftAngle + count,1);
+            ShootBarrier(rightAngle + count,1);
             ShootWayBullet();
             //ShootBulletWithCustomDirection(count,0);
             //ShootBulletWithCustomDirection(-count,0);
@@ -91,4 +98,15 @@ public class SnowFairyBulletCon : MonoBehaviour
             rb.velocity = bulletv;
         }
     }
+
+    private void ShootBarrier(float angle,int number)
+    {
+        angle = angle * Mathf.Deg2Rad;
+        GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        rb.velocity = dir * bulletSpeed[number];
+    }
+
+
 }

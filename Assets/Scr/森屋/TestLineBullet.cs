@@ -8,6 +8,8 @@ public class TestLineBullet : MonoBehaviour
     private float speed;
     private float time =0;
 
+    private Vector3 keepPos;
+
     private int maxCount = 2;
 
     private int count =0;
@@ -37,6 +39,7 @@ public class TestLineBullet : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+            count ++;
             StartCoroutine(DirectionChange());
            
         }
@@ -44,32 +47,30 @@ public class TestLineBullet : MonoBehaviour
 
     private IEnumerator DirectionChange()
     {
-        
-
-        var t = transform.position;
-
-        Debug.Log("現在の座表" + t);
-
-        yield return new WaitForSecondsRealtime(0.1f);
-
-        var t2 = transform.position;
-
-        Debug.Log("1f後の座表"+t2);
-
-        var dir = (t2 - t) * 5;
-        Debug.Log(dir);
-
-        count++; 
-
         if (count < maxCount)
-        { 
+        {
+            var t = transform.position;
+
+            Debug.Log("現在の座表" + t);
+
+            yield return new WaitForSecondsRealtime(0.1f);
+
+            var t2 = transform.position;
+
+            Debug.Log("1f後の座表" + t2);
+
+            var dir = (t2 - t) * 5;
+            Debug.Log(dir);
+
             transform.position = new Vector2(transform.position.x + (dir.x), transform.position.y + (dir.y));
-            //Debug.Log(transform.position);
+            keepPos = transform.position;
+
         }
         else if (count == maxCount)
         {
-            transform.position = new Vector2(transform.position.x - (dir.x), transform.position.y - (dir.y));
+            transform.position = keepPos;
         }
+
 
         rigidbody.velocity *= -1;
 
