@@ -6,16 +6,25 @@ using System;
 public class TestLineMove : MonoBehaviour
 {
 
-    [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private float speed = 1f;
+    private LineRenderer lineRenderer;
+    [SerializeField] private float speed = 10f;
 
     private int currentIndex = 0;
     private int lineIndex = 0;
     private bool moveColFlag = false;
 
+    private Rigidbody2D rigidbody2D;
+
+    public LineRenderer LineRenderer
+    {
+        get { return this.lineRenderer; }
+        set { this.lineRenderer = value; }
+    }
+
     private void Start()
     {
-        transform.position = this.lineRenderer.GetPosition(0);
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        transform.position = lineRenderer.GetPosition(0);
         lineIndex = lineRenderer.positionCount;
         Debug.Log(lineIndex);
     }
@@ -32,7 +41,7 @@ public class TestLineMove : MonoBehaviour
 
        if(currentIndex == 3)
        {
-            Destroy(this.gameObject);
+           Destroy(gameObject);
        }
        
     }
@@ -49,8 +58,8 @@ public class TestLineMove : MonoBehaviour
         while(lineRenderer.GetPosition(x) != transform.position)
         {
             time += Time.deltaTime;
-            float pos = (time * speed * 10) / dir;
-            transform.position = Vector3.Lerp(lineRenderer.GetPosition(i), lineRenderer.GetPosition(x), pos);
+            float pos = (time * speed) / dir;
+            rigidbody2D.velocity = Vector3.Lerp(lineRenderer.GetPosition(i), lineRenderer.GetPosition(x), pos);
             yield return null;
         }
         currentIndex++;

@@ -17,19 +17,22 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int launchWaySpilt;
 
+    //Žl‚ÂŠp‚ÌêŠ
     [SerializeField]
-    private float leftAngle;
+    private GameObject cornerPos;
+
+    //‰ñ“]‚·‚é‹…‚ÌŠp“x
     [SerializeField]
-    private float rightAngle;
+    private float[] spinAngle;
 
     private float _theta;
     float PI= Mathf.PI;
 
     //’e‚Ì”­ŽËŠ´Šo
     [SerializeField]
-    private float fireTime;
+    private float[] fireTime;
 
-    private float time = 0;
+    private float[] time = new float[3]{0f,0f,0f};
     private int count = 0;
 
     enum STATE
@@ -51,25 +54,35 @@ public class SnowFairyBulletCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        time[0] += Time.deltaTime;
+        time[1] += Time.deltaTime;
+        time[2] += Time.deltaTime;
 
-        if(time > fireTime)
+
+        if(time[0] > fireTime[0])
         {
-            ShootBarrier(leftAngle + count,1);
-            ShootBarrier(rightAngle + count,1);
-            ShootWayBullet();
+            //ShootWayBullet();
+            //ShootCornerMove(2);
             //ShootBulletWithCustomDirection(count,0);
             //ShootBulletWithCustomDirection(-count,0);
-            count += 1;
-            time = 0;
+            time[0] = 0;
         }
 
-        if(time > 120)
+        if(time[1] > fireTime[1])
         {
-           
+            for(int i = 0; i < spinAngle.Length; i++)
+            {
+                //ShootBarrier(spinAngle[i] + count,1);
+            }
+            count  = count + 1 * 2 ;
+            time[1] = 0;
         }
 
-
+        if(time[2] > fireTime[2])
+        {
+            ShootCornerMove(2);
+            time[2] = 0;
+        }
     }
 
     private void ShootBulletWithCustomDirection(int i,int number)
@@ -108,5 +121,11 @@ public class SnowFairyBulletCon : MonoBehaviour
         rb.velocity = dir * bulletSpeed[number];
     }
 
+    private void ShootCornerMove(int number)
+    {
+        GameObject bullet = Instantiate(bullets[number],transform.position , Quaternion.identity);
+        CornerMoveBullet cornerMoveBullet = bullet.GetComponent<CornerMoveBullet>();
+        cornerMoveBullet.CornerObject = cornerPos;
+    }
 
 }
