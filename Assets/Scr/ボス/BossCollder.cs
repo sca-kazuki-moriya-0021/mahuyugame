@@ -139,8 +139,9 @@ public class BossCollder : MonoBehaviour
         spineAnimationState.TimeScale = 0.2f;
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
-        Destroy(bossObject);
         nowLoading.FadeIn();
+        yield return null;
+        Destroy(bossObject);
         StopCoroutine(DropItemInstance());
     }
 }

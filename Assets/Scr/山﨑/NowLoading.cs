@@ -44,25 +44,26 @@ public class NowLoading : MonoBehaviour
         fadeInFlag = true;
         backGround.enabled=true;
         //Œ»Ý‚ÌTween“à—e‚ð‘ã“ü
-        tween = backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
+        backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
         { 
             bossCollder.BossDeathFlag = false;
             var scene = totalGM.MyGetScene();
+            Debug.Log("“ü‚Á‚½");
             switch (scene)
             {
                 case TotalGM.StageCon.First:
                     fadeInFlag = false;
-                    tween?.Kill();
+                    //tween?.Kill();
                     SceneManager.LoadScene("SecondStage");
                     break;
                 case TotalGM.StageCon.Secound:
                     fadeInFlag = false;
-                    tween?.Kill();
+                    //tween?.Kill();
                     SceneManager.LoadScene("TheadStage");
                     break;
                 case TotalGM.StageCon.Thead:
                     fadeInFlag = false;
-                    tween?.Kill();
+                    //tween?.Kill();
                     SceneManager.LoadScene("Clear");
                     break;
             }
