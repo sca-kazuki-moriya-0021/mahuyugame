@@ -8,7 +8,7 @@ public class TestLineBullet : MonoBehaviour
     private float speed;
     private float time =0;
 
-    private Vector3 oldVeloctiy;
+    private int maxCount = 2;
 
     private int count =0;
 
@@ -33,9 +33,6 @@ public class TestLineBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SkillBulletOutLine"))
         {
-            count++;
-            Debug.Log(count);
-            Debug.Log(transform.position);
             if (count == 3)
             {
                 Destroy(this.gameObject);
@@ -47,28 +44,34 @@ public class TestLineBullet : MonoBehaviour
 
     private IEnumerator DirectionChange()
     {
+        
 
-        Debug.Log("ÇÕÇ¢Ç¡ÇΩÇÊ");
-        //rigidbody.velocity = Vector3.zero;
         var t = transform.position;
 
-        yield return new WaitForSeconds(0.01f);
+        Debug.Log("åªç›ÇÃç¿ï\" + t);
+
+        yield return new WaitForSecondsRealtime(0.1f);
 
         var t2 = transform.position;
+
         Debug.Log("1få„ÇÃç¿ï\"+t2);
 
-        var dir = (t2 -t) * 50;
+        var dir = (t2 - t) * 5;
+        Debug.Log(dir);
 
+        count++; 
 
-        if (count < 2)
+        if (count < maxCount)
         { 
             transform.position = new Vector2(transform.position.x + (dir.x), transform.position.y + (dir.y));
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
         }
-        else if (count == 2)
+        else if (count == maxCount)
+        {
             transform.position = new Vector2(transform.position.x - (dir.x), transform.position.y - (dir.y));
+        }
 
-        rigidbody.velocity = rigidbody.velocity * -1;
+        rigidbody.velocity *= -1;
 
         StopCoroutine(DirectionChange());
     }

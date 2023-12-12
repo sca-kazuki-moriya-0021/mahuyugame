@@ -13,6 +13,9 @@ public class BossCollder : MonoBehaviour
     private float debuffTime;
     private float debuffCountTime;
 
+    [SerializeField]
+    private GameObject bossObject;
+
     //スクリプト取得
     private PlayerCollider playerCollider;
     private NowLoading nowLoading;
@@ -136,7 +139,7 @@ public class BossCollder : MonoBehaviour
         spineAnimationState.TimeScale = 0.2f;
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
-        Destroy(this.gameObject);
+        Destroy(bossObject);
         nowLoading.FadeIn();
         StopCoroutine(DropItemInstance());
     }

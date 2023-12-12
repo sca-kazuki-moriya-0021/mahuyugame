@@ -787,6 +787,10 @@ PrefabInstance:
       propertyPath: hp
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+      propertyPath: bossObject
+      value: 
+      objectReference: {fileID: 750450916}
     - target: {fileID: 4159991655382006285, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -845,6 +849,11 @@ PrefabInstance:
       objectReference: {fileID: 2112141781}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+--- !u!1 &750450916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6156372796833689182, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+  m_PrefabInstance: {fileID: 750450915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794963818
 GameObject:
   m_ObjectHideFlags: 0

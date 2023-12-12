@@ -76,11 +76,11 @@ public class SnowFairyBulletCon : MonoBehaviour
 
     private void ShootWayBullet()
     {
-        for(int i = 0; i<= (launchWaySpilt -1); i++)
+        for(int i = 0; i< launchWaySpilt; i++)
         {
             //n-way’e‚Ì’[‚©‚ç’[‚Ü‚Å‚ÌŠp“x
             float AngleRange = PI * (launchWayAngle / 180);
-            if(AngleRange>1) _theta = (AngleRange/(launchWaySpilt- 1)) *i + 0.5f*(PI - AngleRange);
+            if(AngleRange>1) _theta = (AngleRange/(launchWaySpilt)) *i + 0.5f*(PI - AngleRange);
             else _theta = 0.5f* PI;
 
             GameObject bullet = Instantiate(bullets[1],transform.position, transform.rotation);
