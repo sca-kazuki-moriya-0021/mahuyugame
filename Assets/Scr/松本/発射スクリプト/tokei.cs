@@ -30,6 +30,7 @@ public class tokei : MonoBehaviour
         }
     }
 
+
     private void Right()
     {
         Vector3 spawnPosition = transform.position;
