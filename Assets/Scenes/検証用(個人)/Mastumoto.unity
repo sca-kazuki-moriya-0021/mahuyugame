@@ -123,6 +123,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &228130430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228130432}
+  - component: {fileID: 228130431}
+  m_Layer: 0
+  m_Name: WayMoveLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &228130431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228130430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94218142e566795409410159b6d9e10c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4803249282181108468, guid: 9d7ad69e3fc37474eb2b76f06feacebc, type: 3}
+  subBulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
+  bulletSpeed: 5
+  subBulletSpeed: 2
+  numberOfBullets: 6
+  spreadAngle: 45
+  timeShots: 1
+  subTimeShots: 0.25
+  randomMoveTime: 3
+--- !u!4 &228130432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228130430}
+  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: 8.6, y: -4.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!1 &1187325312
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AllSpiralLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 3708061468799384044, guid: 201467292d828cf4a8ab7db21281ec05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201467292d828cf4a8ab7db21281ec05, type: 3}
 --- !u!1001 &1744468936
@@ -400,15 +456,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8967313502596292667, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5028188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8967313502596292667, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8967313502596292667, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.0248456
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8967313502596292667, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -441,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 8967313502596292677, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
       propertyPath: m_Name
       value: TokeiLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967313502596292677, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
