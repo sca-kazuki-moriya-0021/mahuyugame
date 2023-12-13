@@ -17,6 +17,9 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int launchWaySpilt;
 
+    //ˆê‰ñ‚¾‚¯“ü‚éƒtƒ‰ƒO
+    private bool shootFlag;
+
     //Žl‚ÂŠp‚ÌêŠ
     [SerializeField]
     private GameObject cornerPos;
@@ -84,11 +87,13 @@ public class SnowFairyBulletCon : MonoBehaviour
             time[1] = 0;
         }
 
-        if(time[2] > fireTime[2])
+        if(time[2] > fireTime[2] && shootFlag == false)
         {
+            shootFlag = true;
             for(int i = 0; i < cornerPosChild.Length; i++)
-            ShootCornerMove(2,i);
-            time[2] = 0;
+            {
+                ShootCornerMove(2, i);
+            }
         }
     }
 
@@ -101,6 +106,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         rb.velocity = dir * bulletSpeed[number];
     }
 
+    //ŠgŽU’e
     private void ShootWayBullet()
     {
         for(int i = 0; i< launchWaySpilt; i++)
@@ -119,6 +125,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
     }
 
+    //‰ñ“]’e
     private void ShootBarrier(float angle,int number)
     {
         angle = angle * Mathf.Deg2Rad;
@@ -128,11 +135,13 @@ public class SnowFairyBulletCon : MonoBehaviour
         rb.velocity = dir * bulletSpeed[number];
     }
 
+    //Žl‹÷ˆÚ“®’e”­ŽË
     private void ShootCornerMove(int number, int pos)
     {
         GameObject bullet = Instantiate(bullets[number],cornerPosChild[pos].transform.position, Quaternion.identity);
         CornerMoveBullet cornerMoveBullet = bullet.GetComponent<CornerMoveBullet>();
         cornerMoveBullet.CornerObject = cornerPos;
+        cornerMoveBullet.InitializationPos = cornerPosChild[pos].transform.position;
     }
 
 }

@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107341418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.88, y: 3, z: 0}
+  m_LocalPosition: {x: 8.9, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 204958083}
@@ -484,7 +484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222726394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.93, y: 3, z: 0}
+  m_LocalPosition: {x: -8.9, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 204958083}
@@ -1108,7 +1108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724418446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.88, y: -3, z: 0}
+  m_LocalPosition: {x: 8.9, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 204958083}
@@ -1313,7 +1313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902333876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.93, y: -3, z: 0}
+  m_LocalPosition: {x: -8.9, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 204958083}
@@ -1851,6 +1851,10 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: cornerPos
+      value: 
+      objectReference: {fileID: 204958082}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: leftAngle
       value: 180
       objectReference: {fileID: 0}
@@ -1876,12 +1880,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: fireTime.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: spinAngle.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 2601241013557507603, guid: 98ab74ba5aa2c7f4c945f2e4a441e160, type: 3}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bullets.Array.data[1]
       value: 
@@ -1889,10 +1897,10 @@ PrefabInstance:
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bullets.Array.data[2]
       value: 
-      objectReference: {fileID: 2601241013557507603, guid: 98ab74ba5aa2c7f4c945f2e4a441e160, type: 3}
+      objectReference: {fileID: 4977020323760816096, guid: c9ae923ba382a1b4da8c19f1759581dd, type: 3}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bulletSpeed.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: fireTime.Array.data[0]
@@ -1901,6 +1909,10 @@ PrefabInstance:
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: fireTime.Array.data[1]
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: fireTime.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: spinAngle.Array.data[0]
@@ -1936,6 +1948,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bulletSpeed.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: bulletSpeed.Array.data[2]
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
