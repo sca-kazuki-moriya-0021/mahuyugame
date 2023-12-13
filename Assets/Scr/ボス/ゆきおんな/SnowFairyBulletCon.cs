@@ -20,6 +20,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     //l‚ÂŠp‚ÌêŠ
     [SerializeField]
     private GameObject cornerPos;
+    private GameObject[] cornerPosChild = new GameObject[4];
 
     //‰ñ“]‚·‚é‹…‚ÌŠp“x
     [SerializeField]
@@ -48,6 +49,11 @@ public class SnowFairyBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < cornerPosChild.Length; i++)
+        {
+            cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
+        }
+
         state = STATE.Normal;
     }
 
@@ -80,7 +86,8 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         if(time[2] > fireTime[2])
         {
-            ShootCornerMove(2);
+            for(int i = 0; i < cornerPosChild.Length; i++)
+            ShootCornerMove(2,i);
             time[2] = 0;
         }
     }
@@ -121,9 +128,9 @@ public class SnowFairyBulletCon : MonoBehaviour
         rb.velocity = dir * bulletSpeed[number];
     }
 
-    private void ShootCornerMove(int number)
+    private void ShootCornerMove(int number, int pos)
     {
-        GameObject bullet = Instantiate(bullets[number],transform.position , Quaternion.identity);
+        GameObject bullet = Instantiate(bullets[number],cornerPosChild[pos].transform.position, Quaternion.identity);
         CornerMoveBullet cornerMoveBullet = bullet.GetComponent<CornerMoveBullet>();
         cornerMoveBullet.CornerObject = cornerPos;
     }
