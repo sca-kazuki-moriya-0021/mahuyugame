@@ -144,4 +144,6 @@ public class SnowFairyBulletCon : MonoBehaviour
         cornerMoveBullet.InitializationPos = cornerPosChild[pos].transform.position;
     }
 
+
+
 }
