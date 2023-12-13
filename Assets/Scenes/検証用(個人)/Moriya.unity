@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaffItem
       objectReference: {fileID: 0}
+    - target: {fileID: 5140409669143678578, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5140409669143678580, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
       propertyPath: m_RootOrder
       value: 4
