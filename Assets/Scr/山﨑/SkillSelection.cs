@@ -211,6 +211,7 @@ public class SkillSelection : MonoBehaviour
             {
                 //Debug.Log("スキル1ッコ");
                 skillSelect[i].SetActive(false);
+                skill[i].enabled = true;
             }
             else if(totalGM.PlayerSkill[i] && skillCount == 1)
             {
@@ -220,6 +221,7 @@ public class SkillSelection : MonoBehaviour
             if(skillCount==0)
             {
                 skillSelect[i].SetActive(false);
+                skill[i].enabled = true;
             }
         }
     }

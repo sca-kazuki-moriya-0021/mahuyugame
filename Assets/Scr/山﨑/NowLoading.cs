@@ -36,6 +36,10 @@ public class NowLoading : MonoBehaviour
     {
         
     }
+    void test()
+    {
+
+    }
 
     public void FadeIn()
     {
@@ -44,11 +48,12 @@ public class NowLoading : MonoBehaviour
         fadeInFlag = true;
         backGround.enabled=true;
         //åªç›ÇÃTweenì‡óeÇë„ì¸
+        
         backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
-        { 
-            bossCollder.BossDeathFlag = false;
+        {
             var scene = totalGM.MyGetScene();
-            Debug.Log("ì¸Ç¡ÇΩ");
+            Debug.Log("ÉVÅ[ÉìÇ‹Ç≈äÆê¨");
+            
             switch (scene)
             {
                 case TotalGM.StageCon.First:
@@ -67,6 +72,7 @@ public class NowLoading : MonoBehaviour
                     SceneManager.LoadScene("Clear");
                     break;
             }
+            
             
         });
     }
