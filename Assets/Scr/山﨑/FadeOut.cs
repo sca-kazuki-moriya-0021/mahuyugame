@@ -39,6 +39,6 @@ public class FadeOut : MonoBehaviour
     //ここでどのシーンで死んだか確認
     private void GameOver()
     {
-        fadeOutAnimator.SetTrigger("Stage3");
+        fadeOutAnimator.SetTrigger("Stage1");
     }
 }
