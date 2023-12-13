@@ -10,13 +10,22 @@ public class CornerMoveBullet : MonoBehaviour
     //スピード
     private float speed = 10f;
 
+    //弾のスピード
+    private float bulletSpeed = 1f; 
+
     //目標地点
     private GameObject[] cornerPosChild = new GameObject[4];
 
     //動いているかどうか
     private bool moveColFlag;
 
+    //中央値
     private Vector3 originPos;
+
+    //出す弾
+    [SerializeField]
+    private GameObject childBullet;
+
 
     //発射タイム
     private float time;
@@ -48,6 +57,9 @@ public class CornerMoveBullet : MonoBehaviour
 
         //現在地を初期化する
         transform.position = initializationPos;
+
+        //中央座標を獲得する
+        originPos = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -55,7 +67,7 @@ public class CornerMoveBullet : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if(time > 0.5f)
+        if(time > 0.3f)
         {
             ShootBullet();
             time = 0.0f;
@@ -64,7 +76,6 @@ public class CornerMoveBullet : MonoBehaviour
         //移動調整
         if (moveColFlag == false)
         {
-            Debug.Log("mituka");
             if (cornerPosChild[0].gameObject.transform.position == this.transform.position)
                 StartCoroutine(MovePosition(0, 1));
             else if (cornerPosChild[1].gameObject.transform.position == this.transform.position)
@@ -79,7 +90,6 @@ public class CornerMoveBullet : MonoBehaviour
     //移動調整
     private IEnumerator MovePosition(int a, int b)
     {
-        Debug.Log("コルーチン入ったよ");
         float time = 0;
         moveColFlag = true;
         float dir = Mathf.Abs(Vector3.Distance(cornerPosChild[a].transform.position, cornerPosChild[b].transform.position));
@@ -91,8 +101,9 @@ public class CornerMoveBullet : MonoBehaviour
             transform.position = Vector3.Lerp(cornerPosChild[a].transform.position, cornerPosChild[b].transform.position, pos);
             yield return null;
         }
-
-        yield return new WaitForSecondsRealtime(2f);
+        
+        var i = Random.Range(0.1f,1f);
+        yield return new WaitForSecondsRealtime(0.2f + i);
 
         moveColFlag = false;
         StopCoroutine(MovePosition(a, b));
@@ -100,6 +111,16 @@ public class CornerMoveBullet : MonoBehaviour
 
     private void ShootBullet()
     {
-        //GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(childBullet, transform.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        var dir = originPos - transform.position;
+        rb.velocity = dir * bulletSpeed;
     }
+
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
+
 }
