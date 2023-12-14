@@ -311,7 +311,7 @@ MonoBehaviour:
   skillSprites:
   - {fileID: 21300000, guid: da5714a1bc57c304fbfa43c0e2a9116c, type: 3}
   - {fileID: 21300000, guid: 6eae4b20b3a87ff41a0b38e09d14e955, type: 3}
-  - {fileID: 21300000, guid: 5d0644da61d84964c96b3964f1b12205, type: 3}
+  - {fileID: 21300000, guid: fed0bd381c9afd442891b4f7e56f3477, type: 3}
   - {fileID: 21300000, guid: 34b835ae1fa86d349b6a90679aac4b75, type: 3}
   getImage: {fileID: 6791071092220203695}
   texts:
