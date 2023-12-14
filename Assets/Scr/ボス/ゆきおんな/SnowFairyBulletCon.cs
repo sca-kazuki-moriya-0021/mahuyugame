@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SnowFairyBulletCon : MonoBehaviour
 {
+    private PushOnBulletCon pushOnBulletCon;
+
     //’eƒIƒuƒWƒFƒNƒg
     [SerializeField]
     private GameObject[] bullets;
@@ -29,15 +31,12 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private float[] spinAngle;
 
-    private float _theta;
-    float PI= Mathf.PI;
-
     //’e‚Ì”­ŽËŠ´Šo
     [SerializeField]
     private float[] fireTime;
-
-    private float[] time = new float[3]{0f,0f,0f};
     private int count = 0;
+
+    private float time = 0f;
 
     enum STATE
     {
@@ -52,96 +51,59 @@ public class SnowFairyBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pushOnBulletCon = FindObjectOfType<PushOnBulletCon>();
         for (int i = 0; i < cornerPosChild.Length; i++)
         {
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
         }
 
         state = STATE.Normal;
+
+        StartCoroutine(Atk());
     }
 
     // Update is called once per frame
     void Update()
     {
-        time[0] += Time.deltaTime;
-        time[1] += Time.deltaTime;
-        time[2] += Time.deltaTime;
+        time += Time.deltaTime;
+    }
 
-
-        if(time[0] > fireTime[0])
+    private IEnumerator Atk()
+    {
+        /*bool[] flag = new bool[5];
+        if (flag[0] ==false && time < 5f)
         {
-            //ShootWayBullet();
-            //ShootCornerMove(2);
-            //ShootBulletWithCustomDirection(count,0);
-            //ShootBulletWithCustomDirection(-count,0);
-            time[0] = 0;
+            flag[0] = true;
+            pushOnBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
+            pushOnBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
+            count++;
+            Debug.Log("“ü‚Á‚½‚æ");
+            Debug.Log(time);
+            yield return new WaitForSeconds(fireTime[0]);
         }
-
-        if(time[1] > fireTime[1])
+        count = 0;
+        while(flag[0] == true && time < 30f)
         {
-            for(int i = 0; i < spinAngle.Length; i++)
+            flag[1] = true;
+            time = Time.deltaTime;
+            for (int i = 0; i < spinAngle.Length; i++)
             {
-                //ShootBarrier(spinAngle[i] + count,1);
+                pushOnBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]);
             }
-            count  = count + 1 * 2 ;
-            time[1] = 0;
+            pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
+            count = (count + 1) * 2;
+            yield return new WaitForSeconds(fireTime[1]);
         }
-
-        if(time[2] > fireTime[2] && shootFlag == false)
+        count = 0;
+        for (int i = 0; i < cornerPosChild.Length; i++)
         {
-            shootFlag = true;
-            for(int i = 0; i < cornerPosChild.Length; i++)
-            {
-                ShootCornerMove(2, i);
-            }
+           pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2]);
         }
-    }
+        */
 
-    private void ShootBulletWithCustomDirection(int i,int number)
-    {
-        // ’e‚ð¶¬‚µ‚ÄA‰ŠúˆÊ’u‚ðÝ’è
-        GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dir = new Vector2(Mathf.Cos(i),Mathf.Sin(i));
-        rb.velocity = dir * bulletSpeed[number];
-    }
+        yield return  null;
+        StopCoroutine(Atk());
 
-    //ŠgŽU’e
-    private void ShootWayBullet()
-    {
-        for(int i = 0; i< launchWaySpilt; i++)
-        {
-            //n-way’e‚Ì’[‚©‚ç’[‚Ü‚Å‚ÌŠp“x
-            float AngleRange = PI * (launchWayAngle / 180);
-            if(AngleRange>1) _theta = (AngleRange/(launchWaySpilt)) *i + 0.5f*(PI - AngleRange);
-            else _theta = 0.5f* PI;
-
-            GameObject bullet = Instantiate(bullets[1],transform.position, transform.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            TestLineBullet testLineBullet = bullet.GetComponent<TestLineBullet>();
-            testLineBullet.BulletSpeed = bulletSpeed[1];
-            var bulletv = new Vector2(bulletSpeed[1] * Mathf.Cos(_theta),bulletSpeed[1] * Mathf.Sin(_theta));
-            rb.velocity = bulletv;
-        }
-    }
-
-    //‰ñ“]’e
-    private void ShootBarrier(float angle,int number)
-    {
-        angle = angle * Mathf.Deg2Rad;
-        GameObject bullet = Instantiate(bullets[number], transform.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        rb.velocity = dir * bulletSpeed[number];
-    }
-
-    //Žl‹÷ˆÚ“®’e”­ŽË
-    private void ShootCornerMove(int number, int pos)
-    {
-        GameObject bullet = Instantiate(bullets[number],cornerPosChild[pos].transform.position, Quaternion.identity);
-        CornerMoveBullet cornerMoveBullet = bullet.GetComponent<CornerMoveBullet>();
-        cornerMoveBullet.CornerObject = cornerPos;
-        cornerMoveBullet.InitializationPos = cornerPosChild[pos].transform.position;
     }
 
 
