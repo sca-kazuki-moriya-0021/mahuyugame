@@ -141,8 +141,8 @@ public class BossCollder : MonoBehaviour
         yield return new WaitForSeconds(2f);
         nowLoading.FadeIn();
         yield return null;
-        bossDeathFlag = false;
-        Destroy(bossObject);
+        //bossDeathFlag = false;
+        //Destroy(bossObject);
         StopCoroutine(DropItemInstance());
     }
 }

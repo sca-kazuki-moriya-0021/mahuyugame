@@ -971,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 519858727726815033}
+  bossObject: {fileID: 750450916}
 --- !u!224 &519858727524906522
 RectTransform:
   m_ObjectHideFlags: 0

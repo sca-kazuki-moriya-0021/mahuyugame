@@ -11,6 +11,10 @@ public class NowLoading : MonoBehaviour
     private Image backGround;
     private TotalGM totalGM;
 
+    //ボス保存用
+    [SerializeField]
+    private GameObject bossObject;
+
     private bool fadeInFlag = false;
 
     private BossCollder bossCollder;
@@ -27,6 +31,7 @@ public class NowLoading : MonoBehaviour
     {
         //念のため
         //backGround.enabled = false;
+        bossCollder = FindObjectOfType<BossCollder>();
         totalGM = FindObjectOfType<TotalGM>();
         FadeOut();
     }
@@ -44,7 +49,6 @@ public class NowLoading : MonoBehaviour
     public void FadeIn()
     {
         //現在のTweenを保存する用変数
-        Tween tween = null;
         fadeInFlag = true;
         backGround.enabled=true;
         //現在のTween内容を代入
@@ -57,18 +61,15 @@ public class NowLoading : MonoBehaviour
             switch (scene)
             {
                 case TotalGM.StageCon.First:
-                    fadeInFlag = false;
-                    //tween?.Kill();
+                    CleaningUp();
                     SceneManager.LoadScene("SecondStage");
                     break;
                 case TotalGM.StageCon.Secound:
-                    fadeInFlag = false;
-                    //tween?.Kill();
+                    CleaningUp();
                     SceneManager.LoadScene("TheadStage");
                     break;
                 case TotalGM.StageCon.Thead:
-                    fadeInFlag = false;
-                    //tween?.Kill();
+                    CleaningUp();
                     SceneManager.LoadScene("Clear");
                     break;
             }
@@ -81,5 +82,12 @@ public class NowLoading : MonoBehaviour
     {
         backGround.DOFade(endValue:0f,duration:1.0f);//.SetEase(Ease.Linear);
     }
-    
+
+    private void CleaningUp()
+    {
+        fadeInFlag = false;
+        bossCollder.BossDeathFlag = false;
+        Destroy(bossObject);
+    }
+
 }
