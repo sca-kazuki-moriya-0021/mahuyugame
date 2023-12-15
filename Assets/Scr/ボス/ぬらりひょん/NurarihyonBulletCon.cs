@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NurarihyonBulletCon : MonoBehaviour
 {
+    private NurarihyonPushBulletCon nurarihyonPushBulletCon;
+
     //弾オブジェクト
     [SerializeField]
     private GameObject[] bullets;
@@ -21,13 +23,19 @@ public class NurarihyonBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(Atk());
+        nurarihyonPushBulletCon = FindObjectOfType<NurarihyonPushBulletCon>();
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+    }
 
+
+    private IEnumerator Atk()
+    {
+        yield return null;
     }
 }
