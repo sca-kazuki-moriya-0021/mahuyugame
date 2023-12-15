@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CornerChildBullet : MonoBehaviour
+public class DemarcationBullet : MonoBehaviour
 {
-    private Rigidbody2D rigidbody2D;
-    private SnowFairyBulletCon snow;
+    private float time = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        snow = FindObjectOfType<SnowFairyBulletCon>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(snow.BulletDeleteFlag[0] == true)
+        time+= Time.deltaTime;
+        if(time > 10f)
+        {
             Destroy(this.gameObject);
+        }
     }
-
 
     void OnBecameInvisible()
     {
-       Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
-
-
 }
+

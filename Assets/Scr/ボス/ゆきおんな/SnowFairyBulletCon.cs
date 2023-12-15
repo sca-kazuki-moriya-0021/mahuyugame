@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum STATE
+{
+    No,
+    Normal,
+    Skill,
+    End,
+}
+
 public class SnowFairyBulletCon : MonoBehaviour
 {
     private PushOnBulletCon pushOnBulletCon;
@@ -36,17 +44,21 @@ public class SnowFairyBulletCon : MonoBehaviour
     private float[] fireTime;
     private int count = 0;
 
+
+
+    //Ž©•ª‚Ì’e‚ðÁ‚·ƒtƒ‰ƒO
+    private bool[] bulletDeleteFlag = new bool[2];
+
     private float time = 0f;
 
-    enum STATE
+    private STATE state;
+
+    public bool[] BulletDeleteFlag
     {
-        No,
-        Normal,
-        Skill,
-        End,
+        get { return this.bulletDeleteFlag; }
+        set { this.bulletDeleteFlag = value; }
     }
 
-    private STATE state;
 
     // Start is called before the first frame update
     void Start()
@@ -66,40 +78,52 @@ public class SnowFairyBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        Debug.Log(time);
+
+        if(time > 30f)
+        {
+            bulletDeleteFlag[0] = true;
+        }
     }
 
     private IEnumerator Atk()
     {
-        /*bool[] flag = new bool[5];
-        if (flag[0] ==false && time < 5f)
+        while (time < 5f)
         {
-            flag[0] = true;
             pushOnBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushOnBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
-            Debug.Log("“ü‚Á‚½‚æ");
-            Debug.Log(time);
             yield return new WaitForSeconds(fireTime[0]);
         }
         count = 0;
-        while(flag[0] == true && time < 30f)
+        while(time < 15f)
         {
-            flag[1] = true;
-            time = Time.deltaTime;
             for (int i = 0; i < spinAngle.Length; i++)
             {
-                pushOnBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]);
+                pushOnBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]*2);
             }
-            pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
             count = (count + 1) * 2;
             yield return new WaitForSeconds(fireTime[1]);
+            pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
         }
         count = 0;
-        for (int i = 0; i < cornerPosChild.Length; i++)
+        while (true)
         {
-           pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2]);
+            for (int i = 0; i < cornerPosChild.Length; i++)
+            {
+                pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2]);
+            }
+            break;
         }
-        */
+
+        while (true)
+        {
+            if(bulletDeleteFlag[0] == true)
+            {
+                pushOnBulletCon.ShootDemarcation(launchWaySpilt,launchWaySpilt,bullets[3],bulletSpeed[3]);
+                break;
+            }
+        }
 
         yield return  null;
         StopCoroutine(Atk());
