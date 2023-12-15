@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4401871730377006814}
   - component: {fileID: 3379874472728671524}
   m_Layer: 0
-  m_Name: PushBullet
+  m_Name: PushBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

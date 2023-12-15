@@ -28,7 +28,6 @@ public class CornerMoveBullet : MonoBehaviour
 
     private SnowFairyBulletCon snow;
 
-
     //”­ŽËƒ^ƒCƒ€
     private float time;
 
@@ -71,6 +70,7 @@ public class CornerMoveBullet : MonoBehaviour
     {
         time += Time.deltaTime;
 
+        //’e”­ŽË
         if(time > 0.5f)
         {
             ShootBullet();

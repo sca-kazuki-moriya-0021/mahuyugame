@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushOnBulletCon : MonoBehaviour
+public class SnowPushBulletCon : MonoBehaviour
 {
     //角度入れる変数
     private float _theta;
@@ -35,7 +35,6 @@ public class PushOnBulletCon : MonoBehaviour
 
             GameObject bullet = Instantiate(obj, transform.position, transform.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            TestLineBullet testLineBullet = bullet.GetComponent<TestLineBullet>();
             var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
             rb.velocity = bulletv;
         }
@@ -53,7 +52,7 @@ public class PushOnBulletCon : MonoBehaviour
 
     //四隅移動弾発射
     //クランベリートラップ
-    public void ShootCornerMove(GameObject cornerObj ,GameObject childObj, GameObject bulletObj)
+    public void ShootCornerMove(GameObject cornerObj ,GameObject childObj, GameObject bulletObj,float speed)
     {
         GameObject bullet = Instantiate(bulletObj, childObj.transform.position, Quaternion.identity);
         CornerMoveBullet cornerMoveBullet = bullet.GetComponent<CornerMoveBullet>();
@@ -66,18 +65,20 @@ public class PushOnBulletCon : MonoBehaviour
     {
         for (int i = 0; i < spilt; i++)
         {
+            Debug.Log(spilt);
             //n-way弾の端から端までの角度
             float AngleRange = PI * (angle / 180);
             if (AngleRange > 1) _theta = (AngleRange / (spilt)) * i + 0.5f * (PI - AngleRange);
             else _theta = 0.5f * PI;
 
-            GameObject parentObject = Instantiate(demarcationParentObject,transform.position,Quaternion.identity);
-            GameObject bullet = Instantiate(bulletObj, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletObj, transform.position, Quaternion.identity);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            bullet.transform.parent = parentObject.gameObject.transform;
-            TestLineBullet testLineBullet = bullet.GetComponent<TestLineBullet>();
+            bullet.transform.parent = demarcationParentObject.gameObject.transform;
+            DemarcationBullet bullet_cs = bullet.GetComponent<DemarcationBullet>();
             var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
             rb.velocity = bulletv;
+            bullet_cs.BulletVelocity = bulletv;
+
         }
     }
 }

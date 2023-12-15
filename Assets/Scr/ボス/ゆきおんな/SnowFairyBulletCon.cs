@@ -12,7 +12,7 @@ public enum STATE
 
 public class SnowFairyBulletCon : MonoBehaviour
 {
-    private PushOnBulletCon pushOnBulletCon;
+    private SnowPushBulletCon pushOnBulletCon;
 
     //弾オブジェクト
     [SerializeField]
@@ -27,9 +27,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int launchWaySpilt;
 
-    //一回だけ入るフラグ
-    private bool shootFlag;
-
     //四つ角の場所
     [SerializeField]
     private GameObject cornerPos;
@@ -43,8 +40,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private float[] fireTime;
     private int count = 0;
-
-
 
     //自分の弾を消すフラグ
     private bool[] bulletDeleteFlag = new bool[2];
@@ -63,7 +58,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pushOnBulletCon = FindObjectOfType<PushOnBulletCon>();
+        pushOnBulletCon = FindObjectOfType<SnowPushBulletCon>();
         for (int i = 0; i < cornerPosChild.Length; i++)
         {
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
@@ -78,7 +73,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Debug.Log(time);
+        //Debug.Log(time);
 
         if(time > 30f)
         {
@@ -88,15 +83,15 @@ public class SnowFairyBulletCon : MonoBehaviour
 
     private IEnumerator Atk()
     {
-        while (time < 5f)
+        /*while (time < 5f)
         {
             pushOnBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushOnBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
             yield return new WaitForSeconds(fireTime[0]);
-        }
+        }*/
         count = 0;
-        while(time < 15f)
+        /*while(time < 15f)
         {
             for (int i = 0; i < spinAngle.Length; i++)
             {
@@ -105,25 +100,16 @@ public class SnowFairyBulletCon : MonoBehaviour
             count = (count + 1) * 2;
             yield return new WaitForSeconds(fireTime[1]);
             pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
-        }
+        }*/
         count = 0;
-        while (true)
+
+        //for (int i = 0; i < cornerPosChild.Length; i++)
         {
-            for (int i = 0; i < cornerPosChild.Length; i++)
-            {
-                pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2]);
-            }
-            break;
+            //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        while (true)
-        {
-            if(bulletDeleteFlag[0] == true)
-            {
-                pushOnBulletCon.ShootDemarcation(launchWaySpilt,launchWaySpilt,bullets[3],bulletSpeed[3]);
-                break;
-            }
-        }
+        pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
+        pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
 
         yield return  null;
         StopCoroutine(Atk());

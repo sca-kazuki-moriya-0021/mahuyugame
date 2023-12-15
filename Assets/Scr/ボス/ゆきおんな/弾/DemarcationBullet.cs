@@ -5,27 +5,37 @@ using DG.Tweening;
 
 public class DemarcationBullet : MonoBehaviour
 {
-    private float time = 0;
+    //äpìx
+    private Vector2 bulletVelocity;
+
+    //íÜêS
+    private Vector2 center;
+
+    private Rigidbody2D rigidbody2D;
+
+    public Vector2 BulletVelocity {
+        get { return this.bulletVelocity; }
+        set { this.bulletVelocity = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        center = transform.parent.gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time+= Time.deltaTime;
-        if(time > 10f)
-        {
-            Destroy(this.gameObject);
-        }
+
+
     }
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
+
 }
 
