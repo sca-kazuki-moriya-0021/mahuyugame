@@ -32,9 +32,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     private GameObject cornerPos;
     private GameObject[] cornerPosChild = new GameObject[4];
 
-    //ディマーケイション用の親オブジェクト
-    [SerializeField]
-    private GameObject demarcationParentObject;
+
 
     //回転する球の角度
     [SerializeField]
@@ -112,14 +110,16 @@ public class SnowFairyBulletCon : MonoBehaviour
             //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        for(int i = 0; i < 20f; i++)
+        for(int i = 0; i < 20; i++)
         {
-            pushOnBulletCon.ShootDemarcation(demarcationParentObject, 1);
+            pushOnBulletCon.ShootDemarcation(1);
+            pushOnBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
-            pushOnBulletCon.ShootDemarcation(demarcationParentObject, -1);
         }
-
+        yield return new WaitForSeconds(0.5f);
         pushOnBulletCon.DestoryDemarcation();
+
+        
 
 
         yield return  null;

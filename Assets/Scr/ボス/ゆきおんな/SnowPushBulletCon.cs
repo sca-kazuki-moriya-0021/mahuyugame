@@ -10,6 +10,13 @@ public class SnowPushBulletCon : MonoBehaviour
     //π
     float PI = Mathf.PI;
 
+    //ディマーケイション用の親オブジェクト
+    [SerializeField]
+    private GameObject demarcationParentObject;
+
+    [SerializeField]
+    private GameObject gaoukenObject;
+
     private List<GameObject> objects = new List<GameObject>();
 
     //角度を決めて発射する
@@ -60,14 +67,15 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //ディマーケイション
-    public void ShootDemarcation(GameObject obj ,float sign)
+    public void ShootDemarcation(float sign)
     {
-        GameObject parent = Instantiate(obj,transform.position,quaternion.identity);
+        GameObject parent = Instantiate(demarcationParentObject,transform.position,quaternion.identity);
         objects.Add(parent);
         DemarcationParent parent_cs = parent.GetComponent<DemarcationParent>();
         parent_cs.Sign = sign;
     }
 
+    //ディマーケイションで出てきたオブジェクト消す変数
     public void DestoryDemarcation()
     {
         Debug.Log("消した");
@@ -77,5 +85,12 @@ public class SnowPushBulletCon : MonoBehaviour
             Destroy(g.gameObject);
         }
         objects.Clear();
+    }
+
+    //餓王剣「餓鬼十王の報い」
+    public void GaoukenShoot()
+    {
+        Instantiate(gaoukenObject,transform.position,quaternion.identity);
+
     }
 }
