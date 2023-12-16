@@ -16,7 +16,8 @@ public class PlayerCollider : MonoBehaviour
     //点滅させるときのループカウント
     [SerializeField] private int loopCount;
     //コライダーをオンオフするためのCircleCollider2D
-    private CircleCollider2D collider2D;
+    [SerializeField]
+    private CircleCollider2D collider;
     //当たったかどうかのフラグ
     private bool isHit;
     //死亡フラグ
@@ -34,6 +35,7 @@ public class PlayerCollider : MonoBehaviour
     // 画像描画用のコンポーネント
     [SerializeField]
     private MeshRenderer spineRenderer;
+    [SerializeField]
     private SpriteRenderer colliderSprite;
 
     public bool DeathFlag
@@ -54,8 +56,6 @@ public class PlayerCollider : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<TotalGM>();
-        collider2D = GetComponent<CircleCollider2D>();
-        colliderSprite = GetComponent<SpriteRenderer>();
         bossCollder = FindObjectOfType<BossCollder>();
 
         // SkeletonAnimationからAnimationStateを取得
@@ -136,7 +136,7 @@ public class PlayerCollider : MonoBehaviour
     private IEnumerator PlayerDameged()
     {
         isHit = true;
-        collider2D.enabled = false;
+        collider.enabled = false;
 
         spineRenderer.material.color = Color.black;
         colliderSprite.color = Color.black;
@@ -164,7 +164,7 @@ public class PlayerCollider : MonoBehaviour
         //デフォルト状態にする
         state = STATE.NOMAL;
         //当たり判定をオンにする
-        collider2D.enabled = true;
+        collider.enabled = true;
         //色を白にする
         spineRenderer.material.color = Color.white;
         colliderSprite.color = Color.white;

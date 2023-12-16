@@ -392,9 +392,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInterval: 0.2
   loopCount: 2
+  collider2D: {fileID: 6399580715835281262}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 4908588441602728491}
   spineRenderer: {fileID: 2717207796534221052}
+  colliderSprite: {fileID: 6399580715835281263}
 --- !u!1 &6399580715944071599
 GameObject:
   m_ObjectHideFlags: 0
