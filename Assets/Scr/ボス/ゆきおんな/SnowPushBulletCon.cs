@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SnowPushBulletCon : MonoBehaviour
@@ -9,9 +10,7 @@ public class SnowPushBulletCon : MonoBehaviour
     //π
     float PI = Mathf.PI;
 
-    //ディマーケイション用の親オブジェクト
-    [SerializeField]
-    private GameObject demarcationParentObject;
+    private List<GameObject> objects = new List<GameObject>();
 
     //角度を決めて発射する
     public void ShootBulletWithCustomDirection(int i, GameObject obj, float speed)
@@ -61,24 +60,22 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //ディマーケイション
-    public void ShootDemarcation(int spilt,float angle,GameObject bulletObj,float speed)
+    public void ShootDemarcation(GameObject obj ,float sign)
     {
-        for (int i = 0; i < spilt; i++)
+        GameObject parent = Instantiate(obj,transform.position,quaternion.identity);
+        objects.Add(parent);
+        DemarcationParent parent_cs = parent.GetComponent<DemarcationParent>();
+        parent_cs.Sign = sign;
+    }
+
+    public void DestoryDemarcation()
+    {
+        Debug.Log("消した");
+        for(int i = 0; i < objects.Count; i++)
         {
-            Debug.Log(spilt);
-            //n-way弾の端から端までの角度
-            float AngleRange = PI * (angle / 180);
-            if (AngleRange > 1) _theta = (AngleRange / (spilt)) * i + 0.5f * (PI - AngleRange);
-            else _theta = 0.5f * PI;
-
-            GameObject bullet = Instantiate(bulletObj, transform.position, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            bullet.transform.parent = demarcationParentObject.gameObject.transform;
-            DemarcationBullet bullet_cs = bullet.GetComponent<DemarcationBullet>();
-            var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
-            rb.velocity = bulletv;
-            bullet_cs.BulletVelocity = bulletv;
-
+            var g = objects[i];
+            Destroy(g.gameObject);
         }
+        objects.Clear();
     }
 }
