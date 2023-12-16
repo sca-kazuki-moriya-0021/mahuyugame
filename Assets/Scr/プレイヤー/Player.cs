@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     private BossCollder bossCollder;
 
     [SerializeField]
+    private GameObject buffEffect;
+
+    [SerializeField]
     private Rigidbody2D rb;
 
     private float time;
@@ -122,13 +125,16 @@ public class Player : MonoBehaviour
             pBaffSkillTime += Time.deltaTime;
             if(pBaffSkillTime > 10)
             {
+                Destroy(buffEffect);
                 pBaffSkillTime = 0;
                 pBaffSkillFlag = false;
             }
         }
+
         //移動用関数
         if (playerCollider.DeathFlag == false)
             InputSystemMove();
+
         //ゲームオーバーになったら放物線を描いて落ちる
         else if(playerCollider.DeathFlag == true)
         {
@@ -277,6 +283,7 @@ public class Player : MonoBehaviour
                     {
                         case 3:
                             skillCutinCon.PlayerCutInDisplay(i);
+                            Instantiate(buffEffect,transform.position,Quaternion.identity);
                             pBaffSkillFlag = true;
                             break;
                         case 2:
