@@ -9,6 +9,7 @@ public class SkillSelection : MonoBehaviour
 {
     [SerializeField]　Button button;
     [SerializeField] GameObject goStageButton;
+    [SerializeField] GameObject barregeCanvas;
     [SerializeField] GameObject[] skillSelect;//選択しているとき上にかぶせるオブジェ
     [SerializeField] Button[] skill;//スキルのボタン
     [SerializeField]
@@ -49,7 +50,7 @@ public class SkillSelection : MonoBehaviour
     {
         //Debug.Log(ev.currentSelectedGameObject);
         //選ばれているオブジェクトを格納している
-       
+        //Debug.Log(skillSelect[2].active);
         if (selectedObj == null)
         {
             button.Select();
@@ -75,6 +76,7 @@ public class SkillSelection : MonoBehaviour
             skillSelect[0].SetActive(true);
             skillCount++;
             totalGM.PlayerSkill[0] = true;
+            //skill[1].enabled =false;
         }
         GoStage();
         //OneSkillCheck();
@@ -142,41 +144,20 @@ public class SkillSelection : MonoBehaviour
         skillClip.ButtonPush = true;
     }
 
-    void NoSkillCheck()
-    {
-        for (int i = 0; i <= 3; i++)
-        {
-            if (!totalGM.PlayerSkill[i]&&skillCount==0)
-            {
-                skillSelect[i].SetActive(false);
-            }
-        }
-    }
-
-    void OneSkillCheck()
-    {
-        for (int i = 0; i <= 3; i++)
-        {
-            if (!totalGM.PlayerSkill[i])
-            {
-                skillSelect[i].SetActive(false);
-            }
-            else
-            {
-                skillSelect[i].SetActive(true);
-            }
-        }
-    }
     //ステージに行くボタンの表示・非表示
     private void GoStage()
     {
         if(skillCount==2)
         {
-            goStageButton.SetActive(true);
+            barregeCanvas.SetActive(true);
+            this.gameObject.SetActive(false);
+            //goStageButton.SetActive(true);
         }
         else
         {
-            goStageButton.SetActive(false);
+            barregeCanvas.SetActive(false);
+            this.gameObject.SetActive(true);
+
         }
     }
     //押されたらタイトルシーンに行く
@@ -195,16 +176,16 @@ public class SkillSelection : MonoBehaviour
     {
         for (int i = 0; i <= 3; i++)
         {
-            if(!totalGM.PlayerSkill[i] && skillCount == 2)
-            {
-                //Debug.Log(skillSelect[i]);
-                skill[i].enabled = false;
-                skillSelect[i].SetActive(true);
-            }
-            else if(totalGM.PlayerSkill[i] && skillCount == 2)
+            if (totalGM.PlayerSkill[i] && skillCount == 2)
             {
                 skill[i].enabled = true;//interactableにすると半透明化
                 skillSelect[i].SetActive(false);
+            }
+            else if (!totalGM.PlayerSkill[i] && skillCount == 2)
+            {
+                Debug.Log(skillSelect[i]);
+                skill[i].enabled = false;
+                skillSelect[i].SetActive(true);
             }
 
             if(!totalGM.PlayerSkill[i]&&skillCount==1)
