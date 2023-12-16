@@ -37,6 +37,11 @@ public class BossCollder : MonoBehaviour
     //デバフフラグ
     private bool debuffFlag = false;
 
+    public int BossHp {
+        get { return this.hp; }
+        set { this.hp = value; }
+    }
+
     public bool BossDeathFlag
     {
         get { return this.bossDeathFlag; }
@@ -140,9 +145,6 @@ public class BossCollder : MonoBehaviour
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
         nowLoading.FadeIn();
-        yield return null;
-        //bossDeathFlag = false;
-        //Destroy(bossObject);
         StopCoroutine(DropItemInstance());
     }
 }

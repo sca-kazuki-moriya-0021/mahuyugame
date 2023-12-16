@@ -15,6 +15,6 @@ public class DemarcationParent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.position.x +1f,transform.position.y,transform.position.z);
+        //transform.Translate(transform.position.x +1f,transform.position.y,transform.position.z);
     }
 }

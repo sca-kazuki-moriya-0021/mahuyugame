@@ -103,7 +103,7 @@ public class PlayerCollider : MonoBehaviour
             //collision.gameObject.CompareTag("DestoryBullet"))
         {
             Destroy(collision.gameObject);
-            if(bossCollder.BossDeathFlag == false && )
+            if(bossCollder.BossDeathFlag == false)
             {
                 gm.PlayerHp[0]--;
                 if (gm.PlayerHp[0] > 0)

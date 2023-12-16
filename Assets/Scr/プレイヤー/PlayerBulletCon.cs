@@ -104,8 +104,7 @@ public class PlayerBulletCon : MonoBehaviour
             int childCount = this.gameObject.transform.childCount - 1;
             Transform v = this.gameObject.transform.GetChild(childCount);
             GameObject v2 = v.gameObject;
-            GameObject bullet_obj =(GameObject)Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
-            PlayerSkillBulletCon bullet_sc = bullet_obj.GetComponent<PlayerSkillBulletCon>();
+            Instantiate(skillBullet,v2.transform.position,Quaternion.identity);
             player.DebuffSkillFlag = false;
         }
     }

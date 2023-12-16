@@ -108,8 +108,8 @@ public class SnowFairyBulletCon : MonoBehaviour
             //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
-        pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
+        //pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
+        //pushOnBulletCon.ShootDemarcation(launchWaySpilt, launchWayAngle, bullets[3], bulletSpeed[3]);
 
         yield return  null;
         StopCoroutine(Atk());
