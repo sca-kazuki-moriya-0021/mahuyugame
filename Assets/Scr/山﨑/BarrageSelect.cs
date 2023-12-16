@@ -41,6 +41,7 @@ public class BarrageSelect : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (selectedObj == null)
         {
             button.Select();
