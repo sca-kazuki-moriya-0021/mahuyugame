@@ -80,8 +80,8 @@ public class PlayerBulletCon : MonoBehaviour
             subLaserAngle[i] = subLaserAngle[i] * Mathf.Deg2Rad;
         }
 
-        gm.PlayerWeapon[0] = true;
-        gm.PlayerSubWeapon[1] = true;
+        //gm.PlayerWeapon[0] = true;
+        //gm.PlayerSubWeapon[1] = true;
     }
 
     // Update is called once per frame

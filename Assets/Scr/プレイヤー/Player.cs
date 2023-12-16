@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     private PouseCon pouseCon;
     private PlayerSkillCutInCon skillCutinCon;
     private PlayerCollider playerCollider;
+    private BossCollder bossCollder;
+
+    [SerializeField]
+    private GameObject buffEffect;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
         playerCollider = FindObjectOfType<PlayerCollider>();
+        bossCollder = FindObjectOfType<BossCollder>();
     }
 
     // Start is called before the first frame update
@@ -120,13 +125,16 @@ public class Player : MonoBehaviour
             pBaffSkillTime += Time.deltaTime;
             if(pBaffSkillTime > 10)
             {
+                Destroy(buffEffect);
                 pBaffSkillTime = 0;
                 pBaffSkillFlag = false;
             }
         }
+
         //移動用関数
         if (playerCollider.DeathFlag == false)
             InputSystemMove();
+
         //ゲームオーバーになったら放物線を描いて落ちる
         else if(playerCollider.DeathFlag == true)
         {
@@ -155,7 +163,7 @@ public class Player : MonoBehaviour
     //スキル1発動トリガー
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
-        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false && skillCutinCon.CutInFlag == false )
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
         {
             jKey = true;
             skillAtkFlag[0] = true;
@@ -166,7 +174,7 @@ public class Player : MonoBehaviour
     //スキル2発動トリガー
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
-        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] == false && skillCutinCon.CutInFlag == false)
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] == false && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
         {
             skillAtkFlag[1] = true;
             buttonPish = true;   
@@ -275,6 +283,8 @@ public class Player : MonoBehaviour
                     {
                         case 3:
                             skillCutinCon.PlayerCutInDisplay(i);
+                            Instantiate(buffEffect,transform.position,Quaternion.identity);
+                            buffEffect.gameObject.transform.parent = this.gameObject.transform;
                             pBaffSkillFlag = true;
                             break;
                         case 2:

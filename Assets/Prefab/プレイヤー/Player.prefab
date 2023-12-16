@@ -392,7 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInterval: 0.2
   loopCount: 2
-  collider2D: {fileID: 6399580715835281262}
+  collider: {fileID: 6399580715835281262}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 4908588441602728491}
   spineRenderer: {fileID: 2717207796534221052}
@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenWithin: {fileID: 0}
+  buffEffect: {fileID: 456257902786411600, guid: 7f6effebdc384c0469e05e069768cb7f, type: 3}
   rb: {fileID: 3790261367096651559}
 --- !u!114 &6399580715944071584
 MonoBehaviour:
