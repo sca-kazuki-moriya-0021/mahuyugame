@@ -16647,6 +16647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 760780554}
+  bossObject: {fileID: 0}
 --- !u!1 &612697133
 GameObject:
   m_ObjectHideFlags: 0
@@ -30198,6 +30199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 873255201}
   goStageButton: {fileID: 2136016186}
+  barregeCanvas: {fileID: 0}
   skillSelect:
   - {fileID: 1430938078}
   - {fileID: 2111692829}
@@ -30214,6 +30216,8 @@ MonoBehaviour:
   outLineSizeS_Y: 0
   outLineSizeB_X: 0
   outLineSizeB_Y: 0
+  check: {fileID: 0}
+  yes: {fileID: 0}
 --- !u!95 &1771753107
 Animator:
   serializedVersion: 3
@@ -31671,6 +31675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenWithin: {fileID: 0}
+  buffEffect: {fileID: 0}
   rb: {fileID: 0}
 --- !u!1 &2151101845381340969
 GameObject:
@@ -31966,9 +31971,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInterval: 0.5
   loopCount: 7
+  collider: {fileID: 0}
   deathAnimation: 
   skeletonAnimation: {fileID: 0}
   spineRenderer: {fileID: 0}
+  colliderSprite: {fileID: 0}
 --- !u!198 &3496106596670071120
 ParticleSystem:
   m_ObjectHideFlags: 0

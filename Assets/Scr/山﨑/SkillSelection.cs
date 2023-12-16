@@ -23,10 +23,15 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] float outLineSizeB_X;
     [SerializeField] float outLineSizeB_Y;
     private TotalGM totalGM;
+    private SelectObjGetSet selectObjGetSet;
     private SkillClip skillClip;
+    [SerializeField] GameObject check;
+    [SerializeField] Button yes;
+
 
     private void Awake()
     {
+        selectObjGetSet = FindObjectOfType<SelectObjGetSet>();
         totalGM = FindObjectOfType<TotalGM>();       
         PlayerReset();
     }
@@ -48,6 +53,7 @@ public class SkillSelection : MonoBehaviour
     
     void FixedUpdate()
     {
+        //Debug.Log(selectedObj);
         //Debug.Log(ev.currentSelectedGameObject);
         //選ばれているオブジェクトを格納している
         //Debug.Log(skillSelect[2].active);
@@ -149,15 +155,9 @@ public class SkillSelection : MonoBehaviour
     {
         if(skillCount==2)
         {
-            barregeCanvas.SetActive(true);
+            check.SetActive(true);
+            yes.Select();
             this.gameObject.SetActive(false);
-            //goStageButton.SetActive(true);
-        }
-        else
-        {
-            barregeCanvas.SetActive(false);
-            this.gameObject.SetActive(true);
-
         }
     }
     //押されたらタイトルシーンに行く
@@ -193,10 +193,12 @@ public class SkillSelection : MonoBehaviour
                 //Debug.Log("スキル1ッコ");
                 skillSelect[i].SetActive(false);
                 skill[i].enabled = true;
+                
             }
             else if(totalGM.PlayerSkill[i] && skillCount == 1)
             {
                 skillSelect[i].SetActive(true);
+                selectObjGetSet.LastSelectButton = skill[i];
             }
 
             if(skillCount==0)

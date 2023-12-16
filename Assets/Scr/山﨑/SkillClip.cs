@@ -35,22 +35,13 @@ public class SkillClip : MonoBehaviour
 
     void Start()
     {
-        //button.Select();
-        //skillAnimator.keepAnimatorControllerStateOnDisable = false;
         nowSelectSkill = ev.currentSelectedGameObject;
-        //selectedSkill = nowSelectSkill;
-        //sprite = null;
         totalGM = FindObjectOfType<TotalGM>();
-        //Debug.Log(totalGM.PlayerSkill[1]);
-        //バグ対策///////////////
         this.rawImage.enabled = false;
         reset = Video();
         videoPlayer.time = 0;
         videoPlayer.frame = 0;
         videoPlayer.Stop();
-        //////////////////////////
-
-        //PushButton();
     }
 
     // Update is called once per frame
@@ -81,9 +72,12 @@ public class SkillClip : MonoBehaviour
             videoPlayer.time = 0;
             videoPlayer.frame = 0;
             videoPlayer.Stop();
+            /*
             if (reset != null)
                 StopCoroutine(reset);
             reset = null;
+            */
+            StopCoroutine(reset);
             /////////////////////////
         }
         else
@@ -140,21 +134,21 @@ public class SkillClip : MonoBehaviour
     {
         if (buttonPush)
         {
-            //Debug.Log("はいった");
+            
             time = 0;
             //バグ対策///////////////
             videoPlay = false;
             videoPlayer.time = 0;
             videoPlayer.frame = 0;
             videoPlayer.Stop();
+            StopCoroutine(reset);
+            /*
             if (reset != null)
             {
                 StopCoroutine(reset);
-                AnimationCheck();
-                duringVideoPlayback = false;
             }
-            reset = null;
-            /////////////////////////
+            */
+            
 
             this.rawImage.enabled = false;
             buttonPush = false;
@@ -179,14 +173,10 @@ public class SkillClip : MonoBehaviour
             SelectSkillClip();
             duringVideoPlayback = true;
             videoPlay = true;
-            //skillAnimator.enabled = true;
-
             yield return new WaitForSeconds(0.8f);
             videoPlayer.Play();
-
             yield return new WaitForSeconds(0.2f);
-
-            this.rawImage.enabled = true;
+            this.rawImage.enabled = true;  
             //yield return new WaitForSeconds(7.0f);
         
     }
