@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 10
-  radiusSpeed: 5
+  radiusSpeed: 50
   startRaduis: 0
-  maxRaduis: 8
+  maxRaduis: 100
   bulletPrefab: {fileID: 1838324523496675119, guid: f9be6bb3e41992843b41da4c0497ef34, type: 3}
   bulletCount: 16
