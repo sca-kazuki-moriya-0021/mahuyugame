@@ -284,6 +284,7 @@ public class Player : MonoBehaviour
                         case 3:
                             skillCutinCon.PlayerCutInDisplay(i);
                             Instantiate(buffEffect,transform.position,Quaternion.identity);
+                            buffEffect.gameObject.transform.parent = this.gameObject.transform;
                             pBaffSkillFlag = true;
                             break;
                         case 2:
