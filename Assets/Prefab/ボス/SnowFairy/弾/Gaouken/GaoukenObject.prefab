@@ -45,9 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4222824987418589147, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
   launchWayAngle:
-  - 45
+  - 30
+  - 60
   - 90
-  - 135
-  - 225
-  - 315
+  - 120
+  - 150
+  - 180
+  - 210
+  - 240
+  - 270
+  - 300
+  - 330
+  - 360
   bulletSpeed: 5
