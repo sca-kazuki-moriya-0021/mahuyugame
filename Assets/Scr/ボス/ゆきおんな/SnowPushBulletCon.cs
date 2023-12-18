@@ -91,6 +91,5 @@ public class SnowPushBulletCon : MonoBehaviour
     public void GaoukenShoot()
     {
         Instantiate(gaoukenObject,transform.position,quaternion.identity);
-
     }
 }

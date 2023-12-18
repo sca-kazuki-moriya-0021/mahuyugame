@@ -32,8 +32,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     private GameObject cornerPos;
     private GameObject[] cornerPosChild = new GameObject[4];
 
-
-
     //‰ñ“]‚·‚é‹…‚ÌŠp“x
     [SerializeField]
     private float[] spinAngle;
