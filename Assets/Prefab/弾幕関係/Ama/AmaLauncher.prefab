@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7695618196679254819
+--- !u!1 &2610242393479895471
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7695618196679254817}
-  - component: {fileID: 7695618196679254818}
+  - component: {fileID: 2610242393479895465}
+  - component: {fileID: 2610242393479895470}
   m_Layer: 0
-  m_Name: SnowBullet
+  m_Name: AmaLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7695618196679254817
+--- !u!4 &2610242393479895465
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7695618196679254819}
+  m_GameObject: {fileID: 2610242393479895471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -0.1, z: 0}
+  m_LocalPosition: {x: -7.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7695618196679254818
+--- !u!114 &2610242393479895470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7695618196679254819}
+  m_GameObject: {fileID: 2610242393479895471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78691cba6f04db542b14e0bf2956f0d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ed097a689e6c3e469b21ebce8e94c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 217516435325879232, guid: 6635ec2e194489d46afc1eac47769b00, type: 3}
-  bulletSpeed: 5
-  numberOfShots: 2
-  numberOfBullets: 6
-  spreadAngle: 360
-  fireTime: 0.5
+  AmaBullet: {fileID: 763852955531077982, guid: e704887c2ceaa9a408370c2fd2c88c90, type: 3}
+  numberOfAma: 10
+  spawnInterval: 3
+  spawnHeightMin: -9.7
+  spawnHeightMax: 9.7

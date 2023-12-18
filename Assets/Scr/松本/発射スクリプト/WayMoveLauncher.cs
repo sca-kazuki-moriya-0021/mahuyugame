@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WayMoveLauncher : MonoBehaviour
 {
-    [SerializeField]GameObject bulletPrefab;
-    [SerializeField]GameObject subBulletPrefab;
+    [SerializeField]GameObject BigWay;
+    [SerializeField]GameObject BulletAll;
     [SerializeField]float bulletSpeed;
     [SerializeField]float subBulletSpeed;
     [SerializeField]int numberOfBullets;
@@ -49,7 +49,7 @@ public class WayMoveLauncher : MonoBehaviour
 
         for(int i = 0;i < numberOfBullets; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab,transform.position,Quaternion.identity);
+            GameObject bullet = Instantiate(BigWay, transform.position,Quaternion.identity);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
             float bulletAngle = initialAngle + (i * angleStep);
@@ -69,7 +69,7 @@ public class WayMoveLauncher : MonoBehaviour
 
         while(parentBullet != null)
         {
-            GameObject subBullet = Instantiate(subBulletPrefab,parentBullet.position,Quaternion.identity);
+            GameObject subBullet = Instantiate(BulletAll, parentBullet.position,Quaternion.identity);
             Rigidbody2D bulletRigidbody = subBullet.GetComponent<Rigidbody2D>();
             bulletList.Add(bulletRigidbody);
             yield return new WaitForSeconds(subTimeShots);

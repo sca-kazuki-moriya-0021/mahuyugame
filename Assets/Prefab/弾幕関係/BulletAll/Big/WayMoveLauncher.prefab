@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &911416090118582126
+--- !u!1 &5377075408027487002
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 911416090118582112}
-  - component: {fileID: 911416090118582113}
+  - component: {fileID: 5377075408027487204}
+  - component: {fileID: 5377075408027487003}
   m_Layer: 0
-  m_Name: Launcher
+  m_Name: WayMoveLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &911416090118582112
+  m_IsActive: 0
+--- !u!4 &5377075408027487204
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911416090118582126}
+  m_GameObject: {fileID: 5377075408027487002}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 8.16, y: -0.05, z: 53.05134}
+  m_LocalPosition: {x: 8.6, y: -4.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
---- !u!114 &911416090118582113
+--- !u!114 &5377075408027487003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911416090118582126}
+  m_GameObject: {fileID: 5377075408027487002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d550f0c22c5f43140a27134cb0fc9b6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 94218142e566795409410159b6d9e10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7916243498200830483, guid: 00ea14ef650885e41bc113b011074734, type: 3}
+  BigWay: {fileID: 4803249282181108468, guid: 9d7ad69e3fc37474eb2b76f06feacebc, type: 3}
+  BulletAll: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
   bulletSpeed: 5
-  numberOfBullets: 3
+  subBulletSpeed: 2
+  numberOfBullets: 6
   spreadAngle: 45
-  bulletSpacing: 1
-  maxbulletSpacing: 0.5
-  bulletAmount: 1
-  createBullet: 5
-  timeAngle: 10
-  yimespreadAngle: 10
-  maxBullet: 30
+  timeShots: 1
+  subTimeShots: 0.25
+  randomMoveTime: 3

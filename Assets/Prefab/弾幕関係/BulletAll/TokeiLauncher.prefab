@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5515865212590755900
+--- !u!1 &8967313502596292677
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5515865212590755902}
-  - component: {fileID: 5515865212590755901}
+  - component: {fileID: 8967313502596292667}
+  - component: {fileID: 8967313502596292676}
   m_Layer: 0
-  m_Name: NormalLauncher
+  m_Name: TokeiLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5515865212590755902
+--- !u!4 &8967313502596292667
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5515865212590755900}
+  m_GameObject: {fileID: 8967313502596292677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5028188, y: -0.59, z: -3.0248456}
+  m_LocalPosition: {x: -1.5028188, y: -0.35, z: -3.0248456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5515865212590755901
+--- !u!114 &8967313502596292676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5515865212590755900}
+  m_GameObject: {fileID: 8967313502596292677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab96c3f7ba5c9742a92a55227d5dfe8, type: 3}
+  m_Script: {fileID: 11500000, guid: 00743abda132337488f2f41ab4632c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7916243498200830483, guid: 00ea14ef650885e41bc113b011074734, type: 3}
-  spawnInterval: 1
-  spreadAngle: 45
+  bulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
+  bulletPrefab1: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
   bulletSpeed: 5
+  rotationSpeed: 60
+  flag: 0
+  timeBetweenShots: 0.1
