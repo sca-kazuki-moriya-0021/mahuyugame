@@ -44,6 +44,9 @@ public class SnowFairyBulletCon : MonoBehaviour
     //自分の弾を消すフラグ
     private bool[] bulletDeleteFlag = new bool[2];
 
+    //減速フラグ
+    private bool reduceSpeedFlag = false;
+
     private float time = 0f;
 
     private STATE state;
@@ -52,6 +55,12 @@ public class SnowFairyBulletCon : MonoBehaviour
     {
         get { return this.bulletDeleteFlag; }
         set { this.bulletDeleteFlag = value; }
+    }
+
+    public bool ReduceSpeedFlag
+    {
+        get { return this.reduceSpeedFlag; }
+        set { this.reduceSpeedFlag = value; }
     }
 
 
@@ -78,6 +87,16 @@ public class SnowFairyBulletCon : MonoBehaviour
         if(time > 30f)
         {
             bulletDeleteFlag[0] = true;
+        }
+
+        if(time > 10f)
+        {
+            reduceSpeedFlag = true;
+        }
+
+        if(reduceSpeedFlag == true && time > 20f)
+        {
+            reduceSpeedFlag = false;
         }
     }
 
@@ -108,16 +127,16 @@ public class SnowFairyBulletCon : MonoBehaviour
             //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        for(int i = 0; i < 20; i++)
+        /*for(int i = 0; i < 20; i++)
         {
             pushOnBulletCon.ShootDemarcation(1);
             pushOnBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(0.5f);
-        pushOnBulletCon.DestoryDemarcation();
-
-        
+        pushOnBulletCon.DestoryDemarcation();*/
+        pushOnBulletCon.GaoukenShoot(1);
+        pushOnBulletCon.GaoukenShoot(-1);
 
 
         yield return  null;

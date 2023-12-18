@@ -17,6 +17,9 @@ public class SnowPushBulletCon : MonoBehaviour
     [SerializeField]
     private GameObject gaoukenObject;
 
+    [SerializeField]
+    private GameObject[] shuraObject;
+
     private List<GameObject> objects = new List<GameObject>();
 
     //角度を決めて発射する
@@ -88,8 +91,15 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //餓王剣「餓鬼十王の報い」
-    public void GaoukenShoot()
+    public void GaoukenShoot(float i)
     {
-        Instantiate(gaoukenObject,transform.position,quaternion.identity);
+        var r = new  Vector3(0,i * 5f,0f);
+        transform.TransformPoint(r);
+        Instantiate(gaoukenObject,r,quaternion.identity);
+    }
+
+    public void ShuraShoot(int number,int i)
+    {
+        Instantiate(shuraObject[number],new Vector3(0,5 * i,0),quaternion.identity);
     }
 }

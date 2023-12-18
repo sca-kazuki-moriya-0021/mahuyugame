@@ -1505,71 +1505,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c474a645ded4b5243b069f1fc63b9431, type: 3}
---- !u!1001 &5802380434652250693
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4222824987418589147, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_Name
-      value: GaoukenBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251400363099530522, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9cc1924eee233a44a9184f8260bc8949, type: 3}
 --- !u!1001 &6399580715785480552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1900,13 +1835,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: gaoukenObject
+      value: 
+      objectReference: {fileID: 1088314596202077834, guid: decd28027c3d00c4eabb26294af9fbf8, type: 3}
+    - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: demarcationParent
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: shuraObject.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: demarcationParentObject
       value: 
       objectReference: {fileID: 9001234613334706480, guid: 40f0ecd46231e684d867cd5c6337dd44, type: 3}
+    - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: shuraObject.Array.data[0]
+      value: 
+      objectReference: {fileID: 1659411096929714554, guid: 9a759d4e7fd2abb43a62ec9dda90352b, type: 3}
+    - target: {fileID: 3379874472728671524, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+      propertyPath: shuraObject.Array.data[1]
+      value: 
+      objectReference: {fileID: 4305081335310192860, guid: 17c65a50cf857c349b638ee0c48bc03b, type: 3}
     - target: {fileID: 6857666351731157974, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: m_Name
       value: PushBulletPos
