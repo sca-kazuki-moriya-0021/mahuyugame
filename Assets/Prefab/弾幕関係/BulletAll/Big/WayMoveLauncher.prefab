@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5377075408027487204
 Transform:
   m_ObjectHideFlags: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   spreadAngle: 45
   timeShots: 1
   subTimeShots: 0.25
-  randomMoveTime: 3
+  randomMoveTime: 5

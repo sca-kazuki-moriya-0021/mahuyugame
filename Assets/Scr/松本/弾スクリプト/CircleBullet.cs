@@ -11,7 +11,8 @@ public class CircleBullet : MonoBehaviour
     [SerializeField] float spreadAngle;
     private Player player;
     private Vector2 direction;
-
+    private float timer;
+    private float destroyTimer;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -19,11 +20,28 @@ public class CircleBullet : MonoBehaviour
 
     void Update()
     {
+        timer += Time.deltaTime;
+        destroyTimer += Time.deltaTime;
         // ’e‚ÌˆÊ’u‚ðXV
         transform.Translate(direction * speed * Time.deltaTime);
 
         // ’e‚ð‰ñ“]
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+        if(timer >= 2f)
+        {
+            float startAngle = -spreadAngle / 2;
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                float angle = startAngle + i * (spreadAngle / (numberOfBullets));
+
+                // ’e‚ð”­ŽË
+                Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+                Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = direction * speed;
+            }
+            timer = 0f;
+        }
 
         if (player.BulletSeverFlag == true)
         {
@@ -38,6 +56,11 @@ public class CircleBullet : MonoBehaviour
                 Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
                 bulletRigidbody.velocity = direction * speed;
             }
+            Destroy(this.gameObject);
+        }
+
+        if(destroyTimer >= 5f)
+        {
             Destroy(this.gameObject);
         }
     }
