@@ -116,6 +116,7 @@ public class SnowPushBulletCon : MonoBehaviour
         objects.Add(o);
     }
 
+    //修羅剣で出したオブジェクト削除
     public void DestroyShuraShoot()
     {
         for (int i = 0; i < objects.Count; i++)
@@ -124,5 +125,21 @@ public class SnowPushBulletCon : MonoBehaviour
             Destroy(g.gameObject);
         }
         objects.Clear();
+    }
+
+    //雪の結晶弾
+    public void SnowCrystal(float angle,int numberOfBullets,GameObject bullet,float speed)
+    {
+        float startAngle = - angle / 2;
+
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            float v = startAngle + i * (angle / (numberOfBullets));
+
+            // 弾を発射
+            Vector3 direction = Quaternion.Euler(0, 0, v) * Vector3.up;
+            Rigidbody2D bulletRigidbody = Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            bulletRigidbody.velocity = direction * speed;
+        }
     }
 }
