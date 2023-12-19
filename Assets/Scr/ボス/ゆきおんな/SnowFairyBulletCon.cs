@@ -45,6 +45,16 @@ public class SnowFairyBulletCon : MonoBehaviour
     private GameObject centerObj;
     private bool shuraFlag;
 
+    //雪の結晶弾の角度
+    [SerializeField]
+    private float crystalAngle;
+    //雪の結晶弾の出始めに何個出すか
+    [SerializeField]
+    private int crystalShoots;
+    //n方向に分かれるか
+    [SerializeField]
+    private int crystalNumberOfBullets;
+
     //プレイヤーの座標に向かわせるフラグ
     private bool pPosMoveFlag = false;
 
@@ -131,6 +141,19 @@ public class SnowFairyBulletCon : MonoBehaviour
         {
             //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
+
+        while (count <100)
+        {
+            for (int i = 0; i < crystalShoots; i++)
+            {
+                pushOnBulletCon.SnowCrystal(crystalAngle, crystalNumberOfBullets, bullets[3], bulletSpeed[3]);
+                yield return new WaitForSeconds(0.2f);
+            }
+            yield return new WaitForSeconds(fireTime[2]);
+            count++;
+        }
+
+     
 
         for(int i = 0; i < 15; i++)
         {
