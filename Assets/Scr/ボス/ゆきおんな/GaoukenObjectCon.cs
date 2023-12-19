@@ -26,6 +26,15 @@ public class GaoukenObjectCon : MonoBehaviour
     //Tweenï€ë∂óp
     private Tween tween = null;
 
+    //éØï éq
+    private int identifier;
+
+    public int Identifier
+    {
+        get { return this.identifier; }
+        set { this.Identifier = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +47,16 @@ public class GaoukenObjectCon : MonoBehaviour
         pos = transform.position;
 
         //TweenÇ≈ìÆÇ©ÇµÅAÇªÇÃTweenÇï€ë∂Ç∑ÇÈ
-        if (pos.y > 0)
-            tween = this.transform.DOMove(new Vector3(0,transform.position.y -10f,0),3f);
-        else
-            tween = this.transform.DOMove(new Vector3(0, transform.position.y + 10f, 0), 3f);
-
+        switch (identifier)
+        {
+            //è„Ç©ÇÁâ∫
+            case 0:
+                tween = this.transform.DOMove(new Vector3(0, transform.position.y - 10f, 0), 3f);
+                break;
+            case 1:
+                tween = this.transform.DOMove(new Vector3(0, transform.position.y + 10f, 0), 3f);
+                break;
+        }
         //çƒê∂
         tween.Play();
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7114116292600926554}
   - component: {fileID: 3833094265264503623}
   - component: {fileID: 3976225539606023403}
+  - component: {fileID: 8533385384157857200}
   m_Layer: 0
   m_Name: ShuraBullet
   m_TagString: Untagged
@@ -121,3 +122,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.2297664
+--- !u!114 &8533385384157857200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544378449473011868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5839703f17cb60142966d2d490beba81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 7114116292600926554}
+  boss: {fileID: 713371873187468053, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
+  player: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}

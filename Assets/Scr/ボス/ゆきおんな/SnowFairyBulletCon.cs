@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum STATE
-{
-    No,
-    Normal,
-    Skill,
-    End,
-}
-
 public class SnowFairyBulletCon : MonoBehaviour
 {
     private SnowPushBulletCon pushOnBulletCon;
@@ -47,9 +39,18 @@ public class SnowFairyBulletCon : MonoBehaviour
     //減速フラグ
     private bool reduceSpeedFlag = false;
 
-    private float time = 0f;
+    //修羅剣用コライダー
+    [SerializeField]
+    private GameObject shuraCenterObj;
+    private GameObject centerObj;
+    private bool shuraFlag;
 
-    private STATE state;
+    //プレイヤーの座標に向かわせるフラグ
+    private bool pPosMoveFlag = false;
+
+    private float time = 0f;
+    private float shuraTime = 0;
+
 
     public bool[] BulletDeleteFlag
     {
@@ -63,6 +64,11 @@ public class SnowFairyBulletCon : MonoBehaviour
         set { this.reduceSpeedFlag = value; }
     }
 
+    public bool PPosMoveFlag
+    {
+        get { return this.pPosMoveFlag; }
+        set { this.pPosMoveFlag = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,8 +79,6 @@ public class SnowFairyBulletCon : MonoBehaviour
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
         }
 
-        state = STATE.Normal;
-
         StartCoroutine(Atk());
     }
 
@@ -82,8 +86,9 @@ public class SnowFairyBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        //Debug.Log(time);
-
+        if(shuraFlag == true)
+            ShuraTimeCount();
+        
         if(time > 30f)
         {
             bulletDeleteFlag[0] = true;
@@ -127,23 +132,55 @@ public class SnowFairyBulletCon : MonoBehaviour
             //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        /*for(int i = 0; i < 20; i++)
+        for(int i = 0; i < 15; i++)
         {
             pushOnBulletCon.ShootDemarcation(1);
             pushOnBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(0.5f);
-        pushOnBulletCon.DestoryDemarcation();*/
-        pushOnBulletCon.GaoukenShoot(1);
-        pushOnBulletCon.GaoukenShoot(-1);
 
+        shuraFlag = true;
+        //pushOnBulletCon.ShuraShoot(0,1);
+        //pushOnBulletCon.ShuraShoot(1,-1);
+
+        for(int i= 0; i< 4; i++)
+        {
+            pushOnBulletCon.GaoukenShoot(0);
+            yield return new WaitForSeconds(0.1f);
+            pushOnBulletCon.GaoukenShoot(1);
+        }
+
+        pushOnBulletCon.DestroyShuraShoot();
+        pushOnBulletCon.DestoryDemarcation();
+        shuraFlag = false;
 
         yield return  null;
         StopCoroutine(Atk());
 
     }
 
+    private void ShuraTimeCount()
+    {
+        shuraTime += Time.deltaTime;
 
+        if (shuraTime > 3f)
+        {
+            if (centerObj == null)
+                centerObj = Instantiate(shuraCenterObj, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+
+        if (centerObj != null && shuraTime > 6f)
+        {
+            Destroy(centerObj);
+            pPosMoveFlag = true;
+        }
+
+        if (pPosMoveFlag == true && shuraTime > 9f)
+        {
+            pPosMoveFlag = false;
+            shuraTime = 0f;
+        }
+    }
 
 }

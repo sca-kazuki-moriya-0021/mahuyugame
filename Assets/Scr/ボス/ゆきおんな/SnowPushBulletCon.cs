@@ -91,15 +91,38 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //餓王剣「餓鬼十王の報い」
-    public void GaoukenShoot(float i)
+    public void GaoukenShoot(int identifier)
     {
-        var r = new  Vector3(0,i * 5f,0f);
+        var r  = new Vector3(0,0,0);
+        switch (identifier)
+        {
+            case 0:
+                r = new Vector3(0,5,0);
+            break;
+            case 1:
+                r = new Vector3(0,-5 , 0);
+            break;
+        }
         transform.TransformPoint(r);
-        Instantiate(gaoukenObject,r,quaternion.identity);
+        GameObject i = Instantiate(gaoukenObject,r,quaternion.identity);
+        GaoukenObjectCon objectCon = i.GetComponent<GaoukenObjectCon>();
+        objectCon.Identifier = identifier;
     }
 
+    //修羅剣「現世妄執-Lunatic-」
     public void ShuraShoot(int number,int i)
     {
-        Instantiate(shuraObject[number],new Vector3(0,5 * i,0),quaternion.identity);
+        GameObject o = Instantiate(shuraObject[number],new Vector3(0,5 * i,0),quaternion.identity);
+        objects.Add(o);
+    }
+
+    public void DestroyShuraShoot()
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            var g = objects[i];
+            Destroy(g.gameObject);
+        }
+        objects.Clear();
     }
 }
