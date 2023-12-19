@@ -43,7 +43,7 @@ public class BossAttack : MonoBehaviour
             StartCoroutine(AttackPlayerCoroutine());
         }
         //ÉXÉLÉã2
-        if (bossMove.BossAttack2 )
+        if (bossMove.BossAttack2 == true)
         {
             if(currentBulletCount < maxBulletCount)
             {
@@ -102,9 +102,9 @@ public class BossAttack : MonoBehaviour
         float startTime = 0.0f;
 
         Vector3 targetPosition = playerObject.transform.position;
-
+        float preAttackDelay = 1.0f;
+        yield return new WaitForSeconds(preAttackDelay);
         float journeyLength = Vector3.Distance(transform.position, targetPosition);
-        Debug.Log(journeyLength);
         while (startTime < 1)
         {
             startTime += Time.deltaTime;
@@ -124,7 +124,6 @@ public class BossAttack : MonoBehaviour
             float journeyFraction = startTime * returnSpeed / journeyLength;
             transform.position = Vector3.Lerp(transform.position, initialPosition, journeyFraction); 
             yield return null;
-            //Debug.Log(startTime);
         }
         
         //yield return StartCoroutine(MoveToPosition(initialPosition, returnSpeed));

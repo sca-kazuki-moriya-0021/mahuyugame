@@ -58,7 +58,7 @@ public class Launcher : MonoBehaviour
     private void ShootNWayBullets(int curBullet, float curAngle)
     {
         float angleStep = curAngle / (curBullet - 1);
-        float initialAngle = transform.eulerAngles.z - (curAngle / 2);
+        float initialAngle = this.transform.eulerAngles.z - (curAngle / 2);
         bulletSpacing += Time.deltaTime;
 
         if (bulletSpacing > maxbulletSpacing)
@@ -68,13 +68,13 @@ public class Launcher : MonoBehaviour
             for (int i = 0; i < curBullet; i++)
             {
                 // 弾を生成して、初期位置を設定
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                GameObject bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
                 float bulletAngle = initialAngle + (i * angleStep);
 
                 // プレイヤーの位置から弾の向きを計算
-                Vector2 directionToPlayer = (playerPosition - (Vector2)transform.position).normalized;
+                Vector2 directionToPlayer = (playerPosition - (Vector2)this.transform.position).normalized;
                 float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
 
                 // 弾の向きを設定

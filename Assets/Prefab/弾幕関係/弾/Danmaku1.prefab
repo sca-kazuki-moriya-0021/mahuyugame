@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee90671f19132944b2eec28d8fab10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  angularSpeed: -2
+  radius: 2
+  angularSpeed: -4
 --- !u!1001 &8268174837194196531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170,6 +170,14 @@ PrefabInstance:
     - target: {fileID: 1655728726699139969, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655728726699139970, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
+      propertyPath: fireTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655728726699139970, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
+      propertyPath: numberOfShots
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1655728726699139971, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
       propertyPath: m_Name

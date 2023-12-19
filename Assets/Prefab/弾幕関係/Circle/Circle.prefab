@@ -118,10 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d82342b19a571c4887d2b2f1e646153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   rotationSpeed: 360
   bulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
-  numberOfShots: 0
   numberOfBullets: 15
   spreadAngle: 360
 --- !u!58 &4365485565297766826
