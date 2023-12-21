@@ -142,4 +142,23 @@ public class SnowPushBulletCon : MonoBehaviour
             bulletRigidbody.velocity = direction * speed;
         }
     }
+
+    //ínè„‚qÇÃèÉâª
+    public void GeoglyphShoot(int spilt, float angle, GameObject obj, float speed,Vector3 pos)
+    {
+
+        for (int i = 0; i < spilt; i++)
+        {
+            //n-wayíeÇÃí[Ç©ÇÁí[Ç‹Ç≈ÇÃäpìx
+            float AngleRange = PI * (angle / 180);
+            if (AngleRange > 1) _theta = (AngleRange / (spilt)) * i + 0.5f * (PI - AngleRange);
+            else _theta = 0.5f * PI;
+
+            GameObject bullet = Instantiate(obj, pos, transform.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
+            rb.velocity = bulletv;
+            GeoglyphBullet geoglyphBullet = bullet.GetComponent<GeoglyphBullet>();
+        }
+    }
 }
