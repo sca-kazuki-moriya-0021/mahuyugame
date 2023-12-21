@@ -55,6 +55,11 @@ public class SistersLauncher : MonoBehaviour
         currentRotation += rotationSpeed * Time.deltaTime;
     }
 
+    private void A()
+    {
+        
+    }
+
     private void RotateBullet()
     {
         Vector3 spawnPosition = transform.position;
