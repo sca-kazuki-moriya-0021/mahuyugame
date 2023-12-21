@@ -85,6 +85,10 @@ public class WayMoveLauncher : MonoBehaviour
                 Vector2 randomVelocity = new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
                 bulletRigidbody.velocity = randomVelocity * subBulletSpeed;
             }
+            else
+            {
+                Destroy(bulletRigidbody.gameObject);
+            }
         }
     }
 }

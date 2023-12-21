@@ -502,16 +502,16 @@ PrefabInstance:
       objectReference: {fileID: 2112141781}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.size
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 8516267138997729011, guid: 1ea045f16c6751243838dfd77c5febad, type: 3}
+      objectReference: {fileID: 5515865212590755900, guid: dd4e599bf32e255428192c09c5d6aea7, type: 3}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 3300474553949450878, guid: 84ab2b94fe68ccc4fb5c4b3afab486aa, type: 3}
+      objectReference: {fileID: 1655728726699139971, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[2]
       value: 
@@ -523,15 +523,15 @@ PrefabInstance:
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 3708061468799384044, guid: 201467292d828cf4a8ab7db21281ec05, type: 3}
+      objectReference: {fileID: 911416090118582126, guid: ccf0055cdbca4ce41b14f8c5344c100b, type: 3}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 4422619969857326062, guid: 6394b76f874828c4f8e1260aae2cf391, type: 3}
+      objectReference: {fileID: 1352032143058718900, guid: d09d27b7a172de641a6f6cf0910ea26b, type: 3}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 3708061468799384044, guid: 201467292d828cf4a8ab7db21281ec05, type: 3}
+      objectReference: {fileID: 4422619969857326062, guid: 6394b76f874828c4f8e1260aae2cf391, type: 3}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[7]
       value: 
@@ -539,11 +539,11 @@ PrefabInstance:
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[8]
       value: 
-      objectReference: {fileID: 5377075408027487002, guid: a49c1622326324849820f91ec5274f6e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.data[9]
       value: 
-      objectReference: {fileID: 911416090118582126, guid: ccf0055cdbca4ce41b14f8c5344c100b, type: 3}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3338163424672842bfd7ed55af671e0, type: 3}
 --- !u!1 &750450916 stripped

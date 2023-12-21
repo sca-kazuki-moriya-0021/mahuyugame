@@ -71,14 +71,18 @@ public class AllspiralLauncher : MonoBehaviour
 
         while(distanceTraveled < spiralDistance)
         {
-            float angle = distanceTraveled * rotationDirection * spiralRotationSpeed / spiralDistance;
+            if (bulletRigidbody)
+            {
+                float angle = distanceTraveled * rotationDirection * spiralRotationSpeed / spiralDistance;
 
-            Vector3 spiralMotion = Quaternion.Euler(0,0,angle) * initialDirection;
-            bulletRigidbody.velocity = spiralMotion * bulletSpeed;
+                Vector3 spiralMotion = Quaternion.Euler(0, 0, angle) * initialDirection;
+                bulletRigidbody.velocity = spiralMotion * bulletSpeed;
 
-            distanceTraveled = Vector3.Distance(bulletRigidbody.position,startPosition);
+                distanceTraveled = Vector3.Distance(bulletRigidbody.position, startPosition);
 
-            yield return null;
+                yield return null;
+            }
         }
+        StopCoroutine(SpiralMotion(bulletRigidbody,initialDirection));
     }
 }

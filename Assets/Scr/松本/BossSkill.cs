@@ -61,9 +61,10 @@ public class BossSkill : MonoBehaviour
     // Œ»İ‚Ì’e–‹‚ğ¶¬
     private void InstantiateSkill()
     {
+        Quaternion rot = Quaternion.Euler(0,0,270);
         GameObject skillPrefab = skillPrefabs[currentSkillIndex];
         // ƒXƒLƒ‹‚Ì’e–‹‚Æ‰Šú‰»‚ğ‚±‚±‚ÉÀ‘•
-        skillInstance = Instantiate(skillPrefab, transform.position, Quaternion.identity);
+        skillInstance = Instantiate(skillPrefab, transform.position, rot);
         //skillInstance.transform.SetParent(transform);
     }
 
