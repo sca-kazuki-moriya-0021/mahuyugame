@@ -6,7 +6,7 @@ public class AreaManager : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField]
-    private AudioClip[] audioClips;
+    private AudioClip audioClips;
 
     //ボスオブジェクト
     //[SerializeField]
@@ -28,7 +28,6 @@ public class AreaManager : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClips[1];
         audioSource.Play();
 
         //敵の出現をコルーチンで書いていく
