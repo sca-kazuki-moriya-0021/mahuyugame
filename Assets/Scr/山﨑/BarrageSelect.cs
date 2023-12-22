@@ -21,6 +21,7 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] float outLineSizeB_X;
     [SerializeField] float outLineSizeB_Y;
     [SerializeField] GameObject goStageButton;
+    bool[] mainSubWepon = {false,false};
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class BarrageSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainSubWepon[0] = false;
+        mainSubWepon[1] = false;
         button.Select();
         for (int i = 0; i <= 3; i++)
         {
@@ -41,7 +44,7 @@ public class BarrageSelect : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        Debug.Log(mainSubWepon[0]);
         if (selectedObj == null)
         {
             button.Select();
@@ -58,20 +61,24 @@ public class BarrageSelect : MonoBehaviour
     //‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
     public void Skill_0_Click()
     {
-        if(barrageCount == 0 && !totalGM.PlayerWeapon[0])
+        if(!mainSubWepon[0])
         {
+            mainSubWepon[0] =true;
             barrageCount++;
             totalGM.PlayerWeapon[0] = true;
             barrageSelect[0].enabled = true;
         }
-        else if(barrageCount == 1 && !totalGM.PlayerWeapon[0] && !totalGM.PlayerSubWeapon[0])
+        else if(mainSubWepon[0] && !mainSubWepon[1])
         {
+            mainSubWepon[1]=true;
             barrageCount++;
             totalGM.PlayerSubWeapon[0] = true;
             barrageSelect[0].enabled = true;
         }
-        else
+        else if(barrageCount==2 && mainSubWepon[0])
         {
+            mainSubWepon[0] = false;
+            mainSubWepon[1] = false;
             barrageCount--;
             barrageSelect[0].enabled = false;
             totalGM.PlayerWeapon[0] = false;
@@ -82,44 +89,56 @@ public class BarrageSelect : MonoBehaviour
     //‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
     public void Skill_1_Click()
     {
-        if (barrageCount == 0 && !totalGM.PlayerWeapon[1])
+        if (!mainSubWepon[0])
         {
+            mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[1] = true;
             barrageSelect[1].enabled = true;
         }
-        else if (barrageCount == 1 && !totalGM.PlayerWeapon[1] && !totalGM.PlayerSubWeapon[1])
+        else if (mainSubWepon[0] && !mainSubWepon[1])
         {
+            
             barrageCount++;
             totalGM.PlayerSubWeapon[1] = true;
             barrageSelect[1].enabled = true;
+            mainSubWepon[1] = true;
+            Debug.Log("A");
         }
         else
         {
+            
+            mainSubWepon[0] = false;
+            mainSubWepon[1] = false;
             barrageCount--;
             barrageSelect[1].enabled = false;
             totalGM.PlayerWeapon[1] = false;
             totalGM.PlayerSubWeapon[1] = false;
+            Debug.Log("AA");
         }
         TwoSelect();
     }
     //‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
     public void Skill_2_Click()
     {
-        if (barrageCount == 0 && !totalGM.PlayerWeapon[2])
+        if (!mainSubWepon[0])
         {
+            mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[2] = true;
             barrageSelect[2].enabled = true;
         }
-        else if (barrageCount == 1 && !totalGM.PlayerWeapon[2] && !totalGM.PlayerSubWeapon[2])
+        else if (mainSubWepon[0] && !mainSubWepon[1])
         {
+            mainSubWepon[1] = true;
             barrageCount++;
             totalGM.PlayerSubWeapon[2] = true;
             barrageSelect[2].enabled = true;
         }
         else
         {
+            mainSubWepon[0] = false;
+            mainSubWepon[1] = false;
             barrageCount--;
             barrageSelect[2].enabled = false;
             totalGM.PlayerWeapon[2] = false;
@@ -131,14 +150,16 @@ public class BarrageSelect : MonoBehaviour
     //‰Ÿ‚³‚ê‚½‚Æ‚«‚Ìˆ—
     public void Skill_3_Click()
     {
-        if (barrageCount == 0 && !totalGM.PlayerWeapon[3])
+        if (!mainSubWepon[0])
         {
+            mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[3] = true;
             barrageSelect[3].enabled = true;
         }
-        else if (barrageCount == 1 && !totalGM.PlayerWeapon[3] && !totalGM.PlayerSubWeapon[3])
+        else if (mainSubWepon[0] && !mainSubWepon[1])
         {
+            mainSubWepon[1] = true;
             barrageCount++;
             totalGM.PlayerSubWeapon[3] = true;
             barrageSelect[3].enabled = true;
