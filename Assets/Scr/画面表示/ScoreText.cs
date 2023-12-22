@@ -9,7 +9,7 @@ public class ScoreText : MonoBehaviour
 {
 
     [SerializeField]
-    private TMP_Text scoreText;
+    private Text scoreText;
     private float baseScore = 1000;
     private float time = 0;
 

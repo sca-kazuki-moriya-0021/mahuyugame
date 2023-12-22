@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StockText : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text stockText;
+    private Text stockText;
     private TotalGM gm;
 
     // Start is called before the first frame update
