@@ -32,7 +32,7 @@ TagManager:
   - OutLines
   - Player
   - BulletOutLine
-  - TitleButton
+  - NoOutLine
   - 
   - 
   - 
