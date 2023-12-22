@@ -62,19 +62,17 @@ public class NowLoading : MonoBehaviour
             {
                 case TotalGM.StageCon.First:
                     CleaningUp();
-                    SceneManager.LoadScene("SecondStage");
+                    SceneManager.LoadScene("Clear");
                     break;
                 case TotalGM.StageCon.Secound:
                     CleaningUp();
-                    SceneManager.LoadScene("TheadStage");
+                    SceneManager.LoadScene("Clear");
                     break;
                 case TotalGM.StageCon.Thead:
                     CleaningUp();
                     SceneManager.LoadScene("Clear");
                     break;
             }
-            
-            
         });
     }
 
