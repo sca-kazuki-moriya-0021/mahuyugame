@@ -8,12 +8,9 @@ public class SnowEffectCon : MonoBehaviour
     [SerializeField]
     private ParticleSystem particleSystem;
 
-    private AreaManager areaManager;
-
     // Start is called before the first frame update
     void Start()
     {
-        areaManager = FindObjectOfType<AreaManager>();
         var main = particleSystem.main;
         main.simulationSpeed = 3;
     }
