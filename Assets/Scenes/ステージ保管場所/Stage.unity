@@ -866,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
@@ -1419,6 +1419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1194869118}
+  - component: {fileID: 1194869119}
   m_Layer: 0
   m_Name: WindEffect
   m_TagString: Untagged
@@ -1442,6 +1443,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1194869119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194869117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d2b5e009533cf46b8c471784753516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystems:
+  - {fileID: 2151932369058080605}
+  - {fileID: 641174806485644277}
 --- !u!1 &1459909860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2157,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 291618117906583947, guid: 3aeecf495aea10d408ce461c2c9e11a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.18
+      objectReference: {fileID: 0}
     - target: {fileID: 291618117927990664, guid: 3aeecf495aea10d408ce461c2c9e11a7, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2713,7 +2733,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -3404,8 +3424,8 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: -1.1631701, z: 0}
+    m_Rotation: {x: -0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -7592,6 +7612,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7411248914406026492, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411248914406026492, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.03
+      objectReference: {fileID: 0}
     - target: {fileID: 7411248915084991829, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7640,6 +7668,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMoveRange
       objectReference: {fileID: 0}
+    - target: {fileID: 7411248915495715215, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411248915495715215, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.97
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f03be4a2d6989646b15b97269f6b0a4, type: 3}
 --- !u!199 &2151932369058080602
@@ -7683,7 +7719,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -7735,7 +7771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2151932369058080603}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 14.559134, y: -0.16888392, z: 2.2244775}
+  m_LocalPosition: {x: 14.559134, y: -1.29, z: 2.2244775}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194869118}
@@ -8374,9 +8410,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 5.53759, y: 0, z: -0}
+    m_Position: {x: 5.53759, y: -0.31822252, z: 0}
     m_Rotation: {x: -0, y: 0, z: 0}
-    m_Scale: {x: 15.966924, y: 9.584316, z: 1}
+    m_Scale: {x: 15.966924, y: 6.977543, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -9283,8 +9319,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.11597067
-          value: 0.5841541
+          time: 0.11111075
+          value: 0.2868557
           inSlope: 0
           outSlope: 0
           tangentMode: 0
