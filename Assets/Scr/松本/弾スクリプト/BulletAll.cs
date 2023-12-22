@@ -20,6 +20,15 @@ public class BulletAll : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            
+            Destroy(this.gameObject);
+        }
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(this.gameObject);

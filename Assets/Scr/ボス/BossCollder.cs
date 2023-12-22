@@ -95,7 +95,7 @@ public class BossCollder : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
             hitObject(collision.gameObject);
-          
+            DebuffActive();
         }
     }
 
@@ -109,6 +109,7 @@ public class BossCollder : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
             hitObject(collision.gameObject);
+            DebuffActive();
         }
     }
 
@@ -117,8 +118,7 @@ public class BossCollder : MonoBehaviour
         if (debuffFlag == false)
         {
             debuffFlag = true;
-            Instantiate(debuffEffect,transform.position,Quaternion.identity);
-            debuffEffect.gameObject.transform.parent = this.gameObject.transform;
+            var g = Instantiate(debuffEffect,transform.position,Quaternion.identity,transform);
         }
           
     }
