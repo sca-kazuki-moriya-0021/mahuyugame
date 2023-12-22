@@ -178,7 +178,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         pushOnBulletCon.DestoryDemarcation();
         shuraFlag = false;*/
 
-        pushOnBulletCon.GeoglyphShoot(launchWaySpilt, launchWayAngle, bullets[4], bulletSpeed[4],player.transform.position);
+        //pushOnBulletCon.GeoglyphShoot(launchWaySpilt, launchWayAngle, bullets[4], bulletSpeed[4],player.transform.position);
 
         yield return  null;
         StopCoroutine(Atk());

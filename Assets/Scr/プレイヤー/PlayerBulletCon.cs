@@ -80,8 +80,8 @@ public class PlayerBulletCon : MonoBehaviour
             subLaserAngle[i] = subLaserAngle[i] * Mathf.Deg2Rad;
         }
 
-        //gm.PlayerWeapon[0] = true;
-        //gm.PlayerSubWeapon[1] = true;
+        //gm.PlayerWeapon[3] = true;
+        gm.PlayerSubWeapon[3] = true;
     }
 
     // Update is called once per frame
@@ -183,14 +183,14 @@ public class PlayerBulletCon : MonoBehaviour
         {
             //弾インスタンスを取得し、初速と発射角度を与える
             var dir = boomerangPoint.transform.position - bulletPos[i].transform.position / 2;
-            GameObject bullet_obj = (GameObject)Instantiate(bullets[3], bulletPos[i].transform.position, transform.rotation);
+            GameObject bullet_obj = (GameObject)Instantiate(bullets[3], bulletPos[i].transform.position, Quaternion.identity);
             BoomerangBullet bullet_sc = bullet_obj.GetComponent<BoomerangBullet>();
-            if (player.PBaffSkillFlag == true)
-                bullet_sc.Velocity = boomerangVelocity * 1.5f;
-            else
-                bullet_sc.Velocity = boomerangVelocity;
+
+            //発射位置を指定
             bullet_sc.Number = i;
+            //角度
             bullet_sc.Angle = dir;
+            //最終位置
             bullet_sc.EndPosition = boomerangPoint.transform.position;
         }
     }

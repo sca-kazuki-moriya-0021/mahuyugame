@@ -936,10 +936,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kamaitati
       objectReference: {fileID: 0}
+    - target: {fileID: 6156372796833689182, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6789395543317647096, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: centerObject
       value: 
       objectReference: {fileID: 2112141781}
+    - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7814676201810307973, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: skillPrefabs.Array.size
       value: 7
