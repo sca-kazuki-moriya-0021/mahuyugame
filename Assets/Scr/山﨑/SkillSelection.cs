@@ -213,11 +213,14 @@ public class SkillSelection : MonoBehaviour
     {
         if(selectedObj.gameObject.CompareTag("Button"))
         {
+            outLine.enabled = false;
             outLine.transform.localScale = new Vector2 (outLineSizeS_X,outLineSizeS_Y);
         }
         else
         {
+            outLine.enabled = true;
             outLine.transform.localScale = new Vector2 (outLineSizeB_X,outLineSizeB_Y);
+            
         }
     }
 

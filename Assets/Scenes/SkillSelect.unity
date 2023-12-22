@@ -1782,8 +1782,8 @@ MonoBehaviour:
   outLine: {fileID: 5465977188648503735}
   outLineSizeS_X: 0
   outLineSizeS_Y: 0
-  outLineSizeB_X: 0
-  outLineSizeB_Y: 0
+  outLineSizeB_X: 8
+  outLineSizeB_Y: 8.3
   goStageButton: {fileID: 5465977189485862514}
 --- !u!1 &975389096
 GameObject:
