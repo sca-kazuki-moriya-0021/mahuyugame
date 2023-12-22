@@ -25,6 +25,7 @@ public class BossHpSilder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       bossHpSilder.value = (float)hp / (float)maxHp;
+        Debug.Log(hp);
+        bossHpSilder.value = (float)bossCollder.BossHp / (float)maxHp;
     }
 }
