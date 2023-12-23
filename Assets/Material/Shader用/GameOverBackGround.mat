@@ -52,10 +52,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_73d25596d19b40ce81d33d4639a55bb9: 5
+    - Vector1_73d25596d19b40ce81d33d4639a55bb9: 2
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Vector2_239cacb3fd5243568b74e07857c64448: {r: 0.15, g: 2, b: 0, a: 0}
+    - Vector2_239cacb3fd5243568b74e07857c64448: {r: 0.01, g: 0, b: 0, a: 0}
     - Vector2_66c9f050f88744b3bd3f72f6ed4edc1d: {r: 0.5, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
