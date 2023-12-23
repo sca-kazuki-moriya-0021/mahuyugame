@@ -216,7 +216,6 @@ MonoBehaviour:
   subLaserAngle:
   - 45
   - -45
-  boomerangVelocity: 1
   boomerangPoint: {fileID: 0}
 --- !u!1 &6399580715403096779
 GameObject:
@@ -352,7 +351,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3a0ba99f21babdb4db3f68750faf1539, type: 3}
-  m_Color: {r: 1, g: 0.25108564, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
