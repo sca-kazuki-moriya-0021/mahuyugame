@@ -192,6 +192,7 @@ public class PlayerCollider : MonoBehaviour
         gm.PlayerTransForm = transform.position;
         gm.BackScene = gm.MyGetScene();
 
+        spineAnimationState.TimeScale = 0.2f;
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         
         yield return new WaitForSeconds(2f);
