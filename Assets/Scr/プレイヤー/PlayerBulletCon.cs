@@ -31,11 +31,6 @@ public class PlayerBulletCon : MonoBehaviour
     private float[] subLaserAngle;
 
     //ブーメラン弾設定用変数
-    [SerializeField,Header("ブーメランの速度")]
-    private float boomerangVelocity;
-    //ブーメランの発射角度
-    //[SerializeField,Header("ブーメランの発射角度")]
-    //private float[] boomerangAngle;
     [SerializeField,Header("ブーメランの中間位置")]
     private GameObject boomerangPoint;
 
@@ -79,9 +74,6 @@ public class PlayerBulletCon : MonoBehaviour
         {
             subLaserAngle[i] = subLaserAngle[i] * Mathf.Deg2Rad;
         }
-
-        //gm.PlayerWeapon[3] = true;
-        gm.PlayerSubWeapon[3] = true;
     }
 
     // Update is called once per frame
