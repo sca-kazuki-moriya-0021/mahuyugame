@@ -9,10 +9,12 @@ public class PlayerCollider : MonoBehaviour
     private TotalGM gm;
     private BossCollder bossCollder;
 
-    //å¯â âπ
-    private AudioSource audioSource;
+    //ÉAÉCÉeÉÄéÊìæå¯â âπ
     [SerializeField]
-    private AudioClip audioClips;
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip[] audioClips;
 
     //STATEå^ÇÃïœêî
     STATE state;
@@ -62,7 +64,6 @@ public class PlayerCollider : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
         bossCollder = FindObjectOfType<BossCollder>();
-        audioSource = GetComponent<AudioSource>();
 
         // SkeletonAnimationÇ©ÇÁAnimationStateÇéÊìæ
         spineAnimationState = skeletonAnimation.AnimationState;
@@ -114,6 +115,7 @@ public class PlayerCollider : MonoBehaviour
                 if (gm.PlayerHp[0] > 0)
                 {
                     state = STATE.DAMAGED;
+                    audioSource.PlayOneShot(audioClips[1]);
                     StartCoroutine(PlayerDameged());
                 }
             }
@@ -123,6 +125,7 @@ public class PlayerCollider : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             var scene = gm.MyGetScene();
+            audioSource.PlayOneShot(audioClips[0]);
             switch (scene)
             {
                 case TotalGM.StageCon.First:

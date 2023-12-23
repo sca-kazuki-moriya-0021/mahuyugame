@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
     private PlayerCollider playerCollider;
     private BossCollder bossCollder;
 
+    //スキル発動音
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip audioClips;
+
     [SerializeField]
     private GameObject buffEffect;
 
@@ -113,38 +119,41 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        //スキル実行
-        if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
+        if(pouseCon.MenuFlag == false)
         {
-            buttonPish = false;
-            StartCoroutine(SkillAtk());
-        }
-        //バフスキル時
-        if(pBaffSkillFlag == true)
-        {
-            pBaffSkillTime += Time.deltaTime;
-            if(pBaffSkillTime > 10)
+            //スキル実行
+            if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
             {
-                Destroy(buffEffect);
-                pBaffSkillTime = 0;
-                pBaffSkillFlag = false;
+                buttonPish = false;
+                StartCoroutine(SkillAtk());
             }
-        }
+            //バフスキル時
+            if (pBaffSkillFlag == true)
+            {
+                pBaffSkillTime += Time.deltaTime;
+                if (pBaffSkillTime > 10)
+                {
+                    Destroy(buffEffect);
+                    pBaffSkillTime = 0;
+                    pBaffSkillFlag = false;
+                }
+            }
 
-        //移動用関数
-        if (playerCollider.DeathFlag == false)
-            InputSystemMove();
+            //移動用関数
+            if (playerCollider.DeathFlag == false)
+                InputSystemMove();
 
-        //ゲームオーバーになったら放物線を描いて落ちる
-        else if(playerCollider.DeathFlag == true)
-        {
-            rb.velocity = Vector3.zero;
-            time += Time.deltaTime;
-            var endpos = new Vector3(transform.position.x - 5f ,transform.position.y - 10f);
-            var midpos = new Vector3(transform.position.x - 3f, transform.position.y - 5f);
-            Vector3 a = Vector3.Lerp(transform.position,midpos,time);
-            Vector3 b = Vector3.Lerp(midpos,endpos,time);
-            rb.velocity = Vector3.Lerp(a,b,time);
+            //ゲームオーバーになったら放物線を描いて落ちる
+            else if (playerCollider.DeathFlag == true)
+            {
+                rb.velocity = Vector3.zero;
+                time += Time.deltaTime;
+                var endpos = new Vector3(transform.position.x - 5f, transform.position.y - 10f);
+                var midpos = new Vector3(transform.position.x - 3f, transform.position.y - 5f);
+                Vector3 a = Vector3.Lerp(transform.position, midpos, time);
+                Vector3 b = Vector3.Lerp(midpos, endpos, time);
+                rb.velocity = Vector3.Lerp(a, b, time * 0.1f);
+            }
         }
     }
 
@@ -240,6 +249,7 @@ public class Player : MonoBehaviour
     //スキル発動本体
     private IEnumerator SkillAtk()
     {
+         audioSource.PlayOneShot(audioClips);
         //スキル1が使われたら
         if(jKey)
         {

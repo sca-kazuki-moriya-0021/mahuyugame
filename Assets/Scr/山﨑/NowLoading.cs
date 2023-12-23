@@ -17,12 +17,20 @@ public class NowLoading : MonoBehaviour
 
     private bool fadeInFlag = false;
 
+    private bool fadeOutFlag = false;
+
     private BossCollder bossCollder;
 
     public bool FadeInFlag
     {
         get { return this.fadeInFlag; }
         set { this.fadeInFlag = value; }
+    }
+
+    public bool FadeOutFlag
+    {
+        get { return this.fadeOutFlag; }
+        set { this.fadeOutFlag = value; }
     }
 
     // Start is called before the first frame update
