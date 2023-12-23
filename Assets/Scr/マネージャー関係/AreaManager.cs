@@ -5,8 +5,6 @@ using UnityEngine;
 public class AreaManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    [SerializeField]
-    private AudioClip audioClips;
 
     //ボスオブジェクト
     //[SerializeField]

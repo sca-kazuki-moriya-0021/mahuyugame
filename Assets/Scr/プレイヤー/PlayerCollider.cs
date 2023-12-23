@@ -9,6 +9,11 @@ public class PlayerCollider : MonoBehaviour
     private TotalGM gm;
     private BossCollder bossCollder;
 
+    //Œø‰Ê‰¹
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip audioClips;
+
     //STATEŒ^‚Ì•Ï”
     STATE state;
     //“_–ÅŠÔŠu
@@ -57,6 +62,7 @@ public class PlayerCollider : MonoBehaviour
     {
         gm = FindObjectOfType<TotalGM>();
         bossCollder = FindObjectOfType<BossCollder>();
+        audioSource = GetComponent<AudioSource>();
 
         // SkeletonAnimation‚©‚çAnimationState‚ğæ“¾
         spineAnimationState = skeletonAnimation.AnimationState;
