@@ -37,7 +37,7 @@ public class WayMoveLauncher : MonoBehaviour
             ShootNWayBullets();
             yield return new WaitForSeconds(timeShots);
             yield return new WaitForSeconds(randomMoveTime);
-            MoveSubBullets();
+            
         }
     }
 
@@ -71,24 +71,7 @@ public class WayMoveLauncher : MonoBehaviour
         {
             GameObject subBullet = Instantiate(BulletAll, parentBullet.position,Quaternion.identity);
             Rigidbody2D bulletRigidbody = subBullet.GetComponent<Rigidbody2D>();
-            bulletList.Add(bulletRigidbody);
             yield return new WaitForSeconds(subTimeShots);
-        }
-    }
-
-    private void MoveSubBullets()
-    {
-        foreach(Rigidbody2D bulletRigidbody in bulletList.ToArray())
-        {
-            if(bulletRigidbody != null)
-            {
-                Vector2 randomVelocity = new Vector2(Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
-                bulletRigidbody.velocity = randomVelocity * subBulletSpeed;
-            }
-            else
-            {
-                Destroy(bulletRigidbody.gameObject);
-            }
         }
     }
 }
