@@ -147,12 +147,12 @@ public class Player : MonoBehaviour
             else if (playerCollider.DeathFlag == true)
             {
                 rb.velocity = Vector3.zero;
-                time += Time.deltaTime;
+                time += Time.deltaTime *0.1f;
                 var endpos = new Vector3(transform.position.x - 5f, transform.position.y - 10f);
                 var midpos = new Vector3(transform.position.x - 3f, transform.position.y - 5f);
                 Vector3 a = Vector3.Lerp(transform.position, midpos, time);
                 Vector3 b = Vector3.Lerp(midpos, endpos, time);
-                rb.velocity = Vector3.Lerp(a, b, time * 0.1f);
+                rb.velocity = Vector3.Lerp(a, b, time);
             }
         }
     }
