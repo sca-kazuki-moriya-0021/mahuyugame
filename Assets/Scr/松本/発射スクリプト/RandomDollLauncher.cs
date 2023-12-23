@@ -5,16 +5,19 @@ using UnityEngine;
 public class RandomDollLauncher : MonoBehaviour
 {
     [SerializeField]GameObject bulletPrefab;
-    [SerializeField]Transform RangeA;
-    [SerializeField]Transform RangeB;
     [SerializeField]float bulletSpeed;
     [SerializeField]int numberOfBullets;
     [SerializeField]float spreadAngle;
     [SerializeField]float fireTime;
     [SerializeField]int numBullet;
+
+    private Transform RangeA;
+    private Transform RangeB;
     // Start is called before the first frame update
     void Start()
     {
+        RangeA = GameObject.Find("RangeA").transform;
+        RangeB = GameObject.Find("RangeB").transform;
         StartCoroutine(GenerateBullets());
     }
 
