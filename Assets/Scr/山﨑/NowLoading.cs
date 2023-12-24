@@ -49,10 +49,7 @@ public class NowLoading : MonoBehaviour
     {
         
     }
-    void test()
-    {
 
-    }
 
     public void FadeIn()
     {
