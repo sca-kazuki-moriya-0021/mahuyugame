@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 218127251}
   - component: {fileID: 218127250}
   - component: {fileID: 218127249}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WindEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

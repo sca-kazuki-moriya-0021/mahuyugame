@@ -46,7 +46,7 @@ public class PlayerSkillCutInCon : MonoBehaviour
         if (cutInFlag == true)
         {
             time += Time.unscaledDeltaTime;
-            if (time >= 3f)
+            if (time >= 1f)
             {
                 time = 0;
                 Time.timeScale = 1f;

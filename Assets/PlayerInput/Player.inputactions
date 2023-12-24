@@ -293,7 +293,7 @@
                 {
                     "name": "",
                     "id": "7ef0c514-ab84-4ae7-946f-6eef1a8c5953",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -304,7 +304,7 @@
                 {
                     "name": "",
                     "id": "083364a8-b282-4e31-b9e4-1d62032b4942",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -315,7 +315,7 @@
                 {
                     "name": "",
                     "id": "6e223d77-f532-4a04-a130-d014b1324b83",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
