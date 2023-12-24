@@ -40,7 +40,7 @@ public class CountDownCon : MonoBehaviour
         {
             text.enabled = true;
             myCanvas.enabled = true;
-            float s = 5f;
+            float s = 3f;
             countTime += Time.unscaledDeltaTime;
             s -= countTime;
             text.text  = s.ToString("f2");
