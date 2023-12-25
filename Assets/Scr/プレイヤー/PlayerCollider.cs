@@ -9,12 +9,13 @@ public class PlayerCollider : MonoBehaviour
     private TotalGM gm;
     private BossCollder bossCollder;
 
-    //アイテム取得効果音
+    //アイテム取得＆プレイヤー被弾効果音
     [SerializeField]
     private AudioSource audioSource;
-
     [SerializeField]
     private AudioClip[] audioClips;
+    [SerializeField]
+    private ParticleSystem particleSystem;
 
     //STATE型の変数
     STATE state;
@@ -91,9 +92,8 @@ public class PlayerCollider : MonoBehaviour
     {
         // ステートがダメージならリターン
         if (state == STATE.DAMAGED)
-        {
             return;
-        }
+
         //プレイヤーHpが0以下かつフェードインしてなかったら
         if (gm.PlayerHp[0] <= 0 && deathFlag == false && bossCollder.BossDeathFlag == false)
         {
@@ -116,7 +116,8 @@ public class PlayerCollider : MonoBehaviour
                 {
                     state = STATE.DAMAGED;
                     audioSource.PlayOneShot(audioClips[1]);
-                    StartCoroutine(PlayerDameged());
+                    var g = Instantiate(particleSystem,transform.position,transform.rotation);
+                    StartCoroutine(PlayerDameged(g));
                 }
             }
         }
@@ -141,7 +142,7 @@ public class PlayerCollider : MonoBehaviour
         }
     }
     //プレイヤーがダメージ受けたら
-    private IEnumerator PlayerDameged()
+    private IEnumerator PlayerDameged(ParticleSystem g)
     {
         isHit = true;
         collider.enabled = false;
@@ -176,7 +177,7 @@ public class PlayerCollider : MonoBehaviour
         //色を白にする
         spineRenderer.material.color = Color.white;
         colliderSprite.color = Color.white;
-        
+        Destroy(g);
         //点滅ループが抜けたら当たりフラグをfalse(当たってない状態)
         isHit = false;
     }

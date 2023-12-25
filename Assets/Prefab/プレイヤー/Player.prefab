@@ -393,6 +393,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: c5f5443848a431c4a8f5bc0d452831a1, type: 3}
   - {fileID: 8300000, guid: 20de5ad51a129d94fbd85995a1d4e5c3, type: 3}
+  particleSystem: {fileID: 4960027782213542017, guid: c5057f826542bb841ab0e2a4a8d7d100, type: 3}
   flashInterval: 0.2
   loopCount: 3
   collider: {fileID: 6399580715835281262}
