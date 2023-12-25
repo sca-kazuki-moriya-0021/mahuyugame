@@ -36,7 +36,7 @@ public class LaserBullet : MonoBehaviour
     void Update()
     {
        lastVelocity = rb2d.velocity;
-        if(count >= 2)
+        if(count >= 4)
             Destroy(this.gameObject);
     }
 
@@ -52,12 +52,12 @@ public class LaserBullet : MonoBehaviour
             count ++;
         }
 
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+       /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             power = 0;
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,6 +67,11 @@ public class LaserBullet : MonoBehaviour
             power = 0;
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            Destroy(this.gameObject);
         }
     }
 

@@ -74,12 +74,6 @@ public class TargetBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-            Destroy(this.gameObject);
-        }
-
         if (collision.gameObject.CompareTag("Boss"))
         {
             Destroy(this.gameObject);          

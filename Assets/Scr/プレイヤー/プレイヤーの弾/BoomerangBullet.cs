@@ -24,7 +24,6 @@ public class BoomerangBullet : MonoBehaviour
     //ŽžŠÔŒv‘ª—p
     private float time;
 
-
     private Rigidbody2D rb2d;
 
     public Vector3 Angle { get => angle; set => angle = value; }
@@ -105,6 +104,14 @@ public class BoomerangBullet : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Boss") && state == STATE.End)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

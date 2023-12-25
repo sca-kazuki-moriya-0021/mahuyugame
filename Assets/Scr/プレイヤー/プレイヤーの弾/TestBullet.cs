@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class TestBullet : MonoBehaviour
 {
-
-    //それぞれの位置を保存する変数
-    //スタート地点
-
-    //private Vector3 bulletPostion;
-
     private float time = 0;
 
     private Player player;
@@ -39,9 +33,8 @@ public class TestBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Boss"))
         {
-            Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
 

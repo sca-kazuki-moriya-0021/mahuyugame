@@ -90,12 +90,12 @@ public class BossCollder : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            hitObject(collision.gameObject);
+            hitObject();
         }
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
-            hitObject(collision.gameObject);
+            hitObject();
             DebuffActive();
         }
     }
@@ -104,12 +104,12 @@ public class BossCollder : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            hitObject(collision.gameObject);
+            hitObject();
         }
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
-            hitObject(collision.gameObject);
+            hitObject();
             DebuffActive();
         }
     }
@@ -119,15 +119,12 @@ public class BossCollder : MonoBehaviour
         if (debuffFlag == false)
         {
             debuffFlag = true;
-            var g = Instantiate(debuffEffect,transform.position,Quaternion.identity,transform);
+            Instantiate(debuffEffect,transform.position,Quaternion.identity,transform);
         }
-          
     }
 
-
-    private void hitObject(GameObject a)
+    private void hitObject()
     {
-        Destroy(a);
         if (playerCollider.DeathFlag == false)
         {
             //ƒfƒoƒt’†‚È‚ç

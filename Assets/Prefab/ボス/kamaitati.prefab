@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.18257856, y: 0.14606285}
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   debuffTime: 10
+  debuffEffect: {fileID: 0}
   dropItem: {fileID: 5140409669143678578, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 4159991655382006283}
@@ -303,7 +304,6 @@ MonoBehaviour:
   - {fileID: 8967313502596292677, guid: 35235704cf6580d4dab9dab2b5365cc4, type: 3}
   - {fileID: 1655728726699139971, guid: dd3501f716a8c4c4783f5ba55490fe8e, type: 3}
   skillSwitchInterval: 5
-  normalBulletPrefab: {fileID: 5515865212590755900, guid: dd4e599bf32e255428192c09c5d6aea7, type: 3}
 --- !u!114 &6789395543317647096
 MonoBehaviour:
   m_ObjectHideFlags: 0
