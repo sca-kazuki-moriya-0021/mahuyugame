@@ -32,8 +32,6 @@ public class PouseCon : MonoBehaviour
 
     private GameObject selectedObj;
 
-    private Coroutine _currentCoroutine;
-
     public bool MenuFlag
     {
         get { return this.menuFlag; }
@@ -48,8 +46,6 @@ public class PouseCon : MonoBehaviour
         myCanvas = this.GetComponent<Canvas>();
         countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
-        //button.Select();
-
     }
 
     // Update is called once per frame
@@ -118,7 +114,6 @@ public class PouseCon : MonoBehaviour
         audioSource.PlayOneShot(soundE);
         countDownCon.CountDownFlag = true;
         poseButton[0].enabled = false;
-        //Debug.Log("Ç®Ç∆Ç»ÇÈÇÊÅ[");
     }
 
 
