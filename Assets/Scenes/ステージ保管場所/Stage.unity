@@ -1200,6 +1200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stock&ScoreDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 4253619774768934950, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4877644377621430822, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
       propertyPath: m_Material
       value: 
@@ -1231,6 +1235,30 @@ PrefabInstance:
     - target: {fileID: 6591833638634275750, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6880089509481701321, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205082832773474352, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918704242774729264, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918704242774729264, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918704242774729264, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -135.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918704242774729264, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 191.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 947effd3686d8404981790cc3d4b0a86, type: 3}
