@@ -394,7 +394,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5f5443848a431c4a8f5bc0d452831a1, type: 3}
   - {fileID: 8300000, guid: 20de5ad51a129d94fbd85995a1d4e5c3, type: 3}
   flashInterval: 0.2
-  loopCount: 2
+  loopCount: 3
   collider: {fileID: 6399580715835281262}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 4908588441602728491}
