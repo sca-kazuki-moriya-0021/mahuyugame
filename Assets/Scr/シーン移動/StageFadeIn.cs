@@ -23,6 +23,6 @@ public class StageFadeIn : MonoBehaviour
 
     private void FadeIn()
     {
-        backGround.DOFade(endValue: 0f, duration: 1.0f).SetEase(Ease.Linear);
+        backGround.DOFade(endValue: 0f, duration: 1.0f);
     }
 }
