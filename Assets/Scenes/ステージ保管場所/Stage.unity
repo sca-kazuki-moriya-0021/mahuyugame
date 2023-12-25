@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 250
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
@@ -1063,18 +1063,13 @@ PrefabInstance:
     - target: {fileID: 6295155830633339833, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
       propertyPath: Panel
       value: 
-      objectReference: {fileID: 1056920394}
+      objectReference: {fileID: 0}
     - target: {fileID: 6295155830633339835, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1759643410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
---- !u!1 &1056920394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2386315585570964676, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
-  m_PrefabInstance: {fileID: 1056920393}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1157121516
 PrefabInstance:
   m_ObjectHideFlags: 0

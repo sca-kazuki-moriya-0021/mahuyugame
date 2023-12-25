@@ -63,15 +63,6 @@ public class TransferStage : MonoBehaviour
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
-        var scene = totalGM.MyGetScene();
-        //クリア画面で裏面にいくかどうかのif文
-        if(scene == TotalGM.StageCon.Clear)
-        {
-            if(totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
-                totalGM.BackSideFlag = true;
-            else if(totalGM.BackSideFlag == true || totalGM.GameOverCount > 0)
-                totalGM.BackSideFlag = false;
-        }
         audioSource.PlayOneShot(soundE);
         SceneManager.LoadScene("SkillSelect", LoadSceneMode.Single);
     }
