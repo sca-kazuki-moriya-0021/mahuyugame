@@ -21,11 +21,11 @@ public class StockText : MonoBehaviour
     {
         if (gm.PlayerHp[0] >= 0)
         {
-            stockText.text = "Hp:" + gm.PlayerHp[0].ToString();
+            stockText.text = "Hp" + gm.PlayerHp[0].ToString();
         }
         else if (gm.PlayerHp[0] < 0)
         {
-            stockText.text = "Hp:" + 0.ToString();
+            stockText.text = "Hp" + 0.ToString();
         }
       
     }
