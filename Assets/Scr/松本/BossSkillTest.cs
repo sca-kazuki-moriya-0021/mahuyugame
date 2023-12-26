@@ -6,9 +6,14 @@ public class BossSkillTest : MonoBehaviour
 {
     private Transform RangeA;
     private Transform RangeB;
-
+    private int shotCount;
     private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
+    public int ShotCount
+    {
+        get { return shotCount; }
+        set { shotCount = value; }
+    }
     void Start()
     {
         RangeA = GameObject.Find("RangeA").transform;
@@ -196,7 +201,9 @@ public class BossSkillTest : MonoBehaviour
     }
 
     //AllspiralLauncher
-    public void AllspiralLauncher(int numberOfBullets, GameObject bulletPrefab)
+    
+
+    public void ShootBullets(int numberOfBullets, GameObject bulletPrefab, float bulletSpeed, float spiralDistance, float spiralRotationSpeed, int shotCount)
     {
         for (int i = 0; i < numberOfBullets; i++)
         {
@@ -206,19 +213,27 @@ public class BossSkillTest : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
-            //StartCoroutine(SpiralMotion(bulletRigidbody, direction));
+            StartCoroutine(SpiralMotion(bulletRigidbody, direction, bulletSpeed, spiralDistance, spiralRotationSpeed, shotCount));
         }
     }
 
-    public void UpdateSpiral(float bulletSpeed, float spiralRotationSpeed, float spiralDistance)
+    private IEnumerator SpiralMotion(Rigidbody2D bulletRigidbody, Vector3 initialDirection, float bulletSpeed, float spiralDistance, float spiralRotationSpeed, int shotCount)
     {
-        int newRotationSpeed = Random.Range(180, 450);
-        float newSpiralDistance = Random.Range(5f, 10f);
-        int newSpeed = Random.Range(3, 7);
+        float distanceTraveled = 0f;
+        Vector3 startPosition = bulletRigidbody.position;
+        int rotationDirection = (shotCount % 2 == 0) ? 1 : -1;
 
-        bulletSpeed = newSpeed;
-        spiralRotationSpeed = newRotationSpeed;
-        spiralDistance = newSpiralDistance;
+        while (distanceTraveled < spiralDistance)
+        {
+            float angle = distanceTraveled * rotationDirection * spiralRotationSpeed / spiralDistance;
+
+            Vector3 spiralMotion = Quaternion.Euler(0, 0, angle) * initialDirection;
+            bulletRigidbody.velocity = spiralMotion * bulletSpeed;
+
+            distanceTraveled = Vector3.Distance(bulletRigidbody.position, startPosition);
+
+            yield return null;
+        }
     }
 
     //Launcher

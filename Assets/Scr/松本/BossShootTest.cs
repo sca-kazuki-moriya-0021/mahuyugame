@@ -35,13 +35,19 @@ public class BossShootTest : MonoBehaviour
 
     //RandomLauncher
     private int numberOfShots = 3;
+
+    //AllspiralLauncher
+    private int ShotCount;
+    private float spiralRotationSpeed;
+    private float spiralDistance;
     // Start is called before the first frame update
     void Start()
     {
         bossSkillTest = FindObjectOfType<BossSkillTest>();
         player = GameObject.FindWithTag("Player").transform;
-        //StartCoroutine(ShootMultiSpread());
-        StartCoroutine(GenerateBullets());
+        StartCoroutine(ShootMultiSpread());
+        //StartCoroutine(GenerateBullets());
+
     }
 
     // Update is called once per frame
@@ -78,5 +84,35 @@ public class BossShootTest : MonoBehaviour
             }
             yield return new WaitForSeconds(fireTime[2]);
         }
+    }
+
+    private IEnumerator ShootMultiSpread()
+    {
+        while (true)
+        {
+            for (int i = 0; i < numberOfShots; i++)
+            {
+                // 引数を追加してShootBulletsメソッドを呼び出し
+                bossSkillTest.ShootBullets(numberOfBullets[1], bulletPrefabs[1], bulletSpeed[1], spiralDistance, spiralRotationSpeed, ShotCount);
+                yield return new WaitForSeconds(fireTime[1]);
+            }
+
+            bossSkillTest.ShotCount++;
+            yield return new WaitForSeconds(fireTime[1]);
+
+            // 引数を追加してUpdateSpiralメソッドを呼び出し
+            UpdateSpiral();
+        }
+    }
+
+    private void UpdateSpiral()
+    {
+        float newRotationSpeed = Random.Range(180, 450);
+        float newSpiralDistance = Random.Range(5f, 10f);
+        float newSpeed = Random.Range(3, 7);
+
+        bulletSpeed[1] = newSpeed;
+        spiralRotationSpeed = newRotationSpeed;
+        spiralDistance = newSpiralDistance;
     }
 }
