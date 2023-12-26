@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
@@ -783,6 +783,10 @@ PrefabInstance:
       propertyPath: debuffEffect
       value: 
       objectReference: {fileID: 6979870192979917750, guid: 045d410297673064fa71703bace550bc, type: 3}
+    - target: {fileID: 626955920494190540, guid: d3338163424672842bfd7ed55af671e0, type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 4159991655382006285, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: m_Mesh
       value: 

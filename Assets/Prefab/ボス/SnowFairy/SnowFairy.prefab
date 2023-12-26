@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   demarcationParentObject: {fileID: 7890417094132228913, guid: 92e8ff7f5de104148b4cd00ab755b3a4, type: 3}
+  gaoukenObject: {fileID: 0}
+  shuraObject: []
 --- !u!1 &7292156682679633729
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +130,7 @@ GameObject:
   - component: {fileID: 7292156682679633728}
   m_Layer: 0
   m_Name: Spine
-  m_TagString: Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,6 +291,10 @@ MonoBehaviour:
   cornerPos: {fileID: 0}
   spinAngle: []
   fireTime: []
+  shuraCenterObj: {fileID: 0}
+  crystalAngle: 0
+  crystalShoots: 0
+  crystalNumberOfBullets: 0
 --- !u!1 &7815339138307165863
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +308,7 @@ GameObject:
   - component: {fileID: 7815339138307165861}
   m_Layer: 0
   m_Name: Collder
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   debuffTime: 5
-  bossObject: {fileID: 0}
+  debuffEffect: {fileID: 0}
   dropItem: {fileID: 5140409669143678578, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 7292156682679633728}

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 626955920494190538}
   m_Layer: 0
   m_Name: Collder
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4159991655382006283}
   m_Layer: 0
   m_Name: Spine
-  m_TagString: Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

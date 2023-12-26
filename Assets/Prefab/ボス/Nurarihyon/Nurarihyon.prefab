@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 122821847278422628}
   m_Layer: 0
   m_Name: Spine
-  m_TagString: Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 8354231688914210696}
   m_Layer: 0
   m_Name: Collder
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   debuffTime: 5
-  bossObject: {fileID: 0}
+  debuffEffect: {fileID: 0}
   dropItem: {fileID: 5140409669143678578, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
   deathAnimation: taoreru
   skeletonAnimation: {fileID: 0}
