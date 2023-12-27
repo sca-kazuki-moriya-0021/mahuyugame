@@ -47,10 +47,20 @@ public class BossShootTest : MonoBehaviour
     private float coolTimer = 0;
     private float currentRotation = 0;
     private bool rotationFlag = true;
+
+    private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
+
     public int ShotCount
     {
         get { return shotCount; }
         set { shotCount = value; }
+    }
+
+   
+    public List<Rigidbody2D> BulletsList
+    {
+        get { return bulletsList; }
+        set { bulletsList = value; }
     }
     // Start is called before the first frame update
     void Start()
@@ -60,7 +70,10 @@ public class BossShootTest : MonoBehaviour
         //StartCoroutine(AllspiralLauncher());
         //StartCoroutine(RandomDollLauncher());
         //StartCoroutine(AllBullets());
-        //StartCoroutine(HomingLauncher())
+        //StartCoroutine(HomingLauncher());
+        //StartCoroutine(AllRandomLauncher());
+        //StartCoroutine(RandomLauncher());
+        StartCoroutine(AllRangeLauncher());
 
     }
 
@@ -70,7 +83,6 @@ public class BossShootTest : MonoBehaviour
         timer += Time.deltaTime;
         if(timer > fireTime[2])
         {
-           
             timer = 0f;
         }
         //subTimer += Time.deltaTime;
@@ -109,18 +121,55 @@ public class BossShootTest : MonoBehaviour
         //}
     }
 
-    //IEnumerator RandomLauncher()
-    //{
-    //    while (true)
-    //    {
-    //        for (int i = 0; i < numberOfShots; i++)
-    //        {
-    //            bossSkillTest.RandomLauncher(spreadAngle[1],numberOfBullets[1],bulletPrefabs[0],bulletSpeed[1]);
-    //            yield return new WaitForSeconds(0.1f);
-    //        }
-    //        yield return new WaitForSeconds(fireTime[1]);
-    //    }
-    //}
+    private void FixedUpdate()
+    {
+        transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime);
+    }
+
+    private IEnumerator AllRangeLauncher()
+    {
+        while(true)
+        {
+            bossSkillTest.ShootBullets(bulletPrefabs[0], bulletSpeed[0]);
+            yield return new WaitForSeconds(0.25f);
+            bossSkillTest.ShootReBullets(subBulletPrefabs[0], subBulletSpeed[0]);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    private IEnumerator RandomLauncher()
+    {
+        while (true)
+        {
+            for (int i = 0; i < numberOfShots[0]; i++)
+           {
+                bossSkillTest.RandomLauncher(spreadAngle[1],numberOfBullets[0],bulletPrefabs[0],bulletSpeed[1]);
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(fireTime[1]);
+        }
+    }
+    private IEnumerator AllRandomLauncher()
+    {
+        while(true)
+        {
+            bulletsList.Clear();
+
+            for(int i = 0;i < numberOfShots[1]; i++)
+            {
+                bossSkillTest.AllRandomLauncher(spreadAngle[1], numberOfBullets[0], bulletPrefabs[0], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.2f);
+            }
+            yield return new WaitForSeconds(fireTime[2]);
+
+            bossSkillTest.StopBullets();
+
+            yield return new WaitForSeconds(0.1f);
+
+            bossSkillTest.MoveBulletsRandomly(bulletSpeed[2]);
+        }
+    }
+
     private IEnumerator RandomDollLauncher()
     {
         while (true)

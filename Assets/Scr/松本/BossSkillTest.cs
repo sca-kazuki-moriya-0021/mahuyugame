@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerBulletPool;
 
 public class BossSkillTest : MonoBehaviour
 {
     private Transform RangeA;
     private Transform RangeB;
     private BossShootTest bossShootTest;
-    private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
+    //private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
    
+    
     void Start()
     {
         bossShootTest = FindObjectOfType<BossShootTest>();
@@ -20,7 +22,7 @@ public class BossSkillTest : MonoBehaviour
     {
 
     }
-
+    //tokei
     public void Right(GameObject bulletPrefab, float bulletSpeed)
     {
         Vector3 spawnPosition = transform.position;
@@ -137,10 +139,10 @@ public class BossSkillTest : MonoBehaviour
     }
 
     //AllRandomLauncher
-    public void ShootBullets(float spreadAngle, int numberOfBullets, GameObject bulletPrefab, float bulletSpeed)
+    public void AllRandomLauncher(float spreadAngle, int numberOfBullets, GameObject bulletPrefab, float bulletSpeed)
     {
         float startAngle = -spreadAngle / 2;
-        var r = new Vector3(0, 2, 0);
+        var r = new Vector3(0, 0, 0);
         for (int i = 0; i < numberOfBullets; i++)
         {
             float angle = startAngle + i * (spreadAngle / (numberOfBullets));
@@ -150,13 +152,13 @@ public class BossSkillTest : MonoBehaviour
             Rigidbody2D bulletRigidbody = bulletObject.GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = direction * bulletSpeed;
 
-            bulletsList.Add(bulletRigidbody);
+            bossShootTest.BulletsList.Add(bulletRigidbody);
         }
     }
 
     public void StopBullets()
     {
-        foreach (Rigidbody2D bulletRigidbody in bulletsList.ToArray())
+        foreach (Rigidbody2D bulletRigidbody in bossShootTest.BulletsList.ToArray())
         {
             //’eŽ~‚ß
             if (bulletRigidbody != null)
@@ -168,7 +170,7 @@ public class BossSkillTest : MonoBehaviour
 
     public void MoveBulletsRandomly(float bulletSpeed)
     {
-        foreach (Rigidbody2D bulletRigidbody in bulletsList.ToArray())
+        foreach (Rigidbody2D bulletRigidbody in bossShootTest.BulletsList.ToArray())
         {
             //ƒ‰ƒ“ƒ_ƒ€ˆÚ“®
             if (bulletRigidbody != null)
@@ -331,6 +333,49 @@ public class BossSkillTest : MonoBehaviour
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
             Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = direction * bulletSpeed;
+        }
+    }
+
+    //AllRangeLauncher
+
+    public void ShootBullets(GameObject bulletPrefab, float bulletSpeed)
+    {
+        ShootDirections1(Vector2.right, bulletPrefab, bulletSpeed);
+        ShootDirections1(Vector2.left, bulletPrefab, bulletSpeed);
+        ShootDirections1(Vector2.up, bulletPrefab, bulletSpeed);
+        ShootDirections1(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    public void ShootReBullets(GameObject reBulletPrefab, float reBulletSpeed)
+    {
+        
+        ShootDirections2(Vector2.right, reBulletPrefab, reBulletSpeed);
+        ShootDirections2(Vector2.left, reBulletPrefab, reBulletSpeed);
+        ShootDirections2(Vector2.up, reBulletPrefab, reBulletSpeed);
+        ShootDirections2(Vector2.down, reBulletPrefab, reBulletSpeed);
+    }
+
+    private void ShootDirections1(Vector2 direction, GameObject bulletPrefab, float speed)
+    {
+        ShootDirection(direction, false, bulletPrefab, speed);
+    }    
+
+    private void ShootDirections2(Vector2 direction, GameObject bulletPrefab, float speed)
+    {
+            ShootDirection(direction, true, bulletPrefab, speed);
+        }
+
+    private void ShootDirection(Vector2 direction, bool isReversed, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        float[] angles = isReversed ? new float[] { 0f, 45f, -45f } : new float[] { -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f };
+        Debug.Log(isReversed);
+        foreach (float angle in angles)
+        {
+            GameObject bullet = Instantiate(isReversed ? bulletPrefab : bulletPrefab, spawnPosition, Quaternion.identity);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            Vector2 bulletDirection = Quaternion.Euler(0, 0, (isReversed ? -1 : 1) * transform.rotation.eulerAngles.z + angle) * direction;
+            rb.velocity = bulletDirection * bulletSpeed;
         }
     }
 }
