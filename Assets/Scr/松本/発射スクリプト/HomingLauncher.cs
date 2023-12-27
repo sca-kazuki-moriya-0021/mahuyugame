@@ -12,12 +12,13 @@ public class HomingLauncher : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= nextFireTime)
+        nextFireTime += Time.deltaTime;
+        if (nextFireTime >= fireInterval)
         {
             // 発射間隔が経過したらホーミング弾を発射
             ShootHomingBullet(Fire1);
             ShootHomingBullet(Fire2);
-            nextFireTime = Time.time + fireInterval;
+            nextFireTime = 0;
         }
     }
 

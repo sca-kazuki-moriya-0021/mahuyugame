@@ -6,18 +6,13 @@ public class BossSkillTest : MonoBehaviour
 {
     private Transform RangeA;
     private Transform RangeB;
-    private int shotCount;
+    private BossShootTest bossShootTest;
     private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
-    public int ShotCount
-    {
-        get { return shotCount; }
-        set { shotCount = value; }
-    }
+   
     void Start()
     {
-        RangeA = GameObject.Find("RangeA").transform;
-        RangeB = GameObject.Find("RangeB").transform;
+        bossShootTest = FindObjectOfType<BossShootTest>();
     }
 
     // Update is called once per frame
@@ -201,9 +196,7 @@ public class BossSkillTest : MonoBehaviour
     }
 
     //AllspiralLauncher
-    
-
-    public void ShootBullets(int numberOfBullets, GameObject bulletPrefab, float bulletSpeed, float spiralDistance, float spiralRotationSpeed, int shotCount)
+    public void ShootBullets(int numberOfBullets, GameObject bulletPrefab, float bulletSpeed, float spiralDistance, float spiralRotationSpeed)
     {
         for (int i = 0; i < numberOfBullets; i++)
         {
@@ -213,15 +206,15 @@ public class BossSkillTest : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
-            StartCoroutine(SpiralMotion(bulletRigidbody, direction, bulletSpeed, spiralDistance, spiralRotationSpeed, shotCount));
+            StartCoroutine(SpiralMotion(bulletRigidbody, direction, bulletSpeed, spiralDistance, spiralRotationSpeed));
         }
     }
 
-    private IEnumerator SpiralMotion(Rigidbody2D bulletRigidbody, Vector3 initialDirection, float bulletSpeed, float spiralDistance, float spiralRotationSpeed, int shotCount)
+    private IEnumerator SpiralMotion(Rigidbody2D bulletRigidbody, Vector3 initialDirection, float bulletSpeed, float spiralDistance, float spiralRotationSpeed)
     {
         float distanceTraveled = 0f;
         Vector3 startPosition = bulletRigidbody.position;
-        int rotationDirection = (shotCount % 2 == 0) ? 1 : -1;
+        float rotationDirection = (bossShootTest.ShotCount % 2 == 0) ? 1 : -1;
 
         while (distanceTraveled < spiralDistance)
         {
@@ -323,7 +316,7 @@ public class BossSkillTest : MonoBehaviour
             bulletRigidbody.velocity = direction * bulletSpeed;
         }
     }
-
+    //RandomDollLauncher
     public void ShootBullet(int numberOfBullets, GameObject bulletPrefab, float bulletSpeed)
     {
         float startAngle = -360 / 2;
@@ -340,5 +333,4 @@ public class BossSkillTest : MonoBehaviour
             bulletRigidbody.velocity = direction * bulletSpeed;
         }
     }
-
 }
