@@ -133,7 +133,6 @@ public class BossShootTest : MonoBehaviour
             bossSkillTest.ShootBullets(bulletPrefabs[0], bulletSpeed[0]);
             yield return new WaitForSeconds(0.25f);
             bossSkillTest.ShootReBullets(subBulletPrefabs[0], subBulletSpeed[0]);
-            yield return new WaitForSeconds(0.01f);
         }
     }
 

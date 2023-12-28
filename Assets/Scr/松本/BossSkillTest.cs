@@ -362,14 +362,13 @@ public class BossSkillTest : MonoBehaviour
 
     private void ShootDirections2(Vector2 direction, GameObject bulletPrefab, float speed)
     {
-            ShootDirection(direction, true, bulletPrefab, speed);
-        }
+        ShootDirection(direction, true, bulletPrefab, speed);
+    }
 
     private void ShootDirection(Vector2 direction, bool isReversed, GameObject bulletPrefab, float bulletSpeed)
     {
         Vector3 spawnPosition = transform.position;
-        float[] angles = isReversed ? new float[] { 0f, 45f, -45f } : new float[] { -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f };
-        Debug.Log(isReversed);
+        float[] angles = isReversed ? new float[] { 0f, 45f, -45f ,40f,-40f} : new float[] { -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f, 25f };
         foreach (float angle in angles)
         {
             GameObject bullet = Instantiate(isReversed ? bulletPrefab : bulletPrefab, spawnPosition, Quaternion.identity);
