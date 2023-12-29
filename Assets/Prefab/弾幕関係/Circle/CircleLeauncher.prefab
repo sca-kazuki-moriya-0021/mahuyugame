@@ -46,4 +46,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7507862092339352173, guid: 404f93cf060ee154e9b78c9176fa6a32, type: 3}
   bulletCount: 5
   radius: 1
-  rotationSpeed: 0
+  rotationSpeed: 59

@@ -21,7 +21,7 @@ public class TuibiLauncher : MonoBehaviour
             shotsFired = 0; // ”­ŽË‰ñ”‚ðƒŠƒZƒbƒg
         }
 
-        if (!isInterval && Time.time >= nextFireTime)
+        if (!isInterval && Time.deltaTime >= nextFireTime)
         {
             Shoot();
             shotsFired++;

@@ -23,120 +23,6 @@ public class BossSkillTest : MonoBehaviour
 
     }
     //tokei
-    public void Right(GameObject bulletPrefab, float bulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { -25f, -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f };
-
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + angle) * Vector2.right;
-            rb.velocity = direction * bulletSpeed;
-        }
-    }
-
-    public void Left(GameObject bulletPrefab, float bulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { -25f, -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f };
-
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + angle) * Vector2.left;
-            rb.velocity = direction * bulletSpeed;
-        }
-    }
-
-    public void Up(GameObject bulletPrefab, float bulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { -25f, -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f };
-
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + angle) * Vector2.left;
-            rb.velocity = direction * bulletSpeed;
-        }
-    }
-
-    public void Down(GameObject bulletPrefab, float bulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f, 25f };
-
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + angle) * Vector2.down;
-            rb.velocity = direction * bulletSpeed;
-        }
-    }
-
-    public void Reright(GameObject reBulletPrefab, float reBulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { 0f, 45f, -45f };
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(reBulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z + angle) * Vector2.right;
-            rb.velocity = direction * reBulletSpeed;
-        }
-    }
-
-    public void Releft(GameObject reBulletPrefab, float reBulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { 0f, 45f, -45f };
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(reBulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z + angle) * Vector2.left;
-            rb.velocity = direction * reBulletSpeed;
-        }
-    }
-
-    public void Reup(GameObject reBulletPrefab, float reBulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { 0f, 40f, -40f };
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(reBulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z + angle) * Vector2.up;
-            rb.velocity = direction * reBulletSpeed;
-        }
-    }
-
-    public void Redoen(GameObject reBulletPrefab, float reBulletSpeed)
-    {
-        Vector3 spawnPosition = transform.position;
-        float[] angles = { 0f, 40f, -40f };
-        foreach (float angle in angles)
-        {
-            GameObject bullet = Instantiate(reBulletPrefab, spawnPosition, Quaternion.identity);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-            Vector2 direction = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z + angle) * Vector2.down;
-            rb.velocity = direction * reBulletSpeed;
-        }
-    }
 
     //AllRandomLauncher
     public void AllRandomLauncher(float spreadAngle, int numberOfBullets, GameObject bulletPrefab, float bulletSpeed)
@@ -376,5 +262,14 @@ public class BossSkillTest : MonoBehaviour
             Vector2 bulletDirection = Quaternion.Euler(0, 0, (isReversed ? -1 : 1) * transform.rotation.eulerAngles.z + angle) * direction;
             rb.velocity = bulletDirection * bulletSpeed;
         }
+    }
+
+    //TuibiLauncher
+
+    public void TuibuLauncher(GameObject bulletPrefab)
+    {
+        GameObject bullet = Instantiate(bulletPrefab,transform.position,transform.rotation);
+
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
     }
 }
