@@ -176,7 +176,7 @@ public class BossSkillTest : MonoBehaviour
         rb1.velocity = bulletDirection1 * subBulletSpeed2;
     }
     //HomingLauncher
-    public void ShootHomingBullet(GameObject firePoint, GameObject homingBullet)
+    public void ShootHomingBullet(Transform firePoint, GameObject homingBullet)
     {
         if (firePoint != null && homingBullet != null)
         {
@@ -266,9 +266,9 @@ public class BossSkillTest : MonoBehaviour
 
     //TuibiLauncher
 
-    public void TuibuLauncher(GameObject bulletPrefab)
+    public void TuibuLauncher(GameObject bulletPrefab,Transform firePoint)
     {
-        GameObject bullet = Instantiate(bulletPrefab,transform.position,transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab,firePoint.position,firePoint.rotation);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
     }

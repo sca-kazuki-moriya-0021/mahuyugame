@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5
-  homingDuration: 0.1
+  homingDuration: 1
 --- !u!58 &8007194741120345467
 CircleCollider2D:
   m_ObjectHideFlags: 0

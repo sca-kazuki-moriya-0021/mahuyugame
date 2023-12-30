@@ -25,7 +25,7 @@ public class BossShootTest : MonoBehaviour
     [SerializeField,Header("回転速度")]
     private float[] rotationSpeed;
     [SerializeField,Header("ホーミング用")]
-    private GameObject[] firePoint;
+    private Transform[] firePoint;
     //Way弾幕
     private int bulletAmount;
     private float maxbulletSpacing;
@@ -37,7 +37,7 @@ public class BossShootTest : MonoBehaviour
     private Transform player;
 
     //AllspiralLauncher
-    private int shotCount;
+    private int shotCount = 0;
     private float spiralRotationSpeed = 360f;
     private float spiralDistance = 5f;
 
@@ -48,6 +48,11 @@ public class BossShootTest : MonoBehaviour
     private float currentRotation = 0;
     private bool rotationFlag = true;
 
+    //tuibi
+    private bool isInterval = false;
+    private float nextFireTime = 0;
+    private int shotsFired = 0;
+    private float interval = 0.7f;
     private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
 
     public int ShotCount
@@ -73,7 +78,8 @@ public class BossShootTest : MonoBehaviour
         //StartCoroutine(HomingLauncher());
         //StartCoroutine(AllRandomLauncher());
         //StartCoroutine(RandomLauncher());
-        StartCoroutine(AllRangeLauncher());
+        //StartCoroutine(AllRangeLauncher());
+        StartCoroutine(Tuibi());
 
     }
 
@@ -119,12 +125,13 @@ public class BossShootTest : MonoBehaviour
         //    bossSkillTest.Launcher(spreadAngle[0], numberOfBullets[0], fireTime[0], maxbulletSpacing, player, bulletPrefabs[0], bulletSpeed[0]);
         //    bulletsTime = 0f;
         //}
+        
     }
 
-    private void FixedUpdate()
-    {
-        transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime);
-    }
+    //private void FixedUpdate()
+    //{
+    //    transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime);
+    //}
 
     private IEnumerator AllRangeLauncher()
     {
@@ -206,9 +213,42 @@ public class BossShootTest : MonoBehaviour
     {
         while (true)
         {
-            bossSkillTest.ShootHomingBullet(firePoint[0], bulletPrefabs[2]);
-            bossSkillTest.ShootHomingBullet(firePoint[1], bulletPrefabs[2]);
+            bossSkillTest.ShootHomingBullet(firePoint[6], bulletPrefabs[2]);
+            bossSkillTest.ShootHomingBullet(firePoint[7], bulletPrefabs[2]);
             yield return new WaitForSeconds(fireTime[0]);
+        }
+    }
+
+    private IEnumerator Tuibi()
+    {
+        while (true)
+        {
+            if (isInterval)
+            {
+                isInterval = false;
+                shotsFired = 0;
+            }
+
+            if(!isInterval)
+            {
+                foreach(Transform firePoint in firePoint)
+                {
+                    bossSkillTest.TuibuLauncher(bulletPrefabs[3], firePoint);
+                    shotsFired++;
+                    yield return new WaitForSeconds(fireTime[3]);
+                }
+            }
+
+            if (shotsFired >= numberOfBullets[3])
+            {
+                isInterval = true;
+                yield return new WaitForSeconds(0.7f);
+            }
+            else
+            {
+                nextFireTime = Time.time + fireTime[3];
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
