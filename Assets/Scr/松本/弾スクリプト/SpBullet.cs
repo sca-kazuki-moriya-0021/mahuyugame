@@ -59,7 +59,7 @@ public class SpBullet : MonoBehaviour
 
         if (insCount > 4)
         {
-            if (timer >= timeBetweenShots)
+            if (timer > timeBetweenShots)
             {
                 //’e‚Ì¶¬ŠJn
                 GenerateBullet(perpendicularDirection); 

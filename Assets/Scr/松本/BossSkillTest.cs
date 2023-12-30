@@ -8,13 +8,15 @@ public class BossSkillTest : MonoBehaviour
     private Transform RangeA;
     private Transform RangeB;
     private BossShootTest bossShootTest;
+    //private Transform player;
     //private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
-   
-    
+
+
     void Start()
     {
         bossShootTest = FindObjectOfType<BossShootTest>();
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -121,7 +123,7 @@ public class BossSkillTest : MonoBehaviour
     public void Launcher(float curAngle, int curBullet, float bulletSpacing, float maxbulletSpacing, Transform player, GameObject bulletPrefab, float bulletSpeed)
     {
         float angleStep = curAngle / (curBullet - 1);
-        float initialAngle = this.transform.eulerAngles.z - (curAngle / 2);
+        float initialAngle = 270 - (curAngle / 2);
         bulletSpacing += Time.deltaTime;
 
         if (bulletSpacing > maxbulletSpacing)
@@ -271,5 +273,43 @@ public class BossSkillTest : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab,firePoint.position,firePoint.rotation);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+    }
+
+    //WayMoveLauncher
+
+    public void ShootNWayBullets(int numberOfBullets,Transform player,GameObject BigWay,float bulletSpeed,GameObject subBullet)
+    {
+        float angleStep = 45 / (numberOfBullets - 1);
+        float initialAngle = 270 - (45 / 2);
+        var r = new Vector3(9, 0, 0);
+        Vector2 playerPosition = player.position;
+
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            transform.TransformPoint(r);
+            GameObject bullet = Instantiate(BigWay, r, Quaternion.identity);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+            float bulletAngle = initialAngle + (i * angleStep);
+            Vector2 directionPlayer = (playerPosition - (Vector2)r).normalized;
+            float anglePlayer = Mathf.Atan2(directionPlayer.y, directionPlayer.x) * Mathf.Rad2Deg;
+
+            bullet.transform.rotation = Quaternion.Euler(0, 0, bulletAngle + anglePlayer);
+            rb.velocity = bullet.transform.up * bulletSpeed;
+
+            StartCoroutine(ShootSubBullets(bullet.transform,subBullet));
+        }
+    }
+
+    private IEnumerator ShootSubBullets(Transform parentBullet,GameObject subBullet)
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        while (parentBullet != null)
+        {
+            GameObject SubBullet = Instantiate(subBullet, parentBullet.position, Quaternion.identity);
+            Rigidbody2D bulletRigidbody = SubBullet.GetComponent<Rigidbody2D>();
+            yield return new WaitForSeconds(0.25f);
+        }
     }
 }

@@ -99,4 +99,5 @@ MonoBehaviour:
   maxHeight: 5
   minHeight: -5
   maxWidth: 0
-  minWidth: -8
+  minWidth: -10
+  maxFlips: 2

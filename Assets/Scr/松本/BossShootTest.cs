@@ -79,18 +79,14 @@ public class BossShootTest : MonoBehaviour
         //StartCoroutine(AllRandomLauncher());
         //StartCoroutine(RandomLauncher());
         //StartCoroutine(AllRangeLauncher());
-        StartCoroutine(Tuibi());
-
+        //StartCoroutine(Tuibi());
+        StartCoroutine(WayMove());
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > fireTime[2])
-        {
-            timer = 0f;
-        }
         //subTimer += Time.deltaTime;
         //if(currentRotation >= 360f)
         //{
@@ -229,26 +225,40 @@ public class BossShootTest : MonoBehaviour
                 shotsFired = 0;
             }
 
-            if(!isInterval)
+            if (!isInterval)
             {
-                foreach(Transform firePoint in firePoint)
+                List<Coroutine> coroutines = new List<Coroutine>();
+
+                for (int i = 0; i < firePoint.Length; i++)
                 {
-                    bossSkillTest.TuibuLauncher(bulletPrefabs[3], firePoint);
-                    shotsFired++;
-                    yield return new WaitForSeconds(fireTime[3]);
+                    Transform firePointTransform = firePoint[i];
+                    coroutines.Add(StartCoroutine(ShootBulletDelayed(bulletPrefabs[3], firePointTransform, fireTime[3] * i)));
                 }
+
+                foreach (Coroutine coroutine in coroutines)
+                {
+                    yield return coroutine;
+                }
+                coroutines.Clear();
+                isInterval = true;
             }
 
-            if (shotsFired >= numberOfBullets[3])
-            {
-                isInterval = true;
-                yield return new WaitForSeconds(0.7f);
-            }
-            else
-            {
-                nextFireTime = Time.time + fireTime[3];
-            }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator ShootBulletDelayed(GameObject bulletPrefab, Transform firePoint, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        bossSkillTest.TuibuLauncher(bulletPrefab, firePoint);
+    }
+
+    private IEnumerator WayMove()
+    {
+        while (true)
+        {
+            bossSkillTest.ShootNWayBullets(numberOfBullets[3], player, bulletPrefabs[1], bulletSpeed[2], subBulletPrefabs[1]);
+            yield return new WaitForSeconds(fireTime[4]);
         }
     }
 
