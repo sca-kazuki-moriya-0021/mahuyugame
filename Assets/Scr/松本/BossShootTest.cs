@@ -87,34 +87,34 @@ public class BossShootTest : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        //subTimer += Time.deltaTime;
-        //if(currentRotation >= 360f)
-        //{
-        //    coolTimer += Time.deltaTime;
-        //    if(coolTimer >= 1)
-        //    {
-        //        currentRotation = 0f;
-        //        coolTimer = 0f;
+        subTimer += Time.deltaTime;
+        if(currentRotation >= 360f)
+        {
+            coolTimer += Time.deltaTime;
+            if(coolTimer >= 1)
+            {
+                currentRotation = 0f;
+                coolTimer = 0f;
 
-        //        rotationFlag = !rotationFlag;
-        //    }
-        //}
-        //else
-        //{
-        //    if(timer >= fireTime[3])
-        //    {
-        //        bossSkillTest.RotateBullet(bulletPrefabs[1], bulletSpeed[1]);
-        //        timer = 0f;
-        //    }
-        //    if(subTimer >= fireTime[2])
-        //    {
-        //        bossSkillTest.SpreasBullet(spreadAngle[0], subBulletPrefabs[0], subBulletSpeed[0], subBulletSpeed[1]);
-        //        subTimer = 0f;
-        //    }
-        //}
-        //float rotationDirection = rotationFlag ? 1 : -1;
-        //transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime * rotationDirection);
-        //currentRotation += rotationSpeed[1] * Time.deltaTime;
+                rotationFlag = !rotationFlag;
+            }
+        }
+        else
+        {
+            if(timer >= fireTime[3])
+            {
+                bossSkillTest.RotateBullet(bulletPrefabs[1], bulletSpeed[1]);
+                timer = 0f;
+            }
+            if(subTimer >= fireTime[2])
+            {
+                bossSkillTest.SpreasBullet(spreadAngle[0], subBulletPrefabs[0], subBulletSpeed[0], subBulletSpeed[1]);
+                subTimer = 0f;
+            }
+        }
+        float rotationDirection = rotationFlag ? 1 : -1;
+        transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime * rotationDirection);
+        currentRotation += rotationSpeed[1] * Time.deltaTime;
         //bulletsTime += Time.deltaTime;
         //if(bulletsTime >= fireTime[0])
         //{
