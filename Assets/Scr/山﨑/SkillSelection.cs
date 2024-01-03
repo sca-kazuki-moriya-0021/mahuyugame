@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SkillSelection : MonoBehaviour
 {
-    [SerializeField]　Button button;
+    [SerializeField] Button button;
     [SerializeField] GameObject goStageButton;
     [SerializeField] GameObject barregeCanvas;
     [SerializeField] GameObject[] skillSelect;//選択しているとき上にかぶせるオブジェ
@@ -26,13 +26,11 @@ public class SkillSelection : MonoBehaviour
     private SelectObjGetSet selectObjGetSet;
     private SkillClip skillClip;
     [SerializeField] GameObject check;
-    [SerializeField] Button yes;
-
 
     private void Awake()
     {
         selectObjGetSet = FindObjectOfType<SelectObjGetSet>();
-        totalGM = FindObjectOfType<TotalGM>();       
+        totalGM = FindObjectOfType<TotalGM>();
         PlayerReset();
     }
 
@@ -43,14 +41,14 @@ public class SkillSelection : MonoBehaviour
         button.Select();
         goStageButton.SetActive(false);
         //ボタンの選択状態を解除
-        for(int i=0; i<=3;i++)
+        for (int i = 0; i <= 3; i++)
         {
             skillSelect[i].SetActive(false);
             totalGM.PlayerSkill[i] = false;//念のため初期化する
         }
-        
+
     }
-    
+
     void FixedUpdate()
     {
         //Debug.Log(selectedObj);
@@ -62,23 +60,25 @@ public class SkillSelection : MonoBehaviour
             button.Select();
             selectedObj = ev.currentSelectedGameObject;
         }
-        else 
+        else
         {
             selectedObj = ev.currentSelectedGameObject;
             outLine.transform.position = selectedObj.transform.position;
             OutLineSize();
         }
-        
+
     }
     //押されたときの処理
     public void Skill_0_Click()
     {
-        if (totalGM.PlayerSkill[0]) { 
+        if (totalGM.PlayerSkill[0])
+        {
             skillSelect[0].SetActive(false);
             skillCount--;
             totalGM.PlayerSkill[0] = false;
         }
-        else { 
+        else
+        {
             skillSelect[0].SetActive(true);
             skillCount++;
             totalGM.PlayerSkill[0] = true;
@@ -104,7 +104,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[1] = true;
         }
-        GoStage();  
+        GoStage();
         //OneSkillCheck(); 
         Test();
         skillClip.ButtonPush = true;
@@ -124,7 +124,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[2] = true;
         }
-        GoStage();  
+        GoStage();
         //OneSkillCheck(); 
         Test();
         skillClip.ButtonPush = true;
@@ -144,7 +144,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[3] = true;
         }
-        GoStage();   
+        GoStage();
         //OneSkillCheck(); 
         Test(); //NoSkillCheck();
         skillClip.ButtonPush = true;
@@ -153,11 +153,9 @@ public class SkillSelection : MonoBehaviour
     //ステージに行くボタンの表示・非表示
     private void GoStage()
     {
-        if(skillCount==2)
+        if (skillCount == 2)
         {
             check.SetActive(true);
-            yes.Select();
-            this.gameObject.SetActive(false);
         }
     }
     //押されたらタイトルシーンに行く
@@ -188,20 +186,20 @@ public class SkillSelection : MonoBehaviour
                 skillSelect[i].SetActive(true);
             }
 
-            if(!totalGM.PlayerSkill[i]&&skillCount==1)
+            if (!totalGM.PlayerSkill[i] && skillCount == 1)
             {
                 //Debug.Log("スキル1ッコ");
                 skillSelect[i].SetActive(false);
                 skill[i].enabled = true;
-                
+
             }
-            else if(totalGM.PlayerSkill[i] && skillCount == 1)
+            else if (totalGM.PlayerSkill[i] && skillCount == 1)
             {
                 skillSelect[i].SetActive(true);
                 selectObjGetSet.LastSelectButton = skill[i];
             }
 
-            if(skillCount==0)
+            if (skillCount == 0)
             {
                 skillSelect[i].SetActive(false);
                 skill[i].enabled = true;
@@ -211,16 +209,16 @@ public class SkillSelection : MonoBehaviour
     //選択されたボタンによって外枠のサイズを変更
     private void OutLineSize()
     {
-        if(selectedObj.gameObject.CompareTag("Button"))
+        if (selectedObj.gameObject.CompareTag("Button"))
         {
             outLine.enabled = false;
-            outLine.transform.localScale = new Vector2 (outLineSizeS_X,outLineSizeS_Y);
+            outLine.transform.localScale = new Vector2(outLineSizeS_X, outLineSizeS_Y);
         }
         else
         {
             outLine.enabled = true;
-            outLine.transform.localScale = new Vector2 (outLineSizeB_X,outLineSizeB_Y);
-            
+            outLine.transform.localScale = new Vector2(outLineSizeB_X, outLineSizeB_Y);
+
         }
     }
 
@@ -237,17 +235,23 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[i] = false;
         }
 
-        for(int i = 0; i < totalGM.NowScore.Length; i++)
+        for (int i = 0; i < totalGM.NowScore.Length; i++)
         {
             totalGM.NowScore[i] = 0;
         }
 
-        for(int i = 0; i < totalGM.SkillCoolTimeCount.Length; i++)
+        for (int i = 0; i < totalGM.SkillCoolTimeCount.Length; i++)
         {
             totalGM.SkillCoolTimeCount[i] = 0;
         }
 
         totalGM.GameOverCount = 0;
         totalGM.BackScene = TotalGM.StageCon.No;
+    }
+
+    public void GoBarrage()
+    {
+        this.gameObject.SetActive(false);
+        barregeCanvas.SetActive(true);
     }
 }

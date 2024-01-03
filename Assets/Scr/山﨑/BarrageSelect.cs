@@ -44,8 +44,9 @@ public class BarrageSelect : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(mainSubWepon[0]);
+        Debug.Log(mainSubWepon[1]);
         Debug.Log(barrageCount);
-        Debug.Log(totalGM.PlayerSubWeapon[3]);
         if (selectedObj == null)
         {
             button.Select();
@@ -62,7 +63,7 @@ public class BarrageSelect : MonoBehaviour
     //âüÇ≥ÇÍÇΩÇ∆Ç´ÇÃèàóù
     public void Skill_0_Click()
     {
-        if (!mainSubWepon[0])
+        if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[0])
         {
             mainSubWepon[0] = true;
             barrageCount++;
@@ -97,7 +98,7 @@ public class BarrageSelect : MonoBehaviour
     //âüÇ≥ÇÍÇΩÇ∆Ç´ÇÃèàóù
     public void Skill_1_Click()
     {
-        if (!mainSubWepon[0])
+        if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[1])
         {
             mainSubWepon[0] = true;
             barrageCount++;
@@ -135,7 +136,7 @@ public class BarrageSelect : MonoBehaviour
     //âüÇ≥ÇÍÇΩÇ∆Ç´ÇÃèàóù
     public void Skill_2_Click()
     {
-        if (!mainSubWepon[0])
+        if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[2])
         {
             mainSubWepon[0] = true;
             barrageCount++;
@@ -155,8 +156,6 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[2].enabled = false;
             totalGM.PlayerWeapon[2] = false;
             barrageCount--;
-
-
         }
         else if (totalGM.PlayerSubWeapon[2])
         {
@@ -171,7 +170,7 @@ public class BarrageSelect : MonoBehaviour
     //âüÇ≥ÇÍÇΩÇ∆Ç´ÇÃèàóù
     public void Skill_3_Click()
     {
-        if (!mainSubWepon[0])
+        if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[3])
         {
             mainSubWepon[0] = true;
             barrageCount++;
@@ -191,8 +190,6 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[3].enabled = false;
             totalGM.PlayerWeapon[3] = false;
             barrageCount--;
-
-
         }
         else if (totalGM.PlayerSubWeapon[3])
         {
@@ -235,11 +232,19 @@ public class BarrageSelect : MonoBehaviour
 
             if (!totalGM.PlayerWeapon[i] && barrageCount == 1)
             {
-                
-                //barrage[i].enabled = false;//interactableÇ…Ç∑ÇÈÇ∆îºìßñæâª
                 barrageSelect[i].enabled = false;
             }
             else if (totalGM.PlayerWeapon[i] && barrageCount == 1)
+            {
+                barrageSelect[i].enabled = true;
+            }
+            
+            if (!mainSubWepon[0] &&!totalGM.PlayerSubWeapon[i] && barrageCount == 1)
+            {
+                Debug.Log("ÇÕÇ¢Ç¡ÇΩÇÊÅ[");
+                barrageSelect[i].enabled = false;
+            }
+            else if (!mainSubWepon[0] && totalGM.PlayerSubWeapon[i] && barrageCount == 1)
             {
                 barrageSelect[i].enabled = true;
             }
