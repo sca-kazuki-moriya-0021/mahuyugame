@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class SkillSelection : MonoBehaviour
 {
-    [SerializeField] Button button;
-    [SerializeField] GameObject goStageButton;//
+    [SerializeField] Button button;//最初に選択中にするボタン
+    [SerializeField] GameObject goStageButton;
     [SerializeField] GameObject barregeCanvas;//次に出すキャンバス
     [SerializeField] GameObject[] skillSelect;//選択しているとき上にかぶせるオブジェ
     [SerializeField] Button[] skill;//スキルのボタン
@@ -18,19 +19,23 @@ public class SkillSelection : MonoBehaviour
     private EventSystem ev = EventSystem.current;
     private GameObject selectedObj;
     [SerializeField] private Image outLine;
+    [SerializeField] private Text skillExplanation;//スキルのテキスト
     int skillCount;
     [Header("外枠＿サイズの値")]
     [SerializeField] float outLineSizeS_X;
     [SerializeField] float outLineSizeS_Y;
     [SerializeField] float outLineSizeB_X;
     [SerializeField] float outLineSizeB_Y;
+    [SerializeField] private VideoClip[] skillClip;//流したいスキルクリップを配列
+    [SerializeField] private VideoPlayer videoPlayer;//Videoを格納
     private TotalGM totalGM;
     private SelectObjGetSet selectObjGetSet;
-    private SkillClip skillClip;
-    [SerializeField] GameObject check;
+    //private SkillClip skillClip;
+    [SerializeField] GameObject goBarrage;
     bool[] skillJK = {false,false};//Jキーのスキルが選択されてるかの確認
     bool[] skillJ = { false, false, false, false };
     bool[] skillK = { false, false, false, false };
+    
     private void Awake()
     {
         selectObjGetSet = FindObjectOfType<SelectObjGetSet>();
@@ -40,7 +45,7 @@ public class SkillSelection : MonoBehaviour
 
     void Start()
     {
-        skillClip = FindObjectOfType<SkillClip>();
+        //skillClip = FindObjectOfType<SkillClip>();
         //ボタンが選択された状態になる
         button.Select();
         goStageButton.SetActive(false);
@@ -54,8 +59,6 @@ public class SkillSelection : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(skillJK[0]);
-        Debug.Log(skillJK[1]);
         if (selectedObj == null)
         {
             button.Select();
@@ -66,6 +69,9 @@ public class SkillSelection : MonoBehaviour
             selectedObj = ev.currentSelectedGameObject;
             outLine.transform.position = selectedObj.transform.position;
             OutLineSize();
+            VideoClip();
+            SkillExplanation();
+            
         }
 
     }
@@ -159,41 +165,87 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_2_Click()
     {
-        if (totalGM.PlayerSkill[2])
-        {
-            skillSelect[2].SetActive(false);
-            skillCount--;
-            totalGM.PlayerSkill[2] = false;
-        }
-        else
+        if (!skillJ[2] && !totalGM.PlayerSkill[2] && !skillJK[0])
         {
             skillSelect[2].SetActive(true);
+            skillJ[2] = true;
+            skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[2] = true;
+            skillSelectImage[0].sprite = skillIcon[2];
+        }
+        else if (!skillK[2] && !totalGM.PlayerSkill[2] && !skillJK[1] && skillCount == 1)
+        {
+            skillSelect[2].SetActive(true);
+            skillK[2] = true;
+            skillJK[1] = true;
+            skillCount++;
+            totalGM.PlayerSkill[2] = true;
+            skillSelectImage[1].sprite = skillIcon[2];
+        }
+        else if (skillJ[2] && totalGM.PlayerSkill[2])
+        {
+            skillSelect[2].SetActive(false);
+            skillJ[2] = false;
+            skillJK[0] = false;
+            skillCount--;
+            totalGM.PlayerSkill[2] = false;
+            skillSelectImage[0].sprite = null;
+        }
+        else if (skillK[2] && totalGM.PlayerSkill[2])
+        {
+            skillSelect[2].SetActive(false);
+            skillK[2] = false;
+            skillJK[1] = false;
+            skillCount--;
+            totalGM.PlayerSkill[2] = false;
+            skillSelectImage[1].sprite = null;
         }
         GoStage();
         Test();
-        skillClip.ButtonPush = true;
         
     }
     //押されたときの処理
     public void Skill_3_Click()
     {
-        if (totalGM.PlayerSkill[3])
-        {
-            skillSelect[3].SetActive(false);
-            skillCount--;
-            totalGM.PlayerSkill[3] = false;
-        }
-        else
+        if (!skillJ[3] && !totalGM.PlayerSkill[3] && !skillJK[0])
         {
             skillSelect[3].SetActive(true);
+            skillJ[3] = true;
+            skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[3] = true;
+            skillSelectImage[0].sprite = skillIcon[3];
+        }
+        else if (!skillK[3] && !totalGM.PlayerSkill[3] && !skillJK[1] && skillCount == 1)
+        {
+            skillSelect[3].SetActive(true);
+            skillK[3] = true;
+            skillJK[1] = true;
+            skillCount++;
+            totalGM.PlayerSkill[3] = true;
+            skillSelectImage[1].sprite = skillIcon[3];
+        }
+        else if (skillJ[3] && totalGM.PlayerSkill[3])
+        {
+            skillSelect[3].SetActive(false);
+            skillJ[3] = false;
+            skillJK[0] = false;
+            skillCount--;
+            totalGM.PlayerSkill[3] = false;
+            skillSelectImage[0].sprite = null;
+        }
+        else if (skillK[3] && totalGM.PlayerSkill[3])
+        {
+            skillSelect[3].SetActive(false);
+            skillK[3] = false;
+            skillJK[1] = false;
+            skillCount--;
+            totalGM.PlayerSkill[3] = false;
+            skillSelectImage[1].sprite = null;
         }
         GoStage();
         Test();
-        skillClip.ButtonPush = true;
         
     }
 
@@ -202,7 +254,11 @@ public class SkillSelection : MonoBehaviour
     {
         if (skillCount == 2)
         {
-            check.SetActive(true);
+            goBarrage.SetActive(true);
+        }
+        else
+        {
+            goBarrage.SetActive(false);
         }
     }
     //押されたらタイトルシーンに行く
@@ -257,16 +313,16 @@ public class SkillSelection : MonoBehaviour
     //選択されたボタンによって外枠のサイズを変更
     private void OutLineSize()
     {
-        if (selectedObj.gameObject.CompareTag("Button"))
-        {
-            outLine.enabled = false;
-            outLine.transform.localScale = new Vector2(outLineSizeS_X, outLineSizeS_Y);
-        }
-        else
+        if (selectedObj.gameObject.layer == LayerMask.NameToLayer("SkillOutLine"))
         {
             outLine.enabled = true;
             outLine.transform.localScale = new Vector2(outLineSizeB_X, outLineSizeB_Y);
-
+            
+        }
+        else
+        {
+            outLine.enabled = false;
+            //outLine.transform.localScale = new Vector2(outLineSizeS_X, outLineSizeS_Y);
         }
     }
 
@@ -303,14 +359,41 @@ public class SkillSelection : MonoBehaviour
         barregeCanvas.SetActive(true);
     }
 
-    private void SkillIcon()
+    private void SkillExplanation()
     {
-        for (int i = 0; i < totalGM.PlayerSkill.Length; i++)
+        switch(selectedObj.tag)
         {
-            if(totalGM.PlayerSkill[i])
-            {
+            case "Skill1":
+                skillExplanation.text = "skill1の説明文が出ます。";
+                break;
+            case "Skill2":
+                skillExplanation.text = "skill2の説明文が出ます。";
+                break;
+            case "Skill3":
+                skillExplanation.text = "skill3の説明文が出ます。";
+                break;
+            case "Skill4":
+                skillExplanation.text = "skill4の説明文が出ます。";
+                break;
+        }
+    }
 
-            }
+    void VideoClip()
+    {
+        switch (selectedObj.tag)
+        {
+            case "Skill1":
+                videoPlayer.clip = skillClip[0];
+                break;
+            case "Skill2":
+                videoPlayer.clip = skillClip[1];
+                break;
+            case "Skill3":
+                videoPlayer.clip = skillClip[2];
+                break;
+            case "Skill4":
+                videoPlayer.clip = skillClip[3];
+                break;
         }
     }
 }
