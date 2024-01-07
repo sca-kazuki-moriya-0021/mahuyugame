@@ -21,10 +21,10 @@ TagManager:
   - ScoreAdditionItem
   - SkillBulletOutLine
   - Laser
-  - Skill1
-  - Skill2
-  - Skill3
-  - Skill4
+  - Icon1
+  - Icon2
+  - Icon3
+  - Icon4
   layers:
   - Default
   - TransparentFX

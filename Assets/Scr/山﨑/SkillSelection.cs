@@ -11,6 +11,8 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] Button button;//最初に選択中にするボタン
     [SerializeField] GameObject goStageButton;
     [SerializeField] GameObject barregeCanvas;//次に出すキャンバス
+    [SerializeField] Canvas skillIconCanvas;//スキルアイコンキャンバス
+    [SerializeField] Canvas barrageIconCanvas;//武器のアイコンキャンバス（弾幕）
     [SerializeField] GameObject[] skillSelect;//選択しているとき上にかぶせるオブジェ
     [SerializeField] Button[] skill;//スキルのボタン
     [SerializeField] Image[] skillSelectImage;//プレイヤーの手に乗ってるImage
@@ -357,22 +359,24 @@ public class SkillSelection : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         barregeCanvas.SetActive(true);
+        skillIconCanvas.enabled = false;
+        barrageIconCanvas.enabled = true;
     }
 
     private void SkillExplanation()
     {
         switch(selectedObj.tag)
         {
-            case "Skill1":
+            case "Icon1":
                 skillExplanation.text = "skill1の説明文が出ます。";
                 break;
-            case "Skill2":
+            case "Icon2":
                 skillExplanation.text = "skill2の説明文が出ます。";
                 break;
-            case "Skill3":
+            case "Icon3":
                 skillExplanation.text = "skill3の説明文が出ます。";
                 break;
-            case "Skill4":
+            case "Icon4":
                 skillExplanation.text = "skill4の説明文が出ます。";
                 break;
         }
@@ -382,16 +386,16 @@ public class SkillSelection : MonoBehaviour
     {
         switch (selectedObj.tag)
         {
-            case "Skill1":
+            case "Icon1":
                 videoPlayer.clip = skillClip[0];
                 break;
-            case "Skill2":
+            case "Icon2":
                 videoPlayer.clip = skillClip[1];
                 break;
-            case "Skill3":
+            case "Icon3":
                 videoPlayer.clip = skillClip[2];
                 break;
-            case "Skill4":
+            case "Icon4":
                 videoPlayer.clip = skillClip[3];
                 break;
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+
 public class BarrageSelect : MonoBehaviour
 {
     private TotalGM totalGM;
@@ -21,7 +23,12 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] float outLineSizeB_X;
     [SerializeField] float outLineSizeB_Y;
     [SerializeField] GameObject goStageButton;
+    [SerializeField] Image[] barrageSelectImage;//プレイヤーの手に乗ってるImage
+    [SerializeField] Sprite[] barrageIcon;//弾幕アイコン入れ（上の変数に代入するよう)
     bool[] mainSubWepon = { false, false };
+    [SerializeField] private VideoClip[] barrageClip;//流したい球クリップを配列
+    [SerializeField] private VideoPlayer videoPlayer;//Videoを格納
+    [SerializeField] private Text barrageExplanation;//球のテキスト
 
     private void Awake()
     {
@@ -57,6 +64,8 @@ public class BarrageSelect : MonoBehaviour
             selectedObj = ev.currentSelectedGameObject;
             outLine.transform.position = selectedObj.transform.position;
             OutLineSize();
+            BarrageExplanation();
+            VideoClip();
         }
     }
 
@@ -69,6 +78,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerWeapon[0] = true;
             barrageSelect[0].enabled = true;
+            barrageSelectImage[0].sprite = barrageIcon[0];
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[0] && barrageCount == 1)
         {
@@ -76,6 +86,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerSubWeapon[0] = true;
             barrageSelect[0].enabled = true;
+            barrageSelectImage[1].sprite = barrageIcon[0];
         }
         else if (totalGM.PlayerWeapon[0])
         {
@@ -84,6 +95,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[0].enabled = false;
             totalGM.PlayerWeapon[0] = false;
             barrageCount--;
+            barrageSelectImage[0].sprite = null;
         }
         else if (totalGM.PlayerSubWeapon[0])
         {
@@ -91,7 +103,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[0].enabled = false;
             totalGM.PlayerSubWeapon[0] = false;
             barrageCount--;
-
+            barrageSelectImage[1].sprite = null;
         }
         TwoSelect();
     }
@@ -104,6 +116,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerWeapon[1] = true;
             barrageSelect[1].enabled = true;
+            barrageSelectImage[0].sprite = barrageIcon[1];
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[1] && barrageCount == 1)
         {
@@ -112,7 +125,7 @@ public class BarrageSelect : MonoBehaviour
             totalGM.PlayerSubWeapon[1] = true;
             barrageSelect[1].enabled = true;
             mainSubWepon[1] = true;
-            //Debug.Log("A");
+            barrageSelectImage[1].sprite = barrageIcon[1];
         }
         else if (totalGM.PlayerWeapon[1])
         {
@@ -120,7 +133,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[0].enabled = false;
             totalGM.PlayerWeapon[1] = false;
             barrageCount--;
-
+            barrageSelectImage[0].sprite = null;
 
         }
         else if (totalGM.PlayerSubWeapon[1])
@@ -129,7 +142,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[0].enabled = false;
             totalGM.PlayerSubWeapon[1] = false;
             barrageCount--;
-
+            barrageSelectImage[1].sprite = null;
         }
         TwoSelect();
     }
@@ -142,6 +155,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerWeapon[2] = true;
             barrageSelect[2].enabled = true;
+            barrageSelectImage[0].sprite = barrageIcon[2];
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[2] && barrageCount == 1)
         {
@@ -149,6 +163,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerSubWeapon[2] = true;
             barrageSelect[2].enabled = true;
+            barrageSelectImage[1].sprite = barrageIcon[2];
         }
         else if (totalGM.PlayerWeapon[2])
         {
@@ -156,6 +171,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[2].enabled = false;
             totalGM.PlayerWeapon[2] = false;
             barrageCount--;
+            barrageSelectImage[0].sprite = null;
         }
         else if (totalGM.PlayerSubWeapon[2])
         {
@@ -163,6 +179,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[2].enabled = false;
             totalGM.PlayerSubWeapon[2] = false;
             barrageCount--;
+            barrageSelectImage[1].sprite = null;
 
         }
         TwoSelect();
@@ -176,6 +193,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerWeapon[3] = true;
             barrageSelect[3].enabled = true;
+            barrageSelectImage[0].sprite = barrageIcon[3];
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[3] && barrageCount == 1)
         {
@@ -183,6 +201,7 @@ public class BarrageSelect : MonoBehaviour
             barrageCount++;
             totalGM.PlayerSubWeapon[3] = true;
             barrageSelect[3].enabled = true;
+            barrageSelectImage[1].sprite = barrageIcon[3];
         }
         else if (totalGM.PlayerWeapon[3])
         {
@@ -190,6 +209,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[3].enabled = false;
             totalGM.PlayerWeapon[3] = false;
             barrageCount--;
+            barrageSelectImage[0].sprite = null;
         }
         else if (totalGM.PlayerSubWeapon[3])
         {
@@ -197,7 +217,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[3].enabled = false;
             totalGM.PlayerSubWeapon[3] = false;
             barrageCount--;
-
+            barrageSelectImage[0].sprite = null;
         }
         TwoSelect();
     }
@@ -264,5 +284,42 @@ public class BarrageSelect : MonoBehaviour
             goStageButton.SetActive(false);
         }
 
+    }
+    private void BarrageExplanation()
+    {
+        switch (selectedObj.tag)
+        {
+            case "Icon1":
+                barrageExplanation.text = "弾幕1の説明文が出ます。";
+                break;
+            case "Icon2":
+                barrageExplanation.text = "弾幕2の説明文が出ます。";
+                break;
+            case "Icon3":
+                barrageExplanation.text = "弾幕3の説明文が出ます。";
+                break;
+            case "Icon4":
+                barrageExplanation.text = "弾幕4の説明文が出ます。";
+                break;
+        }
+    }
+
+    void VideoClip()
+    {
+        switch (selectedObj.tag)
+        {
+            case "Icon1":
+                videoPlayer.clip = barrageClip[0];
+                break;
+            case "Icon2":
+                videoPlayer.clip = barrageClip[1];
+                break;
+            case "Icon3":
+                videoPlayer.clip = barrageClip[2];
+                break;
+            case "Icon4":
+                videoPlayer.clip = barrageClip[3];
+                break;
+        }
     }
 }
