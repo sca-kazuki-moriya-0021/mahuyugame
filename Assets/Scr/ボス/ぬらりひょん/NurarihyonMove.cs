@@ -39,7 +39,7 @@ public class NurarihyonMove : MonoBehaviour
     void Update()
     {
         //ˆÚ“®ƒvƒƒOƒ‰ƒ€
-        if(bossCollder.BossDeathFlag == false &&  player.BussMoveStopFlag == false)
+        if(bossCollder.BossDeathFlag == false)
         {
             if (moveCount <= 120)
             {
@@ -72,23 +72,6 @@ public class NurarihyonMove : MonoBehaviour
                         StartCoroutine(MovePosition(1, 0));
                         break;
                 }
-            }
-        }
-        //‚Æ‚ß‚µ‚½‚ç
-        if (player.BussMoveStopFlag == true)
-            StopMove();
-    }
-
-    //“®‚«’â~
-    private void StopMove()
-    {
-        if (stopCountTime <= stopTime)
-        {
-            stopCountTime += Time.deltaTime;
-            if (stopCountTime >= stopTime)
-            {
-                stopCountTime = 0;
-                player.BussMoveStopFlag = false;
             }
         }
     }

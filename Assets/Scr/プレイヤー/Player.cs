@@ -44,8 +44,9 @@ public class Player : MonoBehaviour
     private bool decelerationFlag = false;
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false};
-    //移動停止用フラグ
-    private bool bossMoveStopFlag;
+    //バリア用フラグ
+    private bool　barrierFlag;
+    private float  pBarrierTime;
     //たま消し用のフラグ
     private bool bulletSeverFlag;
     //プレイヤーキャラのバフ使用時のフラグ
@@ -66,12 +67,6 @@ public class Player : MonoBehaviour
         set { this.skillAtkFlag = value; }
     }
 
-    public bool BussMoveStopFlag
-    {
-        get { return this.bossMoveStopFlag; }
-        set { this.bossMoveStopFlag = value; }
-    }
-    
     public bool PBaffSkillFlag
     {
         get { return this.pBaffSkillFlag; }
@@ -95,6 +90,8 @@ public class Player : MonoBehaviour
         get { return this.coroutine; }
         set { this.coroutine = value; }
     }
+
+    public bool BarrierFlag { get => barrierFlag; set => barrierFlag = value; }
 
     private void OnEnable()
     {
@@ -131,14 +128,24 @@ public class Player : MonoBehaviour
             if (pBaffSkillFlag == true)
             {
                 pBaffSkillTime += Time.deltaTime;
-                if (pBaffSkillTime > 10)
+                if (pBaffSkillTime > 7)
                 {
                     Destroy(buffEffect);
                     pBaffSkillTime = 0;
                     pBaffSkillFlag = false;
                 }
             }
-
+            //バリア中の減り方
+            if(barrierFlag == false)
+            {
+                pBarrierTime += Time.deltaTime;
+                if (pBarrierTime > 5)
+                {
+                    //Destroy(buffEffect);
+                    pBarrierTime = 0;
+                    barrierFlag = false;
+                }
+            }
             //移動用関数
             if (playerCollider.DeathFlag == false)
                 InputSystemMove();
@@ -263,7 +270,7 @@ public class Player : MonoBehaviour
                     {
                         case 0:
                             skillCutinCon.PlayerCutInDisplay(i);
-                            bossMoveStopFlag = true;
+                            barrierFlag = true;
                             break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);

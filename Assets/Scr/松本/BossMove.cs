@@ -45,11 +45,6 @@ public class BossMove : MonoBehaviour
         {
             Move();
         }
-        //プレイヤーの移動停止スキルが発動していなかった時、死んでいなかった時は動く
-        if (player.BussMoveStopFlag == true)
-        {
-            StopMove();
-        }
     }
 
     private void Move()
@@ -73,20 +68,4 @@ public class BossMove : MonoBehaviour
         Vector3 pos = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
         return pos;
     }
-
-    private void StopMove()
-    {
-        if(stopCountTime <= stopTime)
-        {
-            stopCountTime +=Time.deltaTime;
-            isMoving = false;
-            if (stopCountTime >= stopTime)
-            {
-                stopCountTime = 0;
-                player.BussMoveStopFlag = false;
-                isMoving = true;
-            }
-        }
-    }
-
 }

@@ -38,7 +38,7 @@ public class SnowFairyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bossCollder.BossDeathFlag == false &&  player.BussMoveStopFlag == false)
+        if(bossCollder.BossDeathFlag == false)
         {
             if (moveCount <= 120)
             {
@@ -77,23 +77,6 @@ public class SnowFairyMove : MonoBehaviour
                         StartCoroutine(MovePosition(3, 0));
                         break;
                 }
-            }
-        }
-        //Žž‚Æ‚ß‚µ‚½‚ç
-        if(player.BussMoveStopFlag == true)
-        StopMove();
-    }
-
-    //“®‚«’âŽ~
-    private void StopMove()
-    {
-        if (stopCountTime <= stopTime)
-        {
-            stopCountTime += Time.deltaTime;
-            if (stopCountTime >= stopTime)
-            {
-                stopCountTime = 0;
-                player.BussMoveStopFlag = false;
             }
         }
     }

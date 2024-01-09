@@ -19,7 +19,7 @@ public class TotalGM : MonoBehaviour
     private bool[] playerWeapon = {false,false,false,false};
     private bool[] playerSubWeapon = {false,false,false,false};
     private bool[] playerSkill = new bool[]{false,false,false,false};
-    private float[] skillCoolTimeCount = new float[] { 15, 15, 10, 15, 0, 0, 0, 0 };
+    private float[] skillCoolTimeCount = new float[] { 20, 20, 10, 15, 0, 0, 0, 0 };
 
     //ゲームオーバーになった回数
     private int gameOverCount = 0;
