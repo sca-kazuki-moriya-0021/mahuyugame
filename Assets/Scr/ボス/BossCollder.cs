@@ -133,7 +133,7 @@ public class BossCollder : MonoBehaviour
             else
                 hp--;
             //HPが0の時アイテムドロップさせる
-            if (hp <= 0)
+            if (hp <= 0 && bossDeathFlag == false)
                 StartCoroutine(DropItemInstance());
         }
     }
@@ -142,7 +142,7 @@ public class BossCollder : MonoBehaviour
     private IEnumerator DropItemInstance()
     {
         bossDeathFlag = true;
-        //spineAnimationState.TimeScale = 0.2f;
+        spineAnimationState.TimeScale = 0.2f;
         spineAnimationState.SetAnimation(0, deathAnimation, false);
         for (int i = 0; i < 10; i++)
         {
