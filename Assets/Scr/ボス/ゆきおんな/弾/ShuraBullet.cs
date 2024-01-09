@@ -20,8 +20,6 @@ public class ShuraBullet : MonoBehaviour
 
     private int randomCount = 0;
 
-    private bool onceFlag = false;
-
     private GameObject player;
 
     private bool centerFlag = false;
@@ -50,10 +48,9 @@ public class ShuraBullet : MonoBehaviour
         }
 
         //’Ç”ö‚É“ü‚éif•¶
-        if(centerFlag == true && snowFairyBulletCon.PPosMoveFlag == true && onceFlag == false)
+        if(snowFairyBulletCon.PPosMoveFlag == true && centerFlag == true)
         {
             Debug.Log("haitta");
-            centerFlag = false;
             TrackingMove();
         }
     }
@@ -61,13 +58,12 @@ public class ShuraBullet : MonoBehaviour
     //Ž~‚Ü‚Á‚½Œã’Ç”ö‚·‚é
     private void TrackingMove()
     {
-        onceFlag = true;
+        centerFlag = false;
         var p = player.transform.position;
         Debug.Log(p);
         var dir = p - transform.position;
 
         rigidbody2D.velocity = dir *speed *0.5f;
-
     }
 
     void OnBecameInvisible()

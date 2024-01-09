@@ -36,8 +36,9 @@ public class SnowFairyBulletCon : MonoBehaviour
     //C—…Œ•—pƒRƒ‰ƒCƒ_[
     [SerializeField]
     private GameObject shuraCenterObj;
-    private GameObject centerObj;
+    private GameObject centerObj = null;
     private bool shuraFlag;
+    private float shuraTime = 0;
 
     //á‚ÌŒ‹»’e‚ÌŠp“x
     [SerializeField]
@@ -53,7 +54,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     private bool pPosMoveFlag = false;
 
     private float time = 0f;
-    private float shuraTime = 0;
 
     private GameObject player;
 
@@ -164,14 +164,11 @@ public class SnowFairyBulletCon : MonoBehaviour
     private void ShuraTimeCount()
     {
         shuraTime += Time.deltaTime;
+        
+        if (shuraTime > 3f && centerObj == null && pPosMoveFlag == false)
+           centerObj = Instantiate(shuraCenterObj, new Vector3(0, 0, 0), Quaternion.identity);
 
-        if (shuraTime > 3f)
-        {
-            if (centerObj == null)
-                centerObj = Instantiate(shuraCenterObj, new Vector3(0, 0, 0), Quaternion.identity);
-        }
-
-        if (centerObj != null && shuraTime > 6f)
+        if (centerObj != null && shuraTime > 6f && pPosMoveFlag == false)
         {
             Destroy(centerObj);
             pPosMoveFlag = true;
