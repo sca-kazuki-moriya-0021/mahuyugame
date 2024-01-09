@@ -142,13 +142,13 @@ public class BossCollder : MonoBehaviour
     private IEnumerator DropItemInstance()
     {
         bossDeathFlag = true;
+        //spineAnimationState.TimeScale = 0.2f;
+        spineAnimationState.SetAnimation(0, deathAnimation, false);
         for (int i = 0; i < 10; i++)
         {
             Instantiate(dropItem, transform.position, Quaternion.identity);
             yield return null;
         }
-        spineAnimationState.TimeScale = 0.2f;
-        spineAnimationState.SetAnimation(0, deathAnimation, false);
         yield return new WaitForSeconds(2f);
         nowLoading.FadeIn();
         StopCoroutine(DropItemInstance());
