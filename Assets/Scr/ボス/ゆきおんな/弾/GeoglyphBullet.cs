@@ -6,7 +6,7 @@ using UnityEngine;
 public class GeoglyphBullet : MonoBehaviour
 {
 
-    private float speed = 1f;
+    private float speed = 1.5f;
 
     private float time = 0f;
 
@@ -14,50 +14,77 @@ public class GeoglyphBullet : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
 
+    private bool flag = false;
+
+    private int shootCount = 0;
+
+    //画面外に行った時のカウント
+    private int count = 0;
+
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private CircleCollider2D collider2D;
 
+    public int ShootCount
+    {
+        get { return this.shootCount; }
+        set { this.shootCount = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.material.color = new Color(255,255,255,0);
-        collider2D.enabled = false;
-
-        Tween t = spriteRenderer.material.DOFade(255f, 1f);
-        t.Play();
-        //t.OnComplete(() => {StartCoroutine(Move())});
+        spriteRenderer.material.color = new Color(255, 255, 255, 0f);
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
-        
+        player = GameObject.Find("Player");        
     }
 
     // Update is called once per frame
     void Update()
     {
-       time += Time.deltaTime;
-       if(time > 1F)
-       {
-           
-
-            StartCoroutine(Move());
-       }
-
+        time+= Time.deltaTime;
+        if(shootCount % 2 != 0)
+        {
+            if (time > 2 && flag == false)
+            {
+                StartCoroutine(Move());
+                flag = true;
+            }
+        }
+        else
+        {
+            if (time > 2.5 && flag == false)
+            {
+                StartCoroutine(Move());
+                flag = true;
+            }
+        }
+       
     }
 
     private IEnumerator Move()
     {
-
- 
-        yield return new WaitForSeconds(1f);
+        Debug.Log("入ったよ");
+        for (int i = 0; i < 255; i++)
+        {
+            spriteRenderer.material.color = new Color(255, 255, 255, i);
+            yield return null;
+        }
         collider2D.enabled = true;
-
         rigidbody2D.velocity = Vector3.zero;
         var p = player. transform.position;
-        yield return null;
+        yield return new WaitForSeconds(1f);
         Vector3 v = p -transform.position;
+        v.Normalize();
         rigidbody2D.velocity = v * speed;
+    }
+
+    private void OnBecameInvisible()
+    {
+        count++;
+        if(count >= 2)
+            Destroy(this.gameObject);
     }
 }

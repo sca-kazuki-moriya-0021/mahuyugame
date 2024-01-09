@@ -177,12 +177,15 @@ public class SnowFairyBulletCon : MonoBehaviour
         pushOnBulletCon.DestroyShuraShoot();
         pushOnBulletCon.DestoryDemarcation();
         shuraFlag = false;*/
-
-        //pushOnBulletCon.GeoglyphShoot(launchWaySpilt, launchWayAngle, bullets[4], bulletSpeed[4],player.transform.position);
-
+        for(int i = 0 ; i < 20; i++)
+        {
+            pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
+            pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
+            yield return new WaitForSeconds(2f - i* 0.1f);
+        }
+      
         yield return  null;
         StopCoroutine(Atk());
-
     }
 
     private void ShuraTimeCount()

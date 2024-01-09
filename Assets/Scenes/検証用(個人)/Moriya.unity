@@ -416,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5140409669143678580, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5140409669143678580, guid: 300cfacf3ac493c4d9d7bd44bc9e1372, type: 3}
       propertyPath: m_LocalPosition.x
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5490766897633297301, guid: d0c16336ceef5bb40858a5eb6fdf508b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5490766897633297301, guid: d0c16336ceef5bb40858a5eb6fdf508b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,7 +724,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1605086268
 PrefabInstance:
@@ -964,7 +964,7 @@ Transform:
   m_LocalScale: {x: 0.1904, y: 0.218, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1700800260
 PrefabInstance:
@@ -995,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6791071093662665574, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6791071093662665574, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1446,7 +1446,7 @@ Transform:
   m_Children:
   - {fileID: 500508772}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3767388986804102475
 PrefabInstance:
@@ -1577,12 +1577,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: audioClips
+      value: 
+      objectReference: {fileID: 8300000, guid: 18f623257fe636341ac864c5b0cee6c9, type: 3}
+    - target: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: screenWithin
       value: 
       objectReference: {fileID: 52677397}
     - target: {fileID: 6399580715944071586, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6399580715944071586, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1709,7 +1713,7 @@ Transform:
   m_LocalScale: {x: 0.1176585, y: 0.119963795, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6905945021331274274
 CircleCollider2D:
@@ -2036,7 +2040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: bulletSpeed.Array.data[4]
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7815339137176035956, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
       propertyPath: snowCrystalNumberOfBullets

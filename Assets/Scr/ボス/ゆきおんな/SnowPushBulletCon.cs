@@ -20,6 +20,8 @@ public class SnowPushBulletCon : MonoBehaviour
     [SerializeField]
     private GameObject[] shuraObject;
 
+    private int geoglyphShootCount;
+
     private List<GameObject> objects = new List<GameObject>();
 
     //äpìxÇåàÇﬂÇƒî≠éÀÇ∑ÇÈ
@@ -144,9 +146,9 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //ínè„‚qÇÃèÉâª
-    public void GeoglyphShoot(int spilt, float angle, GameObject obj, float speed,Vector3 pos)
+    public void GeoglyphShoot(float angle,int spilt,GameObject obj, float speed,Vector3 pos)
     {
-
+        geoglyphShootCount++;
         for (int i = 0; i < spilt; i++)
         {
             //n-wayíeÇÃí[Ç©ÇÁí[Ç‹Ç≈ÇÃäpìx
@@ -156,9 +158,11 @@ public class SnowPushBulletCon : MonoBehaviour
 
             GameObject bullet = Instantiate(obj, pos, transform.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            GeoglyphBullet bullet_cs = bullet.GetComponent<GeoglyphBullet>();
+            bullet_cs.ShootCount = geoglyphShootCount;
             var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
             rb.velocity = bulletv;
-            GeoglyphBullet geoglyphBullet = bullet.GetComponent<GeoglyphBullet>();
+            
         }
     }
 }

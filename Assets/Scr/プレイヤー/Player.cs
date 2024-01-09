@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if(pouseCon.MenuFlag == false)
+        //if(pouseCon.MenuFlag == false)
         {
             //ÉXÉLÉãé¿çs
             if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
