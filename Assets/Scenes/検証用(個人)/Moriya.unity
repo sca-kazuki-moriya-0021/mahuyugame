@@ -981,10 +981,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 170.2901
       objectReference: {fileID: 0}
+    - target: {fileID: 6791071092220203696, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.48754883
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791071092220203696, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.347534
+      objectReference: {fileID: 0}
     - target: {fileID: 6791071093662665573, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: myCanvas
       value: 
       objectReference: {fileID: 1700800261}
+    - target: {fileID: 6791071093662665573, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: skillAnimator.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6791071093662665573, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: skillAnimator.Array.data[2]
+      value: 
+      objectReference: {fileID: 1700800262}
     - target: {fileID: 6791071093662665574, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1086,6 +1102,11 @@ PrefabInstance:
 --- !u!223 &1700800261 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 6791071093662665575, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+  m_PrefabInstance: {fileID: 1700800260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1700800262 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2484846510454811745, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
   m_PrefabInstance: {fileID: 1700800260}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724418446

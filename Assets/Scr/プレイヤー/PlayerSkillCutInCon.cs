@@ -20,6 +20,12 @@ public class PlayerSkillCutInCon : MonoBehaviour
     [SerializeField,Header("スキルカットインのアニメーション")]
     private Animator[] skillAnimator;
 
+    [SerializeField,Header("スキルカットイン背景画像")]
+    private Sprite skillBarkGround;
+
+    [SerializeField,Header("取得したい背景画像")]
+    private Image getbackImage;
+
     [SerializeField]
     private Canvas myCanvas;
 
@@ -69,6 +75,7 @@ public class PlayerSkillCutInCon : MonoBehaviour
        Time.timeScale = 0f;
        getImage.sprite = skillSprites[i];
        getText.text = texts[i];
+       getbackImage.sprite = skillBarkGround;
        cutInFlag = true;
     }
 }
