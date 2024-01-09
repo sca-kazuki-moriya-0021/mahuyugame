@@ -8,11 +8,21 @@ public class NormalBullet : MonoBehaviour
     [SerializeField] float spawnInterval = 1.0f; // íeÇÃê∂ê¨ä‘äu
     [SerializeField] float spreadAngle = 45.0f; // êÓå`ÇÃäpìx
     [SerializeField] private float bulletSpeed;
+    private BossCollder bossCollder;
 
     private void Start()
     {
+        bossCollder = FindObjectOfType<BossCollder>();
         // éwíËÇµÇΩä‘äuÇ≈íeÇê∂ê¨
         InvokeRepeating("SpawnBullet", 0f, spawnInterval);
+    }
+
+    private void Update()
+    {
+        if (bossCollder.BossDeathFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void SpawnBullet()
@@ -37,4 +47,6 @@ public class NormalBullet : MonoBehaviour
         Vector2 bulletDirection = Quaternion.Euler(0, 0, randomAngle) * Vector2.left;
         rb.velocity = bulletDirection * bulletSpeed;
     }
+
+
 }

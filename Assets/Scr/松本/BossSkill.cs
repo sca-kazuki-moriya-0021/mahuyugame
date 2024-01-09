@@ -13,35 +13,44 @@ public class BossSkill : MonoBehaviour
     private GameObject skillInstance;
     private bool[] test = new bool[]{false,false };
     private BossMove bossMove;
+    private BossCollder bossCollder;
     // Start is called before the first frame update
     void Start()
     {
         bossMove = FindObjectOfType<BossMove>();
+        bossCollder = FindObjectOfType<BossCollder>();
     }
 
     // Update is called once per frame
     void Update()
     {
         skillTimerCount += Time.deltaTime;
-
-        if (skillTimerCount > 40f && test[0] == false)
+        if (bossCollder.BossDeathFlag == false)
         {
-            bossMove.BossAttack1 = true;
-            test[0] = true;
+            if (skillTimerCount > 40f && test[0] == false)
+            {
+                bossMove.BossAttack1 = true;
+                test[0] = true;
+            }
+
+            if (skillTimerCount > 80f && test[1] == false)
+            {
+                bossMove.BossAttack2 = true;
+                test[1] = true;
+            }
+
+            skillSwitchTimer += Time.deltaTime;
+            // スキル切り替えのタイミングを管理
+            if (skillSwitchTimer >= skillSwitchInterval)
+            {
+                SwitchSkill();
+                skillSwitchTimer = 0.0f;
+            }
         }
 
-        if(skillTimerCount > 80f && test[1] == false)
+        if (bossCollder.BossDeathFlag == true)
         {
-            bossMove.BossAttack2 = true;
-            test[1] = true;
-        }
-
-        skillSwitchTimer += Time.deltaTime;
-        // スキル切り替えのタイミングを管理
-        if (skillSwitchTimer >= skillSwitchInterval)
-        {
-            SwitchSkill();
-            skillSwitchTimer = 0.0f;
+            DestroyCurrentSkill();
         }
     }
 

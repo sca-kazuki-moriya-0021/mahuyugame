@@ -133,7 +133,7 @@ public class BossCollder : MonoBehaviour
             else
                 hp--;
             //HPが0の時アイテムドロップさせる
-            if (hp == 0)
+            if (hp <= 0)
                 StartCoroutine(DropItemInstance());
         }
     }
