@@ -317,6 +317,14 @@ public class BossSkillTest : MonoBehaviour
         Shoot(Vector2.down, bulletPrefab, bulletSpeed);
     }
 
+    public void ClockBullet45(GameObject bulletPrefab, float bulletSpeed)
+    {
+        Shoot45(Vector2.right, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.left, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.up, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.down, bulletPrefab, bulletSpeed);
+    } 
+
     public void reClockBullet(GameObject bulletPrefab, float bulletSpeed)
     {
         ShootReversed(Vector2.right, bulletPrefab, bulletSpeed);
@@ -332,6 +340,16 @@ public class BossSkillTest : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         Vector2 bulletDirection = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
+    }
+
+    private void Shoot45(Vector2 direction, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 45) * direction;
         rb.velocity = bulletDirection * bulletSpeed;
     }
 

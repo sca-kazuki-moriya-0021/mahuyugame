@@ -48,5 +48,5 @@ MonoBehaviour:
   bulletSpeed: 3
   reBulletSpeed: 2
   rotationSpeed: 90
-  timeShots: 0.25
-  reTimeShots: 0.1
+  timeShots: 0.5
+  reTimeShots: 0.25
