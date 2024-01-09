@@ -80,7 +80,8 @@ public class BossShootTest : MonoBehaviour
         //StartCoroutine(RandomLauncher());
         //StartCoroutine(AllRangeLauncher());
         //StartCoroutine(Tuibi());
-        StartCoroutine(WayMove());
+        //StartCoroutine(WayMove());
+        StartCoroutine(Clock());
     }
 
     // Update is called once per frame
@@ -96,24 +97,24 @@ public class BossShootTest : MonoBehaviour
                 currentRotation = 0f;
                 coolTimer = 0f;
 
-                rotationFlag = !rotationFlag;
+                //rotationFlag = !rotationFlag;
             }
         }
         else
         {
             if(timer >= fireTime[3])
             {
-                bossSkillTest.RotateBullet(bulletPrefabs[1], bulletSpeed[1]);
+                //bossSkillTest.RotateBullet(bulletPrefabs[1], bulletSpeed[1]);
                 timer = 0f;
             }
             if(subTimer >= fireTime[2])
             {
-                bossSkillTest.SpreasBullet(spreadAngle[0], subBulletPrefabs[0], subBulletSpeed[0], subBulletSpeed[1]);
+                //bossSkillTest.SpreasBullet(spreadAngle[0], subBulletPrefabs[0], subBulletSpeed[0], subBulletSpeed[1]);
                 subTimer = 0f;
             }
         }
-        float rotationDirection = rotationFlag ? 1 : -1;
-        transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime * rotationDirection);
+        //float rotationDirection = rotationFlag ? 1 : -1;
+        transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime); //rotationDirection);
         currentRotation += rotationSpeed[1] * Time.deltaTime;
         //bulletsTime += Time.deltaTime;
         //if(bulletsTime >= fireTime[0])
@@ -128,6 +129,18 @@ public class BossShootTest : MonoBehaviour
     //{
     //    transform.Rotate(0f, 0f, rotationSpeed[1] * Time.deltaTime);
     //}
+    private IEnumerator AllBullets()
+    {
+        while(true)
+        {
+            for(int i = 0;i < numberOfShots[2]; i++)
+            {
+                bossSkillTest.AllBullet(spreadAngle[1], numberOfBullets[0], bulletPrefabs[0], bulletSpeed[1]);
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(fireTime[0]);
+        }
+    }
 
     private IEnumerator AllRangeLauncher()
     {
@@ -232,7 +245,7 @@ public class BossShootTest : MonoBehaviour
                 for (int i = 0; i < firePoint.Length; i++)
                 {
                     Transform firePointTransform = firePoint[i];
-                    coroutines.Add(StartCoroutine(ShootBulletDelayed(bulletPrefabs[3], firePointTransform, fireTime[3] * i)));
+                    coroutines.Add(StartCoroutine(ShootBulletDelayed(bulletPrefabs[2], firePointTransform, fireTime[3] * i)));
                 }
 
                 foreach (Coroutine coroutine in coroutines)
@@ -259,6 +272,17 @@ public class BossShootTest : MonoBehaviour
         {
             bossSkillTest.ShootNWayBullets(numberOfBullets[3], player, bulletPrefabs[1], bulletSpeed[2], subBulletPrefabs[1]);
             yield return new WaitForSeconds(fireTime[4]);
+        }
+    }
+
+    private IEnumerator Clock()
+    {
+        while (true)
+        {
+            bossSkillTest.ClockBullet(bulletPrefabs[0],bulletSpeed[1]);
+            yield return null;
+           // bossSkillTest.reClockBullet(bulletPrefabs[0],bulletSpeed[1]);
+            //yield return new WaitForSeconds(fireTime[5]);
         }
     }
 
