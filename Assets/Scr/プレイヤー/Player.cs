@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
                 }
             }
             //ƒoƒŠƒA’†‚ÌŒ¸‚è•û
-            if(barrierFlag == false)
+            if(barrierFlag == true)
             {
                 pBarrierTime += Time.deltaTime;
                 if (pBarrierTime > 5)
