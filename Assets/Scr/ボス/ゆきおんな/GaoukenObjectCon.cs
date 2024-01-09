@@ -32,7 +32,7 @@ public class GaoukenObjectCon : MonoBehaviour
     public int Identifier
     {
         get { return this.identifier; }
-        set { this.Identifier = value; }
+        set { this.identifier = value; }
     }
 
     // Start is called before the first frame update
@@ -56,10 +56,15 @@ public class GaoukenObjectCon : MonoBehaviour
             case 1:
                 tween = this.transform.DOMove(new Vector3(0, transform.position.y + 10f, 0), 3f);
                 break;
+            case 2:
+                tween = this.transform.DOMove(new Vector3(9,-3,0),3f);
+                break;
+            case 3:
+                tween = this.transform.DOMove(new Vector3(-9,-3,0), 3f);
+                break;
         }
         //çƒê∂
         tween.Play();
-
     }
 
     // Update is called once per frame
@@ -83,10 +88,6 @@ public class GaoukenObjectCon : MonoBehaviour
     //ï€ë∂ÇµÇΩç¿ïWÇ©ÇÁíeÇèoÇ∑
     private IEnumerator BulletIns()
     {
-        Debug.Log("ÇÕÇ¢Ç¡ÇΩÇÊ");
-        var count =0;
-        while(count < 2)
-        {
             for (int x = 0; x < oldPos.Count; x++)
             {
                 for (int i = 0; i < launchWayAngle.Length; i++)
@@ -96,18 +97,10 @@ public class GaoukenObjectCon : MonoBehaviour
                     GameObject bullet_obj = (GameObject)Instantiate(bullet, oldPos[x], Quaternion.identity);
                     GaoukenBullet gaoukenBullet = bullet_obj.GetComponent<GaoukenBullet>();
                     gaoukenBullet.Dir = dir;
-                    if (count == 0)
-                        gaoukenBullet.Speed = 1.5f;
-                    else
-                        gaoukenBullet.Speed = 0.8f; 
+                    gaoukenBullet.Speed = 1.5f;
                 }
                 yield return new WaitForSeconds(0.2f);
             }
-            count++;
-        }
-        
-        
         StopCoroutine(BulletIns());
     }
-
 }

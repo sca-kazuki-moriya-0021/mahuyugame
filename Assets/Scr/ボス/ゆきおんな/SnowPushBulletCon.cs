@@ -93,22 +93,29 @@ public class SnowPushBulletCon : MonoBehaviour
     }
 
     //餓王剣「餓鬼十王の報い」
-    public void GaoukenShoot(int identifier)
+    public void GaoukenShoot(int id)
     {
+        Debug.Log("はいったよ");
         var r  = new Vector3(0,0,0);
-        switch (identifier)
+        switch (id)
         {
             case 0:
                 r = new Vector3(0,5,0);
             break;
             case 1:
-                r = new Vector3(0,-5 , 0);
+                r = new Vector3(0,-5, 0);
+            break;
+            case 2:
+                r = new Vector3(-9,3,0);
+            break;
+            case 3:
+                r = new Vector3(9,3,0);
             break;
         }
         transform.TransformPoint(r);
         GameObject i = Instantiate(gaoukenObject,r,quaternion.identity);
         GaoukenObjectCon objectCon = i.GetComponent<GaoukenObjectCon>();
-        objectCon.Identifier = identifier;
+        objectCon.Identifier = id;
     }
 
     //修羅剣「現世妄執-Lunatic-」

@@ -8,10 +8,12 @@ public class GaoukenBullet : MonoBehaviour
 
     private float speed = 2f;
 
+    private float time = 0f;
+
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
-    private SnowFairyBulletCon snow;
+    private float count = 1;
 
     public Vector3 Dir
     {
@@ -29,7 +31,6 @@ public class GaoukenBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        snow = FindObjectOfType<SnowFairyBulletCon>();
 
         rigidbody2D.velocity = dir * speed;
     }
@@ -37,14 +38,17 @@ public class GaoukenBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(snow.ReduceSpeedFlag == true)
+        time += Time.deltaTime;
+       if(time > 3f)
        {
-            rigidbody2D.velocity = dir * speed *0.5f;
+            count++;
+            time = 0;
        }
+
+       if(count % 2 == 0)
+          rigidbody2D.velocity = dir * speed *0.5f;
        else
-       {
-            rigidbody2D.velocity = dir * speed;
-       }
+         rigidbody2D.velocity = dir * speed;
     }
     void OnBecameInvisible()
     {

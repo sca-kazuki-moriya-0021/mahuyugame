@@ -33,12 +33,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     private float[] fireTime;
     private int count = 0;
 
-    //自分の弾を消すフラグ
-    private bool[] bulletDeleteFlag = new bool[2];
-
-    //減速フラグ
-    private bool reduceSpeedFlag = false;
-
     //修羅剣用コライダー
     [SerializeField]
     private GameObject shuraCenterObj;
@@ -62,18 +56,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     private float shuraTime = 0;
 
     private GameObject player;
-
-    public bool[] BulletDeleteFlag
-    {
-        get { return this.bulletDeleteFlag; }
-        set { this.bulletDeleteFlag = value; }
-    }
-
-    public bool ReduceSpeedFlag
-    {
-        get { return this.reduceSpeedFlag; }
-        set { this.reduceSpeedFlag = value; }
-    }
 
     public bool PPosMoveFlag
     {
@@ -100,21 +82,6 @@ public class SnowFairyBulletCon : MonoBehaviour
         time += Time.deltaTime;
         if(shuraFlag == true)
             ShuraTimeCount();
-        
-        if(time > 30f)
-        {
-            bulletDeleteFlag[0] = true;
-        }
-
-        if(time > 10f)
-        {
-            reduceSpeedFlag = true;
-        }
-
-        if(reduceSpeedFlag == true && time > 20f)
-        {
-            reduceSpeedFlag = false;
-        }
     }
 
     private IEnumerator Atk()
@@ -126,7 +93,7 @@ public class SnowFairyBulletCon : MonoBehaviour
             count++;
             yield return new WaitForSeconds(fireTime[0]);
         }*/
-        count = 0;
+        //count = 0;
         /*while(time < 15f)
         {
             for (int i = 0; i < spinAngle.Length; i++)
@@ -137,11 +104,11 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new WaitForSeconds(fireTime[1]);
             pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
         }*/
-        count = 0;
+        //count = 0;
 
         //for (int i = 0; i < cornerPosChild.Length; i++)
         {
-            //pushOnBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
+            //ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
         /*while (count <100)
@@ -163,26 +130,32 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);*/
 
-        /*shuraFlag = true;
-        //pushOnBulletCon.ShuraShoot(0,1);
-        //pushOnBulletCon.ShuraShoot(1,-1);
+        shuraFlag = true;
+        pushOnBulletCon.ShuraShoot(0,1);
+        pushOnBulletCon.ShuraShoot(1,-1);
 
-        for(int i= 0; i< 4; i++)
-        {
+       /*for(int i = 0; i < 2 ; i++)
+       {
             pushOnBulletCon.GaoukenShoot(0);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(2f);
             pushOnBulletCon.GaoukenShoot(1);
-        }
+            yield return new WaitForSeconds(2f);
+            pushOnBulletCon.GaoukenShoot(2);
+            yield return new WaitForSeconds(2f);
+            pushOnBulletCon.GaoukenShoot(3);
+            yield return new WaitForSeconds(2f);
+       }*/
 
-        pushOnBulletCon.DestroyShuraShoot();
-        pushOnBulletCon.DestoryDemarcation();
-        shuraFlag = false;*/
-        for(int i = 0 ; i < 20; i++)
+
+        //pushOnBulletCon.DestroyShuraShoot();
+        //pushOnBulletCon.DestoryDemarcation();
+        //shuraFlag = false;
+        /*for(int i = 0 ; i < 20; i++)
         {
             pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
             pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
             yield return new WaitForSeconds(2f - i* 0.1f);
-        }
+        }*/
       
         yield return  null;
         StopCoroutine(Atk());

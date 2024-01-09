@@ -11,7 +11,7 @@ public class CornerMoveBullet : MonoBehaviour
     private float speed = 10f;
 
     //弾のスピード
-    private float bulletSpeed = 1f; 
+    private float bulletSpeed = 2f; 
 
     //目標地点
     private GameObject[] cornerPosChild = new GameObject[4];
@@ -26,10 +26,11 @@ public class CornerMoveBullet : MonoBehaviour
     [SerializeField]
     private GameObject childBullet;
 
-    private SnowFairyBulletCon snow;
-
     //発射タイム
     private float time;
+
+    //消すときに使う用のタイム
+    private float deleteTime;
 
     //初期値
     private Vector3 initializationPos;
@@ -49,7 +50,6 @@ public class CornerMoveBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        snow = FindObjectOfType<SnowFairyBulletCon>();
 
         //目標地点を設定
         for (int i = 0; i < cornerPosChild.Length; i++)
@@ -69,6 +69,7 @@ public class CornerMoveBullet : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        deleteTime += Time.deltaTime;
 
         //弾発射
         if(time > 0.5f)
@@ -77,12 +78,13 @@ public class CornerMoveBullet : MonoBehaviour
             time = 0.0f;
         }
 
-        if(snow.BulletDeleteFlag[0] == true)
-         Destroy(this.gameObject);
+        if(deleteTime > 10.0f)
+        {
+            Destroy(this.gameObject);
+        }
 
         //移動調整
-        if (moveColFlag == false)
-        {
+        if (moveColFlag == false) { 
             if (cornerPosChild[0].gameObject.transform.position == this.transform.position)
                 StartCoroutine(MovePosition(0, 1));
             else if (cornerPosChild[1].gameObject.transform.position == this.transform.position)
@@ -109,7 +111,7 @@ public class CornerMoveBullet : MonoBehaviour
             yield return null;
         }
         
-        var i = Random.Range(0.5f,1f);
+        var i = Random.Range(0.3f,0.5f);
         yield return new WaitForSecondsRealtime(0.2f + i);
 
         moveColFlag = false;
