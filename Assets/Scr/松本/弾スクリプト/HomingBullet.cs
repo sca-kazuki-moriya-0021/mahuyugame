@@ -4,80 +4,42 @@ using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    [Header("弾の速度")]
-    [SerializeField] float speed;
-    [Header("ホーミングが有効な時間")]
-    [SerializeField] float homingDuration;
-    [Header("ターゲットのタグ")]
-    [SerializeField] string targetTag = "Player"; // ターゲットのタグ
+    private float limit = 20;
+    private float period = 2;
+    private bool isHomingMove = true;
 
+    private Rigidbody2D rb;
     private Transform target;
-    private bool homingEnabled = true;
-    private float homingTimer = 0.0f;
-    private Vector3 forwardDirection;
-    private Player player;
 
-    private void Awake()
+    public bool IsHomingMove
     {
-        // タグを使用してターゲットを見つける
-        target = GameObject.FindGameObjectWithTag(targetTag).transform;
+        get { return isHomingMove;}
+        set { isHomingMove = value;}
     }
 
-    private void Start()
+    void Start()
     {
-        player = FindObjectOfType<Player>();
-        if (target == null)
-        {
-            Debug.LogWarning("ターゲットが見つかりませんでした");
-        }
-        else
-        {
-            // 初期進行方向は transform.up のまま
-        }
+        rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    void Update()
     {
-        if (homingEnabled)
+        if (IsHomingMove)
         {
-            if (target != null)
+            var acceleration = Vector2.zero;
+            var diff = (Vector2)target.position - rb.position;
+
+            acceleration += (diff - rb.velocity * period) * 2f / (period * period);
+
+            if(acceleration.magnitude > limit)
             {
-                Homing();
-                homingTimer += Time.deltaTime;
-
-                if (homingTimer >= homingDuration)
-                {
-                    homingEnabled = false;
-                    forwardDirection = (target.position - transform.position).normalized;
-                }
+                acceleration = acceleration.normalized * limit;
             }
-            else
-            {
-                Forward();
-            }
-        }
-        else
-        {
-            Forward();
-        }
 
-        if(player.BulletSeverFlag == true)
-        {
-            Destroy(this.gameObject);
+            period -= Time.deltaTime;
+            rb.velocity += acceleration * Time.deltaTime;
         }
-    }
-
-    private void Homing()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Vector3 velocity = direction * speed;
-        transform.position += velocity * Time.deltaTime;
-    }
-
-    private void Forward()
-    {
-        Vector3 velocity = forwardDirection * speed;
-        transform.position += velocity * Time.deltaTime;
     }
 
     private void OnBecameInvisible()

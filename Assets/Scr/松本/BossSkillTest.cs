@@ -8,15 +8,12 @@ public class BossSkillTest : MonoBehaviour
     private Transform RangeA;
     private Transform RangeB;
     private BossShootTest bossShootTest;
-    //private Transform player;
-    //private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
 
 
     void Start()
     {
         bossShootTest = FindObjectOfType<BossShootTest>();
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -24,7 +21,6 @@ public class BossSkillTest : MonoBehaviour
     {
 
     }
-    //tokei
 
     //AllRandomLauncher
     public void AllRandomLauncher(float spreadAngle, int numberOfBullets, GameObject bulletPrefab, float bulletSpeed)
@@ -236,7 +232,6 @@ public class BossSkillTest : MonoBehaviour
 
     public void ShootReBullets(GameObject reBulletPrefab, float reBulletSpeed)
     {
-        
         ShootDirections2(Vector2.right, reBulletPrefab, reBulletSpeed);
         ShootDirections2(Vector2.left, reBulletPrefab, reBulletSpeed);
         ShootDirections2(Vector2.up, reBulletPrefab, reBulletSpeed);
@@ -311,5 +306,42 @@ public class BossSkillTest : MonoBehaviour
             Rigidbody2D bulletRigidbody = SubBullet.GetComponent<Rigidbody2D>();
             yield return new WaitForSeconds(0.25f);
         }
+    }
+
+    //tokei
+    public void ClockBullet(GameObject bulletPrefab,float bulletSpeed)
+    {
+        Shoot(Vector2.right,bulletPrefab,bulletSpeed);
+        Shoot(Vector2.left, bulletPrefab, bulletSpeed);
+        Shoot(Vector2.up, bulletPrefab, bulletSpeed);
+        Shoot(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    public void reClockBullet(GameObject bulletPrefab, float bulletSpeed)
+    {
+        ShootReversed(Vector2.right, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.left, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.up, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    private void Shoot(Vector2 direction,GameObject bulletPrefab,float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
+    }
+
+    private void ShootReversed(Vector2 direction, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
     }
 }
