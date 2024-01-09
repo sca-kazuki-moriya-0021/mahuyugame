@@ -14,12 +14,14 @@ public class WayMoveLauncher : MonoBehaviour
     [SerializeField]float subTimeShots;
     [SerializeField]float randomMoveTime;
 
-    private Transform player;
+    private Transform play;
+    private Player player;
     private List<Rigidbody2D> bulletList = new List<Rigidbody2D>();
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        play = GameObject.FindGameObjectWithTag("Player").transform;
+        player = FindObjectOfType<Player>();
         StartCoroutine(ShootBullets());
     }
 
@@ -33,11 +35,13 @@ public class WayMoveLauncher : MonoBehaviour
     {
         while (true)
         {
-            //bulletList.Clear();
-            ShootNWayBullets();
-            yield return new WaitForSeconds(timeShots);
-            //yield return new WaitForSeconds(randomMoveTime);
-            
+            if(player.BulletSeverFlag == false)
+            {
+                //bulletList.Clear();
+                ShootNWayBullets();
+                yield return new WaitForSeconds(timeShots);
+                //yield return new WaitForSeconds(randomMoveTime);  
+            }
         }
     }
 
@@ -45,7 +49,7 @@ public class WayMoveLauncher : MonoBehaviour
     {
         float angleStep = spreadAngle / (numberOfBullets - 1);
         float initialAngle = transform.eulerAngles.z - (spreadAngle / 2);
-        Vector2 playerPosition = player.position;
+        Vector2 playerPosition = play.position;
 
         for(int i = 0;i < numberOfBullets; i++)
         {

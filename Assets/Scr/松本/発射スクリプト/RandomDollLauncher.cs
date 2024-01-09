@@ -13,9 +13,11 @@ public class RandomDollLauncher : MonoBehaviour
 
     private Transform RangeA;
     private Transform RangeB;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         RangeA = GameObject.Find("RangeA").transform;
         RangeB = GameObject.Find("RangeB").transform;
         StartCoroutine(GenerateBullets());
@@ -25,13 +27,16 @@ public class RandomDollLauncher : MonoBehaviour
     {
         while (true)
         {
-            for(int i = 0; i < 2; i++)
+            if(player.BulletSeverFlag == false)
             {
-                ShootBullet();
-                yield return new WaitForSeconds(0.5f);
+                for (int i = 0; i < 2; i++)
+                {
+                    ShootBullet();
+                    yield return new WaitForSeconds(0.5f);
+                }
+                yield return new WaitForSeconds(fireTime);
             }
-            yield return new WaitForSeconds(fireTime);
-        }
+        } 
     }
 
     private void ShootBullet()
