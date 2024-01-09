@@ -37,7 +37,6 @@ public class TestEnemy : MonoBehaviour
             Move();
         }
 
-        if(player.BussMoveStopFlag == true)
         {
             if(moveStopCountTime <= moveStoptime)
             {
@@ -47,7 +46,6 @@ public class TestEnemy : MonoBehaviour
                 {
                     moveStopCountTime = 0;
                     moveFlag = true;
-                    player.BussMoveStopFlag = false;
                 }
             }
         }

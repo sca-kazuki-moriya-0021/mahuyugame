@@ -8,6 +8,8 @@ public class PlayerCollider : MonoBehaviour
 {
     private TotalGM gm;
     private BossCollder bossCollder;
+    [SerializeField]
+    private Player player;
 
     //アイテム取得＆プレイヤー被弾効果音
     [SerializeField]
@@ -109,7 +111,7 @@ public class PlayerCollider : MonoBehaviour
             //collision.gameObject.CompareTag("EnemySkillBullet") ||
             //collision.gameObject.CompareTag("DestoryBullet"))
         {
-            if(bossCollder.BossDeathFlag == false)
+            if(bossCollder.BossDeathFlag == false && player.BarrierFlag == false)
             {
                 gm.PlayerHp[0]--;
                 if (gm.PlayerHp[0] > 0)
