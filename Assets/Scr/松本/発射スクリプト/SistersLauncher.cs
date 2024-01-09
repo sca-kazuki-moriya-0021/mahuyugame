@@ -20,44 +20,47 @@ public class SistersLauncher : MonoBehaviour
     private float subTimer = 0;
     private float coolTimer = 0;
     private float currentRotation = 0;
+    private Player player;
 
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
         subTimer += Time.deltaTime;
-        if(currentRotation >= 360f)
+        if(player.BulletSeverFlag == false)
         {
-            coolTimer += Time.deltaTime;
-            if(coolTimer >= cooldownTime)
+            if (currentRotation >= 360f)
             {
-                currentRotation = 0f;
-                coolTimer = 0f;
+                coolTimer += Time.deltaTime;
+                if (coolTimer >= cooldownTime)
+                {
+                    currentRotation = 0f;
+                    coolTimer = 0f;
 
-                rotationFlag = !rotationFlag;
+                    rotationFlag = !rotationFlag;
+                }
             }
-        }
-        else
-        {
-            if(timer >= timeBetweenShots)
+            else
             {
-                RotateBullet();
-                timer = 0f;
-            }
-            if(subTimer >= subTime)
-            {
-                SpreadBullet();
-                subTimer = 0f;
+                if (timer >= timeBetweenShots)
+                {
+                    RotateBullet();
+                    timer = 0f;
+                }
+                if (subTimer >= subTime)
+                {
+                    SpreadBullet();
+                    subTimer = 0f;
+                }
             }
         }
         float rotationDirection = rotationFlag ? 1 : -1;
         transform.Rotate(0f,0f,rotationSpeed * Time.deltaTime * rotationDirection);
         currentRotation += rotationSpeed * Time.deltaTime;
-    }
-
-    private void A()
-    {
-        
     }
 
     private void RotateBullet()

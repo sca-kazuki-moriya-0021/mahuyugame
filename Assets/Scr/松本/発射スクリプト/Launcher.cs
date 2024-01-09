@@ -22,12 +22,12 @@ public class Launcher : MonoBehaviour
     private float curAngle; // 現在の角度
 
     private Transform player; // プレイヤーのTransformコンポーネント
-
+    private Player players;
     void Start()
     {
         curBullet = numberOfBullets;
         curAngle = spreadAngle;
-
+        players = FindObjectOfType<Player>();
         // プレイヤーのTransformを取得
         player = GameObject.FindWithTag("Player").transform; // プレイヤーのタグに応じて変更
     }
@@ -36,23 +36,26 @@ public class Launcher : MonoBehaviour
     {
         bulletsTime += Time.deltaTime;
         elaTime += Time.deltaTime;
-        if (curBullet < maxBullet && bulletsTime >= createBullet)
+        if(players.BulletSeverFlag == false)
         {
-            curBullet += bulletAmount;
-            curAngle += yimespreadAngle;
-            bulletsTime = 0.0f;
+            if (curBullet < maxBullet && bulletsTime >= createBullet)
+            {
+                curBullet += bulletAmount;
+                curAngle += yimespreadAngle;
+                bulletsTime = 0.0f;
+            }
+            if (curBullet == maxBullet)
+            {
+                maxbulletSpacing = 0.5f;
+            }
+            if (elaTime >= timeAngle)
+            {
+                Debug.Log("a");
+                curAngle += yimespreadAngle;
+                elaTime = 0.0f;
+            }
+            ShootNWayBullets(curBullet, curAngle);
         }
-        if(curBullet == maxBullet)
-        {
-            maxbulletSpacing = 0.5f;
-        }
-        if (elaTime >= timeAngle)
-        {
-            Debug.Log("a");
-            curAngle += yimespreadAngle;
-            elaTime = 0.0f;
-        }
-        ShootNWayBullets(curBullet, curAngle);
     }
 
     private void ShootNWayBullets(int curBullet, float curAngle)

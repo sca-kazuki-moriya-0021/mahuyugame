@@ -12,11 +12,12 @@ public class AllRandomLauncher : MonoBehaviour
     [SerializeField]float angleChange;
     [SerializeField]float fireTime;
     [SerializeField]float randomMoveTime;
-
+    private Player player;
     private List<Rigidbody2D> bulletsList = new List<Rigidbody2D>();
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         StartCoroutine(ShootMultiSpreadAndMoveRandomly());
     }
 
@@ -30,21 +31,24 @@ public class AllRandomLauncher : MonoBehaviour
     {
         while (true)
         {
-            bulletsList.Clear();
-
-            for(int i = 0;i < numberOfShots; i++)
+            if(player.BulletSeverFlag == false)
             {
-                ShootBullets();
-                yield return new WaitForSeconds(0.2f);
+                bulletsList.Clear();
+
+                for (int i = 0; i < numberOfShots; i++)
+                {
+                    ShootBullets();
+                    yield return new WaitForSeconds(0.2f);
+                }
+
+                yield return new WaitForSeconds(fireTime);
+
+                StopBullets();
+
+                yield return new WaitForSeconds(randomMoveTime);
+
+                MoveBulletsRandomly();
             }
-
-            yield return new WaitForSeconds(fireTime);
-
-            StopBullets();
-
-            yield return new WaitForSeconds(randomMoveTime);
-
-            MoveBulletsRandomly();
         }
     }
 

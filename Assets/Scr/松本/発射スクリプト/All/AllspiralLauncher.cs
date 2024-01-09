@@ -14,10 +14,11 @@ public class AllspiralLauncher : MonoBehaviour
     [SerializeField]float spiralDistance;
 
     private int shotCount = 0;
-
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         StartCoroutine(ShootMultiSpread());
     }
 
@@ -25,16 +26,19 @@ public class AllspiralLauncher : MonoBehaviour
     {
         while (true)
         {
-            for(int i = 0;i < numberOfShots; i++)
+            if(player.BulletSeverFlag == false)
             {
-                ShootBullets();
-                yield return new WaitForSeconds(fireInterval);
+                for (int i = 0; i < numberOfShots; i++)
+                {
+                    ShootBullets();
+                    yield return new WaitForSeconds(fireInterval);
+                }
+
+                shotCount++;
+                yield return new WaitForSeconds(shootInterval);
+
+                UpdateSpiral();
             }
-
-            shotCount++;
-            yield return new WaitForSeconds(shootInterval);
-
-            UpdateSpiral();
         }
     }
 

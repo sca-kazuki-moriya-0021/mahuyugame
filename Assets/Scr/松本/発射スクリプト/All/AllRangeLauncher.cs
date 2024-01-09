@@ -14,11 +14,12 @@ public class AllRangeLauncher : MonoBehaviour
 
     private float timer = 0f;
     private float reTimer = 0;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -26,21 +27,24 @@ public class AllRangeLauncher : MonoBehaviour
     {
         timer += Time.deltaTime;
         reTimer += Time.deltaTime;
-        if(timer >= timeShots)
+        if(player.BulletSeverFlag == false)
         {
-            Right();
-            Left();
-            Up();
-            Down();
-            timer = 0;
-        }
-        if(reTimer >= reTimeShots)
-        {
-            Revright();
-            Revleft();
-            Revup();
-            Revdown();
-            reTimer = 0;
+            if (timer >= timeShots)
+            {
+                Right();
+                Left();
+                Up();
+                Down();
+                timer = 0;
+            }
+            if (reTimer >= reTimeShots)
+            {
+                Revright();
+                Revleft();
+                Revup();
+                Revdown();
+                reTimer = 0;
+            }
         }
     }
 
