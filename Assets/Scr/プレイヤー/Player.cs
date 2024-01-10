@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
             if (pBaffSkillFlag == true)
             {
                 pBaffSkillTime += Time.deltaTime;
-                if (pBaffSkillTime > 7)
+                if (pBaffSkillTime > 5)
                 {
                     Destroy(buffEffect);
                     pBaffSkillTime = 0;
