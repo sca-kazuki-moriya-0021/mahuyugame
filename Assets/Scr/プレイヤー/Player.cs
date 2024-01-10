@@ -179,7 +179,8 @@ public class Player : MonoBehaviour
     //スキル1発動トリガー
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
-        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
+        if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false && playerCollider.DeathFlag == false
+            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
         {
             jKey = true;
             skillAtkFlag[0] = true;
@@ -190,7 +191,8 @@ public class Player : MonoBehaviour
     //スキル2発動トリガー
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
-        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] == false && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
+        if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] == false && playerCollider.DeathFlag == false
+            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
         {
             skillAtkFlag[1] = true;
             buttonPish = true;   
