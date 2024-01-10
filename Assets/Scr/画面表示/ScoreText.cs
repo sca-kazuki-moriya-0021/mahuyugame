@@ -10,7 +10,7 @@ public class ScoreText : MonoBehaviour
 
     [SerializeField]
     private Text scoreText;
-    private float baseScore = 1000;
+    private float baseScore = 100;
     private float time = 0;
 
     private TotalGM gm;
@@ -61,9 +61,8 @@ public class ScoreText : MonoBehaviour
     {
         if(playerCollider.DeathFlag == false && nowLoading.FadeInFlag == false)
         {
-            gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore);
+            gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * baseScore/10);
             scoreText.text = gm.NowScore[i].ToString();
         }
-       
     }
 }
