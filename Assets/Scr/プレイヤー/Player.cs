@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
 using System.Linq;
-using Spine.Unity;
-using Spine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 
@@ -30,11 +28,13 @@ public class Player : MonoBehaviour
     //スキル発動音
     [SerializeField]
     private AudioSource audioSource;
-    [SerializeField]
+    [SerializeField,Header("スキル発動音")]
     private AudioClip audioClips;
 
     [SerializeField]
     private GameObject buffEffect;
+    //[SerializeField]
+    //private GameObject barrierEffect;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -108,9 +108,7 @@ public class Player : MonoBehaviour
     {
         //移動制限の座標検知
         for(int i = 0;i < screenWithinChird.Length;i++)
-        {
-            screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
-        }
+          screenWithinChird[i] = screenWithin.transform.GetChild(i).gameObject;
     }
 
     // Update is called once per frame
@@ -273,6 +271,7 @@ public class Player : MonoBehaviour
                         case 0:
                             skillCutinCon.PlayerCutInDisplay(i);
                             barrierFlag = true;
+                            //Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);
