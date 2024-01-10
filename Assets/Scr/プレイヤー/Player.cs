@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject buffEffect;
-    //[SerializeField]
-    //private GameObject barrierEffect;
+    [SerializeField]
+    private GameObject barrierEffect;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
                 pBarrierTime += Time.deltaTime;
                 if (pBarrierTime > 5)
                 {
-                    //Destroy(buffEffect);
+                    Destroy(barrierEffect);
                     pBarrierTime = 0;
                     barrierFlag = false;
                 }
@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
                         case 0:
                             skillCutinCon.PlayerCutInDisplay(i);
                             barrierFlag = true;
-                            //Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
+                            Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);
