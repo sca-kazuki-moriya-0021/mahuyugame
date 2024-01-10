@@ -22,6 +22,8 @@ public class SnowPushBulletCon : MonoBehaviour
 
     private int geoglyphShootCount;
 
+    private int dreamRealityCount = 0;
+
     private List<GameObject> objects = new List<GameObject>();
 
     //Šp“x‚ğŒˆ‚ß‚Ä”­Ë‚·‚é
@@ -169,7 +171,15 @@ public class SnowPushBulletCon : MonoBehaviour
             bullet_cs.ShootCount = geoglyphShootCount;
             var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
             rb.velocity = bulletv;
-            
         }
+    }
+
+    //Œ‹ŠEu–²‚ÆŒ»‚Ìôv
+    public void DreamRealityShoot(GameObject obj,Vector3 pos)
+    {
+        GameObject bullet = Instantiate(obj, pos, transform.rotation);
+        DreamRealityBullet bullet_cs = bullet.GetComponent<DreamRealityBullet>();
+        bullet_cs.WaySpiltCount = dreamRealityCount;
+        dreamRealityCount += 2;
     }
 }
