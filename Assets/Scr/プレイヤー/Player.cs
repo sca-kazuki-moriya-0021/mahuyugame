@@ -33,8 +33,10 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject buffEffect;
+    private GameObject buffObject;
     [SerializeField]
     private GameObject barrierEffect;
+    private GameObject barrierObject;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -128,7 +130,7 @@ public class Player : MonoBehaviour
                 pBaffSkillTime += Time.deltaTime;
                 if (pBaffSkillTime > 5)
                 {
-                    Destroy(buffEffect);
+                    Destroy(buffObject);
                     pBaffSkillTime = 0;
                     pBaffSkillFlag = false;
                 }
@@ -139,7 +141,7 @@ public class Player : MonoBehaviour
                 pBarrierTime += Time.deltaTime;
                 if (pBarrierTime > 5)
                 {
-                    Destroy(barrierEffect);
+                    Destroy(barrierObject);
                     pBarrierTime = 0;
                     barrierFlag = false;
                 }
@@ -271,7 +273,7 @@ public class Player : MonoBehaviour
                         case 0:
                             skillCutinCon.PlayerCutInDisplay(i);
                             barrierFlag = true;
-                            Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
+                            barrierObject = Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;
                         case 1:
                             skillCutinCon.PlayerCutInDisplay(i);
@@ -301,7 +303,7 @@ public class Player : MonoBehaviour
                     {
                         case 3:
                             skillCutinCon.PlayerCutInDisplay(i);
-                            Instantiate(buffEffect,transform.position,Quaternion.identity,transform);
+                            buffObject =  Instantiate(buffEffect,transform.position,Quaternion.identity,transform);
                             pBaffSkillFlag = true;
                             break;
                         case 2:

@@ -14,6 +14,7 @@ public class BossCollder : MonoBehaviour
     private float debuffCountTime;
     [SerializeField]
     private GameObject debuffEffect;
+    private GameObject debuffObject;
 
     //スクリプト取得
     private PlayerCollider playerCollider;
@@ -79,7 +80,7 @@ public class BossCollder : MonoBehaviour
             debuffCountTime += Time.deltaTime;
             if (debuffCountTime > debuffTime || bossDeathFlag == true)
             {
-                Destroy(debuffEffect);
+                Destroy(debuffObject);
                 debuffCountTime = 0;
                 debuffFlag = false;
             }
@@ -119,7 +120,7 @@ public class BossCollder : MonoBehaviour
         if (debuffFlag == false)
         {
             debuffFlag = true;
-            Instantiate(debuffEffect,transform.position,Quaternion.identity,transform);
+            debuffObject = Instantiate(debuffEffect,transform.position,Quaternion.identity,transform);
         }
     }
 
