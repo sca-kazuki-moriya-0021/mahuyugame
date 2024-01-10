@@ -7,8 +7,8 @@ public class BossHpSilder : MonoBehaviour
 {
     private BossCollder bossCollder; 
 
-    private int maxHp =0;
-    private int hp = 0;
+    private double maxHp =0;
+    private double hp = 0;
 
     [SerializeField]
     private Slider bossHpSilder;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LaserBullet : MonoBehaviour
 {
-    private int power =1;
     //エフェクト部分が消えたかどうか
     private bool laser;
 
@@ -64,7 +63,6 @@ public class LaserBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DestroyBullet"))
         {
-            power = 0;
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
         }
@@ -83,7 +81,7 @@ public class LaserBullet : MonoBehaviour
         }
         else
         {
-            power = 0;
+
         }
     }
 

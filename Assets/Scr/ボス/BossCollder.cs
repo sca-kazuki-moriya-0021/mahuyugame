@@ -7,7 +7,7 @@ using Spine;
 public class BossCollder : MonoBehaviour
 {
     [SerializeField]
-    private int hp = 0;
+    private float hp = 0;
     //デバフ効果時間
     [SerializeField]
     private float debuffTime;
@@ -37,7 +37,7 @@ public class BossCollder : MonoBehaviour
     //デバフフラグ
     private bool debuffFlag = false;
 
-    public int BossHp {
+    public float BossHp {
         get { return this.hp; }
         set { this.hp = value; }
     }
@@ -66,11 +66,10 @@ public class BossCollder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(hp);
 
         if (debuffFlag == true)
-        {
             Debuff();
-        }
     }
 
     private void Debuff()
@@ -90,13 +89,14 @@ public class BossCollder : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
-        {
-            hitObject();
-        }
+            hitObject(false);
+
+        if (collision.gameObject.CompareTag("BossTargetBullet"))
+            hitObject(true);
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
-            hitObject();
+            hitObject(false);
             DebuffActive();
         }
     }
@@ -104,13 +104,11 @@ public class BossCollder : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
-        {
-            hitObject();
-        }
+            hitObject(false);
 
         if (collision.gameObject.CompareTag("PlayerSkillBullet"))
         {
-            hitObject();
+            hitObject(false);
             DebuffActive();
         }
     }
@@ -124,15 +122,18 @@ public class BossCollder : MonoBehaviour
         }
     }
 
-    private void hitObject()
+    private void hitObject(bool target )
     {
         if (playerCollider.DeathFlag == false)
         {
-            //デバフ中なら
-            if (debuffFlag == true)
-                hp -= 2;
-            else
-                hp--;
+            if(target == true && debuffFlag == true)
+               hp -= 0.8f;
+            else if (target == true && debuffFlag == false)
+               hp -= 0.5f;
+            else if(target == false && debuffFlag == true)
+               hp -= 2;
+            else hp--;
+
             //HPが0の時アイテムドロップさせる
             if (hp <= 0 && bossDeathFlag == false)
                 StartCoroutine(DropItemInstance());
