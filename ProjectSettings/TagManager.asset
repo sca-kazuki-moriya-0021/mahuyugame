@@ -25,6 +25,7 @@ TagManager:
   - Icon2
   - Icon3
   - Icon4
+  - BossTargetBullet
   layers:
   - Default
   - TransparentFX
