@@ -10,9 +10,12 @@ public class RandomLauncher : MonoBehaviour
     [SerializeField]int numberOfBullets;
     [SerializeField]float spreadAngle;
     [SerializeField]float fireTime;
+
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         StartCoroutine(ShootMultiSpread());
     }
 
@@ -26,10 +29,13 @@ public class RandomLauncher : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < numberOfShots; i++)
+            if (player.BulletSeverFlag == false)
             {
-                ShootBullets();
-                yield return new WaitForSeconds(0.1f);
+                for (int i = 0; i < numberOfShots; i++)
+                {
+                    ShootBullets();
+                    yield return new WaitForSeconds(0.1f);
+                }
             }
             yield return new WaitForSeconds(fireTime);
         }

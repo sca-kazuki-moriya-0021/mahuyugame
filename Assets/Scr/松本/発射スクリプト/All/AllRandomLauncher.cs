@@ -49,6 +49,7 @@ public class AllRandomLauncher : MonoBehaviour
 
                 MoveBulletsRandomly();
             }
+            yield return null;
         }
     }
 
