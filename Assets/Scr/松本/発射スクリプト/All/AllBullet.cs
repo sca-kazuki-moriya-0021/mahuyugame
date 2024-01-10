@@ -20,6 +20,7 @@ public class AllBullet : MonoBehaviour
     {
         while (true)
         {
+
             for (int i = 0; i < numberOfShots; i++)
             {
                 ShootBullets();

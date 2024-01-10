@@ -34,8 +34,8 @@ public class RandomDollLauncher : MonoBehaviour
                     ShootBullet();
                     yield return new WaitForSeconds(0.5f);
                 }
-                yield return new WaitForSeconds(fireTime);
             }
+            yield return new WaitForSeconds(fireTime);
         } 
     }
 

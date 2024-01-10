@@ -39,6 +39,7 @@ public class AllspiralLauncher : MonoBehaviour
 
                 UpdateSpiral();
             }
+            yield return null;
         }
     }
 

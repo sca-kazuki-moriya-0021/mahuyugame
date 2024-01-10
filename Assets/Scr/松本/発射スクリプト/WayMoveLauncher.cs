@@ -39,9 +39,10 @@ public class WayMoveLauncher : MonoBehaviour
             {
                 //bulletList.Clear();
                 ShootNWayBullets();
-                yield return new WaitForSeconds(timeShots);
+                
                 //yield return new WaitForSeconds(randomMoveTime);  
             }
+            yield return new WaitForSeconds(timeShots);
         }
     }
 
