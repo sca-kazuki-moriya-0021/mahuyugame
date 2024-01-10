@@ -77,7 +77,7 @@ public class BossCollder : MonoBehaviour
         if (debuffCountTime <= debuffTime)
         {
             debuffCountTime += Time.deltaTime;
-            if (debuffCountTime > debuffTime)
+            if (debuffCountTime > debuffTime || bossDeathFlag == true)
             {
                 Destroy(debuffEffect);
                 debuffCountTime = 0;
