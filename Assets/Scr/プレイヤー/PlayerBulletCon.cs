@@ -55,25 +55,17 @@ public class PlayerBulletCon : MonoBehaviour
 
         //子オブジェクトを取得
         for(int i = 0; i < 3; i++)
-        {
             mainBulletPosChird[i] = mainBulletPos.transform.GetChild(i).gameObject;
-        }
           
         for(int i = 0; i < 2; i++)
-        {
             subBulletPosChird[i] = subBulletPos.transform.GetChild(i).gameObject;
-        }
         
         //角度をラジアンに変換
         for(int i = 0; i < laserAngle.Length; i++)
-        {
             laserAngle[i] = laserAngle[i] * Mathf.Deg2Rad;
-        }
 
         for(int i = 0; i< subLaserAngle.Length; i++)
-        {
             subLaserAngle[i] = subLaserAngle[i] * Mathf.Deg2Rad;
-        }
     }
 
     // Update is called once per frame

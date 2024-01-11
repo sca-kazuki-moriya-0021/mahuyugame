@@ -36,9 +36,8 @@ public class DreamRealityChildBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(waySpritCount);
         time += Time.deltaTime;
-        time += Time.deltaTime;
+        //’e”­ŽË
         if (time > 2 && shootFlag == false)
         {
             shootFlag = true;

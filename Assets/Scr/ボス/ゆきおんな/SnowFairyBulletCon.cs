@@ -37,6 +37,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private GameObject shuraCenterObj;
     private GameObject centerObj = null;
+
     private bool shuraFlag;
     private float shuraTime = 0;
 

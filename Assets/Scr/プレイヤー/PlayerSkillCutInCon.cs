@@ -29,6 +29,7 @@ public class PlayerSkillCutInCon : MonoBehaviour
     [SerializeField]
     private Canvas myCanvas;
 
+    //カットインしたかどうか
     private bool cutInFlag;
 
     private float time = 0;

@@ -325,5 +325,4 @@ public class Player : MonoBehaviour
         }
        StopCoroutine(SkillAtk());
     }
-
 }

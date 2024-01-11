@@ -70,13 +70,13 @@ public class PlayerCollider : MonoBehaviour
 
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
+        skeletonAnimation.timeScale = 3f;
 
         //プレイヤーのHp初期化
         var scene = gm.MyGetScene();
         if(gm.BackScene == scene)
-        {
             gm.PlayerHp[0] = gm.PlayerHp[1];
-        }
+
         if(gm.BackScene != scene || gm.BackScene == TotalGM.StageCon.No)
         {
             //体力0のまま、次ステージに移行したら体力1回復する
@@ -86,7 +86,6 @@ public class PlayerCollider : MonoBehaviour
             }
             gm.PlayerHp[1] = gm.PlayerHp[0];
         }
-        skeletonAnimation.timeScale = 3f;
     }
 
     // Update is called once per frame
@@ -188,9 +187,8 @@ public class PlayerCollider : MonoBehaviour
     private IEnumerator PlayerDeath()
     {
         if(bossCollder.BossDeathFlag == true)
-        {
             StopCoroutine(PlayerDeath());
-        }
+
         colliderSprite.enabled = false;
         gm.PlayerTransForm = transform.position;
         gm.BackScene = gm.MyGetScene();
