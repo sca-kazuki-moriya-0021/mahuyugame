@@ -17,7 +17,7 @@ public class DreamRealityChildBullet : MonoBehaviour
     //Way’e‚Ì”­ŽËŠp“x
     private float launchWayAngle = 360;
     //”­ŽË‚·‚éWay’e‚Ì”
-    private int waySpilt = 8;
+    private int waySpilt = 10;
 
     private int waySpritCount=0;
 
@@ -36,16 +36,17 @@ public class DreamRealityChildBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(waySpritCount);
         time += Time.deltaTime;
         time += Time.deltaTime;
-        if (time > 3 && shootFlag == false)
+        if (time > 2 && shootFlag == false)
         {
             shootFlag = true;
             for (int i = 0; i < waySpritCount + waySpilt; i++)
             {
                 //n-way’e‚Ì’[‚©‚ç’[‚Ü‚Å‚ÌŠp“x
                 float AngleRange = PI * (launchWayAngle / 180);
-                if (AngleRange > 1) _theta = (AngleRange / (waySpilt)) * i + 0.5f * (PI - AngleRange);
+                if (AngleRange > 1) _theta = (AngleRange / (waySpilt + waySpritCount)) * i + 0.5f * (PI - AngleRange);
                 else _theta = 0.5f * PI;
 
                 GameObject b = Instantiate(bullet, transform.position, transform.rotation);
@@ -53,10 +54,6 @@ public class DreamRealityChildBullet : MonoBehaviour
                 var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
                 rb.velocity = bulletv;
             }
-        }
-
-        if(time > 5)
-        {
             Destroy(this.gameObject);
         }
     }

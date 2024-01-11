@@ -50,6 +50,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int crystalNumberOfBullets;
 
+
     //プレイヤーの座標に向かわせるフラグ
     private bool pPosMoveFlag = false;
 
@@ -130,9 +131,9 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);*/
 
-        shuraFlag = true;
-        pushOnBulletCon.ShuraShoot(0,1);
-        pushOnBulletCon.ShuraShoot(1,-1);
+        //shuraFlag = true;
+        //pushOnBulletCon.ShuraShoot(0,1);
+        //pushOnBulletCon.ShuraShoot(1,-1);
 
        /*for(int i = 0; i < 2 ; i++)
        {
@@ -156,6 +157,13 @@ public class SnowFairyBulletCon : MonoBehaviour
             pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
             yield return new WaitForSeconds(2f - i* 0.1f);
         }*/
+
+        for(int i = 0; i< 10; i++)
+        {
+            pushOnBulletCon.DreamRealityShoot(bullets[5],transform.position);
+            yield return new  WaitForSeconds(2f);
+        }
+
       
         yield return  null;
         StopCoroutine(Atk());

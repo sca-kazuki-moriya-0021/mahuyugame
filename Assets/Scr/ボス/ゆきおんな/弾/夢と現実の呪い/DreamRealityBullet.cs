@@ -23,23 +23,26 @@ public class DreamRealityBullet : MonoBehaviour
     private float speed = 1;
 
     private bool childShootFlag;
-    private bool shootFlag = false;
 
     private float time = 0f;
+
+    private Rigidbody2D rigidbody2D;
 
     public int WaySpiltCount { get => waySpiltCount; set => waySpiltCount = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D.velocity = new Vector2(transform.position.x * -speed,0);
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if (time > 3 && childShootFlag == false)
+
+        if (time > 1 && childShootFlag == false)
         {
             childShootFlag = true;
             for (int i = 0; i < waySpilt; i++)
@@ -56,18 +59,14 @@ public class DreamRealityBullet : MonoBehaviour
                 var bulletv = new Vector2(speed * Mathf.Cos(_theta), speed * Mathf.Sin(_theta));
                 rb.velocity = bulletv;
             }
-        }
+            GameObject c = Instantiate(bullet, transform.position, transform.rotation);
+            DreamRealityChildBullet sc =c.GetComponent<DreamRealityChildBullet>();
+            sc.ChildWaySpiltCount = waySpiltCount;
 
-        if (time > 6f && shootFlag == false)
-        {
-            shootFlag = true;
-            Instantiate(bullet, transform.position, transform.rotation);
-        }
-
-
-        if(time > 8f)
-        {
+        
             Destroy(this.gameObject);
         }
+
+       
     }
 }

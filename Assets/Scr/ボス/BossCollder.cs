@@ -66,8 +66,6 @@ public class BossCollder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hp);
-
         if (debuffFlag == true)
             Debuff();
     }
