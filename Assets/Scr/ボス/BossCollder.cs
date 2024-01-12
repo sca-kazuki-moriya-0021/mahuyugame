@@ -77,9 +77,9 @@ public class BossCollder : MonoBehaviour
             debuffCountTime += Time.deltaTime;
             if (debuffCountTime > debuffTime || bossDeathFlag == true)
             {
-                Destroy(debuffObject);
                 debuffCountTime = 0;
                 debuffFlag = false;
+                StartCoroutine(DebuffEnd());
             }
         }
     }
@@ -152,5 +152,19 @@ public class BossCollder : MonoBehaviour
         yield return new WaitForSeconds(2f);
         nowLoading.FadeIn();
         StopCoroutine(DropItemInstance());
+    }
+
+    //デバフ状態が終わった時
+    private IEnumerator DebuffEnd()
+    {
+        var v = debuffObject.GetComponent<ParticleSystem>();
+        var main = v.main;
+        main.simulationSpeed = 1f;
+        main.loop = false;
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(debuffObject);
+        StopCoroutine(DebuffEnd());
     }
 }
