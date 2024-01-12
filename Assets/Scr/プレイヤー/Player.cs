@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
     private GameObject screenWithin;
     private GameObject[] screenWithinChird =new GameObject[2] {null,null};
 
+    //コライダー取得用
+    [SerializeField]
+    private PlayerCollider playerCollider;
+
     //スクリプト取得用
     private TotalGM gm;
     private SkillDisplay_Stage skillDisplay;
     private PouseCon pouseCon;
     private PlayerSkillCutInCon skillCutinCon;
-    private PlayerCollider playerCollider;
     private BossCollder bossCollder;
 
     //スキル発動音
@@ -47,7 +50,8 @@ public class Player : MonoBehaviour
     //スキル使った時に使用するフラグ
     private bool[] skillAtkFlag = new bool[]{false,false};
     //バリア用フラグ
-    private bool　barrierFlag;
+    private bool barrierFlag;
+    private bool barrierBlinkingFlag = false;
     private float  pBarrierTime;
     //たま消し用のフラグ
     private bool bulletSeverFlag;
@@ -101,7 +105,6 @@ public class Player : MonoBehaviour
         skillDisplay = FindObjectOfType<SkillDisplay_Stage>();
         pouseCon = FindObjectOfType<PouseCon>();
         skillCutinCon = FindObjectOfType<PlayerSkillCutInCon>();
-        playerCollider = FindObjectOfType<PlayerCollider>();
         bossCollder = FindObjectOfType<BossCollder>();
     }
 
@@ -139,11 +142,18 @@ public class Player : MonoBehaviour
             if(barrierFlag == true)
             {
                 pBarrierTime += Time.deltaTime;
+                //点滅処理
+                if(pBarrierTime > 3 && barrierBlinkingFlag == false)
+                {
+                    barrierBlinkingFlag = true;
+                    StartCoroutine(BarrierBlinking());
+                }
                 if (pBarrierTime > 5)
                 {
                     Destroy(barrierObject);
                     pBarrierTime = 0;
                     barrierFlag = false;
+                    barrierBlinkingFlag = false;
                 }
             }
             //移動用関数
@@ -324,5 +334,18 @@ public class Player : MonoBehaviour
             }
         }
        StopCoroutine(SkillAtk());
+    }
+    //バリアの点滅
+    private IEnumerator BarrierBlinking()
+    {
+        while (barrierObject != null)
+        {
+            barrierObject.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            if(barrierObject != null)
+            barrierObject.SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+        }
+        StopCoroutine(BarrierBlinking());
     }
 }

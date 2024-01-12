@@ -38,9 +38,7 @@ public class PlayerSkillBulletCon : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
-        {
-            Debug.Log("“ü‚Á‚Ä‚é");
             Destroy(this.gameObject);
-        }
+        
     }
 }

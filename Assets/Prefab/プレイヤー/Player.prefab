@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenWithin: {fileID: 0}
+  playerCollider: {fileID: 6399580715835281248}
   audioSource: {fileID: 1566872759338620791}
   audioClips: {fileID: 8300000, guid: 18f623257fe636341ac864c5b0cee6c9, type: 3}
   buffEffect: {fileID: 456257902786411600, guid: 7f6effebdc384c0469e05e069768cb7f, type: 3}
