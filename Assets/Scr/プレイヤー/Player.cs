@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     //プレイヤーキャラのバフ使用時のフラグ
     private bool pBaffSkillFlag = false;
     private float pBaffSkillTime;
+    private bool baffEndflag = true;
     //デバフ発射時のフラグ
     private bool debuffSkillFlag;
     //スキルボタンが押されたときに使うフラグ
@@ -127,17 +128,19 @@ public class Player : MonoBehaviour
                 buttonPish = false;
                 StartCoroutine(SkillAtk());
             }
+
             //バフスキル時
             if (pBaffSkillFlag == true)
             {
                 pBaffSkillTime += Time.deltaTime;
                 if (pBaffSkillTime > 5)
                 {
-                    Destroy(buffObject);
                     pBaffSkillTime = 0;
                     pBaffSkillFlag = false;
+                    StartCoroutine(BuffEnd());
                 }
             }
+
             //バリア中の減り方
             if(barrierFlag == true)
             {
@@ -156,6 +159,7 @@ public class Player : MonoBehaviour
                     barrierBlinkingFlag = false;
                 }
             }
+
             //移動用関数
             if (playerCollider.DeathFlag == false)
                 InputSystemMove();
@@ -335,6 +339,7 @@ public class Player : MonoBehaviour
         }
        StopCoroutine(SkillAtk());
     }
+
     //バリアの点滅
     private IEnumerator BarrierBlinking()
     {
@@ -347,5 +352,19 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         StopCoroutine(BarrierBlinking());
+    }
+
+    //バフ状態が終わったとき
+    private IEnumerator BuffEnd()
+    {
+        var v = buffObject.GetComponent<ParticleSystem>();
+        var main = v.main;
+        main.simulationSpeed = 1f;
+        main.loop = false;
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(buffObject);
+        StopCoroutine(BuffEnd());
     }
 }
