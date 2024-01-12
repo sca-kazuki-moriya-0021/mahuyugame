@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private PouseCon pouseCon;
     private PlayerSkillCutInCon skillCutinCon;
     private BossCollder bossCollder;
+    [SerializeField]
+    private NowLoading nowLoading;
 
     //スキル発動音
     [SerializeField]
@@ -119,8 +121,8 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        //if(pouseCon.MenuFlag == false)
+    {
+        if(pouseCon.MenuFlag == false && nowLoading.FadeOutFlag == false)
         {
             //スキル実行
             if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
@@ -194,7 +196,7 @@ public class Player : MonoBehaviour
     public void OnFirstSkill(InputAction.CallbackContext context)
     {
         if(skillAtkFlag[0] == false && skillDisplay.SkillCoolFlag[0] == false && playerCollider.DeathFlag == false
-            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
+            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false && nowLoading.FadeOutFlag == false)
         {
             jKey = true;
             skillAtkFlag[0] = true;
@@ -206,7 +208,7 @@ public class Player : MonoBehaviour
     public void OnSecondSkill(InputAction.CallbackContext context)
     {
         if (skillAtkFlag[1] == false && skillDisplay.SkillCoolFlag[1] == false && playerCollider.DeathFlag == false
-            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false)
+            && skillCutinCon.CutInFlag == false && bossCollder.BossDeathFlag == false && nowLoading.FadeOutFlag == false)
         {
             skillAtkFlag[1] = true;
             buttonPish = true;   

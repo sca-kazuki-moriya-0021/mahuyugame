@@ -17,7 +17,7 @@ public class NowLoading : MonoBehaviour
 
     private bool fadeInFlag = false;
 
-    private bool fadeOutFlag = false;
+    private bool fadeOutFlag = true;
 
     private BossCollder bossCollder;
 
@@ -83,7 +83,9 @@ public class NowLoading : MonoBehaviour
 
     private void FadeOut()
     {
-        backGround.DOFade(endValue:0f,duration:1.0f);//.SetEase(Ease.Linear);
+        backGround.DOFade(endValue:0f,duration:2.0f).OnComplete(() =>{
+            fadeOutFlag = false;
+        });
     }
 
     private void CleaningUp()
