@@ -5,9 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.Experimental.Rendering.Universal;
+using DG.Tweening;
 
 public class SkillSelection : MonoBehaviour
 {
+
     [SerializeField] Button button;//最初に選択中にするボタン
     [SerializeField] GameObject goStageButton;
     [SerializeField] GameObject barregeCanvas;//次に出すキャンバス
@@ -37,7 +40,8 @@ public class SkillSelection : MonoBehaviour
     bool[] skillJK = {false,false};//Jキーのスキルが選択されてるかの確認
     bool[] skillJ = { false, false, false, false };
     bool[] skillK = { false, false, false, false };
-    
+    [SerializeField] private Light2D worldLight2d;//演出用の2DworldLight
+
     private void Awake()
     {
         selectObjGetSet = FindObjectOfType<SelectObjGetSet>();
@@ -88,6 +92,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[0] = true;
             skillSelectImage[0].sprite = skillIcon[0];
+            SkillEffect();
         }
         else if(!skillK[0] && !totalGM.PlayerSkill[0] && !skillJK[1] && skillCount == 1)
         {
@@ -399,5 +404,10 @@ public class SkillSelection : MonoBehaviour
                 videoPlayer.clip = skillClip[3];
                 break;
         }
+    }
+    
+    void SkillEffect()
+    {
+        
     }
 }

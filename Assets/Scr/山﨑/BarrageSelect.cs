@@ -217,7 +217,7 @@ public class BarrageSelect : MonoBehaviour
             barrageSelect[3].enabled = false;
             totalGM.PlayerSubWeapon[3] = false;
             barrageCount--;
-            barrageSelectImage[0].sprite = null;
+            barrageSelectImage[1].sprite = null;
         }
         TwoSelect();
     }
