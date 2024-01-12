@@ -5555,6 +5555,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel: {fileID: 7498579064858636527}
   button: {fileID: 181835519}
+  titleBtton:
+  - {fileID: 181835517}
+  - {fileID: 908186567}
+  - {fileID: 462249426}
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
   ev: {fileID: 569398404}
 --- !u!1 &462249426

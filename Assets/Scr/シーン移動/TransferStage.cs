@@ -10,6 +10,9 @@ public class TransferStage : MonoBehaviour
     [SerializeField]
     GameObject Panel = null;
     [SerializeField] Button button;
+    [SerializeField]
+    private GameObject[] titleBtton;
+
     //Œø‰Ê‰¹—p
     private AudioSource audioSource;
     [SerializeField]
@@ -24,8 +27,10 @@ public class TransferStage : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
+
         if(Panel != null)
         Panel.SetActive(false);
+
         button.Select();
         
     }
@@ -133,12 +138,20 @@ public class TransferStage : MonoBehaviour
         if (Panel.activeSelf)
         {
             Panel.SetActive(false);
+
+            titleBtton[0].SetActive(true);
+            titleBtton[2].SetActive(true);
+
             audioSource.PlayOneShot(soundE);
             //Time.timeScale = 1.0f;
         }
         else
         {
             Panel.SetActive(true);
+
+            titleBtton[0].SetActive(false);
+            titleBtton[2].SetActive(false);
+
             audioSource.PlayOneShot(soundE);
             //Time.timeScale = 0.0f;
         }
