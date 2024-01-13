@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7961141948244501703}
   - component: {fileID: 1007972871852674118}
   m_Layer: 11
-  m_Name: "\u67A0\u4E0B"
+  m_Name: FrameDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

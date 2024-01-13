@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5081508217719987033}
   - component: {fileID: 1016016769786879204}
   - component: {fileID: 1707001126152014470}
-  m_Layer: 11
-  m_Name: "\u67A0\u4E0A"
+  m_Layer: 5
+  m_Name: FrameUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
