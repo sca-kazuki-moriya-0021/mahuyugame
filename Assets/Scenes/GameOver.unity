@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SubFade
       objectReference: {fileID: 0}
+    - target: {fileID: 5858667146293685772, guid: 6c5aaf796b0de6641869c41d9a74b498, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5aaf796b0de6641869c41d9a74b498, type: 3}
 --- !u!114 &170111332 stripped

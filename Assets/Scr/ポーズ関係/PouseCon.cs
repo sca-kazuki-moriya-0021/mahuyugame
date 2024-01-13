@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using DG.Tweening;
 using UnityEngine.EventSystems;
 
 public class PouseCon : MonoBehaviour
@@ -11,18 +11,25 @@ public class PouseCon : MonoBehaviour
     [SerializeField]
     private AudioClip soundE;
 
+    //最初に選択されているボタン
     [SerializeField]
     private Button button;
 
     [SerializeField]
     private EventSystem ev = EventSystem.current;
 
+    //ボタンの数を取得する
     [SerializeField]
     private Button[] poseButton;
 
     [SerializeField, Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
+    [SerializeField]
     private CountDownCon countDownCon;
+
+    //ゲーム終了時に使うキャンパス
+    [SerializeField]
+    private Image quitImage;
 
     private AudioSource audioSource;
 
@@ -44,7 +51,6 @@ public class PouseCon : MonoBehaviour
         totalGM = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
         myCanvas = this.GetComponent<Canvas>();
-        countDownCon = FindObjectOfType<CountDownCon>();
         myCanvas.enabled = false;
     }
 
@@ -62,9 +68,8 @@ public class PouseCon : MonoBehaviour
             Time.timeScale = 0f;
             myCanvas.enabled = true;
             for (int i = 0; i < 3; i++)
-            {
-                poseButton[i].enabled = true;
-            }
+             poseButton[i].enabled = true;
+
             StartCoroutine(SelectedObj());
         }
     }
@@ -81,29 +86,25 @@ public class PouseCon : MonoBehaviour
                     selectedObj = ev.currentSelectedGameObject;
                 }
                 else
-                {
                     selectedObj = ev.currentSelectedGameObject;
-                }
             }
             yield return null;
         }
-
-
     }
 
     //ゲーム終了
     public void GameEnd()
-    {
+    { 
         audioSource.PlayOneShot(soundE);
-        poseButton[2].enabled = false;
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        //エディタ上の動作
-#else
+        //quitImage.DOFade(2.55f, 0.5f).OnComplete(() => {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            //エディタ上の動作
+        #else
             Application.Quit();
             //エディタ以外の操作
-#endif
-
+        #endif
+        //});
     }
 
     //ゲームに戻る
@@ -136,15 +137,11 @@ public class PouseCon : MonoBehaviour
                 totalGM.NowScore[2] = 0;
                 break;
         }
-        //if (timeGM.TimeFlag == false)
-        {
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = 1f;
         myCanvas.enabled = false;
         menuFlag = false;
         totalGM.BackScene = totalGM.MyGetScene();
         totalGM.ReloadCurrentScene();
         poseButton[1].enabled = false;
-
     }
 }
