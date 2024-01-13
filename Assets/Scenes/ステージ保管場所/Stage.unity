@@ -795,7 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 3000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
