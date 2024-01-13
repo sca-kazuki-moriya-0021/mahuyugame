@@ -23,6 +23,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField]
     private EventSystem ev = EventSystem.current;
     private GameObject selectedObj;
+    private GameObject oldSelectedObj;
     [SerializeField] private Image outLine;
     [SerializeField] private Text skillExplanation;//スキルのテキスト
     int skillCount;
@@ -41,6 +42,10 @@ public class SkillSelection : MonoBehaviour
     bool[] skillJ = { false, false, false, false };
     bool[] skillK = { false, false, false, false };
     [SerializeField] private Light2D worldLight2d;//演出用の2DworldLight
+    [SerializeField] private Animator outLineAnimator;
+    [SerializeField] private IEnumerator outLineCoroutine;
+
+    bool test;
 
     private void Awake()
     {
@@ -51,8 +56,9 @@ public class SkillSelection : MonoBehaviour
 
     void Start()
     {
-        //skillClip = FindObjectOfType<SkillClip>();
+        
         //ボタンが選択された状態になる
+        outLineCoroutine = OutLine();
         button.Select();
         goStageButton.SetActive(false);
         //ボタンの選択状態を解除
@@ -61,6 +67,7 @@ public class SkillSelection : MonoBehaviour
             skillSelect[i].SetActive(false);
             totalGM.PlayerSkill[i] = false;//念のため初期化する
         }
+        oldSelectedObj = ev.currentSelectedGameObject;
     }
 
     void FixedUpdate()
@@ -79,8 +86,20 @@ public class SkillSelection : MonoBehaviour
             SkillExplanation();
             
         }
-
     }
+    private void LateUpdate()
+    {
+        if(oldSelectedObj == selectedObj && !test)
+        {
+            StartCoroutine(outLineCoroutine);
+            
+        }
+        else if(oldSelectedObj != selectedObj && test)
+        {
+            OutLineEnd();
+        }
+    }
+
     //押されたときの処理
     public void Skill_0_Click()
     {
@@ -92,7 +111,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[0] = true;
             skillSelectImage[0].sprite = skillIcon[0];
-            SkillEffect();
+            
         }
         else if(!skillK[0] && !totalGM.PlayerSkill[0] && !skillJK[1] && skillCount == 1)
         {
@@ -102,6 +121,7 @@ public class SkillSelection : MonoBehaviour
             skillCount++;
             totalGM.PlayerSkill[0] = true;
             skillSelectImage[1].sprite = skillIcon[0];
+            
         }
         else if(skillJ[0] && totalGM.PlayerSkill[0])
         {
@@ -111,6 +131,7 @@ public class SkillSelection : MonoBehaviour
             skillCount--;
             totalGM.PlayerSkill[0] = false;
             skillSelectImage[0].sprite = null;
+            
         }
         else if (skillK[0] && totalGM.PlayerSkill[0])
         {
@@ -405,7 +426,24 @@ public class SkillSelection : MonoBehaviour
                 break;
         }
     }
-    
+
+    //アウトラインのアニメーションを止める、一応いろんなところでつかつかもなので作っといた
+    void OutLineEnd()
+    {
+        StopCoroutine(outLineCoroutine);
+        outLineCoroutine = null;
+        outLineAnimator.SetBool("OutLine", false);
+        outLineCoroutine = OutLine();
+        oldSelectedObj = selectedObj;
+        test = false;
+    }
+    IEnumerator OutLine()
+    {
+        test = true;
+        yield return new WaitForSeconds(1);
+        outLineAnimator.SetBool("OutLine", true);
+    }
+
     void SkillEffect()
     {
         

@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 566658135}
   - component: {fileID: 566658134}
   - component: {fileID: 566658133}
+  - component: {fileID: 566658137}
   m_Layer: 5
   m_Name: OtherButton&OutLine
   m_TagString: Untagged
@@ -1065,6 +1066,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &566658137
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566658132}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 184880ab49cc53648b19b414c5436145, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &572119410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,8 +1114,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572119410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -8.6362915}
+  m_LocalScale: {x: 0.009256517, y: 0.009256517, z: 0.009256517}
   m_Children:
   - {fileID: 1024294474}
   - {fileID: 753829333}
@@ -1104,9 +1124,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5.3631506, y: 2.1307445}
+  m_SizeDelta: {x: 1920, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572119412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10471,6 +10491,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 1383513225}
   goBarrage: {fileID: 220510234}
   worldLight2d: {fileID: 468679628}
+  outLineAnimator: {fileID: 566658137}
 --- !u!1 &5465977189328950370
 GameObject:
   m_ObjectHideFlags: 0
@@ -11645,7 +11666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 155.10999, y: -109.95001}
+  m_AnchoredPosition: {x: -407.39, y: 206.54999}
   m_SizeDelta: {x: 127.29, y: 219.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5465977190361850466
@@ -12713,6 +12734,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   goBarrage: {fileID: 0}
   worldLight2d: {fileID: 0}
+  outLineAnimator: {fileID: 0}
 --- !u!1 &5818386441097471192
 GameObject:
   m_ObjectHideFlags: 0
