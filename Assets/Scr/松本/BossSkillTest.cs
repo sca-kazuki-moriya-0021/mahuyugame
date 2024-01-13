@@ -173,6 +173,8 @@ public class BossSkillTest : MonoBehaviour
         Vector2 bulletDirection1 = rotation * Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
         rb1.velocity = bulletDirection1 * subBulletSpeed2;
     }
+
+
     //HomingLauncher
     public void ShootHomingBullet(Transform firePoint, GameObject homingBullet)
     {

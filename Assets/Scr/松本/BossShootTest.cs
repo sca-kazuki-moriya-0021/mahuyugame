@@ -205,7 +205,6 @@ public class BossShootTest : MonoBehaviour
             for (int i = 0; i < numberOfShots[0]; i++)
             {
                 Debug.Log("a");
-                // 引数を追加してShootBulletsメソッドを呼び出し
                 bossSkillTest.ShootBullets(numberOfBullets[0], bulletPrefabs[0], bulletSpeed[0], spiralDistance, spiralRotationSpeed);
                 yield return new WaitForSeconds(fireTime[0]);
             }
@@ -213,7 +212,6 @@ public class BossShootTest : MonoBehaviour
             ShotCount++;
             yield return new WaitForSeconds(fireTime[1]);
 
-            // 引数を追加してUpdateSpiralメソッドを呼び出し
             UpdateSpiral();
         }
     }
