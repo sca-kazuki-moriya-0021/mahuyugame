@@ -83,11 +83,12 @@ public class NowLoading : MonoBehaviour
 
     private void FadeOut()
     {
-        backGround.DOFade(endValue:0f,duration:2.0f).OnComplete(() =>{
+        backGround.DOFade(endValue:0f,duration:1.5f).OnComplete(() =>{
             fadeOutFlag = false;
         });
     }
 
+    //ステージ移行時
     private void CleaningUp()
     {
         fadeInFlag = false;
