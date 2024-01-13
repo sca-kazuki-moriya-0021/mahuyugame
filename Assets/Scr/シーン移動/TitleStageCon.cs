@@ -13,7 +13,8 @@ public class TitleStageCon: MonoBehaviour
     [SerializeField] Button button;
     [SerializeField]
     private GameObject[] titleBtton;
-
+    [SerializeField]
+    private Animator anim;
     //Œø‰Ê‰¹—p
     private AudioSource audioSource;
     [SerializeField]
@@ -76,21 +77,23 @@ public class TitleStageCon: MonoBehaviour
         if (Panel.activeSelf)
         {
             Panel.SetActive(false);
-
+            
             titleBtton[0].SetActive(true);
             titleBtton[2].SetActive(true);
-
+            
             audioSource.PlayOneShot(soundE);
             //Time.timeScale = 1.0f;
         }
         else
         {
-            Panel.SetActive(true);
-
+            anim.SetTrigger("change");
+            
+            
             titleBtton[0].SetActive(false);
             titleBtton[2].SetActive(false);
 
             audioSource.PlayOneShot(soundE);
+            
             //Time.timeScale = 0.0f;
         }
     }
