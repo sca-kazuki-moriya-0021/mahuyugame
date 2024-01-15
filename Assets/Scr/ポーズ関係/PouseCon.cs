@@ -67,6 +67,8 @@ public class PouseCon : MonoBehaviour
             menuFlag = true;
             Time.timeScale = 0f;
             myCanvas.enabled = true;
+
+
             for (int i = 0; i < 3; i++)
              poseButton[i].enabled = true;
 
