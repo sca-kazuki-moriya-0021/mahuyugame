@@ -96,7 +96,7 @@ public class PouseCon : MonoBehaviour
     public void GameEnd()
     { 
         audioSource.PlayOneShot(soundE);
-        //quitImage.DOFade(2.55f, 0.5f).OnComplete(() => {
+        quitImage.DOFade(1f, 1f).SetUpdate(true).OnComplete(() => {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             //エディタ上の動作
@@ -104,7 +104,7 @@ public class PouseCon : MonoBehaviour
             Application.Quit();
             //エディタ以外の操作
         #endif
-        //});
+        });
     }
 
     //ゲームに戻る
