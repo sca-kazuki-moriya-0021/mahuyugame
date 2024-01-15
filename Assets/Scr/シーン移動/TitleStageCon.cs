@@ -8,13 +8,17 @@ using DG.Tweening;
 
 public class TitleStageCon: MonoBehaviour
 {
-    [SerializeField]
-    GameObject Panel = null;
+
     [SerializeField] Button button;
     [SerializeField]
     private GameObject[] titleBtton;
+
+    //現在のアニメステーション名
+    private string currentStateName;
+
     [SerializeField]
     private Animator anim;
+
     //効果音用
     private AudioSource audioSource;
     [SerializeField]
@@ -26,17 +30,19 @@ public class TitleStageCon: MonoBehaviour
 
     [SerializeField]
     private EventSystem ev = EventSystem.current;
-    private TotalGM totalGM;
     private GameObject selectedObj;
+
+    private void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        totalGM = FindObjectOfType<TotalGM>();
-
-        Panel.SetActive(false);
         button.Select();
-    }
+        currentStateName = "Idle";
+}
 
     // Update is called once per frame
     void FixedUpdate()
@@ -74,27 +80,29 @@ public class TitleStageCon: MonoBehaviour
     //パネル操作
     public void Opetrue()
     {
-        if (Panel.activeSelf)
+        switch (currentStateName)
         {
-            Panel.SetActive(false);
-            
-            titleBtton[0].SetActive(true);
-            titleBtton[2].SetActive(true);
-            
-            audioSource.PlayOneShot(soundE);
-            //Time.timeScale = 1.0f;
-        }
-        else
-        {
-            anim.SetTrigger("change");
-            
-            
-            titleBtton[0].SetActive(false);
-            titleBtton[2].SetActive(false);
+            case "Idle":
 
-            audioSource.PlayOneShot(soundE);
-            
-            //Time.timeScale = 0.0f;
+                anim.SetBool("Open", true);
+
+                titleBtton[0].SetActive(false);
+                titleBtton[2].SetActive(false);
+
+                audioSource.PlayOneShot(soundE);
+                currentStateName = "OpenOperation";
+ 
+            break;
+
+            case "OpenOperation":
+                anim.SetBool("Open", false);
+                titleBtton[0].SetActive(true);
+                titleBtton[2].SetActive(true);
+
+                audioSource.PlayOneShot(soundE);
+                currentStateName = "Idle";
+                break;
+
         }
     }
 }
