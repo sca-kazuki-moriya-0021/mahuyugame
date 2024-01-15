@@ -137,11 +137,15 @@ public class PouseCon : MonoBehaviour
                 totalGM.NowScore[2] = 0;
                 break;
         }
-        Time.timeScale = 1f;
-        myCanvas.enabled = false;
-        menuFlag = false;
-        totalGM.BackScene = totalGM.MyGetScene();
-        totalGM.ReloadCurrentScene();
-        poseButton[1].enabled = false;
+
+        quitImage.DOFade(1f, 1f).SetUpdate(true).OnComplete(() => {
+
+            Time.timeScale = 1f;
+            myCanvas.enabled = false;
+            menuFlag = false;
+            totalGM.BackScene = totalGM.MyGetScene();
+            totalGM.ReloadCurrentScene();
+            poseButton[1].enabled = false;
+        });
     }
 }
