@@ -10,7 +10,7 @@ public class StageFadeIn : MonoBehaviour
     private Image backGround;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         FadeIn();
     }
@@ -23,6 +23,6 @@ public class StageFadeIn : MonoBehaviour
 
     private void FadeIn()
     {
-        backGround.DOFade(endValue: 0f, duration: 1.0f);
+        backGround.DOFade(endValue: 0f, duration: 1.5f);
     }
 }
