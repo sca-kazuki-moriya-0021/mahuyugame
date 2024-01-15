@@ -16,6 +16,7 @@ public class TitleStageCon: MonoBehaviour
     //現在のアニメステーション名
     private string currentStateName;
 
+    //操作説明のアニメーション
     [SerializeField]
     private Animator anim;
 
@@ -42,7 +43,7 @@ public class TitleStageCon: MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         button.Select();
         currentStateName = "Idle";
-}
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -82,6 +83,7 @@ public class TitleStageCon: MonoBehaviour
     {
         switch (currentStateName)
         {
+            //操作説明メニューを開く時
             case "Idle":
 
                 anim.SetBool("Open", true);
@@ -91,9 +93,9 @@ public class TitleStageCon: MonoBehaviour
 
                 audioSource.PlayOneShot(soundE);
                 currentStateName = "OpenOperation";
- 
             break;
 
+            //操作説明メニューを閉じる時
             case "OpenOperation":
                 anim.SetBool("Open", false);
                 titleBtton[0].SetActive(true);
@@ -101,8 +103,7 @@ public class TitleStageCon: MonoBehaviour
 
                 audioSource.PlayOneShot(soundE);
                 currentStateName = "Idle";
-                break;
-
+            break;
         }
     }
 }
