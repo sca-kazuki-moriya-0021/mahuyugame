@@ -138,10 +138,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -133
       objectReference: {fileID: 0}
+    - target: {fileID: 328037802177546629, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 6791071092220203695, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 6791071092220203696, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 6791071092220203696, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14
@@ -777,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 300
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
