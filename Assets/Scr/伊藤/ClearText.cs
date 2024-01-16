@@ -11,10 +11,14 @@ public class ClearText : MonoBehaviour
     private Text[] highScoreText;
     private TotalGM gm;
 
+    [SerializeField]
+    private Animator anim;
+
     private void Awake()
     {
         gm = FindObjectOfType<TotalGM>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,6 @@ public class ClearText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+  
     }
 }

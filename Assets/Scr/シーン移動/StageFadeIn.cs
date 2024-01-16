@@ -9,6 +9,10 @@ public class StageFadeIn : MonoBehaviour
     [SerializeField]
     private Image backGround;
 
+    private bool fadeInFlag = true;
+
+    public bool FadeInFlag { get => fadeInFlag; set => fadeInFlag = value; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +27,8 @@ public class StageFadeIn : MonoBehaviour
 
     private void FadeIn()
     {
-        backGround.DOFade(endValue: 0f, duration: 1.5f);
+        backGround.DOFade(endValue: 0f, duration: 1.5f).OnComplete(() => {
+            fadeInFlag = false;
+        });
     }
 }

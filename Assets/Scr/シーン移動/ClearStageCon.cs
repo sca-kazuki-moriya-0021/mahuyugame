@@ -14,12 +14,25 @@ public class ClearStageCon : MonoBehaviour
     private AudioClip soundE;
 
     [SerializeField]
+    private Text[] nowScoreText;
+    [SerializeField]
+    private Text[] highScoreText;
+
+    [SerializeField]
+    private Animator anim;
+    //アニメーション起動した際のフラグ
+    private bool animFlag;
+
+    [SerializeField]
     private EventSystem ev = EventSystem.current;
     private TotalGM totalGM;
     private GameObject selectedObj;
 
     [SerializeField]
     private StageFadeOut fadeOut;
+    [SerializeField]
+    private StageFadeIn fadeIn;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +40,25 @@ public class ClearStageCon : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
         button.Select();
+
+        for (int i = 0; i < nowScoreText.Length; i++)
+        {
+            nowScoreText[i].text = totalGM.NowScore[i].ToString();
+            if (totalGM.NowScore[i] > totalGM.HighScore[i])
+                totalGM.HighScore[i] = totalGM.NowScore[i];
+            highScoreText[i].text = totalGM.HighScore[i].ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(fadeIn.FadeInFlag == false && animFlag == false)
+        {
+            animFlag = true;
+            anim.SetBool("ResultSet",true);
+        }
+
     }
 
     void FixedUpdate()
