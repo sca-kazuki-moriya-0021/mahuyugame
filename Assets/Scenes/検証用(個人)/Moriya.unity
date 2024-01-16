@@ -981,6 +981,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 170.2901
       objectReference: {fileID: 0}
+    - target: {fileID: 328037802177546629, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 6791071092220203696, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.48754883
@@ -1533,6 +1537,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1566872759338620791, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2717207796534221052, guid: 06818d60de682b643827dc2704b8127a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

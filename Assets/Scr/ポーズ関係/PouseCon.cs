@@ -32,11 +32,14 @@ public class PouseCon : MonoBehaviour
     private Image quitImage;
 
     private AudioSource audioSource;
+    private Animator anim;
 
+    //メニュー画面が開かれているか
     private bool menuFlag = false;
 
     private TotalGM totalGM;
 
+    //選択されているオブジェクト
     private GameObject selectedObj;
 
     public bool MenuFlag
@@ -50,6 +53,8 @@ public class PouseCon : MonoBehaviour
     {
         totalGM = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        anim.updateMode = AnimatorUpdateMode.UnscaledTime;
         myCanvas = this.GetComponent<Canvas>();
         myCanvas.enabled = false;
     }
@@ -64,11 +69,10 @@ public class PouseCon : MonoBehaviour
     {
         if (menuFlag == false)
         {
+            anim.SetBool("OpenPouse", true);
+            myCanvas.enabled = true;
             menuFlag = true;
             Time.timeScale = 0f;
-            myCanvas.enabled = true;
-
-
             for (int i = 0; i < 3; i++)
              poseButton[i].enabled = true;
 
@@ -112,11 +116,12 @@ public class PouseCon : MonoBehaviour
     //ゲームに戻る
     public void BackStage()
     {
-        selectedObj = null;
-        myCanvas.enabled = false;
         audioSource.PlayOneShot(soundE);
-        countDownCon.CountDownFlag = true;
+        selectedObj = null;
+        anim.SetBool("OpenPouse", false);
         poseButton[0].enabled = false;
+        myCanvas.enabled = false;
+        countDownCon.CountDownFlag = true;
     }
 
 
@@ -142,6 +147,7 @@ public class PouseCon : MonoBehaviour
 
         quitImage.DOFade(1f, 1f).SetUpdate(true).OnComplete(() => {
 
+            anim.SetBool("OpenPouse", false);
             Time.timeScale = 1f;
             myCanvas.enabled = false;
             menuFlag = false;
