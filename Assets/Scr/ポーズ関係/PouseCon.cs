@@ -21,6 +21,8 @@ public class PouseCon : MonoBehaviour
     //ボタンの数を取得する
     [SerializeField]
     private Button[] poseButton;
+    [SerializeField]
+    private GameObject[] poseButtonObj;
 
     [SerializeField, Tooltip("自分のキャンパス")]
     private Canvas myCanvas;
@@ -51,6 +53,7 @@ public class PouseCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         totalGM = FindObjectOfType<TotalGM>();
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
@@ -62,7 +65,7 @@ public class PouseCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     public void Pouse()
@@ -74,7 +77,7 @@ public class PouseCon : MonoBehaviour
             menuFlag = true;
             Time.timeScale = 0f;
             for (int i = 0; i < 3; i++)
-             poseButton[i].enabled = true;
+                poseButton[i].enabled = true;
 
             StartCoroutine(SelectedObj());
         }
@@ -82,17 +85,23 @@ public class PouseCon : MonoBehaviour
 
     private IEnumerator SelectedObj()
     {
+        selectedObj = button.gameObject;
+        button.Select();
         while (true)
         {
             if (menuFlag == true && countDownCon.CountDownFlag == false)
             {
-                if (selectedObj == null)
+                
+                if ( selectedObj.layer == 13 && (selectedObj == poseButtonObj[0] ||
+                    selectedObj == poseButtonObj[1] || selectedObj == poseButtonObj[2] ))
+                {
+                    selectedObj = ev.currentSelectedGameObject;
+                }
+                else
                 {
                     button.Select();
                     selectedObj = ev.currentSelectedGameObject;
                 }
-                else
-                    selectedObj = ev.currentSelectedGameObject;
             }
             yield return null;
         }
