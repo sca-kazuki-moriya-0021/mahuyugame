@@ -22,6 +22,7 @@ public class ClearStageCon : MonoBehaviour
     private Animator anim;
     //アニメーション起動した際のフラグ
     private bool animFlag;
+    private bool animEndFlag = false;
 
     [SerializeField]
     private EventSystem ev = EventSystem.current;
@@ -39,7 +40,7 @@ public class ClearStageCon : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
-        button.Select();
+
 
         for (int i = 0; i < nowScoreText.Length; i++)
         {
@@ -63,35 +64,44 @@ public class ClearStageCon : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (selectedObj == null)
+        //スコア表示終わったら
+        if(animEndFlag == true)
         {
-            button.Select();
-            selectedObj = ev.currentSelectedGameObject;
-        }
-        else
-        {
-            selectedObj = ev.currentSelectedGameObject;
-            //アウトラインをここで入れる
+            if (selectedObj == null)
+            {
+                button.Select();
+                selectedObj = ev.currentSelectedGameObject;
+            }
+            else
+                selectedObj = ev.currentSelectedGameObject;
         }
     }
 
     //ゲーム終了
     public void GameEnd()
     {
-        audioSource.PlayOneShot(soundE);
-        fadeOut.ClearFadeOut("GameEnd");
+        if(animEndFlag == true)
+        {
+            audioSource.PlayOneShot(soundE);
+            fadeOut.ClearFadeOut("GameEnd");
+        }
     }
 
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
-        audioSource.PlayOneShot(soundE);
+        if(animEndFlag == true)
+        {
+            audioSource.PlayOneShot(soundE);
+            if (totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
+                totalGM.BackSideFlag = true;
+            else if (totalGM.BackSideFlag == true || totalGM.GameOverCount > 0)
+                totalGM.BackSideFlag = false;
 
-        if (totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
-            totalGM.BackSideFlag = true;
-        else if (totalGM.BackSideFlag == true || totalGM.GameOverCount > 0)
-            totalGM.BackSideFlag = false;
-
-        fadeOut.ClearFadeOut("SkillSelect");
+            fadeOut.ClearFadeOut("SkillSelect");
+        }
     }
+
+    //アニメーション終わり検知用
+    public void OnAnimationCompleted() =>animEndFlag = true;
 }
