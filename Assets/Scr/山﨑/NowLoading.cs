@@ -61,8 +61,6 @@ public class NowLoading : MonoBehaviour
         backGround.DOFade(2.55f,1.0f).SetEase(Ease.Linear).SetDelay(1.0f).OnComplete(() =>
         {
             var scene = totalGM.MyGetScene();
-            Debug.Log("ÉVÅ[ÉìÇ‹Ç≈äÆê¨");
-            
             switch (scene)
             {
                 case TotalGM.StageCon.First:

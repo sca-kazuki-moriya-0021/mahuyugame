@@ -46,7 +46,6 @@ public class CountDownCon : MonoBehaviour
             text.text  = s.ToString("f2");
             if(s < 0f)
             {
-              Debug.Log("asi");
               text.enabled = false;
               myCanvas.enabled = false;
               Time.timeScale = 1f;

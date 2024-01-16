@@ -21,10 +21,7 @@ public class WindEffectCon : MonoBehaviour
         if(bossCollder.BossDeathFlag == true)
         {
             for(int i = 0; i < particleSystems.Length; i++)
-            {
-                Debug.Log("“ü‚Á‚½‚æ");
                 Destroy(particleSystems[i]);
-            }
         }
     }
 }
