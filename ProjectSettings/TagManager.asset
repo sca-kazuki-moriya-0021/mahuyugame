@@ -26,6 +26,7 @@ TagManager:
   - Icon3
   - Icon4
   - BossTargetBullet
+  - ReflectBullet
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - NoOutLine
   - Effect
   - SkillOutLine
-  - 
+  - PouseUI
   - 
   - 
   - 

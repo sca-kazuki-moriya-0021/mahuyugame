@@ -56,6 +56,7 @@ public class ClearStageCon : MonoBehaviour
         fadeOut.ClearFadeOut("GameEnd");
     }
 
+    //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
         audioSource.PlayOneShot(soundE);
