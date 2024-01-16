@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6295155828731053125}
   - component: {fileID: 6295155828731053147}
   - component: {fileID: 6295155828731053124}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6295155828929917518}
   - component: {fileID: 6295155828929917516}
   - component: {fileID: 6295155828929917517}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6295155828952460494}
   - component: {fileID: 6295155828952460492}
   - component: {fileID: 6295155828952460493}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6295155829795508243}
   - component: {fileID: 6295155829795508241}
   - component: {fileID: 6295155829795508242}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 6295155829814480841}
   - component: {fileID: 6295155829814480847}
   - component: {fileID: 6295155829814480840}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 6295155829916684734}
   - component: {fileID: 6295155829916684735}
   - component: {fileID: 6295155829916684728}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: StageReload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 6295155829999966688}
   - component: {fileID: 6295155829999966694}
   - component: {fileID: 6295155829999966695}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 6295155830142982075}
   - component: {fileID: 6295155830142982052}
   - component: {fileID: 6295155830142982053}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: BackGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 6295155830303774392}
   - component: {fileID: 6295155830303774393}
   - component: {fileID: 6295155830303774394}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Countdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 6295155830633339833}
   - component: {fileID: 6295155830633339839}
   - component: {fileID: 3203541038718057049}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: PouseDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,6 +1014,10 @@ MonoBehaviour:
   - {fileID: 6295155830142982053}
   - {fileID: 6295155829916684728}
   - {fileID: 6295155830772453328}
+  poseButtonObj:
+  - {fileID: 6295155830142982055}
+  - {fileID: 6295155829916684730}
+  - {fileID: 6295155830772453330}
   myCanvas: {fileID: 6295155830633339835}
   countDownCon: {fileID: 6295155830303774394}
   quitImage: {fileID: 7271616844953740908}
@@ -1144,7 +1148,7 @@ GameObject:
   - component: {fileID: 6295155830772453334}
   - component: {fileID: 6295155830772453335}
   - component: {fileID: 6295155830772453328}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1281,7 @@ GameObject:
   - component: {fileID: 7271616844555739632}
   - component: {fileID: 7271616844555739635}
   - component: {fileID: 7271616844555739634}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: QuitGameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1380,7 @@ GameObject:
   - component: {fileID: 7271616844953740911}
   - component: {fileID: 7271616844953740909}
   - component: {fileID: 7271616844953740908}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: QuitImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
