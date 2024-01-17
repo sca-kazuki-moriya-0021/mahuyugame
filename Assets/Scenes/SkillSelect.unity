@@ -11480,6 +11480,7 @@ GameObject:
   - component: {fileID: 766352880}
   - component: {fileID: 766352881}
   - component: {fileID: 766352882}
+  - component: {fileID: 766352883}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11693,6 +11694,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c3e10b74418054083d5d24e7e096d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!320 &766352883
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766352876}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 7732591303016368205, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 2004537188}
+  - key: {fileID: 317481633902484105, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 2004537195}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &780154516
 GameObject:
   m_ObjectHideFlags: 0
@@ -12294,7 +12316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &943697787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29258,6 +29280,9 @@ GameObject:
   - component: {fileID: 2004537191}
   - component: {fileID: 2004537190}
   - component: {fileID: 2004537189}
+  - component: {fileID: 2004537194}
+  - component: {fileID: 2004537193}
+  - component: {fileID: 2004537195}
   m_Layer: 5
   m_Name: IconEffect_Skill
   m_TagString: Untagged
@@ -29346,6 +29371,87 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2004537193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004537188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9690bff87b7f5f241a6cae53a22568de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IconColor:
+  - {fileID: 2100000, guid: b32c002108246d54499148201d458929, type: 2}
+  - {fileID: 2100000, guid: e3322f4a58d418f40bc014b4b499eae0, type: 2}
+  - {fileID: 2100000, guid: 8f3108013a1df014ea598c271c8beb14, type: 2}
+  - {fileID: 2100000, guid: b5d46ecda64fb4747aa8f6fd1d85a09b, type: 2}
+--- !u!95 &2004537194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004537188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44380aa6f657e274691a94c8f58f6ebe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2004537195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004537188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 98d67421e3175e04fb95e362240d358c, type: 2}
+    - {fileID: 11400000, guid: 91e710672baeacb4bbf4a661c1c9242f, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2004537193}
+          m_TargetAssemblyTypeName: SkillEffect, Assembly-CSharp
+          m_MethodName: Amount_0
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2004537193}
+          m_TargetAssemblyTypeName: SkillEffect, Assembly-CSharp
+          m_MethodName: Amount_1
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2040489727
 GameObject:
   m_ObjectHideFlags: 0
@@ -45144,6 +45250,7 @@ MonoBehaviour:
   goBarrage: {fileID: 220510234}
   worldLight2d: {fileID: 468679628}
   outLineAnimator: {fileID: 566658137}
+  playableDirector: {fileID: 766352883}
 --- !u!1 &5465977189371760774
 GameObject:
   m_ObjectHideFlags: 0
@@ -46917,6 +47024,7 @@ MonoBehaviour:
   goBarrage: {fileID: 0}
   worldLight2d: {fileID: 0}
   outLineAnimator: {fileID: 0}
+  playableDirector: {fileID: 0}
 --- !u!1 &5818386441097471192
 GameObject:
   m_ObjectHideFlags: 0
