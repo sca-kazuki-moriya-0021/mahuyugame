@@ -174,7 +174,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u3042\n"
+  m_Text: 
 --- !u!95 &2474744355676886498
 Animator:
   serializedVersion: 3
@@ -508,9 +508,9 @@ MonoBehaviour:
   getImage: {fileID: 6791071092220203695}
   texts:
   - "\u5FA1\u4ECF\u306E\u52A0\u8B77"
-  - "\u795E\u8599\u30FB\u65CB\u65AC\u308A"
-  - "\u6D85\u69C3\u306E\u5996\u77E2"
-  - "\u6226\u6280\u30FB\u76C8\u6708\u306E\u69CB\u3048"
+  - "\u65CB\u65AC\u308A"
+  - "\u4F9D\u4EE3\u306E\u6253\u3061\u77E2"
+  - "\u6226\u6280\u30FB\u6E90\u6708\u306E\u69CB\u3048"
   getText: {fileID: 6936539249852464227}
   skillAnimator:
   - {fileID: 8664024405420620161}
