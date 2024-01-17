@@ -66,6 +66,8 @@ public class PlayerBulletCon : MonoBehaviour
 
         for(int i = 0; i< subLaserAngle.Length; i++)
             subLaserAngle[i] = subLaserAngle[i] * Mathf.Deg2Rad;
+
+        gm.PlayerWeapon[3] = true;
     }
 
     // Update is called once per frame
@@ -176,6 +178,11 @@ public class PlayerBulletCon : MonoBehaviour
             bullet_sc.Angle = dir;
             //最終位置
             bullet_sc.EndPosition = boomerangPoint.transform.position;
+            //メインかサブか
+            if(bulletPos == mainBulletPosChird) 
+                bullet_sc.MainBulletFlag = true;
+            else
+                bullet_sc.MainBulletFlag = false;
         }
     }
 }

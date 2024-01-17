@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698808224802209571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.31, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3603823006587648065}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665250821247451038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.8, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3603823006587648065}
@@ -201,10 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullets:
-  - {fileID: 8678312788324553782, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
+  - {fileID: 7096198900183706168, guid: eae177985b9fcb4418556242bd2ae712, type: 3}
   - {fileID: 9209438781053329560, guid: 7f4fdda2344bd5345930dd5e87435b53, type: 3}
-  - {fileID: 771961700306280124, guid: a3b964758ca19b249877610a7aafecc7, type: 3}
-  - {fileID: 5407795080636802826, guid: 2c58f2b98a097474e8c6e2a2c5ac5593, type: 3}
+  - {fileID: 2202517430054971165, guid: a3b964758ca19b249877610a7aafecc7, type: 3}
+  - {fileID: 6821192672417811572, guid: 2c58f2b98a097474e8c6e2a2c5ac5593, type: 3}
   skillBullet: {fileID: 1625514678026247618, guid: e1faa920372e95e49bce916815fc0134, type: 3}
   mainBulletPos: {fileID: 3114987815780078817}
   subBulletPos: {fileID: 959894519392879170}
@@ -212,7 +212,7 @@ MonoBehaviour:
   laserAngle:
   - 45
   - 0
-  - -40
+  - -45
   subLaserAngle:
   - 45
   - -45
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenWithin: {fileID: 0}
   playerCollider: {fileID: 6399580715835281248}
+  nowLoading: {fileID: 0}
   audioSource: {fileID: 1566872759338620791}
   audioClips: {fileID: 8300000, guid: 18f623257fe636341ac864c5b0cee6c9, type: 3}
   buffEffect: {fileID: 456257902786411600, guid: 7f6effebdc384c0469e05e069768cb7f, type: 3}

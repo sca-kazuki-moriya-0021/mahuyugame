@@ -24,11 +24,15 @@ public class BoomerangBullet : MonoBehaviour
     //時間計測用
     private float time;
 
+    //サブかメインか
+    private bool mainBulletFlag;
+
     private Rigidbody2D rb2d;
 
     public Vector3 Angle { get => angle; set => angle = value; }
     public int Number {get => number; set => number = value; }
     public Vector3 EndPosition {get => endPosition; set => endPosition = value;}
+    public bool MainBulletFlag { get => mainBulletFlag; set => mainBulletFlag = value; }
 
     enum STATE
     {
@@ -52,20 +56,37 @@ public class BoomerangBullet : MonoBehaviour
         time += Time.deltaTime; 
         var p = player.transform.position;
         //行き
-        if(state == STATE.Start)
+        //発射位置から中心座標を求める
+        if (state == STATE.Start)
         {
-            //発射位置から中心座標を求める
-            switch (number)
+            if(mainBulletFlag == true)
             {
-                case 0:
-                    middlePostion = new Vector3(angle.x,angle.y+5f,0);
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    middlePostion = new Vector3(angle.x,angle.y-5f,0);
-                 break;
+                switch (number)
+                {
+                    case 0:
+                        middlePostion = new Vector3(angle.x / 2, angle.y + 5f, 0);
+                        break;
+                    case 1:
+                        middlePostion = new Vector3(angle.x, angle.y , 0);
+                        break;
+                    case 2:
+                        middlePostion = new Vector3(angle.x / 2, angle.y - 5f, 0);
+                        break;
+                }
             }
+            else
+            {
+                switch (number)
+                {
+                    case 0:
+                        middlePostion = new Vector3(angle.x / 2, angle.y + 5f, 0);
+                        break;
+                    case 1:
+                        middlePostion = new Vector3(angle.x / 2, angle.y - 5f, 0);
+                        break;
+                }
+            }
+
             //移動
             var a = Vector3.Lerp(stratPos,middlePostion,time);
             var b = Vector3.Lerp(middlePostion,endPosition,time);
@@ -81,17 +102,35 @@ public class BoomerangBullet : MonoBehaviour
         //帰り
         if(state == STATE.End)
         {
-            //帰ってくるときに使う中間位置指定
-            switch (number)
+            angle = p -endPosition / 2;
+            if (mainBulletFlag == true)
             {
-                case 0:
-                    middlePostion = new Vector3(angle.x, angle.y - 5f, 0);
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    middlePostion = new Vector3(angle.x, angle.y + 5f, 0);
-                    break;
+                //帰ってくるときに使う中間位置指定
+                switch (number)
+                {
+                    case 0:
+                        middlePostion = new Vector3(angle.x / 2, angle.y - 5f, 0);
+                        break;
+                    case 1:
+                        middlePostion = new Vector3(angle.x, angle.y, 0);
+                        break;
+                    case 2:
+                        middlePostion = new Vector3(angle.x /2, angle.y + 5f, 0);
+                        break;
+                }
+            }
+            else
+            {
+                //帰ってくるときに使う中間位置指定
+                switch (number)
+                {
+                    case 0:
+                        middlePostion = new Vector3(angle.x /2, angle.y - 5f, 0);
+                        break;
+                    case 1:
+                        middlePostion = new Vector3(angle.x /2, angle.y + 5f, 0);
+                        break;
+                }
             }
 
             //移動
