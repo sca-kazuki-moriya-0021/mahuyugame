@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using UnityEngine.Experimental.Rendering.Universal;
 using DG.Tweening;
+using UnityEngine.Playables;
 
 public class SkillSelection : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] private Light2D worldLight2d;//ââèoópÇÃ2DworldLight
     [SerializeField] private Animator outLineAnimator;
     [SerializeField] private IEnumerator outLineCoroutine;
-
+    [SerializeField] PlayableDirector playableDirector;
     bool test;
 
     private void Awake()
@@ -68,6 +69,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
         }
         oldSelectedObj = ev.currentSelectedGameObject;
+        playableDirector.Play();
     }
 
     void FixedUpdate()
