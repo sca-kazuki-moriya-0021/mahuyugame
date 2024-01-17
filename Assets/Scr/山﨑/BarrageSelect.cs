@@ -51,9 +51,9 @@ public class BarrageSelect : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(mainSubWepon[0]);
-        Debug.Log(mainSubWepon[1]);
-        Debug.Log(barrageCount);
+        //Debug.Log(mainSubWepon[0]);
+        //Debug.Log(mainSubWepon[1]);
+        //Debug.Log(barrageCount);
         if (selectedObj == null)
         {
             button.Select();

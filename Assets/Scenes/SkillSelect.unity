@@ -506,7 +506,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -573,7 +573,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -680,7 +680,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.98130465, g: 1, b: 0.37254906, a: 1}
+      maxColor: {r: 0.44705883, g: 0.65882355, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5450,7 +5450,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5517,8 +5517,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5624,7 +5624,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.9902997, g: 0.990566, b: 0.37753648, a: 1}
+      maxColor: {r: 0.44705883, g: 0.65882355, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6377,7 +6377,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -10566,6 +10566,7 @@ GameObject:
   - component: {fileID: 446014468}
   - component: {fileID: 446014467}
   - component: {fileID: 446014466}
+  - component: {fileID: 446014469}
   m_Layer: 5
   m_Name: Icon2
   m_TagString: Untagged
@@ -10650,6 +10651,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446014464}
   m_CullTransparentMesh: 1
+--- !u!95 &446014469
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446014464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &468679626
 GameObject:
   m_ObjectHideFlags: 0
@@ -10845,6 +10865,7 @@ GameObject:
   - component: {fileID: 495257244}
   - component: {fileID: 495257243}
   - component: {fileID: 495257242}
+  - component: {fileID: 495257245}
   m_Layer: 5
   m_Name: Icon1
   m_TagString: Untagged
@@ -10929,6 +10950,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495257240}
   m_CullTransparentMesh: 1
+--- !u!95 &495257245
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495257240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &495342624
 GameObject:
   m_ObjectHideFlags: 0
@@ -11054,6 +11094,7 @@ GameObject:
   - component: {fileID: 526727399}
   - component: {fileID: 526727398}
   - component: {fileID: 526727397}
+  - component: {fileID: 526727400}
   m_Layer: 5
   m_Name: Icon4
   m_TagString: Untagged
@@ -11138,6 +11179,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526727395}
   m_CullTransparentMesh: 1
+--- !u!95 &526727400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526727395}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &549904095
 GameObject:
   m_ObjectHideFlags: 0
@@ -11325,8 +11385,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16126,7 +16186,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -16193,8 +16253,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16300,7 +16360,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.20159692, g: 0.9245283, b: 0.02965462, a: 1}
+      maxColor: {r: 0.98039216, g: 1, b: 0.37254903, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -17053,7 +17113,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -21251,6 +21311,7 @@ GameObject:
   - component: {fileID: 668245796}
   - component: {fileID: 668245795}
   - component: {fileID: 668245794}
+  - component: {fileID: 668245797}
   m_Layer: 5
   m_Name: Icon2
   m_TagString: Untagged
@@ -21335,6 +21396,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668245792}
   m_CullTransparentMesh: 1
+--- !u!95 &668245797
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668245792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &672083491
 GameObject:
   m_ObjectHideFlags: 0
@@ -21521,7 +21601,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -26322,7 +26402,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -26389,8 +26469,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -26496,7 +26576,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.44716978, g: 0.6605051, b: 1, a: 1}
+      maxColor: {r: 0.51173705, g: 0.9811321, b: 0.4026344, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -27249,7 +27329,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -31392,6 +31472,22 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 317481633902484105, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
     value: {fileID: 2004537195}
+  - key: {fileID: -1457226744288896235, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 777415638}
+  - key: {fileID: 5440219474626055641, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 446014469}
+  - key: {fileID: 596189554752888021, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 886740144}
+  - key: {fileID: -6403059579100364400, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 1409573201}
+  - key: {fileID: -8330144000301970124, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 526727400}
+  - key: {fileID: 2520626304372317194, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 2056664686}
+  - key: {fileID: -4296956909873669231, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 668245797}
+  - key: {fileID: -446210824420602017, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
+    value: {fileID: 495257245}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &777415633
@@ -31406,6 +31502,7 @@ GameObject:
   - component: {fileID: 777415637}
   - component: {fileID: 777415636}
   - component: {fileID: 777415635}
+  - component: {fileID: 777415638}
   m_Layer: 5
   m_Name: Icon1
   m_TagString: Untagged
@@ -31490,6 +31587,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777415633}
   m_CullTransparentMesh: 1
+--- !u!95 &777415638
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777415633}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &780154516
 GameObject:
   m_ObjectHideFlags: 0
@@ -32084,6 +32200,7 @@ GameObject:
   - component: {fileID: 886740143}
   - component: {fileID: 886740142}
   - component: {fileID: 886740141}
+  - component: {fileID: 886740144}
   m_Layer: 5
   m_Name: Icon3
   m_TagString: Untagged
@@ -32168,6 +32285,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886740139}
   m_CullTransparentMesh: 1
+--- !u!95 &886740144
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886740139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &943697786
 GameObject:
   m_ObjectHideFlags: 0
@@ -32851,7 +32987,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -32918,7 +33054,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -33025,7 +33161,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.37169808, g: 1, b: 0.39282182, a: 1}
+      maxColor: {r: 0.98039216, g: 1, b: 0.37254903, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -38281,6 +38417,7 @@ GameObject:
   - component: {fileID: 1409573200}
   - component: {fileID: 1409573199}
   - component: {fileID: 1409573198}
+  - component: {fileID: 1409573201}
   m_Layer: 5
   m_Name: Icon4
   m_TagString: Untagged
@@ -38365,6 +38502,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409573196}
   m_CullTransparentMesh: 1
+--- !u!95 &1409573201
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409573196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1411768704
 GameObject:
   m_ObjectHideFlags: 0
@@ -38807,8 +38963,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -43674,7 +43830,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -48862,7 +49018,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -48929,8 +49085,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -49789,7 +49945,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -54331,8 +54487,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -59209,6 +59365,16 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e3322f4a58d418f40bc014b4b499eae0, type: 2}
   - {fileID: 2100000, guid: 8f3108013a1df014ea598c271c8beb14, type: 2}
   - {fileID: 2100000, guid: b5d46ecda64fb4747aa8f6fd1d85a09b, type: 2}
+  particle:
+  - {fileID: 8924825580773045347}
+  - {fileID: 2100008255}
+  - {fileID: 1499873027}
+  - {fileID: 672083494}
+  particle1:
+  - {fileID: 3684323241433041181}
+  - {fileID: 549904098}
+  - {fileID: 1921628738}
+  - {fileID: 1495719104}
 --- !u!95 &2004537194
 Animator:
   serializedVersion: 3
@@ -59323,6 +59489,16 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2efadb3fbc404c44090b45c4b8355645, type: 2}
   - {fileID: 2100000, guid: 67d518ef4ff54d04f94cb45406cb44e4, type: 2}
   - {fileID: 2100000, guid: 47a8ff8a132dbff47acd1357e1250771, type: 2}
+  particle:
+  - {fileID: 118971473}
+  - {fileID: 2071136695}
+  - {fileID: 2097237088}
+  - {fileID: 1087496841}
+  particle1:
+  - {fileID: 145754189}
+  - {fileID: 711213376}
+  - {fileID: 1649799413}
+  - {fileID: 562976702}
 --- !u!1 &2040489727
 GameObject:
   m_ObjectHideFlags: 0
@@ -59476,6 +59652,7 @@ GameObject:
   - component: {fileID: 2056664685}
   - component: {fileID: 2056664684}
   - component: {fileID: 2056664683}
+  - component: {fileID: 2056664686}
   m_Layer: 5
   m_Name: Icon3
   m_TagString: Untagged
@@ -59560,6 +59737,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056664681}
   m_CullTransparentMesh: 1
+--- !u!95 &2056664686
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056664681}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2065335850
 GameObject:
   m_ObjectHideFlags: 0
@@ -59756,7 +59952,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -59823,7 +60019,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -59930,7 +60126,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3646849, g: 0.9506277, b: 0.9811321, a: 1}
+      maxColor: {r: 0.2, g: 0.9254902, b: 0.03137255, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -64623,7 +64819,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -64690,7 +64886,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -69557,7 +69753,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -79407,8 +79603,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.7
+      scalar: 2
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -98221,7 +98417,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2

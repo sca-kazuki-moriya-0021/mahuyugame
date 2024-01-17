@@ -50,7 +50,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] PlayableDirector playableDirector;
     [SerializeField] GameObject skillEffect;
     [SerializeField] GameObject barrageEffect;
-    bool test;
+    bool check;
 
     private void Awake()
     {
@@ -95,12 +95,12 @@ public class SkillSelection : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if(oldSelectedObj == selectedObj && !test)
+        if(oldSelectedObj == selectedObj && !check)
         {
             StartCoroutine(outLineCoroutine);
             
         }
-        else if(oldSelectedObj != selectedObj && test)
+        else if(oldSelectedObj != selectedObj && check)
         {
             OutLineEnd();
         }
@@ -150,7 +150,6 @@ public class SkillSelection : MonoBehaviour
         }
         GoStage();
         Test();
-        //skillClip.ButtonPush = true;
     }
     //âüÇ≥ÇÍÇΩÇ∆Ç´ÇÃèàóù
     public void Skill_1_Click()
@@ -441,27 +440,27 @@ public class SkillSelection : MonoBehaviour
         outLineAnimator.SetBool("OutLine", false);
         outLineCoroutine = OutLine();
         oldSelectedObj = selectedObj;
-        test = false;
+        check = false;
     }
     IEnumerator OutLine()
     {
-        test = true;
+        check = true;
         yield return new WaitForSeconds(1);
         outLineAnimator.SetBool("OutLine", true);
     }
 
     IEnumerator SkillEffect_In()
     {
+        goBarrage.SetActive(false);
         playableDirector.Play();
         yield return new WaitForSeconds(2);
         skillEffect.SetActive(false);
         barrageEffect.SetActive(true);
-        //this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
         skillIconCanvas.enabled = false;
         barrageIconCanvas.enabled = true;
         yield return new WaitForSeconds(2);
         barrageEffect.SetActive(false);
-        barrageIconCanvas.enabled = false;
         barregeCanvas.SetActive(true);
     }
 }
