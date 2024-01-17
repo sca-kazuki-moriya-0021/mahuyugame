@@ -162,7 +162,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4e998458a5e23c545950c71953ed6c6f, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -501,16 +501,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillSprites:
-  - {fileID: 21300000, guid: da5714a1bc57c304fbfa43c0e2a9116c, type: 3}
+  - {fileID: 21300000, guid: 368d7d12427c054459c77396e1263b88, type: 3}
   - {fileID: 21300000, guid: eaada5df5412ec54abbaf298dd8cde3c, type: 3}
   - {fileID: 21300000, guid: fc04c3c4d77a27942bfe7999eb244170, type: 3}
-  - {fileID: 21300000, guid: 34b835ae1fa86d349b6a90679aac4b75, type: 3}
+  - {fileID: 21300000, guid: f5aede112e5e75040baa6ff92f39beb3, type: 3}
   getImage: {fileID: 6791071092220203695}
   texts:
-  - 'Take Me Higher '
-  - Dark Side of the Light
-  - "\u96DB\u898B\u6CA2\u75C7\u767A\u75C5"
-  - "\u96DB\u898B\u6CA2\u75C7\u767A\u75C5"
+  - "\u5FA1\u4ECF\u306E\u52A0\u8B77"
+  - "\u795E\u8599\u30FB\u65CB\u65AC\u308A"
+  - "\u6D85\u69C3\u306E\u5996\u77E2"
+  - "\u6226\u6280\u30FB\u76C8\u6708\u306E\u69CB\u3048"
   getText: {fileID: 6936539249852464227}
   skillAnimator:
   - {fileID: 8664024405420620161}
