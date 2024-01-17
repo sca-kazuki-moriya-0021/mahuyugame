@@ -19,6 +19,7 @@ public class TitleStageCon: MonoBehaviour
     //操作説明のアニメーション
     [SerializeField]
     private Animator anim;
+    private bool animEndFlag;
 
     //効果音用
     private AudioSource audioSource;
@@ -32,6 +33,8 @@ public class TitleStageCon: MonoBehaviour
     [SerializeField]
     private EventSystem ev = EventSystem.current;
     private GameObject selectedObj;
+
+    public bool AnimEndFlag { get => animEndFlag; set => animEndFlag = value; }
 
     private void Awake()
     {
@@ -83,27 +86,31 @@ public class TitleStageCon: MonoBehaviour
     {
         switch (currentStateName)
         {
-            //操作説明メニューを開く時
+            //最初に操作説明メニューを開く時
             case "Idle":
-
-                anim.SetBool("Open", true);
-
-                titleBtton[0].SetActive(false);
-                titleBtton[2].SetActive(false);
-
-                audioSource.PlayOneShot(soundE);
+                AnimationCon(true,false);
                 currentStateName = "OpenOperation";
             break;
-
             //操作説明メニューを閉じる時
-            case "OpenOperation":
-                anim.SetBool("Open", false);
-                titleBtton[0].SetActive(true);
-                titleBtton[2].SetActive(true);
-
-                audioSource.PlayOneShot(soundE);
-                currentStateName = "Idle";
+            case "OpenOperation" when animEndFlag == true:
+                AnimationCon(false,true);
+                currentStateName = "CloseOperation";
+            break;
+            //操作説明メニューを開く時
+            case "CloseOperation" when animEndFlag == true:
+                AnimationCon(true, false);
+                currentStateName = "OpenOperation";
             break;
         }
+    }
+
+    private void AnimationCon(bool set,bool active)
+    {
+        audioSource.PlayOneShot(soundE);
+        animEndFlag = false;
+        anim.SetBool("Open", set);
+
+        titleBtton[0].SetActive(active);
+        titleBtton[2].SetActive(active);
     }
 }
