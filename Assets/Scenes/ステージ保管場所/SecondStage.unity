@@ -990,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6791071093662665578, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
@@ -1117,6 +1117,10 @@ PrefabInstance:
     - target: {fileID: 2402575969626852864, guid: 573d4adf26476d249b91e35f1f490790, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472331954800752281, guid: 573d4adf26476d249b91e35f1f490790, type: 3}
+      propertyPath: m_Text
+      value: "\u3086\u304D\u304A\u3093\u306A"
       objectReference: {fileID: 0}
     - target: {fileID: 3472331954800752281, guid: 573d4adf26476d249b91e35f1f490790, type: 3}
       propertyPath: m_FontData.m_Alignment
