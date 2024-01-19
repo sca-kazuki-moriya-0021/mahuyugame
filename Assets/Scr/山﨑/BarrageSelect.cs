@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using UnityEngine.Playables;
 
 public class BarrageSelect : MonoBehaviour
 {
@@ -29,6 +30,30 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] private VideoClip[] barrageClip;//流したい球クリップを配列
     [SerializeField] private VideoPlayer videoPlayer;//Videoを格納
     [SerializeField] private Text barrageExplanation;//球のテキスト
+    [SerializeField] private GameObject backSkillButton;
+    [SerializeField] private GameObject skillCanvas;
+    [SerializeField] private GameObject barrageCanvas;
+    [SerializeField] private Canvas skillEffect;
+    [SerializeField] private Canvas barrageEffect;
+    [SerializeField] PlayableDirector playableDirector;
+    [SerializeField] PlayableAsset barrageTimeLine;
+    //[SerializeField] private GameObject backSkillButton;
+    [SerializeField] private Canvas skillIconCanvas;
+    [SerializeField] private Canvas barrageIconCanvas;
+    [SerializeField] private GameObject barrageButtonCanvas;
+    [SerializeField] private GameObject skillButtonCanvas;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem[] skillParticle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem[] skillParticle1;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem[] barrageParticle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem[] barrageParticle1;
 
     private void Awake()
     {
@@ -37,9 +62,9 @@ public class BarrageSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        button.Select();
         mainSubWepon[0] = false;
         mainSubWepon[1] = false;
-        button.Select();
         for (int i = 0; i <= 3; i++)
         {
             barrageSelect[i].enabled = false;
@@ -221,6 +246,16 @@ public class BarrageSelect : MonoBehaviour
         }
         TwoSelect();
     }
+
+    public void BackSkillSelect()
+    {
+        backSkillButton.SetActive(false);
+        barrageButtonCanvas.SetActive(false);
+        barrageEffect.enabled = true;
+        playableDirector.Play(barrageTimeLine);
+        StartCoroutine(SkillEffect_In());
+    }
+
     private void OutLineSize()
     {
         if (selectedObj.gameObject.CompareTag("Button"))
@@ -321,5 +356,30 @@ public class BarrageSelect : MonoBehaviour
                 videoPlayer.clip = barrageClip[3];
                 break;
         }
+    }
+
+    IEnumerator SkillEffect_In()
+    {
+        backSkillButton.SetActive(false);
+        playableDirector.Play(barrageTimeLine);
+        yield return new WaitForSeconds(2);
+        barrageEffect.enabled = false;
+        skillEffect.enabled = true;
+        yield return new WaitForSeconds(0.3f);
+        barrageIconCanvas.enabled = false;
+        skillIconCanvas.enabled = true;
+        yield return new WaitForSeconds(2.5f);
+        skillEffect.enabled = false;
+        skillCanvas.SetActive(true);
+        skillButtonCanvas.SetActive(true);
+        for (int i = 0; i < 4; i++)
+        {
+            skillParticle[i].Stop();
+            skillParticle1[i].Stop();
+            barrageParticle[i].Stop();
+            barrageParticle1[i].Stop();
+        }
+        this.gameObject.SetActive(false);
+        
     }
 }
