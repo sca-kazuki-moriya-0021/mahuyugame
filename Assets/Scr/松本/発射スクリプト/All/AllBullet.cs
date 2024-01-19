@@ -38,7 +38,6 @@ public class AllBullet : MonoBehaviour
         {
             float angle = startAngle + i * (spreadAngle / (numberOfBullets));
 
-            // ’e‚ð”­ŽË
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
             Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = direction * bulletSpeed;
