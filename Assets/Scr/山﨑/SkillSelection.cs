@@ -48,8 +48,20 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] GameObject skillButtonCanvas;
     [SerializeField] Image skillExplanationImage;
     [SerializeField] PlayableDirector playableDirector;
-    [SerializeField] GameObject skillEffect;
-    [SerializeField] GameObject barrageEffect;
+    [SerializeField] Canvas skillEffect;
+    [SerializeField] Canvas barrageEffect;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem[] skillParticle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem[] skillParticle1;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem[] barrageParticle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem[] barrageParticle1;
     bool check;
 
     private void Awake()
@@ -93,8 +105,10 @@ public class SkillSelection : MonoBehaviour
             
         }
     }
+
     private void LateUpdate()
     {
+        //１ｆ前のオブジェクトと違ったら
         if(oldSelectedObj == selectedObj && !check)
         {
             StartCoroutine(outLineCoroutine);
@@ -105,6 +119,7 @@ public class SkillSelection : MonoBehaviour
             OutLineEnd();
         }
     }
+
 
     //押されたときの処理
     public void Skill_0_Click()
@@ -149,7 +164,7 @@ public class SkillSelection : MonoBehaviour
             skillSelectImage[1].sprite = null;
         }
         GoStage();
-        Test();
+        SkillButton();
     }
     //押されたときの処理
     public void Skill_1_Click()
@@ -191,7 +206,7 @@ public class SkillSelection : MonoBehaviour
             skillSelectImage[1].sprite = null;
         }
         GoStage();
-        Test();
+        SkillButton();
         //skillClip.ButtonPush = true;
         
     }
@@ -235,7 +250,7 @@ public class SkillSelection : MonoBehaviour
             skillSelectImage[1].sprite = null;
         }
         GoStage();
-        Test();
+        SkillButton();
         
     }
     //押されたときの処理
@@ -278,8 +293,31 @@ public class SkillSelection : MonoBehaviour
             skillSelectImage[1].sprite = null;
         }
         GoStage();
-        Test();
+        SkillButton();
         
+    }
+
+
+    //押されたらタイトルシーンに行く
+    public void GoTitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    //押されたらステージに行く
+    public void GoStageScene()
+    {
+        SceneManager.LoadScene("Stage");
+        //nowTimeリセット
+    }
+
+    //押されたら弾幕に行く
+    public void GoBarrage()
+    {
+        skillButtonCanvas.SetActive(false);
+        skillExplanationImage.enabled = false;
+        skillEffect.enabled = true;
+        StartCoroutine(SkillEffect_In());
     }
 
     //ステージに行くボタンの表示・非表示
@@ -294,19 +332,9 @@ public class SkillSelection : MonoBehaviour
             goBarrage.SetActive(false);
         }
     }
-    //押されたらタイトルシーンに行く
-    public void GoTitleScene()
-    {
-        SceneManager.LoadScene("Title");
-    }
-    //押されたらステージに行く
-    public void GoStageScene()
-    {
-        SceneManager.LoadScene("Stage");
-        //nowTimeリセット
-    }
+    
     //スキルが２個選択されたときに選択されていないものを押せないようにする
-    private void Test()
+    private void SkillButton()
     {
         for (int i = 0; i <= 3; i++)
         {
@@ -386,14 +414,6 @@ public class SkillSelection : MonoBehaviour
         totalGM.BackScene = TotalGM.StageCon.No;
     }
 
-    public void GoBarrage()
-    {
-        skillButtonCanvas.SetActive(false);
-        skillExplanationImage.enabled = false;
-        skillEffect.SetActive(true);
-        StartCoroutine(SkillEffect_In());
-    }
-
     private void SkillExplanation()
     {
         switch(selectedObj.tag)
@@ -442,6 +462,8 @@ public class SkillSelection : MonoBehaviour
         oldSelectedObj = selectedObj;
         check = false;
     }
+
+
     IEnumerator OutLine()
     {
         check = true;
@@ -454,13 +476,20 @@ public class SkillSelection : MonoBehaviour
         goBarrage.SetActive(false);
         playableDirector.Play();
         yield return new WaitForSeconds(2);
-        skillEffect.SetActive(false);
-        barrageEffect.SetActive(true);
+        skillEffect.enabled = false;
+        barrageEffect.enabled = true;
         yield return new WaitForSeconds(0.3f);
         skillIconCanvas.enabled = false;
         barrageIconCanvas.enabled = true;
-        yield return new WaitForSeconds(2);
-        barrageEffect.SetActive(false);
+        yield return new WaitForSeconds(2.5f);
+        barrageEffect.enabled = false;
         barregeCanvas.SetActive(true);
+        for (int i = 0; i < 4; i++)
+        {
+            skillParticle[i].Stop();
+            skillParticle1[i].Stop();
+            barrageParticle[i].Stop();
+            barrageParticle1[i].Stop();
+        }
     }
 }
