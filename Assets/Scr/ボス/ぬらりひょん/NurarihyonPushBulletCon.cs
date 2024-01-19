@@ -157,4 +157,29 @@ public class NurarihyonPushBulletCon : MonoBehaviour
             }
         }
     }
+
+    public void fanshapeNway(Transform player,GameObject bulletPrefab,float bulletSpeed,float spreadAngle,int numberOfBullets)
+    {
+        if (player != null)
+        {
+            Vector2 playerDirection = (player.position - transform.position).normalized;
+
+            float startAngle = -spreadAngle / 2f;
+            float angleStep = spreadAngle / (float)(numberOfBullets - 1);
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                float angle = startAngle + i * angleStep;
+                Vector2 direction = Quaternion.Euler(0f, 0f, angle) * playerDirection;
+
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+                bulletRb.velocity = direction * bulletSpeed;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player not assigned for shooting bullets.");
+        }
+    }
 }
