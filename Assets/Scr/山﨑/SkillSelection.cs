@@ -26,6 +26,7 @@ public class SkillSelection : MonoBehaviour
     private GameObject selectedObj;
     private GameObject oldSelectedObj;
     [SerializeField] private Image outLine;
+    [SerializeField] private GameObject title;//タイトルに行くボタン
     [SerializeField] private Text skillExplanation;//スキルのテキスト
     int skillCount;
     [Header("外枠＿サイズの値")]
@@ -48,6 +49,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] GameObject skillButtonCanvas;
     [SerializeField] Image skillExplanationImage;
     [SerializeField] PlayableDirector playableDirector;
+    [SerializeField] PlayableAsset skillTimeLine;
     [SerializeField] Canvas skillEffect;
     [SerializeField] Canvas barrageEffect;
     [SerializeField]
@@ -85,7 +87,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[i] = false;//念のため初期化する
         }
         oldSelectedObj = ev.currentSelectedGameObject;
-        
+        title.SetActive(true);
     }
 
     void FixedUpdate()
@@ -314,6 +316,7 @@ public class SkillSelection : MonoBehaviour
     //押されたら弾幕に行く
     public void GoBarrage()
     {
+        title.SetActive(false);
         skillButtonCanvas.SetActive(false);
         skillExplanationImage.enabled = false;
         skillEffect.enabled = true;
@@ -474,7 +477,7 @@ public class SkillSelection : MonoBehaviour
     IEnumerator SkillEffect_In()
     {
         goBarrage.SetActive(false);
-        playableDirector.Play();
+        playableDirector.Play(skillTimeLine);
         yield return new WaitForSeconds(2);
         skillEffect.enabled = false;
         barrageEffect.enabled = true;
@@ -491,5 +494,7 @@ public class SkillSelection : MonoBehaviour
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
         }
+        this.gameObject.SetActive(false);
+        button.Select();
     }
 }
