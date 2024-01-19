@@ -22,7 +22,7 @@ public class NurarihyonBulletCon : MonoBehaviour
     private int count = 0;
 
     private float time = 0f;
-
+    private float radius = 0.5f; 
     private List<GameObject> homing = new List<GameObject>();
 
     public List<GameObject> Homing
@@ -56,7 +56,7 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.5f);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 1; i++)
             {
                 nurarihyonPushBulletCon.Reflect(bullets[1], bulletSpeed[0], numberOfBullet[1],0);
                 yield return new WaitForSeconds(0.5f);
@@ -78,6 +78,11 @@ public class NurarihyonBulletCon : MonoBehaviour
                     yield return new WaitForSeconds(0.1f);
                 }
                 yield return new WaitForSeconds(0.5f);
+            }
+            for(int i = 0; i < 5; i++)
+            {
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3],numberOfBullet[0], bulletSpeed[0],radius);
+                yield return new WaitForSeconds(1.0f);
             }
             yield return new WaitForSeconds(0.5f);
             yield return null;
