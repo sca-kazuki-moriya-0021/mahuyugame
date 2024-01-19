@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: hp
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 626955920494190538, guid: d3338163424672842bfd7ed55af671e0, type: 3}
       propertyPath: bossObject
@@ -11889,6 +11889,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2623728765242054744, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
       propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2623728765242054744, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
+      propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2623728765242054744, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}

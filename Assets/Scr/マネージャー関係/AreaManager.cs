@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AreaManager : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class AreaManager : MonoBehaviour
     private CountDownCon countDownCon;
     [SerializeField]
     private BossCollder bossCollder;
-
-    private float downTime;
 
     private bool playFlag = false;
     private bool downFlag = false;
@@ -45,23 +44,25 @@ public class AreaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
       if((pouseCon.MenuFlag == true && countDownCon.CountDownFlag == false))
       {
             downFlag = false;
-            downTime += Time.deltaTime;
-            audioSource.volume -= downTime;
-            if(audioSource.volume <= 0)
-                audioSource.Pause();
+            if(playFlag == false)
+            {
+                StartCoroutine(PouseVolume());
+                playFlag = true;
+            }
       }
 
-      if(countDownCon.CountDownFlag == true)
+      if(countDownCon.CountDownFlag == true && pouseCon.MenuFlag == true)
       {
             if (downFlag == false)
             {
-
                 audioSource.Play();
-                StartCoroutine(UpVolume());
+                playFlag = false;
                 downFlag = true;
+                this.audioSource.DOFade(endValue: 1f, duration: 2f).SetUpdate(true);
             }
       }
 
@@ -73,22 +74,21 @@ public class AreaManager : MonoBehaviour
               StartCoroutine(DownVolume());
               stageChangeFlag = true;
            }
-           
       }
     }
 
 
-    private IEnumerator UpVolume()
+    private IEnumerator PouseVolume()
     {
-        float upTime =0;
-
-        while(audioSource.volume <= 1)
+        float downTime = 0;
+        while (audioSource.volume >= 0)
         {
-            upTime += Time.unscaledDeltaTime;
-            audioSource.volume += upTime;
-            yield return new WaitForSecondsRealtime(0.1f);
+            downTime += Time.unscaledDeltaTime;
+            audioSource.volume -= downTime;
+            yield return new WaitForSecondsRealtime(0.01f);
         }
-        StopCoroutine(UpVolume());
+        audioSource.Pause();
+        StopCoroutine(PouseVolume());
     }
 
     private IEnumerator DownVolume()
@@ -100,6 +100,7 @@ public class AreaManager : MonoBehaviour
             audioSource.volume -= downTime;
             yield return new WaitForSecondsRealtime(0.12f);
         }
+        audioSource.Pause();
         StopCoroutine(DownVolume());
     }
 }
