@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f5be9fbe4e3f142b955ed5dbf8b044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: ReflectBullet
+  bulletTag1: ReflectBullet
+  bulletTag2: apollo reflector
 --- !u!1 &296896199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 291618117927990664, guid: 3aeecf495aea10d408ce461c2c9e11a7, type: 3}
@@ -264,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurarihyon
       objectReference: {fileID: 0}
+    - target: {fileID: 7881528044877536817, guid: 95b509b8b9b85e647b186ab0a001663c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7881528044877536820, guid: 95b509b8b9b85e647b186ab0a001663c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -327,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f5be9fbe4e3f142b955ed5dbf8b044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: ReflectBullet
+  bulletTag1: ReflectBullet
+  bulletTag2: apollo reflector
 --- !u!1 &1509916039
 GameObject:
   m_ObjectHideFlags: 0
