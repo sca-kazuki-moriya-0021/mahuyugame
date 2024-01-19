@@ -1214,6 +1214,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1056920395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6295155830633339833, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
+  m_PrefabInstance: {fileID: 1056920393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b05d0bb85022643a3d718ef9e91f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1056920396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6295155830303774394, guid: 53908c39b84d54645b7f52063c2d83f8, type: 3}
+  m_PrefabInstance: {fileID: 1056920393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 431b64999e3cd2044b4c68761d6ba7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1157121516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11911,9 +11933,17 @@ PrefabInstance:
       value: AreaManager
       objectReference: {fileID: 0}
     - target: {fileID: 3070892870340644569, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
+      propertyPath: pouseCon
+      value: 
+      objectReference: {fileID: 1056920395}
+    - target: {fileID: 3070892870340644569, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
       propertyPath: audioClips
       value: 
       objectReference: {fileID: 8300000, guid: a3fcd786e9b9b5f4cbf6ad036f423d37, type: 3}
+    - target: {fileID: 3070892870340644569, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
+      propertyPath: countDownCon
+      value: 
+      objectReference: {fileID: 1056920396}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27c6117e1b2ff10488cf06ac3c5d9df6, type: 3}
 --- !u!1001 &4307780098733471982

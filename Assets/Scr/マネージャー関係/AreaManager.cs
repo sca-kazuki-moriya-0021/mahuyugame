@@ -6,6 +6,15 @@ public class AreaManager : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    [SerializeField]
+    private PouseCon pouseCon;
+    [SerializeField]
+    private CountDownCon countDownCon;
+
+    private float downTime;
+
+    private bool playFlag = false;
+
     //ボスオブジェクト
     //[SerializeField]
     //private GameObject bossObject;
@@ -28,12 +37,45 @@ public class AreaManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
 
-        //敵の出現をコルーチンで書いていく
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+      if(pouseCon.MenuFlag == true && countDownCon.CountDownFlag == false)
+      {
+            if(playFlag == true)
+            playFlag = false;
+
+            downTime += Time.deltaTime;
+            audioSource.volume -= downTime;
+            if(audioSource.volume <= 0)
+                audioSource.Pause();
+      }
+
+      if(countDownCon.CountDownFlag == true)
+      {
+            if(playFlag == false)
+            {
+                Debug.Log("音量入ったよ");
+                audioSource.Play();
+                StartCoroutine(UpVolume());
+                playFlag = true;
+            }
+      }
+    }
+
+    private IEnumerator UpVolume()
+    {
+        float upTime =0;
+
+        while(audioSource.volume <= 1)
+        {
+            upTime += Time.unscaledDeltaTime;
+            audioSource.volume += upTime;
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        StopCoroutine(UpVolume());
     }
 }
