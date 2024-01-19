@@ -519,4 +519,4 @@ MonoBehaviour:
   - {fileID: 2862522096263783163}
   skillBarkGround: {fileID: 21300000, guid: e9723ef2819e61049be0db23b66bec06, type: 3}
   getbackImage: {fileID: 8170189851472878249}
-  myCanvas: {fileID: 6791071093662665578}
+  myCanvas: {fileID: 6791071093662665575}
