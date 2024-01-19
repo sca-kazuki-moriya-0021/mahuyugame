@@ -5,7 +5,9 @@ using UnityEngine;
 public class ReflectWallUp : MonoBehaviour
 {
     [SerializeField]
-    string bulletTag = "ReflectBullet";
+    string bulletTag1 = "ReflectBullet";
+    [SerializeField]
+    string bulletTag2 = "ApolloReflector";
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,14 @@ public class ReflectWallUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(bulletTag))
+        if (collision.CompareTag(bulletTag1))
         {
             ReflectBullet(collision.gameObject);
+        }
+
+        if (collision.CompareTag(bulletTag2))
+        {
+            ApolloReflector(collision.gameObject);
         }
     }
 
@@ -43,6 +50,30 @@ public class ReflectWallUp : MonoBehaviour
             ballCountScript.IncrementCount();
 
             
+            if (ballCountScript.GetCount() >= 5)
+            {
+                Destroy(bullet);
+            }
+        }
+    }
+
+    private void ApolloReflector(GameObject bullet)
+    {
+        var rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+
+        var inDirection = rb.velocity;
+        var inNormal = transform.up;
+        var result = Vector2.Reflect(inDirection, inNormal);
+
+        rb.velocity = result * 1.5f;
+
+        BulletCon ballCountScript = bullet.GetComponent<BulletCon>();
+        if (ballCountScript != null)
+        {
+            ballCountScript.IncrementCount();
+
+
             if (ballCountScript.GetCount() >= 5)
             {
                 Destroy(bullet);
