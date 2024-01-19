@@ -35,6 +35,7 @@ public class ReflectWallUp : MonoBehaviour
 
     private void ReflectBullet(GameObject bullet)
     {
+        Debug.Log("a");
         var rb = bullet.GetComponent<Rigidbody2D>();
         if(rb == null)return;
 

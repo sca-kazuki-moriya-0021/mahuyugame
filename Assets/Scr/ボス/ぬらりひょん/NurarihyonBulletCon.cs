@@ -24,7 +24,7 @@ public class NurarihyonBulletCon : MonoBehaviour
     private float time = 0f;
     private float radius = 0.5f; 
     private List<GameObject> homing = new List<GameObject>();
-
+    private Transform player;
     public List<GameObject> Homing
     {
         get { return homing;}
@@ -33,6 +33,7 @@ public class NurarihyonBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         nurarihyonPushBulletCon = FindObjectOfType<NurarihyonPushBulletCon>();
         newHoming = FindObjectOfType<NewHoming>();
         StartCoroutine(Atk());
@@ -49,8 +50,12 @@ public class NurarihyonBulletCon : MonoBehaviour
     {
         while (true)
         {
-
-            for(int i = 0;i < 2; i++)
+            for (int i = 0; i < 5; i++)
+            {
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[0], bulletSpeed[0], radius);
+                yield return new WaitForSeconds(1.0f);
+            }
+            for (int i = 0;i < 2; i++)
             {
                 nurarihyonPushBulletCon.AllBullet(bullets[0], bulletSpeed[0], numberOfBullet[0]);
                 yield return new WaitForSeconds(0.1f);
@@ -79,10 +84,16 @@ public class NurarihyonBulletCon : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
-            for(int i = 0; i < 5; i++)
+            
+            for(int i = 0;i < 30; i++)
             {
-                nurarihyonPushBulletCon.ApolloReflector(bullets[3],numberOfBullet[0], bulletSpeed[0],radius);
-                yield return new WaitForSeconds(1.0f);
+                for(int j = 0;j < 2; j++)
+                {
+                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 30f, 5);
+                    yield return new WaitForSeconds(0.25f);
+                }
+                
+                yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(0.5f);
             yield return null;
