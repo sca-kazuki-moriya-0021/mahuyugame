@@ -42,6 +42,7 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] private Canvas barrageIconCanvas;
     [SerializeField] private GameObject barrageButtonCanvas;
     [SerializeField] private GameObject skillButtonCanvas;
+    [SerializeField] private Button skillButton1;
     [SerializeField]
     [Tooltip("ãÖëÃÇÃÉpÅ[ÉeÉBÉNÉã")]
     private ParticleSystem[] skillParticle;
@@ -62,15 +63,18 @@ public class BarrageSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        barrageButtonCanvas.SetActive(true);
         button.Select();
+        backSkillButton.SetActive(true);
         mainSubWepon[0] = false;
         mainSubWepon[1] = false;
         for (int i = 0; i <= 3; i++)
         {
             barrageSelect[i].enabled = false;
-            totalGM.PlayerWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
-            totalGM.PlayerSubWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
+            //totalGM.PlayerWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
+            //totalGM.PlayerSubWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
         }
+        TwoSelect();
     }
 
     // Update is called once per frame
@@ -249,10 +253,12 @@ public class BarrageSelect : MonoBehaviour
 
     public void BackSkillSelect()
     {
+        Debug.Log("àÍâÒ");
         backSkillButton.SetActive(false);
         barrageButtonCanvas.SetActive(false);
         barrageEffect.enabled = true;
         playableDirector.Play(barrageTimeLine);
+        goStageButton.SetActive(false);
         StartCoroutine(SkillEffect_In());
     }
 
@@ -296,7 +302,6 @@ public class BarrageSelect : MonoBehaviour
             
             if (!mainSubWepon[0] &&!totalGM.PlayerSubWeapon[i] && barrageCount == 1)
             {
-                Debug.Log("ÇÕÇ¢Ç¡ÇΩÇÊÅ[");
                 barrageSelect[i].enabled = false;
             }
             else if (!mainSubWepon[0] && totalGM.PlayerSubWeapon[i] && barrageCount == 1)
@@ -379,7 +384,7 @@ public class BarrageSelect : MonoBehaviour
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
         }
-        this.gameObject.SetActive(false);
-        
+        //this.gameObject.SetActive(false);
+        skillButton1.Select();
     }
 }

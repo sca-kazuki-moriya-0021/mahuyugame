@@ -52,6 +52,8 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] PlayableAsset skillTimeLine;
     [SerializeField] Canvas skillEffect;
     [SerializeField] Canvas barrageEffect;
+    [SerializeField] private Button barrageButton1;
+    [SerializeField] private GameObject barrageButtonCanvas;
     [SerializeField]
     [Tooltip("球体のパーティクル")]
     private ParticleSystem[] skillParticle;
@@ -81,13 +83,16 @@ public class SkillSelection : MonoBehaviour
         button.Select();
         goStageButton.SetActive(false);
         //ボタンの選択状態を解除
+        /*
         for (int i = 0; i <= 3; i++)
         {
             skillSelect[i].SetActive(false);
             totalGM.PlayerSkill[i] = false;//念のため初期化する
-        }
+        }*/
         oldSelectedObj = ev.currentSelectedGameObject;
         title.SetActive(true);
+        SkillButton();
+        GoStage();
     }
 
     void FixedUpdate()
@@ -487,6 +492,7 @@ public class SkillSelection : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         barrageEffect.enabled = false;
         barregeCanvas.SetActive(true);
+        barrageButtonCanvas.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
             skillParticle[i].Stop();
@@ -494,7 +500,7 @@ public class SkillSelection : MonoBehaviour
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
         }
-        this.gameObject.SetActive(false);
-        button.Select();
+        //this.gameObject.SetActive(false);
+        barrageButton1.Select();
     }
 }

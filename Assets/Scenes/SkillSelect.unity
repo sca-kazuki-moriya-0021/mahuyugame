@@ -32648,6 +32648,7 @@ MonoBehaviour:
   barrageIconCanvas: {fileID: 572119416}
   barrageButtonCanvas: {fileID: 1554184147}
   skillButtonCanvas: {fileID: 5465977188609883636}
+  skillButton1: {fileID: 5465977190446041705}
   skillParticle:
   - {fileID: 8924825580773045347}
   - {fileID: 2100008255}
@@ -85281,6 +85282,8 @@ MonoBehaviour:
   skillTimeLine: {fileID: 11400000, guid: 8dfa1c57977e9bf4090f8b90a55b1b53, type: 2}
   skillEffect: {fileID: 1003467966}
   barrageEffect: {fileID: 1711331706}
+  barrageButton1: {fileID: 1220705267}
+  barrageButtonCanvas: {fileID: 1554184147}
   skillParticle:
   - {fileID: 8924825580773045347}
   - {fileID: 2100008255}
@@ -87081,6 +87084,8 @@ MonoBehaviour:
   skillTimeLine: {fileID: 0}
   skillEffect: {fileID: 0}
   barrageEffect: {fileID: 0}
+  barrageButton1: {fileID: 0}
+  barrageButtonCanvas: {fileID: 0}
   skillParticle: []
   skillParticle1: []
   barrageParticle: []
