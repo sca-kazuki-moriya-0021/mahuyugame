@@ -50,8 +50,11 @@ public class AreaManager : MonoBehaviour
             downFlag = false;
             if(playFlag == false)
             {
-                StartCoroutine(PouseVolume());
                 playFlag = true;
+                this.audioSource.DOFade(endValue:0f,duration:1f).SetUpdate(true).OnComplete(() =>
+                { 
+                    audioSource.Pause();
+                });
             }
       }
 
@@ -62,7 +65,7 @@ public class AreaManager : MonoBehaviour
                 audioSource.Play();
                 playFlag = false;
                 downFlag = true;
-                this.audioSource.DOFade(endValue: 1f, duration: 2f).SetUpdate(true);
+                this.audioSource.DOFade(endValue: 1f, duration: 3f).SetUpdate(true);
             }
       }
 
@@ -78,7 +81,7 @@ public class AreaManager : MonoBehaviour
     }
 
 
-    private IEnumerator PouseVolume()
+    /*private IEnumerator PouseVolume()
     {
         float downTime = 0;
         while (audioSource.volume >= 0)
@@ -87,9 +90,9 @@ public class AreaManager : MonoBehaviour
             audioSource.volume -= downTime;
             yield return new WaitForSecondsRealtime(0.01f);
         }
-        audioSource.Pause();
+
         StopCoroutine(PouseVolume());
-    }
+    }*/
 
     private IEnumerator DownVolume()
     {
