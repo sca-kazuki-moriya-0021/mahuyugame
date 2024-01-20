@@ -47,7 +47,6 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] private Animator outLineAnimator;
     [SerializeField] private IEnumerator outLineCoroutine;
     [SerializeField] GameObject skillButtonCanvas;
-    [SerializeField] Image skillExplanationImage;
     [SerializeField] PlayableDirector playableDirector;
     [SerializeField] PlayableAsset skillTimeLine;
     [SerializeField] Canvas skillEffect;
@@ -67,6 +66,12 @@ public class SkillSelection : MonoBehaviour
     [SerializeField]
     [Tooltip("下を円状に回る")]
     private ParticleSystem[] barrageParticle1;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem Particle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem Particle1;
     bool check;
 
     private void Awake()
@@ -324,7 +329,7 @@ public class SkillSelection : MonoBehaviour
     {
         title.SetActive(false);
         skillButtonCanvas.SetActive(false);
-        skillExplanationImage.enabled = false;
+        //skillExplanationImage.SetActive(false);
         skillEffect.enabled = true;
         StartCoroutine(SkillEffect_In());
     }
@@ -501,9 +506,12 @@ public class SkillSelection : MonoBehaviour
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
         }
+        Particle.Stop();
+        Particle1.Stop();
         //this.gameObject.SetActive(false);
         barrageButton1.Select();
         goStageButton.SetActive(true);
         backSkillButton.SetActive(true);
+        //skillExplanation.SetActive(true);
     }
 }
