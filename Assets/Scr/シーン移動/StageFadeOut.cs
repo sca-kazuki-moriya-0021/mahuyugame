@@ -62,9 +62,7 @@ public class StageFadeOut : MonoBehaviour
                 #endif
             }
             if(s == "ReloadStage")
-            {
                 totalGM.ReloadClearScene();
-            }
         });
     }
 }

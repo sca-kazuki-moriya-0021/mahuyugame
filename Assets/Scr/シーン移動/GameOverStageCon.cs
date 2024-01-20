@@ -8,10 +8,17 @@ public class GameOverStageCon : MonoBehaviour
 {
     [SerializeField] Button button;
     //効果音用
+    [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
     private AudioClip soundE;
 
+    [SerializeField]
+    private Sprite[] charaSprites;
+    [SerializeField]
+    private Image getImage;
+
+    [SerializeField] private Image outLine;
     [SerializeField]
     private EventSystem ev = EventSystem.current;
     private TotalGM totalGM;
@@ -22,9 +29,9 @@ public class GameOverStageCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
         button.Select();
+        getImage.sprite = charaSprites[0];
     }
 
     // Update is called once per frame
@@ -38,7 +45,7 @@ public class GameOverStageCon : MonoBehaviour
         else
         {
             selectedObj = ev.currentSelectedGameObject;
-            //アウトラインをここで入れる
+            outLine.transform.position = selectedObj.transform.position;
         }
     }
 
@@ -55,6 +62,7 @@ public class GameOverStageCon : MonoBehaviour
     public void ReloadStage()
     {
         audioSource.PlayOneShot(soundE);
+        getImage.sprite = charaSprites[1];
         var scene = totalGM.BackScene;
         switch (scene)
         {
