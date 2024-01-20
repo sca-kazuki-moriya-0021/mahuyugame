@@ -78,7 +78,9 @@ public class TitleStageCon: MonoBehaviour
     public void SkillSelect()
     {
         audioSource.PlayOneShot(soundE);
-        SceneManager.LoadScene("SkillSelect", LoadSceneMode.Single);
+        quitImage.DOFade(2.55f, 1f).OnComplete(() => {
+            SceneManager.LoadScene("SkillSelect", LoadSceneMode.Single);
+        });
     }
 
     //ƒpƒlƒ‹‘€ì
