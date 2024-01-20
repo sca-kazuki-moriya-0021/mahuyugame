@@ -85,6 +85,5 @@ public class SistersLauncher : MonoBehaviour
         Rigidbody2D rb1 = bullet1.GetComponent<Rigidbody2D>();
         Vector2 bulletDirection1 = rotation * Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
         rb1.velocity = bulletDirection1 * subBulletSpeed2;
-
     }
 }
