@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class SnowFairyBulletCon : MonoBehaviour
 {
-    private SnowPushBulletCon pushOnBulletCon;
+    [SerializeField]
+    private SnowPushBulletCon pushBulletCon;
+
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip audioClip;
 
     //弾オブジェクト
     [SerializeField]
@@ -68,12 +74,9 @@ public class SnowFairyBulletCon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pushOnBulletCon = FindObjectOfType<SnowPushBulletCon>();
         player = GameObject.Find("Player");
         for (int i = 0; i < cornerPosChild.Length; i++)
-        {
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
-        }
 
         StartCoroutine(Atk());
     }
@@ -88,10 +91,12 @@ public class SnowFairyBulletCon : MonoBehaviour
 
     private IEnumerator Atk()
     {
+
+        audioSource.PlayOneShot(audioClip);
         /*while (time < 5f)
         {
-            pushOnBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
-            pushOnBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
+            pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
+            pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
             yield return new WaitForSeconds(fireTime[0]);
         }*/
@@ -100,11 +105,11 @@ public class SnowFairyBulletCon : MonoBehaviour
         {
             for (int i = 0; i < spinAngle.Length; i++)
             {
-                pushOnBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]*2);
+                pushBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]*2);
             }
             count = (count + 1) * 2;
             yield return new WaitForSeconds(fireTime[1]);
-            pushOnBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
+            pushBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
         }*/
         //count = 0;
 
@@ -117,7 +122,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         {
             for (int i = 0; i < crystalShoots; i++)
             {
-                pushOnBulletCon.SnowCrystal(crystalAngle, crystalNumberOfBullets, bullets[3], bulletSpeed[3]);
+                pushBulletCon.SnowCrystal(crystalAngle, crystalNumberOfBullets, bullets[3], bulletSpeed[3]);
                 yield return new WaitForSeconds(0.2f);
             }
             yield return new WaitForSeconds(fireTime[2]);
@@ -126,42 +131,42 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         /*for(int i = 0; i < 15; i++)
         {
-            pushOnBulletCon.ShootDemarcation(1);
-            pushOnBulletCon.ShootDemarcation(-1);
+            pushBulletCon.ShootDemarcation(1);
+            pushBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(0.5f);*/
 
         //shuraFlag = true;
-        //pushOnBulletCon.ShuraShoot(0,1);
-        //pushOnBulletCon.ShuraShoot(1,-1);
+        //pushBulletCon.ShuraShoot(0,1);
+        //pushBulletCon.ShuraShoot(1,-1);
 
        /*for(int i = 0; i < 2 ; i++)
        {
-            pushOnBulletCon.GaoukenShoot(0);
+            pushBulletCon.GaoukenShoot(0);
             yield return new WaitForSeconds(2f);
-            pushOnBulletCon.GaoukenShoot(1);
+            pushBulletCon.GaoukenShoot(1);
             yield return new WaitForSeconds(2f);
-            pushOnBulletCon.GaoukenShoot(2);
+            pushBulletCon.GaoukenShoot(2);
             yield return new WaitForSeconds(2f);
-            pushOnBulletCon.GaoukenShoot(3);
+            pushBulletCon.GaoukenShoot(3);
             yield return new WaitForSeconds(2f);
        }*/
 
 
-        //pushOnBulletCon.DestroyShuraShoot();
-        //pushOnBulletCon.DestoryDemarcation();
+        //pushBulletCon.DestroyShuraShoot();
+        //pushBulletCon.DestoryDemarcation();
         //shuraFlag = false;
         /*for(int i = 0 ; i < 20; i++)
         {
-            pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
-            pushOnBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
+            pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
+            pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
             yield return new WaitForSeconds(2f - i* 0.1f);
         }*/
 
         for(int i = 0; i< 10; i++)
         {
-            pushOnBulletCon.DreamRealityShoot(bullets[5],transform.position);
+            pushBulletCon.DreamRealityShoot(bullets[5],transform.position);
             yield return new  WaitForSeconds(2f);
         }
 
