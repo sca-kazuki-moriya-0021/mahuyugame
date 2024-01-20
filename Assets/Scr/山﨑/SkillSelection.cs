@@ -54,6 +54,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] Canvas barrageEffect;
     [SerializeField] private Button barrageButton1;
     [SerializeField] private GameObject barrageButtonCanvas;
+    [SerializeField] private GameObject backSkillButton;
     [SerializeField]
     [Tooltip("球体のパーティクル")]
     private ParticleSystem[] skillParticle;
@@ -502,5 +503,7 @@ public class SkillSelection : MonoBehaviour
         }
         //this.gameObject.SetActive(false);
         barrageButton1.Select();
+        goStageButton.SetActive(true);
+        backSkillButton.SetActive(true);
     }
 }

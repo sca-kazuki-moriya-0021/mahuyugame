@@ -43,6 +43,7 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] private GameObject barrageButtonCanvas;
     [SerializeField] private GameObject skillButtonCanvas;
     [SerializeField] private Button skillButton1;
+    [SerializeField] private GameObject goBarrage;
     [SerializeField]
     [Tooltip("ãÖëÃÇÃÉpÅ[ÉeÉBÉNÉã")]
     private ParticleSystem[] skillParticle;
@@ -55,6 +56,7 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField]
     [Tooltip("â∫Çâ~èÛÇ…âÒÇÈ")]
     private ParticleSystem[] barrageParticle1;
+    [SerializeField] private GameObject tileButton;
 
     private void Awake()
     {
@@ -74,15 +76,12 @@ public class BarrageSelect : MonoBehaviour
             //totalGM.PlayerWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
             //totalGM.PlayerSubWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
         }
-        TwoSelect();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug.Log(mainSubWepon[0]);
-        //Debug.Log(mainSubWepon[1]);
-        //Debug.Log(barrageCount);
         if (selectedObj == null)
         {
             button.Select();
@@ -95,6 +94,7 @@ public class BarrageSelect : MonoBehaviour
             OutLineSize();
             BarrageExplanation();
             VideoClip();
+            //TwoSelect();
         }
     }
 
@@ -253,7 +253,6 @@ public class BarrageSelect : MonoBehaviour
 
     public void BackSkillSelect()
     {
-        Debug.Log("àÍâÒ");
         backSkillButton.SetActive(false);
         barrageButtonCanvas.SetActive(false);
         barrageEffect.enabled = true;
@@ -365,6 +364,7 @@ public class BarrageSelect : MonoBehaviour
 
     IEnumerator SkillEffect_In()
     {
+        goStageButton.SetActive(false);
         backSkillButton.SetActive(false);
         playableDirector.Play(barrageTimeLine);
         yield return new WaitForSeconds(2);
@@ -385,6 +385,9 @@ public class BarrageSelect : MonoBehaviour
             barrageParticle1[i].Stop();
         }
         //this.gameObject.SetActive(false);
+        goStageButton.SetActive(false);
         skillButton1.Select();
+        tileButton.SetActive(true);
+        goBarrage.SetActive(true);
     }
 }
