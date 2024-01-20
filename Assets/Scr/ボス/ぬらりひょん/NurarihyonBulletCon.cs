@@ -19,24 +19,22 @@ public class NurarihyonBulletCon : MonoBehaviour
     private float[] fireTime;
     [SerializeField]
     private Transform[] firePoint;
+    [SerializeField]
+    private Transform[] homingPoint;
+    [SerializeField]
+    private Transform[] NewPoint;
     private int count = 0;
 
     private float time = 0f;
     private float radius = 0.5f; 
-    private List<GameObject> homing = new List<GameObject>();
     private Transform player;
-    public List<GameObject> Homing
-    {
-        get { return homing;}
-        set { homing = value;}
-    }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         nurarihyonPushBulletCon = FindObjectOfType<NurarihyonPushBulletCon>();
-        newHoming = FindObjectOfType<NewHoming>();
         StartCoroutine(Atk());
+        
     }
 
     // Update is called once per frame
@@ -50,26 +48,53 @@ public class NurarihyonBulletCon : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0;i< 3; i++)
             {
-                nurarihyonPushBulletCon.PresenceOfEvil(firePoint[2], firePoint[3], bullets[5], bulletSpeed[0]);
+                nurarihyonPushBulletCon.theHoming(bullets[8], NewPoint);
                 yield return new WaitForSeconds(0.5f);
+            }
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
+            for (int i = 0; i < 10; i++) 
+            {
+                StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return null;
+            for (int i = 0; i < 10; i++)
+            {  
+                nurarihyonPushBulletCon.PresenceOfEvil(firePoint[2], firePoint[3], bullets[5], bulletSpeed[0]);
+                nurarihyonPushBulletCon.AllRange(bullets[0], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.5f);
+            }
+           
+            for (int i = 0; i < 3; i++)
+            {
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], radius);
+                yield return new WaitForSeconds(2.0f);
             }
             for (int i = 0; i < 15; i++)
             {
                 nurarihyonPushBulletCon.AllRange(bullets[0], bulletSpeed[0]);
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(0.45f);
                 nurarihyonPushBulletCon.ReAllRange(bullets[4], bulletSpeed[0]);
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(0.45f);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
-                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], radius);
-                yield return new WaitForSeconds(1.0f);
+                for (int j = 0; j < 2; j++)
+                {
+                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 40f, 10);
+                    yield return new WaitForSeconds(0.15f);
+                }
+                yield return new WaitForSeconds(0.25f);
             }
             for (int i = 0;i < 5; i++)
             {
-                nurarihyonPushBulletCon.AllBullet(bullets[0], bulletSpeed[0], numberOfBullet[0]);
+                for(int j = 0; j < 6; j++)
+                {
+                    nurarihyonPushBulletCon.AllBullet(bullets[0], bulletSpeed[0], numberOfBullet[1]);
+                    yield return new WaitForSeconds(0.1f);
+                }
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.5f);
@@ -86,7 +111,8 @@ public class NurarihyonBulletCon : MonoBehaviour
                 nurarihyonPushBulletCon.Reflect(bullets[1], bulletSpeed[0], numberOfBullet[1], 4);
                 yield return new WaitForSeconds(0.5f);
             }
-            nurarihyonPushBulletCon.SpawnCircle(bullets[2],firePoint);
+            nurarihyonPushBulletCon.SpawnCircle(bullets[2], firePoint);
+            yield return new WaitForSeconds(1.0f);
             for(int i = 0; i < 14; i++)
             {
                 for(int j = 0; j < 2;j++)
@@ -97,17 +123,16 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
             
-            for(int i = 0;i < 5; i++)
+            for (int i = 0;i < 5; i++)
             {
                 for(int j = 0;j < 2; j++)
                 {
-                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 40f, 10);
+                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0],100f, 15);
                     yield return new WaitForSeconds(0.25f);
                 }
                 
                 yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(0.5f);
             yield return null;
         }
     }

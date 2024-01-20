@@ -59,7 +59,7 @@ public class CircleBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if(destroyTimer >= 5f)
+        if(destroyTimer >= 4f)
         {
             Destroy(this.gameObject);
         }

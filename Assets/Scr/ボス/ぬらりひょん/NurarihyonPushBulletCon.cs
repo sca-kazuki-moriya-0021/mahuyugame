@@ -120,7 +120,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
     private void Range(Vector2 direction, bool isReversed, GameObject bulletPrefab, float bulletSpeed)
     {
         Vector3 spawnPosition = transform.position;
-        float[] angles = isReversed ? new float[] { 0f,50f,-50f, 45f, -45f, 40f, -40f, 35f, -35f, 5f, -5f, 10f, -10f } : new float[] {-15f, -12f, -9f, -6f, -3f, 0f, 3f, 6f, 9f, 12f, 15f };
+        float[] angles = isReversed ? new float[] { 0f,50f,-50f, 45f, -45f, 40f, -40f, 35f, -35f, 5f, -5f, 10f, -10f, } : new float[] {-15f, -12f, -9f, -6f, -3f, 0f, 3f, 6f, 9f, 12f, 15f , 125f, -125 ,150f,-150f,175f,-175f};
         foreach (float angle in angles)
         {
             GameObject bullet = Instantiate(isReversed ? bulletPrefab : bulletPrefab, spawnPosition, Quaternion.identity);
@@ -143,7 +143,25 @@ public class NurarihyonPushBulletCon : MonoBehaviour
                 Vector3 spawnposition = spawnPoint.position + new Vector3(x,y,0);
                 GameObject bullet = Instantiate(bulletPrefab,spawnposition,Quaternion.identity);
                 CircleBullet circle = bullet.GetComponent<CircleBullet>();
-                circle.SetDirection(Quaternion.Euler(0, 0, angle) * Vector2.right);
+                circle.SetDirection(Quaternion.Euler(0, 0, angle) * Vector2.left);
+            }
+        }
+    }
+
+    public void theHoming(GameObject bulletPrefab, Transform[] bulletSpawnPoints)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            float angle = i * (360 / 4);
+            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * 0.5f;
+            float y = Mathf.Sin(Mathf.Deg2Rad * angle) * 0.5f;
+
+            foreach (var spawnPoint in bulletSpawnPoints)
+            {
+                Vector3 spawnposition = spawnPoint.position + new Vector3(x, y, 0);
+                GameObject bullet = Instantiate(bulletPrefab, spawnposition, Quaternion.identity);
+                NewHoming circle = bullet.GetComponent<NewHoming>();
+                circle.IsMove = true;
             }
         }
     }
@@ -187,5 +205,48 @@ public class NurarihyonPushBulletCon : MonoBehaviour
         // â∫ÇÃbulletÇê∂ê¨ÇµÇƒë¨ìxÇê›íË
         GameObject lowerBullet = Instantiate(bulletPrefab, lowerFirepoint.position, Quaternion.identity);
         lowerBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, -Time.deltaTime);
+    }
+
+    public void CounterAttack(GameObject bulletPrefab,Transform centerPoint,int numberOfBullet,float radius,float rotationSpeed)
+    {
+        for (int i = 0; i < numberOfBullet; i++)
+        {
+            float angle = i * (360f / numberOfBullet);
+            Vector3 spanwPosition = GetCirclePosition(centerPoint.position,angle,radius);
+            GameObject bullet = Instantiate(bulletPrefab,spanwPosition,Quaternion.identity);
+            bullet.transform.parent = centerPoint;
+        }
+        StartCoroutine(RotateBullets(centerPoint, rotationSpeed));
+    }
+
+    Vector3 GetCirclePosition(Vector3 center, float angle,float radius)
+    {
+        float x = center.x + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+        float y = center.y + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
+        return new Vector3(x, y, center.z);
+    }
+
+    IEnumerator RotateBullets(Transform centerPoint,float rotationSpeed)
+    {
+        while (true)
+        {
+            foreach (Transform bulletTransform in centerPoint)
+            {
+                bulletTransform.RotateAround(centerPoint.position, Vector3.forward, rotationSpeed * Time.deltaTime);
+            }
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator ShootHomingBullet(Transform[] firePoints, GameObject homingBullet)
+    {
+        for (int i = 0; i < firePoints.Length; i++)
+        {
+            GameObject bullet = Instantiate(homingBullet, firePoints[i].position, Quaternion.identity);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return null;
     }
 }
