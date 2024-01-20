@@ -153,7 +153,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6399580715944071586}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6399580715127631708
 GameObject:
@@ -186,7 +186,7 @@ Transform:
   - {fileID: 5013171072278476784}
   - {fileID: 3603823006587648065}
   m_Father: {fileID: 6399580715944071586}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6399580715127631710
 MonoBehaviour:
@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6399580715944071586}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6399580715835281263
 SpriteRenderer:
@@ -433,6 +433,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
+  - {fileID: 2416298019477192692}
   - {fileID: 7572922528604598101}
   - {fileID: 6399580715835281261}
   - {fileID: 6399580715127631709}
@@ -777,6 +778,7 @@ GameObject:
   - component: {fileID: 5568593322661913650}
   - component: {fileID: 2717207796534221052}
   - component: {fileID: 4908588441602728491}
+  - component: {fileID: 237422470916532741}
   m_Layer: 0
   m_Name: Spine GameObject (syuzinko_SD_anime)
   m_TagString: Untagged
@@ -796,7 +798,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children: []
   m_Father: {fileID: 6399580715944071586}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5568593322661913650
 MeshFilter:
@@ -845,7 +847,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4908588441602728491
 MonoBehaviour:
@@ -887,3 +889,147 @@ MonoBehaviour:
   _animationName: uku
   loop: 1
   timeScale: 1
+--- !u!114 &237422470916532741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6595368748483567299}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 
+  m_ShapePath:
+  - {x: -1.1, y: -5.92, z: 0}
+  - {x: 0, y: -4.86, z: 0}
+  - {x: 0.28, y: -4.62, z: 0}
+  - {x: 0.49, y: -3.93, z: 0}
+  - {x: 0.91, y: -4.36, z: 0}
+  - {x: 1.4, y: -4.02, z: 0}
+  - {x: 1.72, y: -4.13, z: 0}
+  - {x: 2.13, y: -4.13, z: 0}
+  - {x: 2.52, y: -3.93, z: 0}
+  - {x: 2.73, y: -3.76, z: 0}
+  - {x: 2.4, y: -2.38, z: 0}
+  - {x: 2.74, y: -2.39, z: 0}
+  - {x: 2.84, y: -2.09, z: 0}
+  - {x: 2.3, y: -1.04, z: 0}
+  - {x: 1.86, y: -0.15, z: 0}
+  - {x: 1.53, y: 0.74, z: 0}
+  - {x: 1.31, y: 1.48, z: 0}
+  - {x: 2.03, y: 1.68, z: 0}
+  - {x: 2.52, y: 2.39, z: 0}
+  - {x: 2.91, y: 3.35, z: 0}
+  - {x: 3.01, y: 4.3, z: 0}
+  - {x: 2.94, y: 5.28, z: 0}
+  - {x: 2.45, y: 6.4, z: 0}
+  - {x: 1.26, y: 7.09, z: 0}
+  - {x: 0.23, y: 7.3, z: 0}
+  - {x: -0.98, y: 7.07, z: 0}
+  - {x: -1.93, y: 6.24, z: 0}
+  - {x: -2.56, y: 4.68, z: 0}
+  - {x: -2.59, y: 3.58, z: 0}
+  - {x: -2.15, y: 2.61, z: 0}
+  - {x: -1.8, y: 2.05, z: 0}
+  - {x: -1.06, y: 1.75, z: 0}
+  - {x: -1.79, y: 0.64, z: 0}
+  - {x: -3.34, y: -0.79, z: 0}
+  - {x: -3.43, y: -1.23, z: 0}
+  - {x: -3.19, y: -1.37, z: 0}
+  - {x: -2.88, y: -1.41, z: 0}
+  - {x: -3.6, y: -2.44, z: 0}
+  - {x: -3.24, y: -2.87, z: 0}
+  - {x: -3.26, y: -3.37, z: 0}
+  - {x: -2.94, y: -3.61, z: 0}
+  - {x: -2.56, y: -3.77, z: 0}
+  - {x: -2.16, y: -3.8, z: 0}
+  - {x: -1.45, y: -3.65, z: 0}
+  - {x: -1.56, y: -4.38, z: 0}
+  - {x: -1.91, y: -5.58, z: 0}
+  - {x: -2.17, y: -6.54, z: 0}
+  - {x: -1.89, y: -6.85, z: 0}
+  - {x: -1.3, y: -6.99, z: 0}
+  - {x: -1.26, y: -6.43, z: 0}
+  m_ShapePathHash: 987858489
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -35026
+--- !u!1 &6836313933259507719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2416298019477192692}
+  - component: {fileID: 516367956544753081}
+  m_Layer: 0
+  m_Name: PlayerPointLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2416298019477192692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836313933259507719}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 0}
+  m_Children: []
+  m_Father: {fileID: 6399580715944071586}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516367956544753081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836313933259507719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 1
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
