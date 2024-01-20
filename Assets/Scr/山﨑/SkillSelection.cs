@@ -13,6 +13,7 @@ public class SkillSelection : MonoBehaviour
 {
 
     [SerializeField] Button button;//最初に選択中にするボタン
+    //private Button barrageButton;
     [SerializeField] GameObject goStageButton;
     [SerializeField] GameObject barregeCanvas;//次に出すキャンバス
     [SerializeField] Canvas skillIconCanvas;//スキルアイコンキャンバス
@@ -505,12 +506,16 @@ public class SkillSelection : MonoBehaviour
             skillParticle1[i].Stop();
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
+            
+            if (totalGM.PlayerSubWeapon[i])
+            {
+                goStageButton.SetActive(true);
+            }
         }
         Particle.Stop();
         Particle1.Stop();
         //this.gameObject.SetActive(false);
-        barrageButton1.Select();
-        goStageButton.SetActive(true);
+        
         backSkillButton.SetActive(true);
         //skillExplanation.SetActive(true);
     }
