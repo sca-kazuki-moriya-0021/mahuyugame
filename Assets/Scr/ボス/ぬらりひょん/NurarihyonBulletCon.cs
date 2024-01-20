@@ -50,12 +50,24 @@ public class NurarihyonBulletCon : MonoBehaviour
     {
         while (true)
         {
+            for (int i = 0; i < 10; i++)
+            {
+                nurarihyonPushBulletCon.PresenceOfEvil(firePoint[2], firePoint[3], bullets[5], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.5f);
+            }
+            for (int i = 0; i < 15; i++)
+            {
+                nurarihyonPushBulletCon.AllRange(bullets[0], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.25f);
+                nurarihyonPushBulletCon.ReAllRange(bullets[4], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.25f);
+            }
             for (int i = 0; i < 5; i++)
             {
-                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[0], bulletSpeed[0], radius);
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], radius);
                 yield return new WaitForSeconds(1.0f);
             }
-            for (int i = 0;i < 2; i++)
+            for (int i = 0;i < 5; i++)
             {
                 nurarihyonPushBulletCon.AllBullet(bullets[0], bulletSpeed[0], numberOfBullet[0]);
                 yield return new WaitForSeconds(0.1f);
@@ -85,11 +97,11 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
             
-            for(int i = 0;i < 30; i++)
+            for(int i = 0;i < 5; i++)
             {
                 for(int j = 0;j < 2; j++)
                 {
-                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 30f, 5);
+                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 40f, 10);
                     yield return new WaitForSeconds(0.25f);
                 }
                 

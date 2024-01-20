@@ -120,7 +120,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
     private void Range(Vector2 direction, bool isReversed, GameObject bulletPrefab, float bulletSpeed)
     {
         Vector3 spawnPosition = transform.position;
-        float[] angles = isReversed ? new float[] { 0f, 45f, -45f, 40f, -40f } : new float[] { -20f, -15f, -10f, -5f, 0f, 5f, 10f, 15f, 20f, 25f };
+        float[] angles = isReversed ? new float[] { 0f,50f,-50f, 45f, -45f, 40f, -40f, 35f, -35f, 5f, -5f, 10f, -10f } : new float[] {-15f, -12f, -9f, -6f, -3f, 0f, 3f, 6f, 9f, 12f, 15f };
         foreach (float angle in angles)
         {
             GameObject bullet = Instantiate(isReversed ? bulletPrefab : bulletPrefab, spawnPosition, Quaternion.identity);
@@ -129,16 +129,6 @@ public class NurarihyonPushBulletCon : MonoBehaviour
             rb.velocity = bulletDirection * bulletSpeed;
         }
     }
-    //いったん修正する
-    //public void RotateBullet(GameObject bulletPrefab,float bulletSpeed)
-    //{
-    //    Vector3 spawnPosition = transform.position;
-    //    GameObject bullet = Instantiate(bulletPrefab,spawnPosition,Quaternion.identity);
-    //    nurarihyonBullet.Homing.Add(bullet);
-    //    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-    //    Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
-    //    rb.velocity = direction * bulletSpeed;
-    //}
 
     public void SpawnCircle(GameObject bulletPrefab, Transform[] bulletSpawnPoints)
     {
@@ -181,5 +171,21 @@ public class NurarihyonPushBulletCon : MonoBehaviour
         {
             Debug.LogWarning("Player not assigned for shooting bullets.");
         }
+    }
+
+    public void PresenceOfEvil(Transform upperFirepoint,Transform lowerFirepoint, GameObject bulletPrefab,float bulletSpeed)
+    {
+        upperFirepoint.position = new Vector3(upperFirepoint.position.x, Random.Range(2.43f, 0.24f), upperFirepoint.position.z);
+
+        // 下のfirepointをランダムなY座標に移動
+        lowerFirepoint.position = new Vector3(lowerFirepoint.position.x, Random.Range(-4.54f, -2.38f), lowerFirepoint.position.z);
+
+        // 上のbulletを生成して速度を設定
+        GameObject upperBullet = Instantiate(bulletPrefab, upperFirepoint.position, Quaternion.identity);
+        upperBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, Time.deltaTime);
+
+        // 下のbulletを生成して速度を設定
+        GameObject lowerBullet = Instantiate(bulletPrefab, lowerFirepoint.position, Quaternion.identity);
+        lowerBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, -Time.deltaTime);
     }
 }
