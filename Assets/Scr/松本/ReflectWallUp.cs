@@ -43,7 +43,7 @@ public class ReflectWallUp : MonoBehaviour
         var inNormal = transform.up;
         var result = Vector2.Reflect(inDirection,inNormal);
 
-        rb.velocity = result;
+        rb.velocity = result * 0.9f;
 
         BulletCon ballCountScript = bullet.GetComponent<BulletCon>();
         if (ballCountScript != null)
@@ -60,25 +60,28 @@ public class ReflectWallUp : MonoBehaviour
 
     private void ApolloReflector(GameObject bullet)
     {
+        BulletCon ballCountScript = bullet.GetComponent<BulletCon>();
+        if (ballCountScript != null)
+        {
+            ballCountScript.IncrementCount();
+            if (ballCountScript.GetCount() >= 5)
+            {
+                Destroy(bullet);
+            }
+        }
         var rb = bullet.GetComponent<Rigidbody2D>();
         if (rb == null) return;
 
         var inDirection = rb.velocity;
         var inNormal = transform.up;
         var result = Vector2.Reflect(inDirection, inNormal);
-
-        rb.velocity = result * 1.5f;
-
-        BulletCon ballCountScript = bullet.GetComponent<BulletCon>();
-        if (ballCountScript != null)
+        if ((ballCountScript.GetCount() > 2))
         {
-            ballCountScript.IncrementCount();
-
-
-            if (ballCountScript.GetCount() >= 5)
-            {
-                Destroy(bullet);
-            }
+            rb.velocity = result * 1.5f;
+        }
+        else
+        {
+            rb.velocity = result;
         }
     }
 }
