@@ -57,6 +57,12 @@ public class BarrageSelect : MonoBehaviour
     [Tooltip("下を円状に回る")]
     private ParticleSystem[] barrageParticle1;
     [SerializeField] private GameObject tileButton;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem Particle;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem Particle1;
 
     private void Awake()
     {
@@ -384,6 +390,8 @@ public class BarrageSelect : MonoBehaviour
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
         }
+        Particle.Stop();
+        Particle1.Stop();
         //this.gameObject.SetActive(false);
         goStageButton.SetActive(false);
         skillButton1.Select();

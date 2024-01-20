@@ -14,6 +14,12 @@ public class BarrageEffect : MonoBehaviour
     [SerializeField]
     [Tooltip("下を円状に回る")]
     private ParticleSystem[] particle1;
+    [SerializeField]
+    [Tooltip("球体のパーティクル")]
+    private ParticleSystem particle2;
+    [SerializeField]
+    [Tooltip("下を円状に回る")]
+    private ParticleSystem particle3;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +42,8 @@ public class BarrageEffect : MonoBehaviour
             particle[i].Play();
             particle1[i].Play();
         }
+        particle2.Play();
+        particle3.Play();
         amount =1;
         DOTween.To(
             () => amount,
@@ -52,6 +60,8 @@ public class BarrageEffect : MonoBehaviour
         {
             particle1[i].Play();
         }
+        particle2.Play();
+        particle3.Play();
         amount =0;
         DOTween.To(
             () => amount,
