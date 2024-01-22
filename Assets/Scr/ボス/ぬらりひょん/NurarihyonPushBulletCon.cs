@@ -185,10 +185,6 @@ public class NurarihyonPushBulletCon : MonoBehaviour
                 bulletRb.velocity = direction * bulletSpeed;
             }
         }
-        else
-        {
-            Debug.LogWarning("Player not assigned for shooting bullets.");
-        }
     }
 
     public void PresenceOfEvil(Transform upperFirepoint,Transform lowerFirepoint, GameObject bulletPrefab,float bulletSpeed)
@@ -248,5 +244,92 @@ public class NurarihyonPushBulletCon : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         yield return null;
+    }
+
+    public void ClockBullet(GameObject bulletPrefab, float bulletSpeed)
+    {
+        Shoot(Vector2.right, bulletPrefab, bulletSpeed);
+        Shoot(Vector2.left, bulletPrefab, bulletSpeed);
+        Shoot(Vector2.up, bulletPrefab, bulletSpeed);
+        Shoot(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    public void ClockBullet45(GameObject bulletPrefab, float bulletSpeed)
+    {
+        Shoot45(Vector2.right, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.left, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.up, bulletPrefab, bulletSpeed);
+        Shoot45(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    public void reClockBullet(GameObject bulletPrefab, float bulletSpeed)
+    {
+        ShootReversed(Vector2.right, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.left, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.up, bulletPrefab, bulletSpeed);
+        ShootReversed(Vector2.down, bulletPrefab, bulletSpeed);
+    }
+
+    private void Shoot(Vector2 direction, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
+    }
+
+    private void Shoot45(Vector2 direction, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 45) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
+    }
+
+    private void ShootReversed(Vector2 direction, GameObject bulletPrefab, float bulletSpeed)
+    {
+        Vector3 spawnPosition = transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+
+        Vector2 bulletDirection = Quaternion.Euler(0, 0, -transform.rotation.eulerAngles.z) * direction;
+        rb.velocity = bulletDirection * bulletSpeed;
+    }
+
+    public void ShootBullets(int numberOfBullets, GameObject bulletPrefab, float bulletSpeed, float spiralDistance, float spiralRotationSpeed)
+    {
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            float angle = i * (360f / numberOfBullets);
+
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+
+            StartCoroutine(SpiralMotion(bulletRigidbody, direction, bulletSpeed, spiralDistance, spiralRotationSpeed));
+        }
+    }
+
+    private IEnumerator SpiralMotion(Rigidbody2D bulletRigidbody, Vector3 initialDirection, float bulletSpeed, float spiralDistance, float spiralRotationSpeed)
+    {
+        float distanceTraveled = 0f;
+        Vector3 startPosition = bulletRigidbody.position;
+        float rotationDirection = (nurarihyonBullet.ShotCount % 2 == 0) ? 1 : -1;
+
+        while (distanceTraveled < spiralDistance)
+        {
+            float angle = distanceTraveled * rotationDirection * spiralRotationSpeed / spiralDistance;
+
+            Vector3 spiralMotion = Quaternion.Euler(0, 0, angle) * initialDirection;
+            bulletRigidbody.velocity = spiralMotion * bulletSpeed;
+
+            distanceTraveled = Vector3.Distance(bulletRigidbody.position, startPosition);
+
+            yield return null;
+        }
     }
 }

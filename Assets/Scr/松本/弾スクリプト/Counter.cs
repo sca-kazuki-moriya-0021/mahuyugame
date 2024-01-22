@@ -7,7 +7,7 @@ public class Counter : MonoBehaviour
     [SerializeField]
     GameObject bulletPrefab;
     private float Speed = 3f;
-    private int numberOfBullets = 30;
+    private int numberOfBullets = 6;
     private Player player;
     private float destroyTimer;
     void Start()
