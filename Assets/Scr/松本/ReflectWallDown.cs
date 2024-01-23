@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReflectWallUp : MonoBehaviour
+public class ReflectWallDown : MonoBehaviour
 {
     [SerializeField]
     string bulletTag1 = "ReflectBullet";
@@ -22,7 +22,7 @@ public class ReflectWallUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,6 +37,7 @@ public class ReflectWallUp : MonoBehaviour
             Vector3 spawnPosition = collision.transform.position;
             ApolloReflector(collision.gameObject);
         }
+
         if (collision.CompareTag(bulletTag3))
         {
             Vector3 spawnPosition = collision.transform.position;
@@ -49,11 +50,11 @@ public class ReflectWallUp : MonoBehaviour
     {
         Debug.Log("a");
         var rb = bullet.GetComponent<Rigidbody2D>();
-        if(rb == null)return;
+        if (rb == null) return;
 
         var inDirection = rb.velocity;
         var inNormal = transform.up;
-        var result = Vector2.Reflect(inDirection,inNormal);
+        var result = Vector2.Reflect(inDirection, inNormal);
 
         rb.velocity = result * 0.9f;
 
@@ -62,7 +63,7 @@ public class ReflectWallUp : MonoBehaviour
         {
             ballCountScript.IncrementCount();
 
-            
+
             if (ballCountScript.GetCount() >= 5)
             {
                 Destroy(bullet);
@@ -104,7 +105,7 @@ public class ReflectWallUp : MonoBehaviour
         for (int i = 0; i < 13; i++)
         {
             float angle = startAngle + i * (180f / (13 - 1)); // ”¼‰~‚É•ÏX
-            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.left;
             Rigidbody2D bulletRigidbody = Instantiate(Bullets, position, Quaternion.identity).GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = direction * 2f;
         }
