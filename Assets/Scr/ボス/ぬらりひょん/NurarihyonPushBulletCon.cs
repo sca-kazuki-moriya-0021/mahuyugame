@@ -307,7 +307,8 @@ public class NurarihyonPushBulletCon : MonoBehaviour
             float angle = i * (360f / numberOfBullets);
 
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Vector3 spawnPosition = transform.position + direction * 0.5f;
+            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
             StartCoroutine(SpiralMotion(bulletRigidbody, direction, bulletSpeed, spiralDistance, spiralRotationSpeed));
@@ -331,5 +332,44 @@ public class NurarihyonPushBulletCon : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void A(GameObject bulletPrefab, float bulletSpeed, int numberOfBullets, Transform[] bulletSpawnPoints, Transform player, float spreadAngle)
+    {
+        foreach (var spawnPoint in bulletSpawnPoints)
+        {
+            float startAngle = -360f / 2f;
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                float angle = startAngle + i * (360f / numberOfBullets);
+                Vector3 direction = Quaternion.Euler(0f, 0f, angle) * Vector3.up;
+                Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = direction * bulletSpeed;
+            }
+        }
+        StartCoroutine(B(player,bulletPrefab,bulletSpeed,spreadAngle));
+    }
+
+    private IEnumerator B(Transform player, GameObject bulletPrefab, float bulletSpeed, float spreadAngle)
+    {
+        if (player != null)
+        {
+            Vector2 playerDirection = (player.position - transform.position).normalized;
+
+            float startAngle = -spreadAngle / 2f;
+            float angleStep = spreadAngle / (float)(6 - 1);
+
+            for (int i = 0; i < 6; i++)
+            {
+                float angle = startAngle + i * angleStep;
+                Vector2 direction = Quaternion.Euler(0f, 0f, angle) * playerDirection;
+
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+                bulletRb.velocity = direction * bulletSpeed;
+            }
+        }
+        yield return null;
     }
 }

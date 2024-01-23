@@ -8,10 +8,13 @@ public class ReflectWallUp : MonoBehaviour
     string bulletTag1 = "ReflectBullet";
     [SerializeField]
     string bulletTag2 = "ApolloReflector";
+    [SerializeField]
+    GameObject Bullets;
+    private NurarihyonPushBulletCon nurarihyonPushBulletCon;
     // Start is called before the first frame update
     void Start()
     {
-        
+        nurarihyonPushBulletCon = FindObjectOfType<NurarihyonPushBulletCon>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,9 @@ public class ReflectWallUp : MonoBehaviour
 
         if (collision.CompareTag(bulletTag2))
         {
+            Vector3 spawnPosition = collision.transform.position;
             ApolloReflector(collision.gameObject);
+            BulletSpawn(spawnPosition);
         }
     }
 
@@ -82,6 +87,19 @@ public class ReflectWallUp : MonoBehaviour
         else
         {
             rb.velocity = result;
+        }
+    }
+
+    private void BulletSpawn(Vector3 position)
+    {
+        float startAngle = -180f; // îºâ~Ç…ïœçX
+
+        for (int i = 0; i < 13; i++)
+        {
+            float angle = startAngle + i * (180f / (13 - 1)); // îºâ~Ç…ïœçX
+            Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.down;
+            Rigidbody2D bulletRigidbody = Instantiate(Bullets, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            bulletRigidbody.velocity = direction * 2f;
         }
     }
 }
