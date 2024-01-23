@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GameOverChara
-  m_Shader: {fileID: -6465566751694194690, guid: 7ce074c6d1a23784b9c2a92dfcfb35d5, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d733e5d65b5e4b746bbbcfbccbac2840, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3df5dd2850eb4473bc5ac4c112e1cc28:
+        m_Texture: {fileID: 2800000, guid: 4488280cc5755f142b53c0d593cfddb1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AlphaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,10 +56,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_73d25596d19b40ce81d33d4639a55bb9: 5
+    - Vector1_73d25596d19b40ce81d33d4639a55bb9: 0.1
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Vector2_239cacb3fd5243568b74e07857c64448: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_239cacb3fd5243568b74e07857c64448: {r: 0.1, g: 0, b: 0, a: 0}
     - Vector2_66c9f050f88744b3bd3f72f6ed4edc1d: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
