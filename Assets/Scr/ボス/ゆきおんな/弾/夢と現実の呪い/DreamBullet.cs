@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class DreamBullet : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +18,12 @@ public class DreamBullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerLight"))
+            spriteRenderer.color = new Color(255,255,255,255);
     }
 
     void OnBecameInvisible()

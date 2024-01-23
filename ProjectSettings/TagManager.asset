@@ -24,7 +24,11 @@ TagManager:
   - BossTargetBullet
   - ReflectBullet
   - ApolloReflector
+<<<<<<< HEAD
   - Proliferation
+=======
+  - PlayerLight
+>>>>>>> 修正
   layers:
   - Default
   - TransparentFX
