@@ -164,7 +164,7 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new WaitForSeconds(2f - i* 0.1f);
         }*/
 
-        for(int i = 0; i< 10; i++)
+        for(int i = 0; i< 15; i++)
         {
             pushBulletCon.DreamRealityShoot(bullets[5],transform.position);
             yield return new  WaitForSeconds(2f);
