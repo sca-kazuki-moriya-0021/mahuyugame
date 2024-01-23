@@ -58,6 +58,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
 
     public void ApolloReflector(GameObject bulletPrefab,int numberOfBullets,float bulletSpeed,float radius)
     {
+        var r = new Vector3(0, -0.5f, 0);
         float startAngle = -360 / 2;
         for(int i = 0;i < numberOfBullets; i++)
         {
@@ -65,7 +66,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
 
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
             //Vector3 spawnPosition = transform.position + direction * radius; // ’†S‚©‚ç•ûŒü‚É1‚Ì‹——£‚¾‚¯‚¸‚ç‚·
-            Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, r, Quaternion.identity).GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = direction * bulletSpeed;
         }
     }
