@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    private float limit = 20;
+    private float limit = 10;
     private float period = 2;
     private bool isHomingMove = true;
 
@@ -40,10 +40,5 @@ public class HomingBullet : MonoBehaviour
             period -= Time.deltaTime;
             rb.velocity += acceleration * Time.deltaTime;
         }
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
     }
 }

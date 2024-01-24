@@ -5,7 +5,7 @@ using UnityEngine;
 public class NurarihyonPushBulletCon : MonoBehaviour
 {
     private NurarihyonBulletCon nurarihyonBullet;
-
+    private bool isMove = false;
     private Vector2 direction;
     private void Start()
     {
@@ -56,9 +56,18 @@ public class NurarihyonPushBulletCon : MonoBehaviour
         }
     }
 
-    public void ApolloReflector(GameObject bulletPrefab,int numberOfBullets,float bulletSpeed,float radius)
+    public void ApolloReflector(GameObject bulletPrefab,int numberOfBullets,float bulletSpeed,int id)
     {
-        var r = new Vector3(0, -0.5f, 0);
+        var r = new Vector3(0, 0, 0);
+        switch (id)
+        {
+            case 0:
+                r = new Vector3(0, -0.5f, 0);
+                break;
+            case 1:
+                r = transform.position;
+                break;
+        }
         float startAngle = -360 / 2;
         for(int i = 0;i < numberOfBullets; i++)
         {
@@ -192,14 +201,11 @@ public class NurarihyonPushBulletCon : MonoBehaviour
     {
         upperFirepoint.position = new Vector3(upperFirepoint.position.x, Random.Range(2.43f, 0.24f), upperFirepoint.position.z);
 
-        // 下のfirepointをランダムなY座標に移動
         lowerFirepoint.position = new Vector3(lowerFirepoint.position.x, Random.Range(-4.54f, -2.38f), lowerFirepoint.position.z);
 
-        // 上のbulletを生成して速度を設定
         GameObject upperBullet = Instantiate(bulletPrefab, upperFirepoint.position, Quaternion.identity);
         upperBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, Time.deltaTime);
 
-        // 下のbulletを生成して速度を設定
         GameObject lowerBullet = Instantiate(bulletPrefab, lowerFirepoint.position, Quaternion.identity);
         lowerBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed, -Time.deltaTime);
     }
@@ -372,5 +378,35 @@ public class NurarihyonPushBulletCon : MonoBehaviour
             }
         }
         yield return null;
+    }
+
+    public void RotaHoming(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
+    {
+        isMove = false;
+        StartCoroutine(C(bulletPrefab, centerPoint, numberOfBullet, radius, duration));
+    }
+
+    private IEnumerator C(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
+    {
+        for (int i = 0; i < numberOfBullet; i++)
+        {
+            float angle = i * (360f / numberOfBullet);
+            Vector3 spawnPosition = GetCirclePosition(centerPoint.position, angle, radius);
+            GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+
+            nurarihyonBullet.Bullet.Add(bullet);
+
+            // 少し待機してから次の弾を生成
+            yield return new WaitForSeconds(duration / numberOfBullet);
+        }
+
+        isMove = true;
+        foreach (var bullet in nurarihyonBullet.Bullet)
+        {
+            if (bullet != null)
+            {
+                bullet.GetComponent<NewHoming>().IsMove = isMove;
+            }
+        }
     }
 }
