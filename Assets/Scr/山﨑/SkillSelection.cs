@@ -74,6 +74,12 @@ public class SkillSelection : MonoBehaviour
     [Tooltip("â∫Çâ~èÛÇ…âÒÇÈ")]
     private ParticleSystem Particle1;
     bool check;
+    [SerializeField] BarrageSelect barrageSelect;
+
+    public Button[] SkillButtonIcon
+    {
+        get { return this.skill; }
+    }
 
     private void Awake()
     {
@@ -506,17 +512,18 @@ public class SkillSelection : MonoBehaviour
             skillParticle1[i].Stop();
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
-            
-            if (totalGM.PlayerSubWeapon[i])
+            if(totalGM.PlayerWeapon[i])
             {
-                goStageButton.SetActive(true);
+                barrageSelect.BarrageButton[i].Select();
             }
+        }
+        if(barrageSelect.BarrageCount==2)
+        {
+            goStageButton.SetActive(true);
         }
         Particle.Stop();
         Particle1.Stop();
-        //this.gameObject.SetActive(false);
-        
         backSkillButton.SetActive(true);
-        //skillExplanation.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

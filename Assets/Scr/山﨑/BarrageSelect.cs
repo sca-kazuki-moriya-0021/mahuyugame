@@ -37,13 +37,12 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] private Canvas barrageEffect;
     [SerializeField] PlayableDirector playableDirector;
     [SerializeField] PlayableAsset barrageTimeLine;
-    //[SerializeField] private GameObject backSkillButton;
     [SerializeField] private Canvas skillIconCanvas;
     [SerializeField] private Canvas barrageIconCanvas;
     [SerializeField] private GameObject barrageButtonCanvas;
     [SerializeField] private GameObject skillButtonCanvas;
-    [SerializeField] private Button skillButton1;
     [SerializeField] private GameObject goBarrage;
+    [SerializeField] private SkillSelection skillSelection;
     [SerializeField]
     [Tooltip("球体のパーティクル")]
     private ParticleSystem[] skillParticle;
@@ -63,6 +62,15 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField]
     [Tooltip("下を円状に回る")]
     private ParticleSystem Particle1;
+
+    public int BarrageCount
+    {
+        get { return this.barrageCount; }
+    }
+    public Button[] BarrageButton
+    {
+        get { return this.barrage; }
+    }
 
     private void Awake()
     {
@@ -394,8 +402,8 @@ public class BarrageSelect : MonoBehaviour
         Particle1.Stop();
         //this.gameObject.SetActive(false);
         goStageButton.SetActive(false);
-        skillButton1.Select();
         tileButton.SetActive(true);
         goBarrage.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }
