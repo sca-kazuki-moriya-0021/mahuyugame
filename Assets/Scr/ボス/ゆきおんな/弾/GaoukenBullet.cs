@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GaoukenBullet : MonoBehaviour
 {
-    [SerializeField]
     private Player player;
 
     private Vector3 dir;
@@ -34,6 +33,7 @@ public class GaoukenBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         rigidbody2D.velocity = dir * speed;
     }
 

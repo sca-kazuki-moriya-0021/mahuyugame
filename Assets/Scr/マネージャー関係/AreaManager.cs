@@ -73,7 +73,6 @@ public class AreaManager : MonoBehaviour
       {
            if(stageChangeFlag == false)
            {
-              Debug.Log("‰¹—Ê“ü‚Á‚½‚æ");
               StartCoroutine(DownVolume());
               stageChangeFlag = true;
            }

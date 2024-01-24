@@ -65,7 +65,7 @@ public class NowLoading : MonoBehaviour
             {
                 case TotalGM.StageCon.First:
                     CleaningUp();
-                    SceneManager.LoadScene("Clear");
+                    SceneManager.LoadScene("SecondStage");
                     break;
                 case TotalGM.StageCon.Secound:
                     CleaningUp();

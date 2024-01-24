@@ -9,21 +9,18 @@ public class DreamBullet : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    [SerializeField]
     private Player player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(player.BulletSeverFlag == true)
-        {
             Destroy(this.gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

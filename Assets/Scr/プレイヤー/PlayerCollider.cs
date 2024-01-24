@@ -81,9 +81,8 @@ public class PlayerCollider : MonoBehaviour
         {
             //体力0のまま、次ステージに移行したら体力1回復する
             if(gm.PlayerHp[0] == 0)
-            {
                 gm.PlayerHp[0]++;
-            }
+
             gm.PlayerHp[1] = gm.PlayerHp[0];
         }
     }

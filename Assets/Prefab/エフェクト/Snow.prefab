@@ -4818,3 +4818,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1363492648936247704}
+  snowBulletCon: {fileID: 0}
+  blizzard: {fileID: 1151880099219823746, guid: a32d3ca4d13000d4a95b5fc3beddd422, type: 3}

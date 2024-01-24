@@ -23,7 +23,6 @@ public class ShuraBullet : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    [SerializeField]
     private Player playerCon;
 
     private bool centerFlag = false;
@@ -39,6 +38,7 @@ public class ShuraBullet : MonoBehaviour
 
         bossPos = boss.transform.position;
         snowFairyBulletCon = FindObjectOfType<SnowFairyBulletCon>();
+        playerCon = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame

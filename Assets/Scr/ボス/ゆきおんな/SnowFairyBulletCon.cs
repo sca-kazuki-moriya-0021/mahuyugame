@@ -92,24 +92,19 @@ public class SnowFairyBulletCon : MonoBehaviour
         if(shuraFlag == true)
             ShuraTimeCount();
 
-        if(time >= 5.0f && testFlag == false)
-        {
-           testFlag = true;
-           blizzardFlag = true;
-        }
     }
 
     private IEnumerator Atk()
     {
 
         audioSource.PlayOneShot(audioClip);
-        /*while (time < 5f)
+        while (time < 5f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
             yield return new WaitForSeconds(fireTime[0]);
-        }*/
+        }
         //count = 0;
         /*while(time < 15f)
         {

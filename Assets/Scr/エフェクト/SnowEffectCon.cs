@@ -9,7 +9,7 @@ public class SnowEffectCon : MonoBehaviour
     private ParticleSystem particleSystem;
 
     [SerializeField]
-    private SnowFairyBulletCon snow;
+    private SnowFairyBulletCon snowBulletCon;
 
     [SerializeField]
     private GameObject blizzard;
@@ -26,7 +26,7 @@ public class SnowEffectCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(snow.BlizzardFlag == true)
+       if(snowBulletCon.BlizzardFlag == true)
             particleSystem.loop = false;
 
        if(stopFlag == true)

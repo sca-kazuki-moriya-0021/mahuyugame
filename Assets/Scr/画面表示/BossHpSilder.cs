@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BossHpSilder : MonoBehaviour
 {
+    [SerializeField]
     private BossCollder bossCollder; 
 
     private double maxHp =0;
@@ -16,7 +17,6 @@ public class BossHpSilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossCollder = FindObjectOfType<BossCollder>();
         maxHp = bossCollder.BossHp;
         hp = maxHp;
         bossHpSilder.value = 1;
