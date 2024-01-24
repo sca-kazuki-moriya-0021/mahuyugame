@@ -6,19 +6,22 @@ using DG.Tweening;
 public class CornerChildBullet : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
-    [SerializeField]
     private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnBecameInvisible()

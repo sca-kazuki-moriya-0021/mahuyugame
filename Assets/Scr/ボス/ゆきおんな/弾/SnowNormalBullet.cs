@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class SnowNormalBullet : MonoBehaviour
 {
-    [SerializeField]
     private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame

@@ -12,7 +12,7 @@ public class GeoglyphBullet : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
-    [SerializeField]
+
     private Player playerCon;
 
     private Rigidbody2D rigidbody2D;
@@ -41,7 +41,8 @@ public class GeoglyphBullet : MonoBehaviour
     {
         spriteRenderer.material.color = new Color(255, 255, 255, 0f);
 
-        rigidbody2D = GetComponent<Rigidbody2D>();    
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        playerCon = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
