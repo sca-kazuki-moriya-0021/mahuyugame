@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pouseCon.MenuFlag == false && nowLoading.FadeOutFlag == false)
+        //if(pouseCon.MenuFlag == false && nowLoading.FadeOutFlag == false)
         {
             //スキル実行
             if (buttonPish && (skillAtkFlag[0] || skillAtkFlag[1]))
@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
     private IEnumerator SkillAtk()
     {
          audioSource.PlayOneShot(audioClips);
-        //スキル1が使われたら
+        //メインスキルが使われたら
         if(jKey)
         {
             jKey = false;
@@ -311,9 +311,9 @@ public class Player : MonoBehaviour
         else
         {
             //スキル発動とスキルカットイン発動
-            for (int i = gm.PlayerSkill.Length -1; i > 0; i--)
+            for (int i = gm.PlayerSubSkill.Length -1; i > 0; i--)
             {
-                if (gm.PlayerSkill[i] == true)
+                if (gm.PlayerSubSkill[i] == true)
                 {
                     switch (i)
                     {

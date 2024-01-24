@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6877360328184477703}
   - component: {fileID: 1258152047926118693}
   - component: {fileID: -8044918401292985255}
+  - component: {fileID: 526026993396588566}
   m_Layer: 0
   m_Name: Homing
   m_TagString: Bullet
@@ -97,9 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3986100d3624947b5020930972ec96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  homingDuration: 0.5
-  targetTag: Player
 --- !u!50 &1258152047926118693
 Rigidbody2D:
   serializedVersion: 4
@@ -137,3 +135,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &526026993396588566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877360328184477702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ec426a92fa2249a78ab6cd1af1e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

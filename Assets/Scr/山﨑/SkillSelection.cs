@@ -74,6 +74,12 @@ public class SkillSelection : MonoBehaviour
     [Tooltip("下を円状に回る")]
     private ParticleSystem Particle1;
     bool check;
+    [SerializeField] BarrageSelect barrageSelect;
+
+    public Button[] SkillButtonIcon
+    {
+        get { return this.skill; }
+    }
 
     private void Awake()
     {
@@ -138,43 +144,36 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_0_Click()
     {
-        if(!skillJ[0]&&!totalGM.PlayerSkill[0] && !skillJK[0])
+        if (!skillJK[0] && !totalGM.PlayerSubSkill[0])
         {
-            skillSelect[0].SetActive(true);
-            skillJ[0] = true;
             skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[0] = true;
+            skillSelect[0].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[0];
-            
         }
-        else if(!skillK[0] && !totalGM.PlayerSkill[0] && !skillJK[1] && skillCount == 1)
+        else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[0] && skillCount == 1)
         {
-            skillSelect[0].SetActive(true);
-            skillK[0] = true;
             skillJK[1] = true;
             skillCount++;
-            totalGM.PlayerSkill[0] = true;
+            totalGM.PlayerSubSkill[0] = true;
+            skillSelect[0].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[0];
-            
         }
-        else if(skillJ[0] && totalGM.PlayerSkill[0])
+        else if (totalGM.PlayerSkill[0])
         {
-            skillSelect[0].SetActive(false);
-            skillJ[0] = false;
             skillJK[0] = false;
-            skillCount--;
-            totalGM.PlayerSkill[0] = false;
-            skillSelectImage[0].sprite = null;
-            
-        }
-        else if (skillK[0] && totalGM.PlayerSkill[0])
-        {
             skillSelect[0].SetActive(false);
-            skillK[0] = false;
-            skillJK[1] = false;
-            skillCount--;
             totalGM.PlayerSkill[0] = false;
+            skillCount--;
+            skillSelectImage[0].sprite = null;
+        }
+        else if (totalGM.PlayerSubSkill[0])
+        {
+            skillJK[1] = false;
+            skillSelect[0].SetActive(false);
+            totalGM.PlayerSubSkill[0] = false;
+            skillCount--;
             skillSelectImage[1].sprite = null;
         }
         GoStage();
@@ -183,40 +182,36 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_1_Click()
     {
-        if (!skillJ[1] && !totalGM.PlayerSkill[1] && !skillJK[0])
+        if (!skillJK[0] && !totalGM.PlayerSubSkill[1])
         {
-            skillSelect[1].SetActive(true);
-            skillJ[1] = true;
             skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[1] = true;
+            skillSelect[1].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[1];
         }
-        else if (!skillK[1] && !totalGM.PlayerSkill[1] && !skillJK[1] && skillCount == 1)
+        else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[1] && skillCount == 1)
         {
-            skillSelect[1].SetActive(true);
-            skillK[1] = true;
             skillJK[1] = true;
             skillCount++;
-            totalGM.PlayerSkill[1] = true;
+            totalGM.PlayerSubSkill[1] = true;
+            skillSelect[1].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[1];
         }
-        else if (skillJ[1] && totalGM.PlayerSkill[1])
+        else if (totalGM.PlayerSkill[1])
         {
-            skillSelect[1].SetActive(false);
-            skillJ[1] = false;
             skillJK[0] = false;
-            skillCount--;
+            skillSelect[1].SetActive(false);
             totalGM.PlayerSkill[1] = false;
+            skillCount--;
             skillSelectImage[0].sprite = null;
         }
-        else if (skillK[1] && totalGM.PlayerSkill[1])
+        else if (totalGM.PlayerSubSkill[1])
         {
-            skillSelect[1].SetActive(false);
-            skillK[1] = false;
             skillJK[1] = false;
+            skillSelect[1].SetActive(false);
+            totalGM.PlayerSubSkill[1] = false;
             skillCount--;
-            totalGM.PlayerSkill[1] = false;
             skillSelectImage[1].sprite = null;
         }
         GoStage();
@@ -227,40 +222,36 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_2_Click()
     {
-        if (!skillJ[2] && !totalGM.PlayerSkill[2] && !skillJK[0])
+        if (!skillJK[0] && !totalGM.PlayerSubSkill[2])
         {
-            skillSelect[2].SetActive(true);
-            skillJ[2] = true;
             skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[2] = true;
+            skillSelect[2].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[2];
         }
-        else if (!skillK[2] && !totalGM.PlayerSkill[2] && !skillJK[1] && skillCount == 1)
+        else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[2] && skillCount == 1)
         {
-            skillSelect[2].SetActive(true);
-            skillK[2] = true;
             skillJK[1] = true;
             skillCount++;
-            totalGM.PlayerSkill[2] = true;
+            totalGM.PlayerSubSkill[2] = true;
+            skillSelect[2].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[2];
         }
-        else if (skillJ[2] && totalGM.PlayerSkill[2])
+        else if (totalGM.PlayerSkill[2])
         {
-            skillSelect[2].SetActive(false);
-            skillJ[2] = false;
             skillJK[0] = false;
-            skillCount--;
+            skillSelect[2].SetActive(false);
             totalGM.PlayerSkill[2] = false;
+            skillCount--;
             skillSelectImage[0].sprite = null;
         }
-        else if (skillK[2] && totalGM.PlayerSkill[2])
+        else if (totalGM.PlayerSubSkill[2])
         {
-            skillSelect[2].SetActive(false);
-            skillK[2] = false;
             skillJK[1] = false;
+            skillSelect[2].SetActive(false);
+            totalGM.PlayerSubSkill[2] = false;
             skillCount--;
-            totalGM.PlayerSkill[2] = false;
             skillSelectImage[1].sprite = null;
         }
         GoStage();
@@ -270,40 +261,36 @@ public class SkillSelection : MonoBehaviour
     //押されたときの処理
     public void Skill_3_Click()
     {
-        if (!skillJ[3] && !totalGM.PlayerSkill[3] && !skillJK[0])
+        if (!skillJK[0] && !totalGM.PlayerSubSkill[3])
         {
-            skillSelect[3].SetActive(true);
-            skillJ[3] = true;
             skillJK[0] = true;
             skillCount++;
             totalGM.PlayerSkill[3] = true;
+            skillSelect[3].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[3];
         }
-        else if (!skillK[3] && !totalGM.PlayerSkill[3] && !skillJK[1] && skillCount == 1)
+        else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[3] && skillCount == 1)
         {
-            skillSelect[3].SetActive(true);
-            skillK[3] = true;
             skillJK[1] = true;
             skillCount++;
-            totalGM.PlayerSkill[3] = true;
+            totalGM.PlayerSubSkill[3] = true;
+            skillSelect[3].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[3];
         }
-        else if (skillJ[3] && totalGM.PlayerSkill[3])
+        else if (totalGM.PlayerSkill[3])
         {
-            skillSelect[3].SetActive(false);
-            skillJ[3] = false;
             skillJK[0] = false;
-            skillCount--;
+            skillSelect[3].SetActive(false);
             totalGM.PlayerSkill[3] = false;
+            skillCount--;
             skillSelectImage[0].sprite = null;
         }
-        else if (skillK[3] && totalGM.PlayerSkill[3])
+        else if (totalGM.PlayerSubSkill[3])
         {
-            skillSelect[3].SetActive(false);
-            skillK[3] = false;
             skillJK[1] = false;
+            skillSelect[3].SetActive(false);
+            totalGM.PlayerSubSkill[3] = false;
             skillCount--;
-            totalGM.PlayerSkill[3] = false;
             skillSelectImage[1].sprite = null;
         }
         GoStage();
@@ -353,30 +340,33 @@ public class SkillSelection : MonoBehaviour
     {
         for (int i = 0; i <= 3; i++)
         {
-            if (totalGM.PlayerSkill[i] && skillCount == 2)
+            if (!totalGM.PlayerSkill[i] && !totalGM.PlayerSubSkill[i] && skillCount == 2)
             {
-                
+                skill[i].enabled = false;//interactableにすると半透明化
+                skillSelect[i].SetActive(true);
+            }
+            else
+            {
                 skill[i].enabled = true;//interactableにすると半透明化
                 skillSelect[i].SetActive(false);
-            }
-            else if (!totalGM.PlayerSkill[i] && skillCount == 2)
-            {
-                
-                skill[i].enabled = false;
-                skillSelect[i].SetActive(true);
             }
 
             if (!totalGM.PlayerSkill[i] && skillCount == 1)
             {
-                //Debug.Log("スキル1ッコ");
                 skillSelect[i].SetActive(false);
-                skill[i].enabled = true;
-
             }
             else if (totalGM.PlayerSkill[i] && skillCount == 1)
             {
                 skillSelect[i].SetActive(true);
-                selectObjGetSet.LastSelectButton = skill[i];
+            }
+
+            if (!skillJK[0] && !totalGM.PlayerSubSkill[i] && skillCount == 1)
+            {
+                skillSelect[i].SetActive(false);
+            }
+            else if (!skillJK[0] && totalGM.PlayerSubWeapon[i] && skillCount == 1)
+            {
+                skillSelect[i].SetActive(true);
             }
 
             if (skillCount == 0)
@@ -413,6 +403,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerWeapon[i] = false;
             totalGM.PlayerSubWeapon[i] = false;
             totalGM.PlayerSkill[i] = false;
+            totalGM.PlayerSubSkill[i] = false;
         }
 
         for (int i = 0; i < totalGM.NowScore.Length; i++)
@@ -506,17 +497,18 @@ public class SkillSelection : MonoBehaviour
             skillParticle1[i].Stop();
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
-            
-            if (totalGM.PlayerSubWeapon[i])
+            if(totalGM.PlayerWeapon[i])
             {
-                goStageButton.SetActive(true);
+                barrageSelect.BarrageButton[i].Select();
             }
+        }
+        if(barrageSelect.BarrageCount==2)
+        {
+            goStageButton.SetActive(true);
         }
         Particle.Stop();
         Particle1.Stop();
-        //this.gameObject.SetActive(false);
-        
         backSkillButton.SetActive(true);
-        //skillExplanation.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

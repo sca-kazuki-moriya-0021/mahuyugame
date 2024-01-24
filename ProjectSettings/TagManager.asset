@@ -3,7 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ScoreAdditionItem
+  - Bullet
+  - PlayerSkillBullet
+  - Proliferation
+  - BossTargetBullet
+  - Laser
+  - Boss
+  - ReflectBullet
+  - ApolloReflector
+  - PlayerLight
+  - Button
+  - OutLine
+  - PlayerBullet
+  - SkillBulletOutLine
+  - Icon4
+  - Icon1
+  - Icon3
+  - Icon2
   layers:
   - Default
   - TransparentFX
@@ -11,7 +29,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - SkillOutLine
   - 
   - 
   - 
