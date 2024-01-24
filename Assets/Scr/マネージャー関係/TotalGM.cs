@@ -19,6 +19,8 @@ public class TotalGM : MonoBehaviour
     private bool[] playerWeapon = {false,false,false,false};
     private bool[] playerSubWeapon = {false,false,false,false};
     private bool[] playerSkill = new bool[]{false,false,false,false};
+    private bool[] playerSubSkill = new bool[]{false,false,false,false};
+
     private float[] skillCoolTimeCount = new float[] { 20, 20, 10, 15, 0, 0, 0, 0 };
 
     //ゲームオーバーになった回数
@@ -95,6 +97,12 @@ public class TotalGM : MonoBehaviour
     public bool[] PlayerSkill {
         get { return this.playerSkill; }
         set { this.playerSkill = value; }
+    }
+
+    public bool[] PlayerSubSkill
+    {
+        get { return this.playerSubSkill; }
+        set { this.playerSubSkill = value; }
     }
 
     public bool[] PlayerWeapon
