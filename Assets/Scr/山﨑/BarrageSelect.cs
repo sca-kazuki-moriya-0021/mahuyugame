@@ -397,6 +397,10 @@ public class BarrageSelect : MonoBehaviour
             skillParticle1[i].Stop();
             barrageParticle[i].Stop();
             barrageParticle1[i].Stop();
+            if(totalGM.PlayerSkill[i])
+            {
+                skillSelection.SkillButtonIcon[0].Select();
+            }
         }
         Particle.Stop();
         Particle1.Stop();

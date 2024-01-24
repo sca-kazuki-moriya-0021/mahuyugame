@@ -42353,8 +42353,8 @@ MonoBehaviour:
   barrageIconCanvas: {fileID: 572119416}
   barrageButtonCanvas: {fileID: 1554184147}
   skillButtonCanvas: {fileID: 5465977188609883636}
-  skillButton1: {fileID: 5465977190446041705}
   goBarrage: {fileID: 220510234}
+  skillSelection: {fileID: 5465977189314500058}
   skillParticle:
   - {fileID: 8924825580773045347}
   - {fileID: 2100008255}
@@ -94939,6 +94939,7 @@ MonoBehaviour:
   - {fileID: 562976702}
   Particle: {fileID: 368232514}
   Particle1: {fileID: 651741902}
+  barrageSelect: {fileID: 961772874}
 --- !u!1 &5465977189371760774
 GameObject:
   m_ObjectHideFlags: 0
@@ -96727,6 +96728,7 @@ MonoBehaviour:
   barrageParticle1: []
   Particle: {fileID: 0}
   Particle1: {fileID: 0}
+  barrageSelect: {fileID: 0}
 --- !u!1 &5818386441097471192
 GameObject:
   m_ObjectHideFlags: 0
