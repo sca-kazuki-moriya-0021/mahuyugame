@@ -57,13 +57,16 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private int crystalNumberOfBullets;
 
-
     //プレイヤーの座標に向かわせるフラグ
     private bool pPosMoveFlag = false;
 
     private float time = 0f;
 
+    [SerializeField,Tooltip("プレイヤー")]
     private GameObject player;
+
+    private bool blizzardFlag;
+    private bool testFlag;
 
     public bool PPosMoveFlag
     {
@@ -71,10 +74,11 @@ public class SnowFairyBulletCon : MonoBehaviour
         set { this.pPosMoveFlag = value; }
     }
 
+    public bool BlizzardFlag { get => blizzardFlag; set => blizzardFlag = value; }
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
         for (int i = 0; i < cornerPosChild.Length; i++)
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
 
@@ -87,6 +91,12 @@ public class SnowFairyBulletCon : MonoBehaviour
         time += Time.deltaTime;
         if(shuraFlag == true)
             ShuraTimeCount();
+
+        if(time >= 5.0f && testFlag == false)
+        {
+           testFlag = true;
+           blizzardFlag = true;
+        }
     }
 
     private IEnumerator Atk()

@@ -20,7 +20,11 @@ public class ShuraBullet : MonoBehaviour
 
     private int randomCount = 0;
 
+    [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private Player playerCon;
 
     private bool centerFlag = false;
 
@@ -35,7 +39,6 @@ public class ShuraBullet : MonoBehaviour
 
         bossPos = boss.transform.position;
         snowFairyBulletCon = FindObjectOfType<SnowFairyBulletCon>();
-        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -43,16 +46,14 @@ public class ShuraBullet : MonoBehaviour
     {
         //“®‚«‚Æ‚ß‚é—p
         if (centerFlag == true)
-        {
            rigidbody2D.velocity = Vector2.zero;
-        }
 
         //’Ç”ö‚É“ü‚éif•¶
         if(snowFairyBulletCon.PPosMoveFlag == true && centerFlag == true)
-        {
-            Debug.Log("haitta");
             TrackingMove();
-        }
+
+        if(playerCon.BulletSeverFlag == true)
+            Destroy(this.gameObject);
     }
    
     //Ž~‚Ü‚Á‚½Œã’Ç”ö‚·‚é
@@ -75,9 +76,7 @@ public class ShuraBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("SkillBulletOutLine"))
-        {
             centerFlag = true;
-        }
     }
 
 }

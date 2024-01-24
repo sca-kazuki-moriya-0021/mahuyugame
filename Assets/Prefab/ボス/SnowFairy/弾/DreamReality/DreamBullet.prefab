@@ -135,3 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6457663422897516488}
+  player: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
