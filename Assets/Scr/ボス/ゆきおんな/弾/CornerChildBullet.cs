@@ -6,6 +6,8 @@ using DG.Tweening;
 public class CornerChildBullet : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
+    [SerializeField]
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,7 @@ public class CornerChildBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void OnBecameInvisible()

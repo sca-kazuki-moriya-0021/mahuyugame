@@ -21,6 +21,7 @@ public class GeoglyphBullet : MonoBehaviour
     //画面外に行った時のカウント
     private int count = 0;
 
+
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     [SerializeField]
@@ -61,7 +62,8 @@ public class GeoglyphBullet : MonoBehaviour
                 flag = true;
             }
         }
-       
+
+        
     }
 
     private IEnumerator Move()

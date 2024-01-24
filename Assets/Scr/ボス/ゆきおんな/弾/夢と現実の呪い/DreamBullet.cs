@@ -8,6 +8,9 @@ public class DreamBullet : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,10 @@ public class DreamBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(player.BulletSeverFlag == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

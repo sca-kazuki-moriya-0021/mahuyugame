@@ -60,14 +60,14 @@ public class TargetBullet : MonoBehaviour
     {
         GameObject[] gos;
         GameObject boss;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        //gos = GameObject.FindGameObjectsWithTag("Enemy");
         boss = GameObject.FindGameObjectWithTag("Boss");
         Queue<GameObject> queue = new Queue<GameObject>();
 
-        if(gos != null){
+        /*if(gos != null){
             for (int i = 0; i < gos.Length; i++)
                 queue.Enqueue(gos[i]);
-        }
+        }*/
 
         if(boss != null)
             queue.Enqueue(boss);
@@ -80,19 +80,19 @@ public class TargetBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
             Destroy(this.gameObject);          
 
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 }

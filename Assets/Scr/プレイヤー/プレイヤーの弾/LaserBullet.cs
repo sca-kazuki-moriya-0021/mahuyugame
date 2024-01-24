@@ -64,11 +64,11 @@ public class LaserBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
 
         if (collision.gameObject.CompareTag("Boss"))
             Destroy(this.gameObject);

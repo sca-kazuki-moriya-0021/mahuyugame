@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GaoukenBullet : MonoBehaviour
 {
+    [SerializeField]
+    private Player player;
+
     private Vector3 dir;
 
     private float speed = 2f;
@@ -31,7 +34,6 @@ public class GaoukenBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         rigidbody2D.velocity = dir * speed;
     }
 
@@ -49,6 +51,10 @@ public class GaoukenBullet : MonoBehaviour
           rigidbody2D.velocity = dir * speed *0.5f;
        else
          rigidbody2D.velocity = dir * speed;
+
+       if(player.BulletSeverFlag == true)
+            Destroy(this.gameObject);
+
     }
     void OnBecameInvisible()
     {

@@ -38,19 +38,19 @@ public class TestBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DestroyBullet"))
+        /*if (collision.gameObject.CompareTag("DestroyBullet"))
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 }
