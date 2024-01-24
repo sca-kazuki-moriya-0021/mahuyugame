@@ -82,4 +82,7 @@ public class Sugukesu : MonoBehaviour
         Vector2 direction = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z) * Vector2.right;
         rb.velocity = direction * bulletSpeed;
     }
+
+
+
 }

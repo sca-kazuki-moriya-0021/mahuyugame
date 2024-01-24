@@ -14,9 +14,7 @@ public class NurarihyonBulletCon : MonoBehaviour
     private float[] bulletSpeed;
     [SerializeField]
     private int[] numberOfBullet;
-    //弾の発射感覚
-    [SerializeField]
-    private float[] fireTime;
+    //各発射地点
     [SerializeField]
     private Transform[] firePoint;
     [SerializeField]
@@ -28,14 +26,21 @@ public class NurarihyonBulletCon : MonoBehaviour
     private float time = 0f;
     private float radius = 0.5f;
     private int shotCount = 0;
+    
+    private Transform player;
     private float spiralRotationSpeed = 360f;
     private float spiralDistance = 5f;
-    private Transform player;
-
+    private List<GameObject> bullet = new List<GameObject>();
     public int ShotCount
     {
         get { return shotCount; }
         set { shotCount = value; }
+    }
+
+    public List<GameObject> Bullet
+    {
+        get { return bullet;}
+        set { bullet = value;}
     }
     // Start is called before the first frame update
     void Start()
@@ -43,14 +48,13 @@ public class NurarihyonBulletCon : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         nurarihyonPushBulletCon = FindObjectOfType<NurarihyonPushBulletCon>();
         StartCoroutine(Atk());
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        transform.Rotate(0f, 0f, 60f * Time.deltaTime);
+        //transform.Rotate(0f, 0f, 60f * Time.deltaTime);
     }
 
 
@@ -58,25 +62,78 @@ public class NurarihyonBulletCon : MonoBehaviour
     {
         while (true)
         {
-            for(int i = 0;i < 3; i++)
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
+            for (int i = 0; i < 30; i++)
             {
-                nurarihyonPushBulletCon.ApolloReflector(bullets[10], numberOfBullet[1], bulletSpeed[0], radius);
+                nurarihyonPushBulletCon.ClockBullet(bullets[0], bulletSpeed[0]);
+                nurarihyonPushBulletCon.ClockBullet45(bullets[0], bulletSpeed[0]);
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            for (int i = 0; i < 14; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    nurarihyonPushBulletCon.RandomDoll(bullets[0], bulletSpeed[0], numberOfBullet[0]);
+                    yield return new WaitForSeconds(0.5f);
+                }
+                yield return new WaitForSeconds(1f);
+                StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                nurarihyonPushBulletCon.RotaHoming(bullets[10], transform, 14, 1, 0.5f);
+                yield return new WaitForSeconds(0.1f);
+                for (int j = 0;j < 30; j++)
+                {
+                    nurarihyonPushBulletCon.ClockBullet(bullets[0], bulletSpeed[0]);
+                    nurarihyonPushBulletCon.ClockBullet45(bullets[0], bulletSpeed[0]);
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
+            yield return new WaitForSeconds(3f);
+
+            for (int i = 0; i < 10; i++)
+            {
+                StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            for (int i = 0;i < 3; i++)
+            {
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], 0);
+                nurarihyonPushBulletCon.RotaHoming(bullets[8], transform, 14, 1, 0.5f);
                 yield return new WaitForSeconds(5.0f);
             }
+
             yield return new WaitForSeconds(2.0f);
+
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
                     nurarihyonPushBulletCon.ShootBullets(numberOfBullet[1], bullets[0], bulletSpeed[0], 1, 120);
                     yield return new WaitForSeconds(0.09f);
-
                 }
                 ShotCount++;
-               // UpdateSpiral();
             }
-            nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], radius);
+            
+            for(int i = 0; i < 6; i++)
+            {
+                nurarihyonPushBulletCon.ApolloReflector(bullets[10], numberOfBullet[1], bulletSpeed[0], 1);
+                yield return new WaitForSeconds(1.0f);
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], 0);
+                yield return new WaitForSeconds(1.0f);
+            }
+            
             yield return new WaitForSeconds(2.0f);
+
             for (int i = 0; i < 20; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -89,13 +146,17 @@ public class NurarihyonBulletCon : MonoBehaviour
                 UpdateSpiral();
             }
             yield return new WaitForSeconds(1f);
+
             for (int i = 0; i < 30; i++)
             {
                 nurarihyonPushBulletCon.ClockBullet(bullets[0], bulletSpeed[0]);
                 nurarihyonPushBulletCon.ClockBullet45(bullets[0], bulletSpeed[0]);
                 yield return new WaitForSeconds(0.1f);
             }
-            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
+
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 5, 2f, 120f);
+            yield return new WaitForSeconds(1f);
+
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -116,7 +177,9 @@ public class NurarihyonBulletCon : MonoBehaviour
                 nurarihyonPushBulletCon.theHoming(bullets[8], NewPoint);
                 yield return new WaitForSeconds(0.5f);
             }
+
             nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
+            yield return new WaitForSeconds(1f);
 
             for (int i = 0; i < 10; i++)
             {
@@ -124,7 +187,10 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 yield return new WaitForSeconds(1f);
             }
+
             yield return null;
+            yield return new WaitForSeconds(1f);
+
             for (int i = 0; i < 10; i++)
             {
                 nurarihyonPushBulletCon.PresenceOfEvil(firePoint[2], firePoint[3], bullets[5], bulletSpeed[0]);
@@ -132,19 +198,27 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
 
+            yield return new WaitForSeconds(0.5f);
 
             for (int i = 0; i < 3; i++)
             {
-                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], radius);
+                nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], 1);
                 yield return new WaitForSeconds(2.0f);
             }
+
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 15, 2f, 120f);
+            yield return new WaitForSeconds(1.0f);
+
             for (int i = 0; i < 15; i++)
             {
                 nurarihyonPushBulletCon.AllRange(bullets[0], bulletSpeed[0]);
-                yield return new WaitForSeconds(0.45f);
+                yield return new WaitForSeconds(0.25f);
                 nurarihyonPushBulletCon.ReAllRange(bullets[4], bulletSpeed[0]);
                 yield return new WaitForSeconds(0.45f);
             }
+
+            yield return new WaitForSeconds(1f);
+
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 2; j++)
@@ -154,6 +228,9 @@ public class NurarihyonBulletCon : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.25f);
             }
+
+            yield return new WaitForSeconds(1f);
+
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 6; j++)
@@ -163,7 +240,9 @@ public class NurarihyonBulletCon : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.1f);
             }
+
             yield return new WaitForSeconds(0.5f);
+
             for (int i = 0; i < 1; i++)
             {
                 nurarihyonPushBulletCon.Reflect(bullets[1], bulletSpeed[0], numberOfBullet[1], 0);
@@ -177,8 +256,10 @@ public class NurarihyonBulletCon : MonoBehaviour
                 nurarihyonPushBulletCon.Reflect(bullets[1], bulletSpeed[0], numberOfBullet[1], 4);
                 yield return new WaitForSeconds(0.5f);
             }
-            nurarihyonPushBulletCon.SpawnCircle(bullets[2], firePoint);
-            yield return new WaitForSeconds(1.0f);
+
+            nurarihyonPushBulletCon.SpawnCircle(bullets[2], NewPoint);
+            yield return new WaitForSeconds(3.0f);
+
             for (int i = 0; i < 14; i++)
             {
                 for (int j = 0; j < 2; j++)
@@ -188,6 +269,11 @@ public class NurarihyonBulletCon : MonoBehaviour
                 }
                 yield return new WaitForSeconds(0.5f);
             }
+
+            yield return new WaitForSeconds(1f);
+
+            nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 20, 2f, 120f);
+            yield return new WaitForSeconds(1.0f);
 
             for (int i = 0; i < 5; i++)
             {
@@ -199,12 +285,11 @@ public class NurarihyonBulletCon : MonoBehaviour
 
                 yield return new WaitForSeconds(0.5f);
             }
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
-        
     }
 
-    private void UpdateSpiral()
+    public void UpdateSpiral()
     {
         float newRotationSpeed = Random.Range(180, 360);
         float newSpiralDistance = Random.Range(1, 5);
