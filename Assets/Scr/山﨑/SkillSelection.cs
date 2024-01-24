@@ -124,6 +124,7 @@ public class SkillSelection : MonoBehaviour
             SkillExplanation();
             
         }
+        Debug.Log(totalGM.PlayerSkill[2]);
     }
 
     private void LateUpdate()
