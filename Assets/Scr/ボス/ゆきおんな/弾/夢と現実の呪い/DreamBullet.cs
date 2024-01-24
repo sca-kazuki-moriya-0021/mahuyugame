@@ -32,6 +32,12 @@ public class DreamBullet : MonoBehaviour
             spriteRenderer.color = new Color(255,255,255,255);
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerLight"))
+            spriteRenderer.color = new Color(255, 255, 255, 0);
+    }
+
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);

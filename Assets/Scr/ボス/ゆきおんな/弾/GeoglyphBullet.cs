@@ -10,7 +10,10 @@ public class GeoglyphBullet : MonoBehaviour
 
     private float time = 0f;
 
+    [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private Player playerCon;
 
     private Rigidbody2D rigidbody2D;
 
@@ -38,8 +41,7 @@ public class GeoglyphBullet : MonoBehaviour
     {
         spriteRenderer.material.color = new Color(255, 255, 255, 0f);
 
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");        
+        rigidbody2D = GetComponent<Rigidbody2D>();    
     }
 
     // Update is called once per frame
@@ -63,12 +65,12 @@ public class GeoglyphBullet : MonoBehaviour
             }
         }
 
-        
+        if(playerCon.BulletSeverFlag == true)
+         Destroy(this.gameObject);
     }
 
     private IEnumerator Move()
     {
-        Debug.Log("“ü‚Á‚½‚æ");
         for (int i = 0; i < 255; i++)
         {
             spriteRenderer.material.color = new Color(255, 255, 255, i);

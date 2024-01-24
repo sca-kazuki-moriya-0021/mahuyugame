@@ -15,9 +15,7 @@ public class SnowCrystalChildBullet : MonoBehaviour
     void Update()
     {
         if (player.BulletSeverFlag == true)
-        {
             Destroy(this.gameObject);
-        }
     }
 
 

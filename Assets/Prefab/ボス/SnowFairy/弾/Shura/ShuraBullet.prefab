@@ -137,3 +137,4 @@ MonoBehaviour:
   rigidbody2D: {fileID: 7114116292600926554}
   boss: {fileID: 713371873187468053, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
   player: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  playerCon: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}

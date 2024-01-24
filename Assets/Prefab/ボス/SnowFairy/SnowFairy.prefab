@@ -477,7 +477,7 @@ MonoBehaviour:
   - {x: -1.4545714, y: -6.4311094, z: 0}
   m_ShapePathHash: 2093631624
   m_Mesh: {fileID: 0}
-  m_InstanceId: 26480
+  m_InstanceId: 46796
 --- !u!1 &7815339137176035958
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a509e4b6c440140a8ac2b06b0dd928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushOnBulletCon: {fileID: 3379874472728671524}
+  pushBulletCon: {fileID: 0}
   audioSource: {fileID: 6415896318731388883}
   audioClip: {fileID: 8300000, guid: fa1ffc88e6f769143ad627f83a562750, type: 3}
   bullets:
@@ -538,6 +538,7 @@ MonoBehaviour:
   crystalAngle: 0
   crystalShoots: 0
   crystalNumberOfBullets: 0
+  player: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}
 --- !u!1 &7815339138307165863
 GameObject:
   m_ObjectHideFlags: 0
