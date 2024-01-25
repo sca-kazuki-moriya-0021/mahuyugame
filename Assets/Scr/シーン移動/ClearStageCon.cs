@@ -14,9 +14,11 @@ public class ClearStageCon : MonoBehaviour
     private AudioClip soundE;
 
     [SerializeField]
-    private Text[] nowScoreText;
+    private ResultScoreDisplay[] nowScoreTexts;
+
+    //private Text[] nowScoreText;
     [SerializeField]
-    private Text[] highScoreText;
+    private ResultScoreDisplay[] highScoreTexts;
 
     [SerializeField]
     private Animator anim;
@@ -40,14 +42,21 @@ public class ClearStageCon : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         totalGM = FindObjectOfType<TotalGM>();
+        string score;
+        string highScore;
 
-
-        for (int i = 0; i < nowScoreText.Length; i++)
+        for(int i=0;i < 3; i++)
         {
-            nowScoreText[i].text = totalGM.NowScore[i].ToString();
-            if (totalGM.NowScore[i] > totalGM.HighScore[i])
+            if(totalGM.HighScore[i] <= totalGM.NowScore[i])
                 totalGM.HighScore[i] = totalGM.NowScore[i];
-            highScoreText[i].text = totalGM.HighScore[i].ToString();
+
+            score = totalGM.NowScore[i].ToString("00000000");
+            Debug.Log(totalGM.NowScore[i]);
+            nowScoreTexts[i].Set(score);
+
+            highScore = totalGM.HighScore[i].ToString("00000000");
+            highScoreTexts[i].Set(highScore);
+
         }
     }
 
