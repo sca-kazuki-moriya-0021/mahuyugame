@@ -670,7 +670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -400}
+  m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695873253
@@ -1358,14 +1358,17 @@ MonoBehaviour:
   - {fileID: 1325571613}
   - {fileID: 695873253}
   score:
-  - 15000
-  - 20000
-  - 30000
+  - 0
+  - 1
+  - 2
   posion:
   - {x: -50, y: 0}
   - {x: -50, y: -200}
   - {x: -50, y: -400}
-  texttime: 2.5
+  texttime:
+  - 2
+  - 4
+  - 6
   movetime: 3.5
 --- !u!1001 &1266371400
 PrefabInstance:
@@ -1582,7 +1585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325571613
