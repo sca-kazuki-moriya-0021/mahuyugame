@@ -39,16 +39,13 @@ public class SkillDisplay_Stage : MonoBehaviour
 
             if (totalGM.PlayerSkill[count] == true)
             {
-                if (skillPosition[0].sprite == null)
-                { 
-                    skillPosition[0].sprite = skillicon[count];
-                    skillCoolTime[0] = initialCoolTime[count];
-                }
-                else
-                { 
-                    skillPosition[1].sprite = skillicon[count];
-                    skillCoolTime[1] = initialCoolTime[count];
-                }
+                skillPosition[0].sprite = skillicon[count];
+                skillCoolTime[0] = initialCoolTime[count];
+            }
+            else if(totalGM.PlayerSubSkill[count] == true)
+            {
+                skillPosition[1].sprite = skillicon[count];
+                skillCoolTime[1] = initialCoolTime[count];
             }
         }
         ui[0].enabled = false;

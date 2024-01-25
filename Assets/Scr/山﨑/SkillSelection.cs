@@ -75,6 +75,8 @@ public class SkillSelection : MonoBehaviour
     private ParticleSystem Particle1;
     bool check;
     [SerializeField] BarrageSelect barrageSelect;
+    [SerializeField] private ParticleSystem[] fire;
+    [SerializeField] private GameObject fireSkill;
 
     public Button[] SkillButtonIcon
     {
@@ -124,7 +126,7 @@ public class SkillSelection : MonoBehaviour
             SkillExplanation();
             
         }
-        Debug.Log(totalGM.PlayerSkill[2]);
+        //Debug.Log(totalGM.PlayerSkill[2]);
     }
 
     private void LateUpdate()
@@ -152,6 +154,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[0] = true;
             skillSelect[0].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[0];
+            fire[0].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[0] && skillCount == 1)
         {
@@ -160,6 +163,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[0] = true;
             skillSelect[0].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[0];
+            fire[0].Play();
         }
         else if (totalGM.PlayerSkill[0])
         {
@@ -190,6 +194,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[1] = true;
             skillSelect[1].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[1];
+            fire[1].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[1] && skillCount == 1)
         {
@@ -198,6 +203,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[1] = true;
             skillSelect[1].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[1];
+            fire[1].Play();
         }
         else if (totalGM.PlayerSkill[1])
         {
@@ -230,6 +236,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[2] = true;
             skillSelect[2].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[2];
+            fire[2].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[2] && skillCount == 1)
         {
@@ -238,6 +245,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[2] = true;
             skillSelect[2].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[2];
+            fire[2].Play();
         }
         else if (totalGM.PlayerSkill[2])
         {
@@ -269,6 +277,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[3] = true;
             skillSelect[3].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[3];
+            fire[3].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[3] && skillCount == 1)
         {
@@ -277,6 +286,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[3] = true;
             skillSelect[3].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[3];
+            fire[3].Play();
         }
         else if (totalGM.PlayerSkill[3])
         {
@@ -480,9 +490,11 @@ public class SkillSelection : MonoBehaviour
 
     IEnumerator SkillEffect_In()
     {
+        fireSkill.SetActive(false);
         goBarrage.SetActive(false);
         playableDirector.Play(skillTimeLine);
         yield return new WaitForSeconds(2);
+        
         skillEffect.enabled = false;
         barrageEffect.enabled = true;
         yield return new WaitForSeconds(0.3f);
