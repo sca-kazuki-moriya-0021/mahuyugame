@@ -62,6 +62,9 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField]
     [Tooltip("â∫Çâ~èÛÇ…âÒÇÈ")]
     private ParticleSystem Particle1;
+    [SerializeField] private ParticleSystem[] fireBarrage_Eff;
+    [SerializeField] private GameObject fireSkill;
+    [SerializeField] private GameObject fireBarrage;
 
     public int BarrageCount
     {
@@ -87,6 +90,7 @@ public class BarrageSelect : MonoBehaviour
         for (int i = 0; i <= 3; i++)
         {
             barrageSelect[i].enabled = false;
+            fireBarrage_Eff[i].Stop();
             //totalGM.PlayerWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
             //totalGM.PlayerSubWeapon[i] = false;//îOÇÃÇΩÇﬂèâä˙âªÇ∑ÇÈ
         }
@@ -117,6 +121,7 @@ public class BarrageSelect : MonoBehaviour
     {
         if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[0])
         {
+            fireBarrage_Eff[0].Play();
             mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[0] = true;
@@ -125,6 +130,7 @@ public class BarrageSelect : MonoBehaviour
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[0] && barrageCount == 1)
         {
+            fireBarrage_Eff[0].Play();
             mainSubWepon[1] = true;
             barrageCount++;
             totalGM.PlayerSubWeapon[0] = true;
@@ -155,6 +161,7 @@ public class BarrageSelect : MonoBehaviour
     {
         if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[1])
         {
+            fireBarrage_Eff[1].Play();
             mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[1] = true;
@@ -163,7 +170,7 @@ public class BarrageSelect : MonoBehaviour
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[1] && barrageCount == 1)
         {
-
+            fireBarrage_Eff[1].Play();
             barrageCount++;
             totalGM.PlayerSubWeapon[1] = true;
             barrageSelect[1].enabled = true;
@@ -194,6 +201,7 @@ public class BarrageSelect : MonoBehaviour
     {
         if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[2])
         {
+            fireBarrage_Eff[2].Play();
             mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[2] = true;
@@ -202,6 +210,7 @@ public class BarrageSelect : MonoBehaviour
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[2] && barrageCount == 1)
         {
+            fireBarrage_Eff[2].Play();
             mainSubWepon[1] = true;
             barrageCount++;
             totalGM.PlayerSubWeapon[2] = true;
@@ -232,6 +241,7 @@ public class BarrageSelect : MonoBehaviour
     {
         if (!mainSubWepon[0] && !totalGM.PlayerSubWeapon[3])
         {
+            fireBarrage_Eff[3].Play();
             mainSubWepon[0] = true;
             barrageCount++;
             totalGM.PlayerWeapon[3] = true;
@@ -240,6 +250,7 @@ public class BarrageSelect : MonoBehaviour
         }
         else if (mainSubWepon[0] && !mainSubWepon[1] && !totalGM.PlayerWeapon[3] && barrageCount == 1)
         {
+            fireBarrage_Eff[3].Play();
             mainSubWepon[1] = true;
             barrageCount++;
             totalGM.PlayerSubWeapon[3] = true;
@@ -381,6 +392,7 @@ public class BarrageSelect : MonoBehaviour
         goStageButton.SetActive(false);
         backSkillButton.SetActive(false);
         playableDirector.Play(barrageTimeLine);
+        fireBarrage.SetActive(false);
         yield return new WaitForSeconds(2);
         barrageEffect.enabled = false;
         skillEffect.enabled = true;
@@ -391,6 +403,7 @@ public class BarrageSelect : MonoBehaviour
         skillEffect.enabled = false;
         skillCanvas.SetActive(true);
         skillButtonCanvas.SetActive(true);
+        fireSkill.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
             skillParticle[i].Stop();

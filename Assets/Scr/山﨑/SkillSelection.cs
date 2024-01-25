@@ -75,8 +75,9 @@ public class SkillSelection : MonoBehaviour
     private ParticleSystem Particle1;
     bool check;
     [SerializeField] BarrageSelect barrageSelect;
-    [SerializeField] private ParticleSystem[] fire;
+    [SerializeField] private ParticleSystem[] fireSkill_Eff;
     [SerializeField] private GameObject fireSkill;
+    [SerializeField] private GameObject fireBarrage;
 
     public Button[] SkillButtonIcon
     {
@@ -97,6 +98,10 @@ public class SkillSelection : MonoBehaviour
         outLineCoroutine = OutLine();
         button.Select();
         goStageButton.SetActive(false);
+        for(int i = 0; i < 3; i++)
+        {
+            fireSkill_Eff[i].Stop();
+        }
         //ƒ{ƒ^ƒ“‚Ì‘I‘ðó‘Ô‚ð‰ðœ
         /*
         for (int i = 0; i <= 3; i++)
@@ -154,7 +159,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[0] = true;
             skillSelect[0].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[0];
-            fire[0].Play();
+            fireSkill_Eff[0].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[0] && skillCount == 1)
         {
@@ -163,7 +168,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[0] = true;
             skillSelect[0].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[0];
-            fire[0].Play();
+            fireSkill_Eff[0].Play();
         }
         else if (totalGM.PlayerSkill[0])
         {
@@ -194,7 +199,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[1] = true;
             skillSelect[1].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[1];
-            fire[1].Play();
+            fireSkill_Eff[1].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[1] && skillCount == 1)
         {
@@ -203,7 +208,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[1] = true;
             skillSelect[1].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[1];
-            fire[1].Play();
+            fireSkill_Eff[1].Play();
         }
         else if (totalGM.PlayerSkill[1])
         {
@@ -236,7 +241,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[2] = true;
             skillSelect[2].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[2];
-            fire[2].Play();
+            fireSkill_Eff[2].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[2] && skillCount == 1)
         {
@@ -245,7 +250,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[2] = true;
             skillSelect[2].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[2];
-            fire[2].Play();
+            fireSkill_Eff[2].Play();
         }
         else if (totalGM.PlayerSkill[2])
         {
@@ -277,7 +282,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSkill[3] = true;
             skillSelect[3].SetActive(false);
             skillSelectImage[0].sprite = skillIcon[3];
-            fire[3].Play();
+            fireSkill_Eff[3].Play();
         }
         else if (skillJK[0] && !skillJK[1] && !totalGM.PlayerSkill[3] && skillCount == 1)
         {
@@ -286,7 +291,7 @@ public class SkillSelection : MonoBehaviour
             totalGM.PlayerSubSkill[3] = true;
             skillSelect[3].SetActive(true);
             skillSelectImage[1].sprite = skillIcon[3];
-            fire[3].Play();
+            fireSkill_Eff[3].Play();
         }
         else if (totalGM.PlayerSkill[3])
         {
@@ -501,9 +506,11 @@ public class SkillSelection : MonoBehaviour
         skillIconCanvas.enabled = false;
         barrageIconCanvas.enabled = true;
         yield return new WaitForSeconds(2.5f);
+        
         barrageEffect.enabled = false;
         barregeCanvas.SetActive(true);
         barrageButtonCanvas.SetActive(true);
+        fireBarrage.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
             skillParticle[i].Stop();
