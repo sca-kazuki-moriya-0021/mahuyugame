@@ -50,21 +50,10 @@ public class GeoglyphBullet : MonoBehaviour
     void Update()
     {
         time+= Time.deltaTime;
-        if(shootCount % 2 != 0)
+        if (time > 1 && flag == false)
         {
-            if (time > 1 && flag == false)
-            {
-                StartCoroutine(Move());
-                flag = true;
-            }
-        }
-        else
-        {
-            if (time > 1.5 && flag == false)
-            {
-                StartCoroutine(Move());
-                flag = true;
-            }
+           StartCoroutine(Move());
+           flag = true;
         }
 
         if(playerCon.BulletSeverFlag == true)
@@ -81,7 +70,10 @@ public class GeoglyphBullet : MonoBehaviour
         collider2D.enabled = true;
         rigidbody2D.velocity = Vector3.zero;
         var p = player. transform.position;
-        yield return new WaitForSeconds(5f);
+        if(shootCount % 2 != 0)
+        yield return new WaitForSeconds(6f);
+        else
+        yield return new WaitForSeconds(4f);
         Vector3 v = p - transform.position;
         v.Normalize();
         rigidbody2D.velocity = v * speed;
