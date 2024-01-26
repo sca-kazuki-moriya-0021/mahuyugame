@@ -41,6 +41,8 @@ public class PouseCon : MonoBehaviour
 
     private TotalGM totalGM;
 
+    [SerializeField] private Image outLine;
+
     //選択されているオブジェクト
     private GameObject selectedObj;
 
@@ -92,7 +94,7 @@ public class PouseCon : MonoBehaviour
             if (menuFlag == true && countDownCon.CountDownFlag == false)
             {
                 
-                if ( selectedObj.layer == 13 && (selectedObj == poseButtonObj[0] ||
+                if (selectedObj.CompareTag("PouseButton") && (selectedObj == poseButtonObj[0] ||
                     selectedObj == poseButtonObj[1] || selectedObj == poseButtonObj[2] ))
                 {
                     selectedObj = ev.currentSelectedGameObject;
@@ -101,6 +103,7 @@ public class PouseCon : MonoBehaviour
                 {
                     button.Select();
                     selectedObj = ev.currentSelectedGameObject;
+                    outLine.transform.position = selectedObj.transform.position;
                 }
             }
             yield return null;
