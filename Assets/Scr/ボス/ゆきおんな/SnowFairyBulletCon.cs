@@ -98,32 +98,31 @@ public class SnowFairyBulletCon : MonoBehaviour
     {
 
         audioSource.PlayOneShot(audioClip);
-        while (time < 5f)
+        while (time < 10f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
             yield return new WaitForSeconds(fireTime[0]);
         }
-        //count = 0;
-        /*while(time < 15f)
+        count = 0;
+        while(time < 20f)
         {
             for (int i = 0; i < spinAngle.Length; i++)
-            {
                 pushBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]*2);
-            }
+
             count = (count + 1) * 2;
             yield return new WaitForSeconds(fireTime[1]);
             pushBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
-        }*/
-        //count = 0;
+        }
+        count = 0;
 
-        //for (int i = 0; i < cornerPosChild.Length; i++)
+        /*for (int i = 0; i < cornerPosChild.Length; i++)
         {
             //ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
         }
 
-        /*while (count <100)
+        while (count <100)
         {
             for (int i = 0; i < crystalShoots; i++)
             {
@@ -132,21 +131,21 @@ public class SnowFairyBulletCon : MonoBehaviour
             }
             yield return new WaitForSeconds(fireTime[2]);
             count++;
-        }*/
+        }
 
-        /*for(int i = 0; i < 15; i++)
+        for(int i = 0; i < 15; i++)
         {
             pushBulletCon.ShootDemarcation(1);
             pushBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);*/
+        yield return new WaitForSeconds(0.5f);
 
-        //shuraFlag = true;
-        //pushBulletCon.ShuraShoot(0,1);
-        //pushBulletCon.ShuraShoot(1,-1);
+        shuraFlag = true;
+        pushBulletCon.ShuraShoot(0,1);
+        pushBulletCon.ShuraShoot(1,-1);
 
-       /*for(int i = 0; i < 2 ; i++)
+       for(int i = 0; i < 2 ; i++)
        {
             pushBulletCon.GaoukenShoot(0);
             yield return new WaitForSeconds(2f);
@@ -156,13 +155,13 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new WaitForSeconds(2f);
             pushBulletCon.GaoukenShoot(3);
             yield return new WaitForSeconds(2f);
-       }*/
+       }
 
 
-        //pushBulletCon.DestroyShuraShoot();
-        //pushBulletCon.DestoryDemarcation();
-        //shuraFlag = false;
-        /*for(int i = 0 ; i < 20; i++)
+        pushBulletCon.DestroyShuraShoot();
+        pushBulletCon.DestoryDemarcation();
+        shuraFlag = false;
+        for(int i = 0 ; i < 20; i++)
         {
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);

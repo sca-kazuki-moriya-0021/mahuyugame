@@ -56,7 +56,7 @@ public class SnowPushBulletCon : MonoBehaviour
     //‰ñ“]’e
     public void ShootBarrier(float angle, GameObject obj, float speed)
     {
-        angle = angle * Mathf.Deg2Rad;
+        angle *= Mathf.Deg2Rad;
         GameObject bullet = Instantiate(obj, transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));

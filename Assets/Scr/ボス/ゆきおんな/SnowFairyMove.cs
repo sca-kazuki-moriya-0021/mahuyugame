@@ -5,9 +5,6 @@ using UnityEngine;
 public class SnowFairyMove : MonoBehaviour
 {
     private float speed = 1f;
-    [SerializeField]
-    private float stopTime;
-    private float stopCountTime;
 
     //移動指定の親オブジェクト
     [SerializeField]

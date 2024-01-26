@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3193769451087386858}
   - component: {fileID: 9150013666247530914}
   - component: {fileID: 2158680273933833026}
-  - component: {fileID: 5299815778685564278}
   - component: {fileID: 4497985760685062948}
+  - component: {fileID: 6967748332951838313}
   m_Layer: 0
-  m_Name: LineBarrierBullet
+  m_Name: SpinAngleBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,18 +214,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5299815778685564278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5299815778685564277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58368657fe1930c4c828c68a449f60f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &4497985760685062948
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -242,3 +230,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5000002
+--- !u!114 &6967748332951838313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299815778685564277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee71b73a36e85746b3a24d794f694c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
