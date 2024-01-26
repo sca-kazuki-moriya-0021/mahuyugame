@@ -8,7 +8,7 @@ public class GaoukenBullet : MonoBehaviour
 
     private Vector3 dir;
 
-    private float speed = 2f;
+    private float speed = 4f;
 
     private float time = 0f;
 

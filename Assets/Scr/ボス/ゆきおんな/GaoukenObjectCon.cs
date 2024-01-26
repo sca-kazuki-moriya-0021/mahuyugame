@@ -51,22 +51,22 @@ public class GaoukenObjectCon : MonoBehaviour
         {
             //è„Ç©ÇÁâ∫
             case 0:
-                tween = this.transform.DOMove(new Vector3(0, -5, 0), 3f);
+                tween = this.transform.DOMove(new Vector3(0, -5, 0), 2f);
                 break;
             case 1:
-                tween = this.transform.DOMove(new Vector3(0,2.6f,0), 3f);
+                tween = this.transform.DOMove(new Vector3(0,2.6f,0), 2f);
                 break;
             case 2:
-                tween = this.transform.DOMove(new Vector3(9,-5,0),3f);
+                tween = this.transform.DOMove(new Vector3(9,-5,0),2f);
                 break;
             case 3:
-                tween = this.transform.DOMove(new Vector3(-9,-5,0), 3f);
+                tween = this.transform.DOMove(new Vector3(-9,-5,0), 2f);
                 break;
             case 4:
-                tween = this.transform.DOMove(new Vector3(-9, 3, 0),3f);
+                tween = this.transform.DOMove(new Vector3(-9, 3, 0),2f);
                 break;
             case 5:
-                tween = this.transform.DOMove(new Vector3(9, 3, 0),3f);
+                tween = this.transform.DOMove(new Vector3(9, 3, 0),2f);
                 break;
         }
         //çƒê∂
@@ -105,7 +105,7 @@ public class GaoukenObjectCon : MonoBehaviour
             gaoukenBullet.Dir = dir;
             gaoukenBullet.Speed = 1.5f;
           }
-          yield return new WaitForSeconds(0.2f);
+          yield return null;
        }
         Destroy(this.gameObject);
         StopCoroutine(BulletIns());

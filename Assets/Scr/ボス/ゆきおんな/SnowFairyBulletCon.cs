@@ -57,7 +57,6 @@ public class SnowFairyBulletCon : MonoBehaviour
 
     private float time = 0f;
 
-    [SerializeField,Tooltip("ÉvÉåÉCÉÑÅ[")]
     private GameObject player;
 
     private bool blizzardFlag;
@@ -77,6 +76,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         for (int i = 0; i < cornerPosChild.Length; i++)
             cornerPosChild[i] = cornerPos.transform.GetChild(i).gameObject;
 
+        player = GameObject.Find("Player");
         StartCoroutine(Atk());
     }
 
@@ -138,29 +138,29 @@ public class SnowFairyBulletCon : MonoBehaviour
         //pushBulletCon.ShuraShoot(0,1);
         //pushBulletCon.ShuraShoot(1,-1);
 
-        pushBulletCon.GaoukenShoot(0);
-        yield return new WaitForSeconds(2f);
+        /*pushBulletCon.GaoukenShoot(0);
+        yield return new WaitForSeconds(4f);
         pushBulletCon.GaoukenShoot(1);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         pushBulletCon.GaoukenShoot(2);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         pushBulletCon.GaoukenShoot(3);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         pushBulletCon.GaoukenShoot(4);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         pushBulletCon.GaoukenShoot(5);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);*/
 
         //pushBulletCon.DestroyShuraShoot();
         //pushBulletCon.DestoryDemarcation();
         //shuraFlag = false;
 
-        /*for(int i = 0 ; i < 20; i++)
+        for(int i = 0 ; i < 20; i++)
         {
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
-            yield return new WaitForSeconds(2f - i* 0.1f);
-        }*/
+            yield return new WaitForSeconds(5f - i* 0.1f);
+        }
 
         /*for(int i = 0; i< 15; i++)
         {
@@ -168,7 +168,6 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new  WaitForSeconds(2f);
         }*/
 
-      
         yield return  null;
         StopCoroutine(Atk());
     }

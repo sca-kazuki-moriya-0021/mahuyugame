@@ -10,7 +10,7 @@ public class GeoglyphBullet : MonoBehaviour
 
     private float time = 0f;
 
-    [SerializeField]
+
     private GameObject player;
 
     private Player playerCon;
@@ -42,6 +42,7 @@ public class GeoglyphBullet : MonoBehaviour
         spriteRenderer.material.color = new Color(255, 255, 255, 0f);
 
         rigidbody2D = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
         playerCon = FindObjectOfType<Player>();
     }
 
@@ -51,7 +52,7 @@ public class GeoglyphBullet : MonoBehaviour
         time+= Time.deltaTime;
         if(shootCount % 2 != 0)
         {
-            if (time > 2 && flag == false)
+            if (time > 1 && flag == false)
             {
                 StartCoroutine(Move());
                 flag = true;
@@ -59,7 +60,7 @@ public class GeoglyphBullet : MonoBehaviour
         }
         else
         {
-            if (time > 2.5 && flag == false)
+            if (time > 1.5 && flag == false)
             {
                 StartCoroutine(Move());
                 flag = true;
@@ -80,8 +81,8 @@ public class GeoglyphBullet : MonoBehaviour
         collider2D.enabled = true;
         rigidbody2D.velocity = Vector3.zero;
         var p = player. transform.position;
-        yield return new WaitForSeconds(1f);
-        Vector3 v = p -transform.position;
+        yield return new WaitForSeconds(5f);
+        Vector3 v = p - transform.position;
         v.Normalize();
         rigidbody2D.velocity = v * speed;
     }

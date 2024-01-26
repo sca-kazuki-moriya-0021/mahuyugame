@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c472c5117d7c19e45adb2a2571dc3fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}
-  playerCon: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}
+  player: {fileID: 0}
   spriteRenderer: {fileID: 2119275157309124611}
   collider2D: {fileID: 8288463253275784121}
