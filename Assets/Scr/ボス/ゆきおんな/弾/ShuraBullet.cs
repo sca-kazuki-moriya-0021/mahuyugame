@@ -12,10 +12,7 @@ public class ShuraBullet : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     private Vector3 pos;
-    private Vector3 bossPos;
 
-    [SerializeField]
-    private GameObject boss;
     private SnowFairyBulletCon snowFairyBulletCon;
 
     private int randomCount = 0;
@@ -36,7 +33,6 @@ public class ShuraBullet : MonoBehaviour
         else
             rigidbody2D.velocity = speed * Vector2.up;
 
-        bossPos = boss.transform.position;
         snowFairyBulletCon = FindObjectOfType<SnowFairyBulletCon>();
         playerCon = FindObjectOfType<Player>();
     }
