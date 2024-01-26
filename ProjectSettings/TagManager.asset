@@ -22,15 +22,17 @@ TagManager:
   - Icon1
   - Icon3
   - Icon2
+  - Enemy
+  - PouseButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - SkillOutLine
-  - 
+  - OutLine
   - 
   - 
   - 

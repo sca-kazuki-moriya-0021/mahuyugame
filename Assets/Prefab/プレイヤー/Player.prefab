@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3603823006587648065}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: SubBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6704601528409567894}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Sub1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5013171072278476784}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: MainBulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630029555941115377}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Sub2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8150515202828147112}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: SkillFiringPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6399580715127631709}
   - component: {fileID: 6399580715127631710}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: FiringPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580715403096780}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Main2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580715704048786}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Main3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6399580715835281263}
   - component: {fileID: 6399580715835281262}
   - component: {fileID: 6399580715835281248}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 6399580715944071584}
   - component: {fileID: 3790261367096651559}
   - component: {fileID: 1566872759338620791}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6399580716671568876}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Main1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 2717207796534221052}
   - component: {fileID: 4908588441602728491}
   - component: {fileID: 237422470916532741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spine GameObject (syuzinko_SD_anime)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -960,7 +960,7 @@ MonoBehaviour:
   - {x: -1.26, y: -6.43, z: 0}
   m_ShapePathHash: 987858489
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37874
+  m_InstanceId: 121026
 --- !u!1 &6836313933259507719
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 2416298019477192692}
   - component: {fileID: 7945813818311590889}
   - component: {fileID: 1549146539291330191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerPointLight
   m_TagString: PlayerLight
   m_Icon: {fileID: 0}
