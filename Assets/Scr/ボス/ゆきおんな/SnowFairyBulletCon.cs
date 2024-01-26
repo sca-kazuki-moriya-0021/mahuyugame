@@ -34,9 +34,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     [SerializeField]
     private float[] spinAngle;
 
-    //弾の発射感覚
-    [SerializeField]
-    private float[] fireTime;
+    //発射管理用
     private int count = 0;
 
     //修羅剣用コライダー
@@ -50,9 +48,6 @@ public class SnowFairyBulletCon : MonoBehaviour
     //雪の結晶弾の角度
     [SerializeField]
     private float crystalAngle;
-    //雪の結晶弾の出始めに何個出すか
-    [SerializeField]
-    private int crystalShoots;
     //n方向に分かれるか
     [SerializeField]
     private int crystalNumberOfBullets;
@@ -103,7 +98,7 @@ public class SnowFairyBulletCon : MonoBehaviour
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
             count++;
-            yield return new WaitForSeconds(fireTime[0]);
+            yield return new WaitForSeconds(0.03f);
         }
         count = 0;
         while(time < 20f)
@@ -112,28 +107,26 @@ public class SnowFairyBulletCon : MonoBehaviour
                 pushBulletCon.ShootBarrier(spinAngle[i] + count, bullets[1], bulletSpeed[1]*2);
 
             count = (count + 1) * 2;
-            yield return new WaitForSeconds(fireTime[1]);
+            yield return new WaitForSeconds(0.7f);
             pushBulletCon.ShootWayBullet(launchWaySpilt, launchWayAngle, bullets[1], bulletSpeed[1]);
         }
         count = 0;
 
-        /*for (int i = 0; i < cornerPosChild.Length; i++)
-        {
-            //ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
-        }
+        for (int i = 0; i < cornerPosChild.Length; i++)
+            pushBulletCon.ShootCornerMove(cornerPos, cornerPosChild[i], bullets[2], bulletSpeed[2]);
 
-        while (count <100)
+        yield return new WaitForSeconds(12.0f);
+
+        while (count < 3)
         {
-            for (int i = 0; i < crystalShoots; i++)
-            {
-                pushBulletCon.SnowCrystal(crystalAngle, crystalNumberOfBullets, bullets[3], bulletSpeed[3]);
-                yield return new WaitForSeconds(0.2f);
-            }
-            yield return new WaitForSeconds(fireTime[2]);
+            pushBulletCon.SnowCrystal(crystalAngle, crystalNumberOfBullets, bullets[3], bulletSpeed[3]);
             count++;
+            yield return new WaitForSeconds(3f);
         }
 
-        for(int i = 0; i < 15; i++)
+        count = 0;
+
+        /*for(int i = 0; i < 15; i++)
         {
             pushBulletCon.ShootDemarcation(1);
             pushBulletCon.ShootDemarcation(-1);
@@ -168,11 +161,11 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new WaitForSeconds(2f - i* 0.1f);
         }*/
 
-        for(int i = 0; i< 15; i++)
+        /*for(int i = 0; i< 15; i++)
         {
             pushBulletCon.DreamRealityShoot(bullets[5],transform.position);
             yield return new  WaitForSeconds(2f);
-        }
+        }*/
 
       
         yield return  null;
@@ -198,5 +191,4 @@ public class SnowFairyBulletCon : MonoBehaviour
             shuraTime = 0f;
         }
     }
-
 }

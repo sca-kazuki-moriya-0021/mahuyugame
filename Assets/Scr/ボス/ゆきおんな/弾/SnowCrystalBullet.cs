@@ -28,8 +28,7 @@ public class SnowCrystalBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.BulletSeverFlag == true)
-            Destroy(this.gameObject);
+        
     }
 
 
