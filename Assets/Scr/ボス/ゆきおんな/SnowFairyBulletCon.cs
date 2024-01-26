@@ -153,7 +153,7 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         //pushBulletCon.DestroyShuraShoot();
         //pushBulletCon.DestoryDemarcation();
-        shuraFlag = false;
+        //shuraFlag = false;
 
         /*for(int i = 0 ; i < 20; i++)
         {
