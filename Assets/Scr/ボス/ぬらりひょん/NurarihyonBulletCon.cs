@@ -62,6 +62,12 @@ public class NurarihyonBulletCon : MonoBehaviour
     {
         while (true)
         {
+            for(int i = 0;i < 5; i++)
+            {
+                nurarihyonPushBulletCon.CallParticles(NewPoint,bullets[11]);
+                
+                yield return new WaitForSeconds(3.0f);
+            }
             nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
             for (int i = 0; i < 30; i++)
             {
