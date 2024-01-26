@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindEffectCon : MonoBehaviour
 {
     [SerializeField]
-     private ParticleSystem[] particleSystems;
+    private ParticleSystem[] particleSystems;
 
     private BossCollder bossCollder;
 
@@ -21,7 +21,10 @@ public class WindEffectCon : MonoBehaviour
         if(bossCollder.BossDeathFlag == true)
         {
             for(int i = 0; i < particleSystems.Length; i++)
-                Destroy(particleSystems[i]);
+            {
+                particleSystems[i].loop = false;
+                Debug.Log(particleSystems[i].loop);
+            }
         }
     }
 }
