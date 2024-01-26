@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6618156228380635673}
+  - component: {fileID: 479479080611889723}
   - component: {fileID: 7988974977198070859}
+  - component: {fileID: 6338424939636112638}
   m_Layer: 9
   m_Name: ShuraStopObject
   m_TagString: SkillBulletOutLine
@@ -17,8 +18,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6618156228380635673
-Transform:
+--- !u!224 &479479080611889723
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31,6 +32,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -13.1, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &7988974977198070859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57,3 +63,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.9781766, y: 0.80386543}
   m_EdgeRadius: 0
+--- !u!222 &6338424939636112638
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183004181450610738}
+  m_CullTransparentMesh: 1
