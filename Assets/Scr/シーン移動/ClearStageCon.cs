@@ -74,7 +74,7 @@ public class ClearStageCon : MonoBehaviour
     void FixedUpdate()
     {
         //スコア表示終わったら
-        if(animEndFlag == true)
+        //if(animEndFlag == true)
         {
             if (selectedObj == null)
             {
@@ -89,7 +89,7 @@ public class ClearStageCon : MonoBehaviour
     //ゲーム終了
     public void GameEnd()
     {
-        if(animEndFlag == true)
+        //if(animEndFlag == true)
         {
             audioSource.PlayOneShot(soundE);
             fadeOut.ClearFadeOut("GameEnd");
@@ -99,7 +99,7 @@ public class ClearStageCon : MonoBehaviour
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
-        if(animEndFlag == true)
+        //if(animEndFlag == true)
         {
             audioSource.PlayOneShot(soundE);
             if (totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
@@ -112,5 +112,5 @@ public class ClearStageCon : MonoBehaviour
     }
 
     //アニメーション終わり検知用
-    public void OnAnimationCompleted() =>animEndFlag = true;
+    //public void OnAnimationCompleted() =>animEndFlag = true;
 }
