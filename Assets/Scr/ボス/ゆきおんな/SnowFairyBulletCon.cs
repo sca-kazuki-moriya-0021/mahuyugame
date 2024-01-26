@@ -132,13 +132,13 @@ public class SnowFairyBulletCon : MonoBehaviour
             pushBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);*/
 
         shuraFlag = true;
         pushBulletCon.ShuraShoot(0,1);
         pushBulletCon.ShuraShoot(1,-1);
 
-       for(int i = 0; i < 2 ; i++)
+       /*for(int i = 0; i < 2 ; i++)
        {
             pushBulletCon.GaoukenShoot(0);
             yield return new WaitForSeconds(2f);
@@ -148,13 +148,14 @@ public class SnowFairyBulletCon : MonoBehaviour
             yield return new WaitForSeconds(2f);
             pushBulletCon.GaoukenShoot(3);
             yield return new WaitForSeconds(2f);
-       }
+       }*/
 
 
-        pushBulletCon.DestroyShuraShoot();
-        pushBulletCon.DestoryDemarcation();
+        //pushBulletCon.DestroyShuraShoot();
+        //pushBulletCon.DestoryDemarcation();
         shuraFlag = false;
-        for(int i = 0 ; i < 20; i++)
+
+        /*for(int i = 0 ; i < 20; i++)
         {
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
