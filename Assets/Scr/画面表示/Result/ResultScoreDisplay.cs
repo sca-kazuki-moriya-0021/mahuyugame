@@ -10,15 +10,26 @@ public class ResultScoreDisplay : MonoBehaviour
     private Text[] score;
     [SerializeField, Header("目標地点")]
     private Vector2[] postion;
-    [SerializeField, Header("テキスト表示するまでの時間")] 
-    private float[] texttime;
+
+    //textのタイム
+    private float texttime = 0.5f;
+
+    //文字をセットするだけ
     public void Set(string s)
     {
         for(int i= 0; i < score.Length; i++)
+        score[i].text = s[i].ToString();
+        StartCoroutine(SetText());
+    }
+
+    //表示する
+    private IEnumerator SetText()
+    {
+        for (int i = 0; i < score.Length; i++)
         {
-            //score[i].text = s[i].ToString();
-            score[i].DOText(s[i].ToString(), texttime[i]).SetEase(Ease.Linear);
+            score[i].DOFade(1f, texttime);
             //score[i].transform.DOLocalMove(postion[i], 1.5f);
+            yield return new WaitForSecondsRealtime(texttime);
         }
     }
 }

@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &54907104
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -665,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -842,6 +844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &375317384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1860,6 +1864,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!114 &797122044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2118,7 +2124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2365,6 +2371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &999929560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2502,7 +2510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3090,6 +3098,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &1234877508
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3617,7 +3627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3768,6 +3778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &1496873182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4086,7 +4098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4344,7 +4356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4431,6 +4443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &1777381721
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4886,7 +4900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4965,7 +4979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5131,6 +5145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: []
+  postion: []
+  texttime: []
 --- !u!222 &2057615825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5351,7 +5367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2521689873054355112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5373,6 +5389,8 @@ MonoBehaviour:
   - {fileID: 2057615823}
   - {fileID: 1496873180}
   - {fileID: 797122044}
+  postion: []
+  texttime: []
 --- !u!222 &2918490212350968802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5588,7 +5606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5471355027031629670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,6 +5628,8 @@ MonoBehaviour:
   - {fileID: 823866530}
   - {fileID: 753503522}
   - {fileID: 1153444111}
+  postion: []
+  texttime: []
 --- !u!1001 &5858667146608581816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5711,7 +5731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5858667146293685772, guid: 6c5aaf796b0de6641869c41d9a74b498, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c5aaf796b0de6641869c41d9a74b498, type: 3}
@@ -5800,6 +5820,16 @@ MonoBehaviour:
   - {fileID: 1236322950}
   - {fileID: 1935267945}
   - {fileID: 1288798478}
+  postion: []
+  texttime:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
 --- !u!224 &7339330644196601116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5842,7 +5872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7711805328974964437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,6 +5894,8 @@ MonoBehaviour:
   - {fileID: 1863535455}
   - {fileID: 177943071}
   - {fileID: 1181608793}
+  postion: []
+  texttime: []
 --- !u!223 &7853689369408650016
 Canvas:
   m_ObjectHideFlags: 0
@@ -5932,6 +5964,16 @@ MonoBehaviour:
   - {fileID: 1767351225}
   - {fileID: 2034237095}
   - {fileID: 1034794071}
+  postion: []
+  texttime:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
 --- !u!1 &8308395481120618505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,7 +5991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8308395481120618506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5971,6 +6013,8 @@ MonoBehaviour:
   - {fileID: 1609424726}
   - {fileID: 805674080}
   - {fileID: 1671455815}
+  postion: []
+  texttime: []
 --- !u!222 &8396635198544670074
 CanvasRenderer:
   m_ObjectHideFlags: 0
