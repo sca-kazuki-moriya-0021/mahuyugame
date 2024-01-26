@@ -10,6 +10,8 @@ public class ResultScoreDisplay : MonoBehaviour
     private Text[] score;
     [SerializeField, Header("目標地点")]
     private Vector2[] postion;
+    [SerializeField, Header("移動時間")] 
+    private float movetime;
 
     //textのタイム
     private float texttime = 0.5f;
@@ -28,7 +30,7 @@ public class ResultScoreDisplay : MonoBehaviour
         for (int i = 0; i < score.Length; i++)
         {
             score[i].DOFade(1f, texttime);
-            //score[i].transform.DOLocalMove(postion[i], 1.5f);
+            score[i].transform.DOLocalMove(postion[i], movetime);
             yield return new WaitForSecondsRealtime(texttime);
         }
     }
