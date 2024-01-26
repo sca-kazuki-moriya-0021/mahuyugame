@@ -72,13 +72,13 @@ public class CornerMoveBullet : MonoBehaviour
         deleteTime += Time.deltaTime;
 
         //íeî≠éÀ
-        if(time > 0.5f)
+        if(time > 0.3f)
         {
             ShootBullet();
             time = 0.0f;
         }
 
-        if(deleteTime > 10.0f)
+        if(deleteTime > 12.0f)
         {
             Destroy(this.gameObject);
         }
@@ -99,8 +99,8 @@ public class CornerMoveBullet : MonoBehaviour
     //à⁄ìÆí≤êÆ
     private IEnumerator MovePosition(int a, int b)
     {
-        float time = 0;
         moveColFlag = true;
+        float time = 0;
         float dir = Mathf.Abs(Vector3.Distance(cornerPosChild[a].transform.position, cornerPosChild[b].transform.position));
      
         while (cornerPosChild[b].transform.position != transform.position)
@@ -111,8 +111,7 @@ public class CornerMoveBullet : MonoBehaviour
             yield return null;
         }
         
-        var i = Random.Range(0.3f,0.5f);
-        yield return new WaitForSecondsRealtime(0.2f + i);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         moveColFlag = false;
         StopCoroutine(MovePosition(a, b));
