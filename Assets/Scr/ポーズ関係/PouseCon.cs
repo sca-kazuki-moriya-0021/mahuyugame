@@ -98,6 +98,7 @@ public class PouseCon : MonoBehaviour
                     selectedObj == poseButtonObj[1] || selectedObj == poseButtonObj[2] ))
                 {
                     selectedObj = ev.currentSelectedGameObject;
+                    outLine.transform.position = selectedObj.transform.position;
                 }
                 else
                 {
