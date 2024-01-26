@@ -93,7 +93,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     {
 
         audioSource.PlayOneShot(audioClip);
-        while (time < 10f)
+        /*while (time < 10f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
@@ -126,7 +126,7 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         count = 0;
 
-        /*for(int i = 0; i < 15; i++)
+        for(int i = 0; i < 15; i++)
         {
             pushBulletCon.ShootDemarcation(1);
             pushBulletCon.ShootDemarcation(-1);
@@ -138,18 +138,18 @@ public class SnowFairyBulletCon : MonoBehaviour
         //pushBulletCon.ShuraShoot(0,1);
         //pushBulletCon.ShuraShoot(1,-1);
 
-       for(int i = 0; i < 2 ; i++)
-       {
-            pushBulletCon.GaoukenShoot(0);
-            yield return new WaitForSeconds(2f);
-            pushBulletCon.GaoukenShoot(1);
-            yield return new WaitForSeconds(2f);
-            pushBulletCon.GaoukenShoot(2);
-            yield return new WaitForSeconds(2f);
-            pushBulletCon.GaoukenShoot(3);
-            yield return new WaitForSeconds(2f);
-       }
-
+        pushBulletCon.GaoukenShoot(0);
+        yield return new WaitForSeconds(2f);
+        pushBulletCon.GaoukenShoot(1);
+        yield return new WaitForSeconds(2f);
+        pushBulletCon.GaoukenShoot(2);
+        yield return new WaitForSeconds(2f);
+        pushBulletCon.GaoukenShoot(3);
+        yield return new WaitForSeconds(2f);
+        pushBulletCon.GaoukenShoot(4);
+        yield return new WaitForSeconds(2f);
+        pushBulletCon.GaoukenShoot(5);
+        yield return new WaitForSeconds(2f);
 
         //pushBulletCon.DestroyShuraShoot();
         //pushBulletCon.DestoryDemarcation();

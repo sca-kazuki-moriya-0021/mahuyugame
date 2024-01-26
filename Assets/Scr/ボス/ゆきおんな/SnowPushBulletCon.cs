@@ -102,7 +102,7 @@ public class SnowPushBulletCon : MonoBehaviour
         switch (id)
         {
             case 0:
-                r = new Vector3(0,5,0);
+                r = new Vector3(0,2.6f,0);
             break;
             case 1:
                 r = new Vector3(0,-5, 0);
@@ -112,6 +112,12 @@ public class SnowPushBulletCon : MonoBehaviour
             break;
             case 3:
                 r = new Vector3(9,3,0);
+            break;
+            case 4:
+                r = new Vector3(9,-5,0);
+            break;
+            case 5:
+                r = new Vector3(-9,-5,0);
             break;
         }
         transform.TransformPoint(r);

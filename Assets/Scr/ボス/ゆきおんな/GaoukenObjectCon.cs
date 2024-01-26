@@ -51,16 +51,22 @@ public class GaoukenObjectCon : MonoBehaviour
         {
             //è„Ç©ÇÁâ∫
             case 0:
-                tween = this.transform.DOMove(new Vector3(0, transform.position.y - 10f, 0), 3f);
+                tween = this.transform.DOMove(new Vector3(0, -5, 0), 3f);
                 break;
             case 1:
-                tween = this.transform.DOMove(new Vector3(0, transform.position.y + 10f, 0), 3f);
+                tween = this.transform.DOMove(new Vector3(0,2.6f,0), 3f);
                 break;
             case 2:
-                tween = this.transform.DOMove(new Vector3(9,-3,0),3f);
+                tween = this.transform.DOMove(new Vector3(9,-5,0),3f);
                 break;
             case 3:
-                tween = this.transform.DOMove(new Vector3(-9,-3,0), 3f);
+                tween = this.transform.DOMove(new Vector3(-9,-5,0), 3f);
+                break;
+            case 4:
+                tween = this.transform.DOMove(new Vector3(-9, 3, 0),3f);
+                break;
+            case 5:
+                tween = this.transform.DOMove(new Vector3(9, 3, 0),3f);
                 break;
         }
         //çƒê∂
@@ -88,19 +94,20 @@ public class GaoukenObjectCon : MonoBehaviour
     //ï€ë∂ÇµÇΩç¿ïWÇ©ÇÁíeÇèoÇ∑
     private IEnumerator BulletIns()
     {
-            for (int x = 0; x < oldPos.Count; x++)
-            {
-                for (int i = 0; i < launchWayAngle.Length; i++)
-                {
-                    Vector3 dir = new Vector2(Mathf.Cos(launchWayAngle[i]), Mathf.Sin(launchWayAngle[i]));
-                    dir.z = 0;
-                    GameObject bullet_obj = (GameObject)Instantiate(bullet, oldPos[x], Quaternion.identity);
-                    GaoukenBullet gaoukenBullet = bullet_obj.GetComponent<GaoukenBullet>();
-                    gaoukenBullet.Dir = dir;
-                    gaoukenBullet.Speed = 1.5f;
-                }
-                yield return new WaitForSeconds(0.2f);
-            }
+       for (int x = 0; x < oldPos.Count; x++)
+       {
+          for (int i = 0; i < launchWayAngle.Length; i++)
+          {
+            Vector3 dir = new Vector2(Mathf.Cos(launchWayAngle[i]), Mathf.Sin(launchWayAngle[i]));
+            dir.z = 0;
+            GameObject bullet_obj = (GameObject)Instantiate(bullet, oldPos[x], Quaternion.identity);
+            GaoukenBullet gaoukenBullet = bullet_obj.GetComponent<GaoukenBullet>();
+            gaoukenBullet.Dir = dir;
+            gaoukenBullet.Speed = 1.5f;
+          }
+          yield return new WaitForSeconds(0.2f);
+       }
+        Destroy(this.gameObject);
         StopCoroutine(BulletIns());
     }
 }
