@@ -379,8 +379,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
         }
         yield return null;
     }
-
-    public void RotaHoming(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
+public void RotaHoming(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
     {
         isMove = false;
         StartCoroutine(C(bulletPrefab, centerPoint, numberOfBullet, radius, duration));
@@ -408,5 +407,27 @@ public class NurarihyonPushBulletCon : MonoBehaviour
                 bullet.GetComponent<NewHoming>().IsMove = isMove;
             }
         }
+    }
+
+    public void CallParticles(Transform[] a,GameObject particlePrefab) 
+    {
+        foreach (Transform transform in a)
+        {
+            GameObject particleObject = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+
+            // パーティクルをアクティブにする
+            particleObject.SetActive(true);
+
+            // 一定時間後に非アクティブにする
+            StartCoroutine(DeactivateParticleAfterDelay(particleObject));
+        }
+    }
+    
+    private IEnumerator DeactivateParticleAfterDelay(GameObject particleObject)
+    {
+        yield return new WaitForSeconds(2f);
+
+        // 一定時間後にパーティクルを非アクティブにする
+        Destroy(particleObject);
     }
 }
