@@ -12,9 +12,11 @@ public class ResultScoreDisplay : MonoBehaviour
     private Vector2[] postion;
     [SerializeField, Header("移動時間")] 
     private float movetime;
-
+    private bool stop;
     //textのタイム
     private float texttime = 0.5f;
+
+    public bool Stop { get => stop; set => stop = value; }
 
     //文字をセットするだけ
     public void Set(string s)
@@ -33,5 +35,7 @@ public class ResultScoreDisplay : MonoBehaviour
             score[i].transform.DOLocalMove(postion[i], movetime);
             yield return new WaitForSecondsRealtime(texttime);
         }
+        stop=true;
+        StopCoroutine(SetText());
     }
 }

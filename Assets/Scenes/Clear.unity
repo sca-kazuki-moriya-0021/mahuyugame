@@ -1722,6 +1722,7 @@ MonoBehaviour:
   ev: {fileID: 1533469658}
   fadeOut: {fileID: 315437749}
   fadeIn: {fileID: 5858667146608581817}
+  sb: {fileID: 7711805328974964438}
 --- !u!81 &540047282
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6488,6 +6489,7 @@ GameObject:
   - component: {fileID: 6269498076268467181}
   - component: {fileID: 8396635198544670074}
   - component: {fileID: 7711805328974964437}
+  - component: {fileID: 7711805328974964438}
   m_Layer: 5
   m_Name: HighScore3
   m_TagString: Untagged
@@ -6526,6 +6528,19 @@ MonoBehaviour:
   - {x: 39.1, y: 0}
   - {x: 52.01, y: 0}
   movetime: 2
+--- !u!114 &7711805328974964438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711805328974964436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eecaecd3e5ee1c498c4173c186d3e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rs: {fileID: 7711805328974964437}
 --- !u!223 &7853689369408650016
 Canvas:
   m_ObjectHideFlags: 0

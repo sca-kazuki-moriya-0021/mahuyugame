@@ -35,7 +35,8 @@ public class ClearStageCon : MonoBehaviour
     private StageFadeOut fadeOut;
     [SerializeField]
     private StageFadeIn fadeIn;
-    
+    [SerializeField]
+    private SelectbuttonMove sb;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +75,7 @@ public class ClearStageCon : MonoBehaviour
     void FixedUpdate()
     {
         //スコア表示終わったら
-        //if(animEndFlag == true)
+        if(sb.SelectFlag == true)
         {
             if (selectedObj == null)
             {
@@ -89,7 +90,7 @@ public class ClearStageCon : MonoBehaviour
     //ゲーム終了
     public void GameEnd()
     {
-        //if(animEndFlag == true)
+        if(sb.SelectFlag == true)
         {
             audioSource.PlayOneShot(soundE);
             fadeOut.ClearFadeOut("GameEnd");
@@ -99,7 +100,7 @@ public class ClearStageCon : MonoBehaviour
     //スキルセレクト画面に行くとき
     public void SkillSelect()
     {
-        //if(animEndFlag == true)
+        if(sb.SelectFlag == true)
         {
             audioSource.PlayOneShot(soundE);
             if (totalGM.BackSideFlag == false && totalGM.GameOverCount == 0)
