@@ -7,6 +7,8 @@ public class LaserBullet : MonoBehaviour
     //エフェクト部分が消えたかどうか
     private bool laser;
 
+    private float time;
+
     //速度と角度
     private float velocity;
     private Vector3 angle;
@@ -35,8 +37,12 @@ public class LaserBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        if(time >= 4f)
+            Destroy(this.gameObject);
+
         //現在の角度等を保存しておく
-       lastVelocity = rb2d.velocity;
+        lastVelocity = rb2d.velocity;
         if(count >= 4)
             Destroy(this.gameObject);
     }

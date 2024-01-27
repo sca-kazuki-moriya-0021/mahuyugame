@@ -62,6 +62,7 @@ public class AreaManager : MonoBehaviour
       {
             if (downFlag == false)
             {
+                Debug.Log("“ü‚Á‚Ä‚é");
                 audioSource.Play();
                 playFlag = false;
                 downFlag = true;

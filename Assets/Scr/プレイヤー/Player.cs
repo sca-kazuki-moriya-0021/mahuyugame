@@ -189,6 +189,7 @@ public class Player : MonoBehaviour
     //É|Å[ÉYî≠ìÆ
     public void OnPouse(InputAction.CallbackContext context)
     {
+        if (skillCutinCon.CutInFlag == false)
         pouseCon.Pouse();
     }
 
