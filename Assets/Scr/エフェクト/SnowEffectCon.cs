@@ -35,7 +35,6 @@ public class SnowEffectCon : MonoBehaviour
 
        if(stopFlag == true)
        {
-           Debug.Log("“ü‚Á‚Ä‚¢‚é‚æ");
            stopFlag = false;
            if(blizzard.activeSelf == false)
            blizzard.SetActive(true);

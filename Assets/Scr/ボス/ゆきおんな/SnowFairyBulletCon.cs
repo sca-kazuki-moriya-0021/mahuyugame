@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using DG.Tweening;
 
 public class SnowFairyBulletCon : MonoBehaviour
 {
@@ -60,8 +61,12 @@ public class SnowFairyBulletCon : MonoBehaviour
 
     private GameObject player;
 
+    //パーティクル変更
     private bool blizzardFlag;
-    private bool testFlag;
+
+    //ライト取得用
+    [SerializeField]
+    private Light2D stageGlobalLight;
 
     public bool PPosMoveFlag
     {
@@ -93,7 +98,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     private IEnumerator Atk()
     {
 
-        audioSource.PlayOneShot(audioClip);
+       
         /*while (time < 10f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
@@ -135,7 +140,14 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);*/
 
+        //パーティクル変更
         blizzardFlag = true;
+        yield return new WaitForSeconds(0.4f);
+        audioSource.PlayOneShot(audioClip);
+
+        //グローバルライト変更
+        stageGlobalLight.color = new Color(0,0,0);
+        
 
         shuraFlag = true;
         pushBulletCon.ShuraShoot(0,1);
