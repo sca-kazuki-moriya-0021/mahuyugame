@@ -11,6 +11,9 @@ public class ShuraBullet : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigidbody2D;
 
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
     private Vector3 pos;
 
     private SnowFairyBulletCon snowFairyBulletCon;
@@ -48,10 +51,12 @@ public class ShuraBullet : MonoBehaviour
         //if(snowFairyBulletCon.PPosMoveFlag == true && centerFlag == true)
             //TrackingMove();
 
+        
+
         if(playerCon.BulletSeverFlag == true)
             Destroy(this.gameObject);
     }
-   
+
     //Ž~‚Ü‚Á‚½Œã’Ç”ö‚·‚é
     /*private void TrackingMove()
     {
@@ -62,6 +67,18 @@ public class ShuraBullet : MonoBehaviour
 
         rigidbody2D.velocity = dir *speed *0.5f;
     }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerLight"))
+            spriteRenderer.color = new Color(255, 255, 255, 255);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerLight"))
+            spriteRenderer.color = new Color(255, 255, 255, 0);
+    }
 
     void OnBecameInvisible()
     {
