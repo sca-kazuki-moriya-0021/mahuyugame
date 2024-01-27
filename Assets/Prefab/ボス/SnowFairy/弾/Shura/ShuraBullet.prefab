@@ -74,7 +74,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 7114116292600926554}
-  boss: {fileID: 713371873187468053, guid: ef3a14f9167e08947ba74314909b7c83, type: 3}
   player: {fileID: 6399580715944071599, guid: 06818d60de682b643827dc2704b8127a, type: 3}
-  playerCon: {fileID: 6399580715944071585, guid: 06818d60de682b643827dc2704b8127a, type: 3}

@@ -41,19 +41,19 @@ public class ShuraBullet : MonoBehaviour
     void Update()
     {
         //動きとめる用
-        if (centerFlag == true)
-           rigidbody2D.velocity = Vector2.zero;
+        //if (centerFlag == true)
+           //rigidbody2D.velocity = Vector2.zero;
 
         //追尾に入るif文
-        if(snowFairyBulletCon.PPosMoveFlag == true && centerFlag == true)
-            TrackingMove();
+        //if(snowFairyBulletCon.PPosMoveFlag == true && centerFlag == true)
+            //TrackingMove();
 
         if(playerCon.BulletSeverFlag == true)
             Destroy(this.gameObject);
     }
    
     //止まった後追尾する
-    private void TrackingMove()
+    /*private void TrackingMove()
     {
         centerFlag = false;
         var p = player.transform.position;
@@ -61,7 +61,7 @@ public class ShuraBullet : MonoBehaviour
         var dir = p - transform.position;
 
         rigidbody2D.velocity = dir *speed *0.5f;
-    }
+    }*/
 
     void OnBecameInvisible()
     {
@@ -69,10 +69,10 @@ public class ShuraBullet : MonoBehaviour
     }
 
     //ボスのY軸と同じY軸のオブジェクトに触れたら
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("SkillBulletOutLine"))
             centerFlag = true;
-    }
+    }*/
 
 }

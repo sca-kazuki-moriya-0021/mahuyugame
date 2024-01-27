@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class SnowFairyBulletCon : MonoBehaviour
 {
@@ -38,8 +39,8 @@ public class SnowFairyBulletCon : MonoBehaviour
     private int count = 0;
 
     //修羅剣用コライダー
-    [SerializeField]
-    private GameObject shuraCenterObj;
+    //[SerializeField]
+    //private GameObject shuraCenterObj;
     private GameObject centerObj = null;
 
     private bool shuraFlag;
@@ -84,8 +85,8 @@ public class SnowFairyBulletCon : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(shuraFlag == true)
-            ShuraTimeCount();
+        //if(shuraFlag == true)
+            //ShuraTimeCount();
 
     }
 
@@ -134,6 +135,8 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);*/
 
+        blizzardFlag = true;
+
         shuraFlag = true;
         pushBulletCon.ShuraShoot(0,1);
         pushBulletCon.ShuraShoot(1,-1);
@@ -172,7 +175,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         StopCoroutine(Atk());
     }
 
-    private void ShuraTimeCount()
+    /*private void ShuraTimeCount()
     {
         shuraTime += Time.deltaTime;
         
@@ -190,5 +193,5 @@ public class SnowFairyBulletCon : MonoBehaviour
             pPosMoveFlag = false;
             shuraTime = 0f;
         }
-    }
+    }*/
 }

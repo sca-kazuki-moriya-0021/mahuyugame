@@ -27,10 +27,15 @@ public class SnowEffectCon : MonoBehaviour
     void Update()
     {
        if(snowBulletCon.BlizzardFlag == true)
-            particleSystem.loop = false;
+       {
+            var main =particleSystem.main;
+            main.loop = false;
+       }
+            
 
        if(stopFlag == true)
        {
+           Debug.Log("“ü‚Á‚Ä‚¢‚é‚æ");
            stopFlag = false;
            if(blizzard.activeSelf == false)
            blizzard.SetActive(true);

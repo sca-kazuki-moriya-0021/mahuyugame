@@ -22,8 +22,8 @@ public class WindEffectCon : MonoBehaviour
         {
             for(int i = 0; i < particleSystems.Length; i++)
             {
-                particleSystems[i].loop = false;
-                Debug.Log(particleSystems[i].loop);
+                var main = particleSystems[i].main;
+                main.loop = false;
             }
         }
     }
