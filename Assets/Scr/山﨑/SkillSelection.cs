@@ -438,19 +438,19 @@ public class SkillSelection : MonoBehaviour
 
     private void SkillExplanation()
     {
-        switch(selectedObj.tag)
+        switch (selectedObj.tag)
         {
             case "Icon1":
-                skillExplanation.text = "skill1の説明文が出ます。";
+                skillExplanation.text = "バリア\n\n自機を守る障壁を展開する\n効果:5秒・CT: 20秒";
                 break;
             case "Icon2":
-                skillExplanation.text = "skill2の説明文が出ます。";
+                skillExplanation.text = "刀\n\n画面上にある弾を消す\nCT:20秒";
                 break;
             case "Icon3":
-                skillExplanation.text = "skill3の説明文が出ます。";
+                skillExplanation.text = "弓\n\nボスの防御力を下げる\n効果:10秒・CT: 10";
                 break;
             case "Icon4":
-                skillExplanation.text = "skill4の説明文が出ます。";
+                skillExplanation.text = "バフ\n\n自機の弾発射感覚を減らす\n効果:5秒・CT: 15";
                 break;
         }
     }
