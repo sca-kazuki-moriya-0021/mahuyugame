@@ -99,7 +99,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     {
 
 
-        /*while (time < 15f)
+        while (time < 15f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
             pushBulletCon.ShootBulletWithCustomDirection(-count, bullets[0],bulletSpeed[0]);
@@ -118,6 +118,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         }
         count = 0;
 
+        audioSource.PlayOneShot(audioClip);
         shuraFlag = true;
         pushBulletCon.ShuraShoot(0,1);
         pushBulletCon.ShuraShoot(1,-1);
@@ -133,7 +134,7 @@ public class SnowFairyBulletCon : MonoBehaviour
        count++;
        yield return new WaitForSeconds(3f);
 
-        count = 0;*/
+        count = 0;
 
         /*for(int i = 0; i < 15; i++)
         {
@@ -150,7 +151,7 @@ public class SnowFairyBulletCon : MonoBehaviour
         //グローバルライト変更
         stageGlobalLight.color = new Color(0,0,0);
 
-        //pushBulletCon.DestroyShuraShoot();
+        pushBulletCon.DestroyShuraShoot();
 
 
         pushBulletCon.GaoukenShoot(0);
@@ -168,16 +169,17 @@ public class SnowFairyBulletCon : MonoBehaviour
 
 
         pushBulletCon.DestoryDemarcation();
-        //shuraFlag = false;
+        shuraFlag = false;
 
-       for(int i = 0 ; i < 10; i++)
+       for(int i = 0 ; i < 5; i++)
         {
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(3f);
         }
 
-        for(int i = 0; i< 10; i++)
+        audioSource.PlayOneShot(audioClip);
+        for (int i = 0; i< 10; i++)
         {
             pushBulletCon.DreamRealityShoot(bullets[5],transform.position);
             yield return new  WaitForSeconds(2f);
