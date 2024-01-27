@@ -144,12 +144,6 @@ public class SnowFairyBulletCon : MonoBehaviour
         }*/
         yield return new WaitForSeconds(0.5f);
 
-        //パーティクル変更
-        blizzardFlag = true;
-        yield return new WaitForSeconds(0.4f);
-        audioSource.PlayOneShot(audioClip);
-        //グローバルライト変更
-        stageGlobalLight.color = new Color(0,0,0);
 
         pushBulletCon.DestroyShuraShoot();
 
@@ -177,6 +171,13 @@ public class SnowFairyBulletCon : MonoBehaviour
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 28, bullets[4], bulletSpeed[4], player.transform.position);
             yield return new WaitForSeconds(3f);
         }
+
+        //パーティクル変更
+        blizzardFlag = true;
+        yield return new WaitForSeconds(0.4f);
+        audioSource.PlayOneShot(audioClip);
+        //グローバルライト変更
+        stageGlobalLight.color = new Color(0, 0, 0);
 
         audioSource.PlayOneShot(audioClip);
         for (int i = 0; i< 10; i++)
