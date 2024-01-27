@@ -28,6 +28,7 @@ public class BarrageSelect : MonoBehaviour
     [SerializeField] Sprite[] barrageIcon;//弾幕アイコン入れ（上の変数に代入するよう)
     bool[] mainSubWepon = { false, false };
     [SerializeField] private VideoClip[] barrageClip;//流したい球クリップを配列
+    [SerializeField] private VideoClip[] subBarrageClip;//流したい球クリップを配列
     [SerializeField] private VideoPlayer videoPlayer;//Videoを格納
     [SerializeField] private Text barrageExplanation;//球のテキスト
     [SerializeField] private GameObject backSkillButton;
@@ -354,16 +355,16 @@ public class BarrageSelect : MonoBehaviour
         switch (selectedObj.tag)
         {
             case "Icon1":
-                barrageExplanation.text = "弾幕1の説明文が出ます。";
+                barrageExplanation.text = "連射弾\n\nまっすぐ進む弾を発射";
                 break;
             case "Icon2":
-                barrageExplanation.text = "弾幕2の説明文が出ます。";
+                barrageExplanation.text = "反射弾\n\n壁に触れると反射する弾を発射";
                 break;
             case "Icon3":
-                barrageExplanation.text = "弾幕3の説明文が出ます。";
+                barrageExplanation.text = "追尾弾\n\nボスに追尾する弾を発射";
                 break;
             case "Icon4":
-                barrageExplanation.text = "弾幕4の説明文が出ます。";
+                barrageExplanation.text = "ブーメラン弾\n\n画面中央に向けて進み、\n自機に向かってくる弾を発射";
                 break;
         }
     }
@@ -373,16 +374,44 @@ public class BarrageSelect : MonoBehaviour
         switch (selectedObj.tag)
         {
             case "Icon1":
-                videoPlayer.clip = barrageClip[0];
+                if(totalGM.PlayerSubWeapon[0])
+                {
+                    videoPlayer.clip = subBarrageClip[0];
+                }
+                else
+                {
+                    videoPlayer.clip = barrageClip[0];
+                }
                 break;
             case "Icon2":
-                videoPlayer.clip = barrageClip[1];
+                if (totalGM.PlayerSubWeapon[1])
+                {
+                    videoPlayer.clip = subBarrageClip[1];
+                }
+                else
+                {
+                    videoPlayer.clip = barrageClip[1];
+                }
                 break;
             case "Icon3":
-                videoPlayer.clip = barrageClip[2];
+                if (totalGM.PlayerSubWeapon[2])
+                {
+                    videoPlayer.clip = subBarrageClip[2];
+                }
+                else
+                {
+                    videoPlayer.clip = barrageClip[2];
+                }
                 break;
             case "Icon4":
-                videoPlayer.clip = barrageClip[3];
+                if (totalGM.PlayerSubWeapon[3])
+                {
+                    videoPlayer.clip = subBarrageClip[3];
+                }
+                else
+                {
+                    videoPlayer.clip = barrageClip[3];
+                }
                 break;
         }
     }

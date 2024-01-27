@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
                             pBaffSkillFlag = true;
                             break;
                     }
-                    yield return new WaitForSeconds(3.0f);
+                    yield return new WaitForSeconds(1.5f);
                     skillDisplay.SkillCoolFlag[0] = true;
                     break;
                 }
@@ -343,7 +343,7 @@ public class Player : MonoBehaviour
                             barrierObject = Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;
                     }
-                    yield return new WaitForSeconds(3.0f);
+                    yield return new WaitForSeconds(1.5f);
                     skillDisplay.SkillCoolFlag[1] = true;
                     break;
                 }
