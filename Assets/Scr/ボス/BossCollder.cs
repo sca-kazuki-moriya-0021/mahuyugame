@@ -125,9 +125,9 @@ public class BossCollder : MonoBehaviour
         if (playerCollider.DeathFlag == false)
         {
             if(target == true && debuffFlag == true)
-               hp -= 0.8f;
+               hp -= 0.6f;
             else if (target == true && debuffFlag == false)
-               hp -= 0.5f;
+               hp -= 0.3f;
             else if(target == false && debuffFlag == true)
                hp -= 2;
             else hp--;
