@@ -18,7 +18,7 @@ public class PlayerSkillCutInCon : MonoBehaviour
     private Text getText;
 
     [SerializeField,Header("スキルカットインのアニメーション")]
-    private Animator[] skillAnimator;
+    private Animator skillAnimator;
 
     [SerializeField,Header("スキルカットイン背景画像")]
     private Sprite skillBarkGround;
@@ -31,8 +31,6 @@ public class PlayerSkillCutInCon : MonoBehaviour
 
     //カットインしたかどうか
     private bool cutInFlag;
-
-    private float time = 0;
 
     public bool CutInFlag
     {
@@ -49,34 +47,27 @@ public class PlayerSkillCutInCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //カットイン時間制限用
-        if (cutInFlag == true)
-        {
-            time += Time.unscaledDeltaTime;
-            if (time >= 1.5f)
-            {
-                time = 0;
-                Time.timeScale = 1f;
-                cutInFlag = false;
-                myCanvas.enabled = false;
-            }
-        }
+       
     }
     
     //プレイヤーのスキルカットイン
     public void PlayerCutInDisplay(int i)
     {
-        //アニメーション初期化用
-       for(int x = 0; x < skillAnimator.Length; x++)
-       {
-            skillAnimator[x].Rebind();
-            skillAnimator[x].updateMode = AnimatorUpdateMode.UnscaledTime;
-       }
+     
+       skillAnimator.Rebind();
+       skillAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
        myCanvas.enabled = true;
        Time.timeScale = 0f;
        getImage.sprite = skillSprites[i];
        getText.text = texts[i];
        getbackImage.sprite = skillBarkGround;
        cutInFlag = true;
+    }
+
+    public void OnAnimationCompleted()
+    {
+        Time.timeScale = 1f;
+        cutInFlag = false;
+        myCanvas.enabled = false;
     }
 }

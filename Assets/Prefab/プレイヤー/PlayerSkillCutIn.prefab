@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8147856475893769167}
   - component: {fileID: 7883424334701053017}
   - component: {fileID: 7133293044057556593}
-  - component: {fileID: 2862522096263783163}
   m_Layer: 5
   m_Name: PlayerSkillFrame
   m_TagString: Untagged
@@ -76,25 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &2862522096263783163
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281940024368245405}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a9983aa26d830924f81944a6b16a982b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3643367639825826060
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +86,6 @@ GameObject:
   - component: {fileID: 300754159946293154}
   - component: {fileID: 7099465605615601939}
   - component: {fileID: 6936539249852464227}
-  - component: {fileID: 2474744355676886498}
   m_Layer: 5
   m_Name: PlayerSkillText
   m_TagString: Untagged
@@ -175,25 +154,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
---- !u!95 &2474744355676886498
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3643367639825826060}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba3234514bca9274fb91d0749a8e1d46, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4928871402843978524
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +165,6 @@ GameObject:
   - component: {fileID: 328037802177546629}
   - component: {fileID: 7878618361102729029}
   - component: {fileID: 8170189851472878249}
-  - component: {fileID: 2484846510454811745}
   m_Layer: 5
   m_Name: PlayerSkillBackGround
   m_TagString: Untagged
@@ -270,25 +229,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &2484846510454811745
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928871402843978524}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fb7b5279e160dc64bb4fd92a052921eb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6791071092220203697
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +240,6 @@ GameObject:
   - component: {fileID: 6791071092220203696}
   - component: {fileID: 6791071092220203694}
   - component: {fileID: 6791071092220203695}
-  - component: {fileID: 8664024405420620161}
   m_Layer: 5
   m_Name: PlayerSkillImage
   m_TagString: Untagged
@@ -365,25 +304,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &8664024405420620161
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791071092220203697}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d51b09d8fd7b8e641b7dd577814e826f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6791071093662665578
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +317,7 @@ GameObject:
   - component: {fileID: 6791071093662665576}
   - component: {fileID: 6791071093662665577}
   - component: {fileID: 6791071093662665573}
+  - component: {fileID: 7371274627496068385}
   m_Layer: 5
   m_Name: PlayerSkillCutIn
   m_TagString: Untagged
@@ -512,11 +433,26 @@ MonoBehaviour:
   - "\u4F9D\u4EE3\u306E\u6253\u3061\u77E2"
   - "\u6226\u6280\u30FB\u6E90\u6708\u306E\u69CB\u3048"
   getText: {fileID: 6936539249852464227}
-  skillAnimator:
-  - {fileID: 8664024405420620161}
-  - {fileID: 2474744355676886498}
-  - {fileID: 2484846510454811745}
-  - {fileID: 2862522096263783163}
+  skillAnimator: {fileID: 7371274627496068385}
   skillBarkGround: {fileID: 21300000, guid: e9723ef2819e61049be0db23b66bec06, type: 3}
   getbackImage: {fileID: 8170189851472878249}
   myCanvas: {fileID: 6791071093662665575}
+--- !u!95 &7371274627496068385
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791071093662665578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96272e69157401e45b1d65d4180d22cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
