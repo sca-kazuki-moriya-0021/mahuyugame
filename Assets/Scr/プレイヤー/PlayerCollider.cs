@@ -71,20 +71,8 @@ public class PlayerCollider : MonoBehaviour
         // SkeletonAnimationからAnimationStateを取得
         spineAnimationState = skeletonAnimation.AnimationState;
         skeletonAnimation.timeScale = 3f;
-
-        //プレイヤーのHp初期化
-        var scene = gm.MyGetScene();
-        if(gm.BackScene == scene)
-            gm.PlayerHp[0] = gm.PlayerHp[1];
-
-        if(gm.BackScene != scene || gm.BackScene == TotalGM.StageCon.No)
-        {
-            //体力0のまま、次ステージに移行したら体力1回復する
-            if(gm.PlayerHp[0] == 0)
-                gm.PlayerHp[0]++;
-
-            gm.PlayerHp[1] = gm.PlayerHp[0];
-        }
+        
+        gm.PlayerHp[0] = 3;
     }
 
     // Update is called once per frame
