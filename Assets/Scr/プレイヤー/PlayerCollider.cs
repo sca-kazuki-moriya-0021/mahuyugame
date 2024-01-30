@@ -105,7 +105,9 @@ public class PlayerCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //“G‚Ì’e‚É“–‚½‚Á‚½Žž
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") || 
+            collision.gameObject.CompareTag("ReflectBullet") || 
+            collision.gameObject.CompareTag("ApolloReflector"))
             //collision.gameObject.CompareTag("EnemySkillBullet") ||
             //collision.gameObject.CompareTag("DestoryBullet"))
         {
