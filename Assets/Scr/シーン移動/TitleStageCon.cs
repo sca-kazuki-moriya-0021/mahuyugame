@@ -12,7 +12,8 @@ public class TitleStageCon: MonoBehaviour
     [SerializeField] Button button;
     [SerializeField]
     private GameObject[] titleBtton;
-
+    [SerializeField]
+    private GameObject titleToggle;
     //現在のアニメステーション名
     private string currentStateName;
 
@@ -90,16 +91,22 @@ public class TitleStageCon: MonoBehaviour
         {
             //最初に操作説明メニューを開く時
             case "Idle":
+                //titleButton.SetActive(false);
+                titleToggle.SetActive(true);
                 AnimationCon(true,false);
                 currentStateName = "OpenOperation";
-            break;
+                break;
             //操作説明メニューを閉じる時
             case "OpenOperation" when animEndFlag == true:
                 AnimationCon(false,true);
                 currentStateName = "CloseOperation";
-            break;
+                //titleButton.SetActive(true);
+                titleToggle.SetActive(false);
+                break;
             //操作説明メニューを開く時
             case "CloseOperation" when animEndFlag == true:
+                //titleButton.SetActive(false);
+                titleToggle.SetActive(true);
                 AnimationCon(true, false);
                 currentStateName = "OpenOperation";
             break;
@@ -114,5 +121,6 @@ public class TitleStageCon: MonoBehaviour
 
         titleBtton[0].SetActive(active);
         titleBtton[2].SetActive(active);
+
     }
 }
