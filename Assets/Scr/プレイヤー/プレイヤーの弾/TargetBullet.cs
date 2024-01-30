@@ -38,9 +38,9 @@ public class TargetBullet : MonoBehaviour
             else if(searchObjects.Count == 0)
             {
                 if (player.PBaffSkillFlag == true)
-                    transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
+                    transform.Translate(Vector3.right * Time.deltaTime * 20.0f);
                 else
-                    transform.Translate(Vector3.right * Time.deltaTime * 10.0f);
+                    transform.Translate(Vector3.right * Time.deltaTime * 15.0f);
             }
         }
         //ターゲットがいた際には、ターゲット方向に進む
@@ -49,9 +49,9 @@ public class TargetBullet : MonoBehaviour
             var dir = target.transform.position - transform.position;
             dir = dir.normalized;
             if (player.PBaffSkillFlag == true)
-                transform.Translate(dir * Time.deltaTime * 15.0f);
+                transform.Translate(dir * Time.deltaTime * 20.0f);
             else
-                transform.Translate(dir * Time.deltaTime * 10.0f);
+                transform.Translate(dir * Time.deltaTime * 15.0f);
         }
     }
 

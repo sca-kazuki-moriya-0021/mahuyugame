@@ -208,7 +208,7 @@ MonoBehaviour:
   skillBullet: {fileID: 1625514678026247618, guid: e1faa920372e95e49bce916815fc0134, type: 3}
   mainBulletPos: {fileID: 3114987815780078817}
   subBulletPos: {fileID: 959894519392879170}
-  laserVelocity: 10
+  laserVelocity: 15
   laserAngle:
   - 45
   - 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   - {x: -1.26, y: -6.43, z: 0}
   m_ShapePathHash: 987858489
   m_Mesh: {fileID: 0}
-  m_InstanceId: 121026
+  m_InstanceId: 76948
 --- !u!1 &6836313933259507719
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,9 +20,9 @@ public class TestBullet : MonoBehaviour
         time += Time.deltaTime; 
         //’e‚Ìi‚ŞŠ„‡‚ğTime.deltaTime‚ÅŒˆ‚ß‚é
         if(player.PBaffSkillFlag == true)
-            transform.Translate(Vector3.right * Time.deltaTime * 7.0f * time);
+            transform.Translate(Vector3.right * Time.deltaTime * 10.0f * time);
         else
-            transform.Translate(Vector3.right * Time.deltaTime * 5.0f * time);
+            transform.Translate(Vector3.right * Time.deltaTime * 7.0f * time);
     }
 
     void OnBecameInvisible()

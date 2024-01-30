@@ -53,7 +53,7 @@ public class BoomerangBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime; 
+        time += Time.deltaTime * 1.1f; 
         var p = player.transform.position;
         //行き
         //発射位置から中心座標を求める
