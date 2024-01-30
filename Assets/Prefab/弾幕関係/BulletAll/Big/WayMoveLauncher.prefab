@@ -47,8 +47,8 @@ MonoBehaviour:
   BulletAll: {fileID: 2645927053057261590, guid: 522eae9cc89c5194586772402fccadd3, type: 3}
   bulletSpeed: 5
   subBulletSpeed: 1
-  numberOfBullets: 6
+  numberOfBullets: 3
   spreadAngle: 45
   timeShots: 1
-  subTimeShots: 0.25
+  subTimeShots: 0.5
   randomMoveTime: 5
