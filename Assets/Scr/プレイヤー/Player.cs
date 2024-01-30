@@ -250,6 +250,7 @@ public class Player : MonoBehaviour
         {
             Vector3 a = transform.position;
             a.x = screenWithinChird[0].transform.position.x;
+            //a.y = screenWithinChird[0].transform.position.y;
             transform.position = a;
         }
         else if (screenWithinChird[0].transform.position.y < transform.position.y)
@@ -262,6 +263,7 @@ public class Player : MonoBehaviour
         {
             Vector3 a = transform.position;
             a.x = screenWithinChird[1].transform.position.x;
+            //a.y = screenWithinChird[1].transform.position.y;
             transform.position = a;
         }
         else if (screenWithinChird[1].transform.position.y > transform.position.y)
@@ -270,6 +272,22 @@ public class Player : MonoBehaviour
             a.y = screenWithinChird[1].transform.position.y;
             transform.position = a;
         }
+        else if(screenWithinChird[0].transform.position.x > transform.position.x && screenWithinChird[0].transform.position.y < transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[0].transform.position.x;
+            a.y = screenWithinChird[0].transform.position.y;
+            transform.position = a;
+        }
+        else if(screenWithinChird[1].transform.position.x < transform.position.x && screenWithinChird[1].transform.position.y > transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[0].transform.position.x;
+            a.y = screenWithinChird[0].transform.position.y;
+            transform.position = a;
+        }
+
+
     }
 
     //ƒXƒLƒ‹”­“®–{‘Ì
