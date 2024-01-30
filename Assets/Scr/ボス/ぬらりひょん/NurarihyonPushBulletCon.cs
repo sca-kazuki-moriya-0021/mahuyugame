@@ -379,7 +379,7 @@ public class NurarihyonPushBulletCon : MonoBehaviour
         }
         yield return null;
     }
-    public void RotaHoming(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
+public void RotaHoming(GameObject bulletPrefab, Transform centerPoint, int numberOfBullet, float radius, float duration)
     {
         isMove = false;
         StartCoroutine(C(bulletPrefab, centerPoint, numberOfBullet, radius, duration));
