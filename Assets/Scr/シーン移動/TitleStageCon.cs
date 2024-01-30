@@ -16,7 +16,10 @@ public class TitleStageCon: MonoBehaviour
     private GameObject titleToggle;
     //現在のアニメステーション名
     private string currentStateName;
-
+    [SerializeField]
+    private GameObject exp;
+    [SerializeField]
+    private Image outLine;
     //操作説明のアニメーション
     [SerializeField]
     private Animator anim;
@@ -59,6 +62,15 @@ public class TitleStageCon: MonoBehaviour
         }
         else
          selectedObj = ev.currentSelectedGameObject;
+
+        if(selectedObj == exp)
+        {
+            outLine.enabled = true;
+        }
+        else
+        {
+            outLine.enabled = false;
+        }
     }
 
     //ゲーム終了
