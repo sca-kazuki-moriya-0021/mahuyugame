@@ -277,10 +277,22 @@ public class BossShootTest : MonoBehaviour
     {
         while (true)
         {
+            for (int i = 0; i < 30; i++)
+            {
+                bossSkillTest.ClockBullet(bulletPrefabs[0], bulletSpeed[0]);
+                bossSkillTest.ClockBullet45(bulletPrefabs[0], bulletSpeed[0]);
+                yield return new WaitForSeconds(fireTime[5]);
+                while (true)
+                {
+                    transform.Rotate(0f, 0f, 60f * Time.deltaTime);
+                    yield return new WaitForSeconds(0.5f);
+                }
+            }
             bossSkillTest.ClockBullet(bulletPrefabs[0],bulletSpeed[0]);
             bossSkillTest.ClockBullet45(bulletPrefabs[0], bulletSpeed[0]);
             yield return new WaitForSeconds(fireTime[5]);
-           // bossSkillTest.reClockBullet(bulletPrefabs[0],bulletSpeed[1]););
+           // bossSkillTest.reClockBullet(bulletPrefabs[0],bulletSpeed[1]);
+            //yield return new WaitForSeconds(fireTime[5]);
         }
     }
 

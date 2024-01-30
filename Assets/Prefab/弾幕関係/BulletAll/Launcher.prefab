@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
-  bulletSpeed: 3
+  bulletSpeed: 5
   numberOfBullets: 3
   spreadAngle: 45
-  bulletSpacing: 2
+  bulletSpacing: 1
   maxbulletSpacing: 0.5
   bulletAmount: 1
-  createBullet: 2
+  createBullet: 5
   timeAngle: 10
   yimespreadAngle: 10
   maxBullet: 30
