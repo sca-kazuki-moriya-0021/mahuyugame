@@ -20,11 +20,6 @@ public class ClearStageCon : MonoBehaviour
     [SerializeField]
     private ResultScoreDisplay[] highScoreTexts;
 
-    [SerializeField]
-    private Animator anim;
-    //アニメーション起動した際のフラグ
-    private bool animFlag;
-    private bool animEndFlag = false;
 
     [SerializeField]
     private EventSystem ev = EventSystem.current;
@@ -37,6 +32,8 @@ public class ClearStageCon : MonoBehaviour
     private StageFadeIn fadeIn;
     [SerializeField]
     private SelectbuttonMove sb;
+
+    [SerializeField] private Image outLine;
 
     // Start is called before the first frame update
     void Start()
@@ -57,18 +54,15 @@ public class ClearStageCon : MonoBehaviour
 
             highScore = totalGM.HighScore[i].ToString("00000000");
             highScoreTexts[i].Set(highScore);
-
         }
+
+        outLine.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(fadeIn.FadeInFlag == false && animFlag == false)
-        {
-            animFlag = true;
-            anim.SetBool("ResultSet",true);
-        }
+
 
     }
 
@@ -77,13 +71,17 @@ public class ClearStageCon : MonoBehaviour
         //スコア表示終わったら
         if(sb.SelectFlag == true)
         {
+            outLine.enabled = true;
             if (selectedObj == null)
             {
                 button.Select();
                 selectedObj = ev.currentSelectedGameObject;
             }
             else
+            {
                 selectedObj = ev.currentSelectedGameObject;
+                outLine.transform.position = selectedObj.transform.position;
+            }
         }
     }
 
@@ -111,7 +109,4 @@ public class ClearStageCon : MonoBehaviour
             fadeOut.ClearFadeOut("SkillSelect");
         }
     }
-
-    //アニメーション終わり検知用
-    //public void OnAnimationCompleted() =>animEndFlag = true;
 }
