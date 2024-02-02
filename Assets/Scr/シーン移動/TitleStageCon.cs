@@ -12,14 +12,8 @@ public class TitleStageCon: MonoBehaviour
     [SerializeField] Button button;
     [SerializeField]
     private GameObject[] titleBtton;
-    [SerializeField]
-    private GameObject titleToggle;
     //現在のアニメステーション名
     private string currentStateName;
-    [SerializeField]
-    private GameObject exp;
-    [SerializeField]
-    private Image outLine;
     //操作説明のアニメーション
     [SerializeField]
     private Animator anim;
@@ -63,14 +57,6 @@ public class TitleStageCon: MonoBehaviour
         else
          selectedObj = ev.currentSelectedGameObject;
 
-        if(selectedObj == exp)
-        {
-            outLine.enabled = true;
-        }
-        else
-        {
-            outLine.enabled = false;
-        }
     }
 
     //ゲーム終了
@@ -104,7 +90,6 @@ public class TitleStageCon: MonoBehaviour
             //最初に操作説明メニューを開く時
             case "Idle":
                 //titleButton.SetActive(false);
-                titleToggle.SetActive(true);
                 AnimationCon(true,false);
                 currentStateName = "OpenOperation";
                 break;
@@ -113,12 +98,10 @@ public class TitleStageCon: MonoBehaviour
                 AnimationCon(false,true);
                 currentStateName = "CloseOperation";
                 //titleButton.SetActive(true);
-                titleToggle.SetActive(false);
                 break;
             //操作説明メニューを開く時
             case "CloseOperation" when animEndFlag == true:
                 //titleButton.SetActive(false);
-                titleToggle.SetActive(true);
                 AnimationCon(true, false);
                 currentStateName = "OpenOperation";
             break;
