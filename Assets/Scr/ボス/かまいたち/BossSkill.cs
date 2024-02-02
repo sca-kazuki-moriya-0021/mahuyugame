@@ -17,6 +17,10 @@ public class BossSkill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject skillPrefab = skillPrefabs[0];
+        // ƒXƒLƒ‹‚Ì’e–‹‚Æ‰Šú‰»‚ğ‚±‚±‚ÉÀ‘•
+        skillInstance = Instantiate(skillPrefab, transform.position,Quaternion.identity);
+        skillInstance.transform.SetParent(transform);
         bossMove = FindObjectOfType<BossMove>();
         bossCollder = FindObjectOfType<BossCollder>();
     }
@@ -27,13 +31,13 @@ public class BossSkill : MonoBehaviour
         skillTimerCount += Time.deltaTime;
         if (bossCollder.BossDeathFlag == false)
         {
-            if (skillTimerCount > 40f && test[0] == false)
+            if (skillTimerCount > 45f && test[0] == false)
             {
                 bossMove.BossAttack1 = true;
                 test[0] = true;
             }
 
-            if (skillTimerCount > 80f && test[1] == false)
+            if (skillTimerCount > 100f && test[1] == false)
             {
                 bossMove.BossAttack2 = true;
                 test[1] = true;
@@ -58,7 +62,7 @@ public class BossSkill : MonoBehaviour
     private void SwitchSkill()
     {
         // Œ»İ‚Ì’e–‹‚ğ”jŠü
-        DestroyCurrentSkill();
+        DestroyCurrentSkillWithDelay(0.5f);
 
         // Ÿ‚Ì’e–‹‚ÉØ‚è‘Ö‚¦
         currentSkillIndex = (currentSkillIndex + 1) % skillPrefabs.Length;
@@ -78,6 +82,21 @@ public class BossSkill : MonoBehaviour
     }
 
     // Œ»İ‚Ì’e–‹‚ğ”jŠü
+    private void DestroyCurrentSkillWithDelay(float delay)
+    {
+        StartCoroutine(DelayedDestroy(delay));
+    }
+
+    private IEnumerator DelayedDestroy(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (skillInstance != null)
+        {
+            Destroy(skillInstance);
+        }
+    }
+
     private void DestroyCurrentSkill()
     {
         if (skillInstance != null)
