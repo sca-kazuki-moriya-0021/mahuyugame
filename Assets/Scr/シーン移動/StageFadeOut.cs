@@ -10,6 +10,8 @@ public class StageFadeOut : MonoBehaviour
     [SerializeField]
     private Image backGround;
 
+
+
     private TotalGM totalGM;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class StageFadeOut : MonoBehaviour
 
     public void ClearFadeOut(string s)
     {
+
         Tween t = backGround.DOFade(endValue: 1f, duration: 1f);
         t.Play();
         t.OnComplete(() =>{

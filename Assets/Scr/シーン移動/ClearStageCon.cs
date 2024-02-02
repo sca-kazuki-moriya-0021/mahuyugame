@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class ClearStageCon : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class ClearStageCon : MonoBehaviour
     [SerializeField]
     private SelectbuttonMove sb;
 
+    [SerializeField]private Light2D light2D;
+    private Color startColor;
+    [SerializeField]private Color endColor;
+
     [SerializeField] private Image outLine;
 
     // Start is called before the first frame update
@@ -49,7 +54,6 @@ public class ClearStageCon : MonoBehaviour
                 totalGM.HighScore[i] = totalGM.NowScore[i];
 
             score = totalGM.NowScore[i].ToString("00000000");
-            Debug.Log(totalGM.NowScore[i]);
             nowScoreTexts[i].Set(score);
 
             highScore = totalGM.HighScore[i].ToString("00000000");
@@ -57,6 +61,7 @@ public class ClearStageCon : MonoBehaviour
         }
 
         outLine.enabled = false;
+        startColor =  light2D.color;
     }
 
     // Update is called once per frame
@@ -106,7 +111,21 @@ public class ClearStageCon : MonoBehaviour
             else if (totalGM.BackSideFlag == true || totalGM.GameOverCount > 0)
                 totalGM.BackSideFlag = false;
 
+            StartCoroutine(SetColor());
+
             fadeOut.ClearFadeOut("SkillSelect");
+        }
+    }
+
+    private IEnumerator SetColor()
+    {
+        var time = 0f;
+        Debug.Log("“ü‚Á‚Ä‚¢‚é‚æ");
+        while (true)
+        {
+            time += Time.unscaledDeltaTime;
+            light2D.color = Color.Lerp(startColor,endColor,time);
+            yield return null;
         }
     }
 }
