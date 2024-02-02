@@ -49,5 +49,5 @@ MonoBehaviour:
   numberOfBullets: 20
   spreadAngle: 360
   angleChange: 10
-  fireTime: 0.75
-  randomMoveTime: 0.1
+  fireTime: 0.1
+  randomMoveTime: 0.3

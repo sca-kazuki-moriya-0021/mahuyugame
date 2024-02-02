@@ -31,7 +31,12 @@ public class AllRandomLauncher : MonoBehaviour
     {
         while (true)
         {
-            if(player.BulletSeverFlag == false)
+            if (gameObject == null)
+            {
+                yield break;  // オブジェクトが破棄されたらコルーチンを終了
+            }
+
+            if (player.BulletSeverFlag == false)
             {
                 bulletsList.Clear();
 
