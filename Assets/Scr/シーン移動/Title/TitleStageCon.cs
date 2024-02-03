@@ -108,14 +108,20 @@ public class TitleStageCon: MonoBehaviour
         }
     }
 
+    //パネルが開いている時の処理
     private void AnimationCon(bool set,bool active)
     {
         audioSource.PlayOneShot(soundE);
         animEndFlag = false;
         anim.SetBool("Open", set);
-
         titleBtton[0].SetActive(active);
         titleBtton[2].SetActive(active);
+    }
+
+
+    //設定を開くとき
+    public void OpenSetting()
+    {
 
     }
 }
