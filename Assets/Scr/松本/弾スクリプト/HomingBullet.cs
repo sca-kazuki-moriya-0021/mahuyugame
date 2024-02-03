@@ -5,7 +5,7 @@ using UnityEngine;
 public class HomingBullet : MonoBehaviour
 {
     private float limit = 10;
-    private float period = 2;
+    private float period = 3;
     private bool isHomingMove = true;
 
     private Rigidbody2D rb;

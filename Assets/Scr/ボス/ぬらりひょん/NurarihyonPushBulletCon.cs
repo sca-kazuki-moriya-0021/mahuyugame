@@ -85,8 +85,8 @@ public class NurarihyonPushBulletCon : MonoBehaviour
     {
         float startAngle = -360 / 2;
 
-        float x = Random.Range(7.9f,-8.3f);
-        float y = Random.Range(-3.9f,3.9f);
+        float x = Random.Range(7.15f,-6.9f);
+        float y = Random.Range(-3.98f,1.95f);
         float z = Random.Range(0,0);
 
         for(int i = 0; i < numberOfBullets; i++)

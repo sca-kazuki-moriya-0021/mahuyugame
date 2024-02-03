@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2584346810413340281}
   - component: {fileID: 2101784989080282772}
   - component: {fileID: 2051395171200246498}
+  - component: {fileID: 1399790512467816880}
   m_Layer: 0
   m_Name: NewHoming
   m_TagString: Button
@@ -136,3 +137,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limit: 10
   period: 1
+--- !u!114 &1399790512467816880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228873855640395802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ec426a92fa2249a78ab6cd1af1e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

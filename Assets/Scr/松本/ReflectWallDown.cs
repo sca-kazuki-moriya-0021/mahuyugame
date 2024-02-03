@@ -107,7 +107,7 @@ public class ReflectWallDown : MonoBehaviour
             float angle = startAngle + i * (180f / (13 - 1)); // îºâ~Ç…ïœçX
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.left;
             Rigidbody2D bulletRigidbody = Instantiate(Bullets, position, Quaternion.identity).GetComponent<Rigidbody2D>();
-            bulletRigidbody.velocity = direction * 2f;
+            bulletRigidbody.velocity = direction * 3.5f;
         }
     }
 }

@@ -6,7 +6,7 @@ public class Counter : MonoBehaviour
 {
     [SerializeField]
     GameObject bulletPrefab;
-    private float Speed = 3f;
+    private float Speed = 5f;
     private int numberOfBullets = 20;
     private Player player;
     private float destroyTimer;
@@ -35,7 +35,7 @@ public class Counter : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (destroyTimer >= 2f)
+        if (destroyTimer >= 1f)
         {
             float startAngle = -360 / 2;
 

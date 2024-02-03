@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1592042980687038523}
   - component: {fileID: 2866441686339488742}
   - component: {fileID: 430294012505187851}
+  - component: {fileID: -6065564289113790656}
   m_Layer: 0
   m_Name: TimeLag
   m_TagString: Bullet
@@ -121,3 +122,15 @@ MonoBehaviour:
   speed: 10
   RandomBulletIntervalMin: 2
   RandomBulletIntervalMax: 5
+--- !u!114 &-6065564289113790656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781865833325372643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ec426a92fa2249a78ab6cd1af1e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

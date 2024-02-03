@@ -5,11 +5,9 @@ using UnityEngine;
 public class BulletAll : MonoBehaviour
 {
     private Player player;
-    private AllRandomLauncher random;
     // Start is called before the first frame update
     void Start()
     {
-        random = FindObjectOfType<AllRandomLauncher>();
         player = FindObjectOfType<Player>();
     }
 
