@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 40255516}
   - component: {fileID: 40255515}
   - component: {fileID: 40255514}
-  - component: {fileID: 40255518}
   m_Layer: 5
   m_Name: Layer3Canvas
   m_TagString: Untagged
@@ -226,21 +225,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &40255518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40255513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4194d8823366074482985529d5447c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outLine: {fileID: 1834263312}
-  ev: {fileID: 569398404}
-  button: {fileID: 181835519}
 --- !u!1 &70496787
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,13 +865,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 447093199}
+        m_TargetAssemblyTypeName: TitleStageCon, Assembly-CSharp
+        m_MethodName: OpenSetting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5954,13 +5938,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c306315c312525449b37ec0b0732905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outLine: {fileID: 1834263312}
   button: {fileID: 181835519}
   titleBtton:
   - {fileID: 181835517}
   - {fileID: 908186567}
   - {fileID: 347192696}
   - {fileID: 462249426}
-  anim: {fileID: 9129329594014243603}
+  operationAnim: {fileID: 9129329594014243603}
+  settingAnim: {fileID: 1424565043}
   soundE: {fileID: 8300000, guid: 6b4cd373c8c754e42b0c6487468c92df, type: 3}
   quitImage: {fileID: 596745846}
   ev: {fileID: 569398404}
@@ -11433,7 +11419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &877432480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11498,13 +11484,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1424565042}
+        m_TargetAssemblyTypeName: TitleSettingCon, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11771,12 +11757,12 @@ GameObject:
   - component: {fileID: 913860278}
   - component: {fileID: 913860279}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: LightToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &913860278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11822,7 +11808,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 1, b: 0.09939909, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11972,7 +11958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12}
+  m_AnchoredPosition: {x: 0, y: -20.98}
   m_SizeDelta: {x: 360, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960418575
@@ -12043,12 +12029,12 @@ GameObject:
   - component: {fileID: 1095302196}
   - component: {fileID: 1095302197}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: SkillToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1095302196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12293,6 +12279,8 @@ GameObject:
   - component: {fileID: 1424565039}
   - component: {fileID: 1424565041}
   - component: {fileID: 1424565040}
+  - component: {fileID: 1424565043}
+  - component: {fileID: 1424565042}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -12309,7 +12297,7 @@ RectTransform:
   m_GameObject: {fileID: 1424565038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: -0.02, z: 1}
+  m_LocalScale: {x: 1, y: 0, z: 1}
   m_Children:
   - {fileID: 1095302196}
   - {fileID: 913860278}
@@ -12360,6 +12348,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424565038}
   m_CullTransparentMesh: 1
+--- !u!114 &1424565042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424565038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ade4e9318008dc42bd575f5012b2fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageCon: {fileID: 447093199}
+  toggle:
+  - {fileID: 1095302197}
+  - {fileID: 913860279}
+  button: {fileID: 877432481}
+  anima: {fileID: 1424565043}
+  ev: {fileID: 569398404}
+--- !u!95 &1424565043
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424565038}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b00de3fb10c7ab4eb8bd27a5e9352a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1455144656
 GameObject:
   m_ObjectHideFlags: 0
@@ -17464,7 +17490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16}
+  m_AnchoredPosition: {x: 0, y: -13.39}
   m_SizeDelta: {x: 360, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597049011
@@ -17494,7 +17520,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1

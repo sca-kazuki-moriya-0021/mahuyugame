@@ -9,6 +9,7 @@ using DG.Tweening;
 public class TitleStageCon: MonoBehaviour
 {
 
+    [SerializeField] private Image outLine;
     [SerializeField] Button button;
     [SerializeField]
     private GameObject[] titleBtton;
@@ -16,8 +17,12 @@ public class TitleStageCon: MonoBehaviour
     private string currentStateName;
     //操作説明のアニメーション
     [SerializeField]
-    private Animator anim;
+    private Animator operationAnim;
+    [SerializeField]
+    private Animator settingAnim;
     private bool animEndFlag;
+
+    private bool activeFlag;
 
     //効果音用
     private AudioSource audioSource;
@@ -33,6 +38,7 @@ public class TitleStageCon: MonoBehaviour
     private GameObject selectedObj;
 
     public bool AnimEndFlag { get => animEndFlag; set => animEndFlag = value; }
+    public bool ActiveFlag { get => activeFlag; set => activeFlag = value; }
 
     private void Awake()
     {
@@ -46,18 +52,34 @@ public class TitleStageCon: MonoBehaviour
         currentStateName = "Idle";
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        if (selectedObj == null)
-        {
-            button.Select();
-            selectedObj = ev.currentSelectedGameObject;
-        }
-        else
-         selectedObj = ev.currentSelectedGameObject;
+        Debug.Log(selectedObj);
 
+        if(activeFlag == true)
+        {
+            for(int i =0;i < titleBtton.Length; i++)
+            titleBtton[i].SetActive(true);
+        }
     }
+
+    private void FixedUpdate()
+    {
+        //if(activeFlag == true)
+        {
+            if (selectedObj == null)
+            {
+                button.Select();
+                selectedObj = ev.currentSelectedGameObject;
+            }
+            else
+            {
+                selectedObj = ev.currentSelectedGameObject;
+                outLine.transform.position = selectedObj.transform.position;
+            }
+        }
+    }
+
 
     //ゲーム終了
     public void GameEnd()
@@ -113,15 +135,21 @@ public class TitleStageCon: MonoBehaviour
     {
         audioSource.PlayOneShot(soundE);
         animEndFlag = false;
-        anim.SetBool("Open", set);
+        operationAnim.SetBool("Open", set);
         titleBtton[0].SetActive(active);
         titleBtton[2].SetActive(active);
+        titleBtton[3].SetActive(active);
     }
 
 
     //設定を開くとき
     public void OpenSetting()
     {
-
+        audioSource.PlayOneShot(soundE);
+        animEndFlag = false;
+        settingAnim.SetBool("Open", true);
+        for (int i = 0; i < titleBtton.Length; i++)
+            titleBtton[i].SetActive(false);
     }
+
 }
