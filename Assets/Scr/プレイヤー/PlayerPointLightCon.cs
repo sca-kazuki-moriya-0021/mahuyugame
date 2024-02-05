@@ -20,17 +20,19 @@ public class PlayerPointLightCon : MonoBehaviour
 
     private bool test = false;
 
+    private TotalGM gm;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = FindObjectOfType<TotalGM>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(bulletCon.BlizzardFlag == true && test == false)
+        if(bulletCon.BlizzardFlag == true && test == false && gm.LightBlinkingFlag == true)
         {
             test = true;
             StartCoroutine(BlizzardLight());

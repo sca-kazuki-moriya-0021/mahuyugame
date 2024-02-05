@@ -22,7 +22,7 @@ public class TitleStageCon: MonoBehaviour
     private Animator settingAnim;
     private bool animEndFlag;
 
-    private bool activeFlag;
+    private bool activeFlag = true;
 
     //効果音用
     private AudioSource audioSource;
@@ -39,6 +39,7 @@ public class TitleStageCon: MonoBehaviour
 
     public bool AnimEndFlag { get => animEndFlag; set => animEndFlag = value; }
     public bool ActiveFlag { get => activeFlag; set => activeFlag = value; }
+    public GameObject SelectedObj { get => selectedObj; set => selectedObj = value; }
 
     private void Awake()
     {
@@ -54,8 +55,6 @@ public class TitleStageCon: MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(selectedObj);
-
         if(activeFlag == true)
         {
             for(int i =0;i < titleBtton.Length; i++)
@@ -65,17 +64,18 @@ public class TitleStageCon: MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if(activeFlag == true)
+        if (activeFlag == true)
         {
-            if (selectedObj == null)
+            outLine.enabled = true;
+            if (SelectedObj == null)
             {
                 button.Select();
-                selectedObj = ev.currentSelectedGameObject;
+                SelectedObj = ev.currentSelectedGameObject;
             }
             else
             {
-                selectedObj = ev.currentSelectedGameObject;
-                outLine.transform.position = selectedObj.transform.position;
+                SelectedObj = ev.currentSelectedGameObject;
+                outLine.transform.position = SelectedObj.transform.position;
             }
         }
     }
@@ -146,10 +146,14 @@ public class TitleStageCon: MonoBehaviour
     public void OpenSetting()
     {
         audioSource.PlayOneShot(soundE);
-        animEndFlag = false;
         settingAnim.SetBool("Open", true);
+        activeFlag = false;
         for (int i = 0; i < titleBtton.Length; i++)
             titleBtton[i].SetActive(false);
+
+        //セレクトされているオブジェクトを初期化する
+        selectedObj = null;
+        outLine.enabled = false;
     }
 
 }

@@ -280,7 +280,7 @@ public class Player : MonoBehaviour
         if(jKey)
         {
             jKey = false;
-            //スキル発動とスキルカットイン発動
+            //スキル発動とスキルカットインするかどうか
             for (int i = 0; i < gm.PlayerSkill.Length; i++)
             {
                 if (gm.PlayerSkill[i] == true)
@@ -288,22 +288,26 @@ public class Player : MonoBehaviour
                     switch (i)
                     {
                         case 0:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if(gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             barrierFlag = true;
                             barrierObject = Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;
                         case 1:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             bulletSeverFlag = true;
                             yield return new WaitForSeconds(1f);
                             bulletSeverFlag = false;
                             break;
                         case 2:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             debuffSkillFlag = true;
                             break;
                         case 3:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             buffObject = Instantiate(buffEffect, transform.position, Quaternion.identity, transform);
                             pBaffSkillFlag = true;
                             break;
@@ -316,7 +320,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            //スキル発動とスキルカットイン発動
+            //スキル発動とスキルカットインするかどうか
             for (int i =0; i < gm.PlayerSubSkill.Length; i++)
             {
                 if (gm.PlayerSubSkill[i] == true)
@@ -324,22 +328,26 @@ public class Player : MonoBehaviour
                     switch (i)
                     {
                         case 3:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             buffObject =  Instantiate(buffEffect,transform.position,Quaternion.identity,transform);
                             pBaffSkillFlag = true;
                             break;
                         case 2:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             debuffSkillFlag = true;
                             break;
                         case 1:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             bulletSeverFlag = true;
                             yield return new WaitForSeconds(1f);
                             bulletSeverFlag = false;
                             break;
                         case 0:
-                            skillCutinCon.PlayerCutInDisplay(i);
+                            if (gm.CutinWhetherFlag == true)
+                                skillCutinCon.PlayerCutInDisplay(i);
                             barrierFlag = true;
                             barrierObject = Instantiate(barrierEffect, transform.position, Quaternion.identity, transform);
                             break;

@@ -17,7 +17,9 @@ public class TitleSettingCon : MonoBehaviour
 
     [SerializeField]
     private EventSystem ev = EventSystem.current;
-    private GameObject selectedObj;
+
+    [SerializeField]
+    private TotalGM totalGM;
 
     // Start is called before the first frame update
     void Start()
@@ -28,26 +30,44 @@ public class TitleSettingCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ev.currentSelectedGameObject);
+       
     }
     void FixedUpdate()
     {
-        /*if(selectedObj == toggle[0].gameObject)
+        if(stageCon.ActiveFlag == false)
         {
-            Debug.Log("入っている");
-            toggle[0].Select();
-            selectedObj = ev.currentSelectedGameObject;
+            if (stageCon.SelectedObj == null)
+            {
+                toggle[0].Select();
+                stageCon.SelectedObj = ev.currentSelectedGameObject;
+            }
+            else
+                stageCon.SelectedObj = ev.currentSelectedGameObject;
         }
-        else if(selectedObj == toggle[1].gameObject)
+    }
+
+    public void SkillCutInToggle()
+    {
+        if(toggle[0].isOn == true)
         {
-            toggle[1].Select();
-            selectedObj = ev.currentSelectedGameObject;
+            Debug.Log("入ったよ");
+            totalGM.CutinWhetherFlag = true;
         }
-        else if(selectedObj == button.gameObject)
+        if(toggle[0].isOn == false)
         {
-            button.Select();
-            selectedObj = ev.currentSelectedGameObject;
-        }*/
+            Debug.Log("外したよ");
+            totalGM.CutinWhetherFlag = false;
+            Debug.Log(totalGM.CutinWhetherFlag);
+        }
+            
+    }
+
+    public void LightToggle()
+    {
+        if(toggle[1].isOn == true)
+            totalGM.LightBlinkingFlag = true;
+        if (toggle[1].isOn == false)
+            totalGM.LightBlinkingFlag = false;
     }
 
     public void Close()
@@ -57,14 +77,13 @@ public class TitleSettingCon : MonoBehaviour
 
     public void OnAnimationCompleted()
     {
-        stageCon.AnimEndFlag = true;
         for(int i = 0; i< toggle.Length; i++)
         {
             toggle[i].gameObject.SetActive(true);
             toggle[i].interactable = true;
         }
-        button.interactable = true;
         button.gameObject.SetActive(true);
+        button.interactable = true;
     }
 
     //設定画面を閉じるときに使うアニメーション
@@ -80,7 +99,7 @@ public class TitleSettingCon : MonoBehaviour
         button.interactable = false;
         button.gameObject.SetActive(false);
 
+        stageCon.SelectedObj = null;
         stageCon.ActiveFlag = true;
-        stageCon.AnimEndFlag = true;
     }
 } 

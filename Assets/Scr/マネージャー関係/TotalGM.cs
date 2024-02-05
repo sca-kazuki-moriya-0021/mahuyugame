@@ -29,6 +29,11 @@ public class TotalGM : MonoBehaviour
     private bool backSideFlag = false;
     //プレイヤーが死んだ時の座標取得
     private Vector2 playerTransform;
+    //スキルカットインするかどうか
+    private bool cutinWhetherFlag = true;
+    //ライト点滅するかどうか
+    private bool lightBlinkingFlag = true;
+
 
     #region//ステージ管理
 
@@ -144,6 +149,9 @@ public class TotalGM : MonoBehaviour
         get { return this.backSideFlag; }
         set { this.backSideFlag = value; }
     }
+
+    public bool CutinWhetherFlag { get => cutinWhetherFlag; set => cutinWhetherFlag = value; }
+    public bool LightBlinkingFlag { get => lightBlinkingFlag; set => lightBlinkingFlag = value; }
     #endregion
 
     private void Awake()
