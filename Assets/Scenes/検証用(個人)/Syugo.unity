@@ -749,11 +749,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &453025834 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8664024405420620161, guid: 1ea6d257876e7384b86ec9336842d73d, type: 3}
-  m_PrefabInstance: {fileID: 1266371400}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &496991663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,19 +3250,19 @@ PrefabInstance:
     - target: {fileID: 5090905012222323955, guid: 5702b4955eea96247986b06e9a817fd5, type: 3}
       propertyPath: enemyskillAnimator.Array.data[0]
       value: 
-      objectReference: {fileID: 453025834}
+      objectReference: {fileID: 0}
     - target: {fileID: 5090905012222323955, guid: 5702b4955eea96247986b06e9a817fd5, type: 3}
       propertyPath: enemyskillAnimator.Array.data[1]
       value: 
-      objectReference: {fileID: 453025834}
+      objectReference: {fileID: 0}
     - target: {fileID: 5090905012222323955, guid: 5702b4955eea96247986b06e9a817fd5, type: 3}
       propertyPath: enemyskillAnimator.Array.data[2]
       value: 
-      objectReference: {fileID: 453025834}
+      objectReference: {fileID: 0}
     - target: {fileID: 5090905012222323955, guid: 5702b4955eea96247986b06e9a817fd5, type: 3}
       propertyPath: enemyskillAnimator.Array.data[3]
       value: 
-      objectReference: {fileID: 453025834}
+      objectReference: {fileID: 0}
     - target: {fileID: 5090905012222323966, guid: 5702b4955eea96247986b06e9a817fd5, type: 3}
       propertyPath: m_Camera
       value: 
