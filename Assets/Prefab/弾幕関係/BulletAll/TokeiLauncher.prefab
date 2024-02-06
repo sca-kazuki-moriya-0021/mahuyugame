@@ -48,4 +48,4 @@ MonoBehaviour:
   bulletSpeed: 3
   rotationSpeed: 30
   flag: 0
-  timeBetweenShots: 0.25
+  timeBetweenShots: 0.1

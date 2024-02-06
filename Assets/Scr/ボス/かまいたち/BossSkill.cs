@@ -62,7 +62,7 @@ public class BossSkill : MonoBehaviour
     private void SwitchSkill()
     {
         // Œ»İ‚Ì’e–‹‚ğ”jŠü
-        DestroyCurrentSkillWithDelay(0.5f);
+        DestroyCurrentSkill();
 
         // Ÿ‚Ì’e–‹‚ÉØ‚è‘Ö‚¦
         currentSkillIndex = (currentSkillIndex + 1) % skillPrefabs.Length;
@@ -81,21 +81,6 @@ public class BossSkill : MonoBehaviour
         //skillInstance.transform.SetParent(transform);
     }
 
-    // Œ»İ‚Ì’e–‹‚ğ”jŠü
-    private void DestroyCurrentSkillWithDelay(float delay)
-    {
-        StartCoroutine(DelayedDestroy(delay));
-    }
-
-    private IEnumerator DelayedDestroy(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        if (skillInstance != null)
-        {
-            Destroy(skillInstance);
-        }
-    }
 
     private void DestroyCurrentSkill()
     {
