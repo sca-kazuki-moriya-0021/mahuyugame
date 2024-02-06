@@ -55,4 +55,23 @@ public class Counter : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BossTargetBullet"))
+        {
+            loat startAngle = -360 / 2;
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                float angle = startAngle + i * (360 / (numberOfBullets));
+
+                // ’e‚ð”­ŽË
+                Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.up;
+                Rigidbody2D bulletRigidbody = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+                bulletRigidbody.velocity = direction * Speed;
+            }
+            Destroy(this.gameObject);
+        }
+    }
 }
