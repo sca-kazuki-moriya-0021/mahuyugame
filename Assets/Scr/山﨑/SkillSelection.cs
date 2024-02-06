@@ -11,7 +11,6 @@ using UnityEngine.Playables;
 
 public class SkillSelection : MonoBehaviour
 {
-
     [SerializeField] Button button;//最初に選択中にするボタン
     //private Button barrageButton;
     [SerializeField] GameObject goStageButton;
@@ -78,7 +77,7 @@ public class SkillSelection : MonoBehaviour
     [SerializeField] private ParticleSystem[] fireSkill_Eff;
     [SerializeField] private GameObject fireSkill;
     [SerializeField] private GameObject fireBarrage;
-
+    bool barrageMainFlag;
     public Button[] SkillButtonIcon
     {
         get { return this.skill; }
@@ -93,7 +92,6 @@ public class SkillSelection : MonoBehaviour
 
     void Start()
     {
-        
         //ボタンが選択された状態になる
         outLineCoroutine = OutLine();
         button.Select();
@@ -411,6 +409,7 @@ public class SkillSelection : MonoBehaviour
     //初期化
     private void PlayerReset()
     {
+        barrageMainFlag = false;
         totalGM.PlayerHp[0] = 3;
         totalGM.PlayerHp[1] = 0;
 
@@ -495,6 +494,7 @@ public class SkillSelection : MonoBehaviour
 
     IEnumerator SkillEffect_In()
     {
+        barrageMainFlag = false;
         fireSkill.SetActive(false);
         goBarrage.SetActive(false);
         playableDirector.Play(skillTimeLine);
@@ -520,6 +520,11 @@ public class SkillSelection : MonoBehaviour
             if(totalGM.PlayerWeapon[i])
             {
                 barrageSelect.BarrageButton[i].Select();
+                barrageMainFlag = true;
+            }
+            else if(!barrageMainFlag)
+            {
+                barrageSelect.BarrageButton[0].Select();
             }
         }
         if(barrageSelect.BarrageCount==2)
