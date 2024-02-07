@@ -60,7 +60,7 @@ public class Counter : MonoBehaviour
     {
         if (collision.CompareTag("BossTargetBullet"))
         {
-            loat startAngle = -360 / 2;
+            float startAngle = -360 / 2;
 
             for (int i = 0; i < numberOfBullets; i++)
             {
