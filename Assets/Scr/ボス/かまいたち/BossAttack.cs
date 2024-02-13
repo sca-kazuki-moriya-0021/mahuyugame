@@ -55,7 +55,7 @@ public class BossAttack : MonoBehaviour
                 if (danmaku1 != null)
                 {
                     danmaku1.SetCenPos(cenPos1);
-                    StartCoroutine(DestroyDanmakuAfterDelay(danmakuInstance1, 5.0f)); // 2•bŒã‚É”jŠü
+                    StartCoroutine(DestroyDanmakuAfterDelay(danmakuInstance1, 15.0f)); // 2•bŒã‚É”jŠü
                 }
 
                 // Do the same for danmaku2
@@ -64,7 +64,7 @@ public class BossAttack : MonoBehaviour
                 if (danmaku2 != null)
                 {
                     danmaku2.SetCenPos(cenPos2);
-                    StartCoroutine(DestroyDanmakuAfterDelay(danmakuInstance2, 5.0f)); // 2•bŒã‚É”jŠü
+                    StartCoroutine(DestroyDanmakuAfterDelay(danmakuInstance2, 15.0f)); // 2•bŒã‚É”jŠü
                 }
 
                 // ƒCƒ“ƒXƒ^ƒ“ƒX‚³‚ê‚½’e‚Ì”‚ğ‘‚â‚·

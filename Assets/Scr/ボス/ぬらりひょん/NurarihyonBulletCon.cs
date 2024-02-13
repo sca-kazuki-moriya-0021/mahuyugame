@@ -60,6 +60,7 @@ public class NurarihyonBulletCon : MonoBehaviour
 
     private IEnumerator Atk()
     {
+       
         while (true)
         {
             nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
@@ -76,7 +77,7 @@ public class NurarihyonBulletCon : MonoBehaviour
                 nurarihyonPushBulletCon.RandomDoll(bullets[0], bulletSpeed[0], numberOfBullet[0]);
                 for (int j = 0; j < 2; j++)
                 {
-                    StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[11]));
+                    StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
                     yield return new WaitForSeconds(0.25f);
                 }
                 yield return new WaitForSeconds(0.5f);
@@ -147,7 +148,7 @@ public class NurarihyonBulletCon : MonoBehaviour
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    nurarihyonPushBulletCon.ShootBullets(numberOfBullet[0], bullets[0], bulletSpeed[0], 2, 60);
+                    nurarihyonPushBulletCon.ShootBullets(numberOfBullet[3], bullets[0], bulletSpeed[0], 2, 60);
                     yield return new WaitForSeconds(0.1f);
 
                 }
@@ -204,7 +205,7 @@ public class NurarihyonBulletCon : MonoBehaviour
 
             for (int i = 0; i < 10; i++)
             {
-                nurarihyonPushBulletCon.PresenceOfEvil(firePoint[0], firePoint[1], bullets[5], bulletSpeed[0]);
+                nurarihyonPushBulletCon.PresenceOfEvil(firePoint[2], firePoint[3], bullets[5], bulletSpeed[0]);
                 yield return new WaitForSeconds(0.5f);
                 nurarihyonPushBulletCon.AllRange(bullets[0], bulletSpeed[0]);
                 yield return new WaitForSeconds(0.5f);
@@ -322,7 +323,7 @@ public class NurarihyonBulletCon : MonoBehaviour
         float newSpeed = Random.Range(3, 5);
         int newNum = Random.Range(50,60);
 
-        numberOfBullet[0] = newNum;
+        numberOfBullet[3] = newNum;
         bulletSpeed[0] = newSpeed;
         spiralRotationSpeed = newRotationSpeed;
         spiralDistance = newSpiralDistance;
