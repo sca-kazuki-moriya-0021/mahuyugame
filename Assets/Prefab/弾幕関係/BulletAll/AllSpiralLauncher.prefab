@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
   numberOfShots: 10
-  numberOfBullets: 13
+  numberOfBullets: 15
   bulletSpeed: 3
   fireInterval: 0.1
   shootInterval: 0.5

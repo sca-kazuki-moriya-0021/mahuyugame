@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2361119953465402165, guid: c24a09ae8f156fe40bd2b29a2359ae47, type: 3}
   reBulletPrefab: {fileID: 1568166458204999837, guid: 557b6153f12c58b4094582963d459115, type: 3}
-  bulletSpeed: 3
-  reBulletSpeed: 2
+  bulletSpeed: 4
+  reBulletSpeed: 3
   rotationSpeed: 30
-  timeShots: 0.35
+  timeShots: 0.25
   reTimeShots: 0.15
