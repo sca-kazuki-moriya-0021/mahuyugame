@@ -49,6 +49,6 @@ MonoBehaviour:
   subBulletSpeed: 5
   numberOfBullets: 6
   spreadAngle: 60
-  timeShots: 0.5
-  subTimeShots: 0.2
+  timeShots: 1
+  subTimeShots: 0.5
   randomMoveTime: 5
