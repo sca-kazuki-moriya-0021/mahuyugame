@@ -69,7 +69,7 @@ public class NowLoading : MonoBehaviour
                     break;
                 case TotalGM.StageCon.Secound:
                     CleaningUp();
-                    SceneManager.LoadScene("Clear");
+                    SceneManager.LoadScene("TheadStage");
                     break;
                 case TotalGM.StageCon.Thead:
                     CleaningUp();
