@@ -61,7 +61,7 @@ public class TotalGM : MonoBehaviour
         {"SkillSelect" ,StageCon.SkillSelect},
         {"Stage",StageCon.First },
         {"SecondStage",StageCon.Secound },
-        {"TheadStage",StageCon.Secound },
+        {"TheadStage",StageCon.Thead },
         {"GameOver",StageCon.GameOver },
         {"Clear",StageCon.Clear },
     };
