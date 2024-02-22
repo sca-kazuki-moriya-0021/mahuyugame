@@ -246,7 +246,44 @@ public class Player : MonoBehaviour
             else
                rb.velocity = inputV * 5f;
         }
-        else if(screenWithinChird[0].transform.position.x > transform.position.x)
+
+        //左上斜め
+        else if (screenWithinChird[0].transform.position.y < transform.position.y
+            && screenWithinChird[0].transform.position.x > transform.position.x)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[0].transform.position.x;
+            a.y = screenWithinChird[0].transform.position.y;
+            transform.position = a;
+        }
+        //左下斜め
+        else if (screenWithinChird[1].transform.position.y > transform.position.y
+          && screenWithinChird[0].transform.position.x > transform.position.x)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[0].transform.position.x;
+            a.y = screenWithinChird[1].transform.position.y;
+            transform.position = a;
+        }
+        //右上斜め
+        else if (screenWithinChird[1].transform.position.x < transform.position.x
+          && screenWithinChird[0].transform.position.y < transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[1].transform.position.x;
+            a.y = screenWithinChird[0].transform.position.y;
+            transform.position = a;
+        }
+        //右下斜め
+        else if (screenWithinChird[1].transform.position.x < transform.position.x
+         && screenWithinChird[1].transform.position.y > transform.position.y)
+        {
+            Vector3 a = transform.position;
+            a.x = screenWithinChird[1].transform.position.x;
+            a.y = screenWithinChird[1].transform.position.y;
+            transform.position = a;
+        }
+        else if (screenWithinChird[0].transform.position.x > transform.position.x)
         {
             Vector3 a = transform.position;
             a.x = screenWithinChird[0].transform.position.x;
@@ -270,6 +307,7 @@ public class Player : MonoBehaviour
             a.y = screenWithinChird[1].transform.position.y;
             transform.position = a;
         }
+
     }
 
     //スキル発動本体
