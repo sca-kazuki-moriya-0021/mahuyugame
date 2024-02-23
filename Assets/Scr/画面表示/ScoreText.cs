@@ -61,7 +61,12 @@ public class ScoreText : MonoBehaviour
     {
         if(playerCollider.DeathFlag == false && nowLoading.FadeInFlag == false)
         {
+            if(gm.GameOverCount < 5)
             gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (gm.GameOverCount * 5);
+            else
+            gm.NowScore[i] += gm.PlayerHp[0] * baseScore - (5 * 5);
+
+
             scoreText.text = gm.NowScore[i].ToString();
         }
     }
