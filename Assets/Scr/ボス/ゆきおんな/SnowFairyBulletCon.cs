@@ -98,7 +98,7 @@ public class SnowFairyBulletCon : MonoBehaviour
     private IEnumerator Atk()
     {
 
-
+        
         while (time < 15f)
         {
             pushBulletCon.ShootBulletWithCustomDirection(count,bullets[0],bulletSpeed[0]);
@@ -136,14 +136,15 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         count = 0;
 
+        
         /*for(int i = 0; i < 15; i++)
         {
             pushBulletCon.ShootDemarcation(1);
             pushBulletCon.ShootDemarcation(-1);
             yield return new WaitForSeconds(0.5f);
         }*/
-        yield return new WaitForSeconds(0.5f);
 
+        yield return new WaitForSeconds(0.5f);
 
         pushBulletCon.DestroyShuraShoot();
 
@@ -164,7 +165,7 @@ public class SnowFairyBulletCon : MonoBehaviour
 
         pushBulletCon.DestoryDemarcation();
         shuraFlag = false;
-
+        
        for(int i = 0 ; i < 5; i++)
         {
             pushBulletCon.GeoglyphShoot(launchWayAngle, launchWaySpilt - 14, bullets[4], bulletSpeed[4], player.transform.position);

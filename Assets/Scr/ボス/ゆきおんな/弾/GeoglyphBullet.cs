@@ -65,6 +65,7 @@ public class GeoglyphBullet : MonoBehaviour
         for (int i = 0; i < 255; i++)
         {
             spriteRenderer.material.color = new Color(255, 255, 255, i);
+            spriteRenderer.material.color = new Color(255, 255, 255, i);
             yield return null;
         }
         collider2D.enabled = true;
