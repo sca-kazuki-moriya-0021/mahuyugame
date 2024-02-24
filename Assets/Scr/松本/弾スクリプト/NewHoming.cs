@@ -9,7 +9,7 @@ public class NewHoming : MonoBehaviour
     [SerializeField]
     private float period;
 
-    private bool isMove;
+    private bool isMove = false;
 
     private Rigidbody2D rb;
     private Transform target;

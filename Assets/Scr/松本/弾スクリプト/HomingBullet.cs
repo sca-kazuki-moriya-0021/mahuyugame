@@ -4,41 +4,48 @@ using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    private float limit = 10;
-    private float period = 3;
-    private bool isHomingMove = true;
+    [SerializeField]
+    private float limit;
+    [SerializeField]
+    private float period;
+
+    private bool isMove = true;
 
     private Rigidbody2D rb;
-    private Transform target;
+    private GameObject target;
 
-    public bool IsHomingMove
+    public bool IsMove
     {
-        get { return isHomingMove;}
-        set { isHomingMove = value;}
+        get { return isMove; }
+        set { isMove = value; }
     }
 
-    void Start()
+    void Awake() // Awakeでの初期化を推奨
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void FixedUpdate() // UpdateではなくFixedUpdateを使用
     {
-        if (IsHomingMove)
+        if (IsMove && target != null)
         {
-            var acceleration = Vector2.zero;
-            var diff = (Vector2)target.position - rb.position;
-
+            Vector2 acceleration = Vector2.zero;
+            Vector2 diff = (Vector2)target.transform.position - rb.position; // rb.positionからVector2に変換
             acceleration += (diff - rb.velocity * period) * 2f / (period * period);
 
-            if(acceleration.magnitude > limit)
+            if (acceleration.magnitude > limit)
             {
                 acceleration = acceleration.normalized * limit;
             }
 
-            period -= Time.deltaTime;
-            rb.velocity += acceleration * Time.deltaTime;
+            period -= Time.fixedDeltaTime; // periodをTime.fixedDeltaTimeで減算
+            rb.velocity += acceleration * Time.fixedDeltaTime; // FixedDeltaTimeを使用して速度を更新
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

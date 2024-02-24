@@ -75,13 +75,11 @@ public class NurarihyonBulletCon : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 nurarihyonPushBulletCon.RandomDoll(bullets[0], bulletSpeed[0], numberOfBullet[0]);
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
-                    yield return new WaitForSeconds(0.25f);
+                    nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 100f, 15);
+                    yield return new WaitForSeconds(0.1f);
                 }
-                yield return new WaitForSeconds(0.5f);
-                
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(2f);
@@ -94,7 +92,7 @@ public class NurarihyonBulletCon : MonoBehaviour
 
             for (int i = 0; i < 2; i++)
             {
-                nurarihyonPushBulletCon.RotaHoming(bullets[10], transform, 14, 1, 0.5f);
+                nurarihyonPushBulletCon.fanshapeNway(player, bullets[0], bulletSpeed[0], 100f, 15);
                 yield return new WaitForSeconds(0.1f);
                 for (int j = 0;j < 30; j++)
                 {
@@ -107,19 +105,12 @@ public class NurarihyonBulletCon : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
-            yield return new WaitForSeconds(3f);
 
-            for (int i = 0; i < 10; i++)
-            {
-                StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
-                yield return new WaitForSeconds(0.65f);
-            }
             yield return new WaitForSeconds(2f);
-            for (int i = 0;i < 3; i++)
+            for (int i = 0;i < 5; i++)
             {
                 nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], 0);
-                nurarihyonPushBulletCon.RotaHoming(bullets[10], transform, 14, 1, 0.5f);
-                yield return new WaitForSeconds(5.0f);
+                yield return new WaitForSeconds(1.0f);
             }
 
             yield return new WaitForSeconds(2.0f);
@@ -182,12 +173,6 @@ public class NurarihyonBulletCon : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
 
-            for (int i = 0; i < 3; i++)
-            {
-                nurarihyonPushBulletCon.theHoming(bullets[10], NewPoint);
-                yield return new WaitForSeconds(0.5f);
-            }
-
             yield return new WaitForSeconds(1f);
 
             nurarihyonPushBulletCon.CounterAttack(bullets[7], this.transform, 10, 2f, 120f);
@@ -195,8 +180,12 @@ public class NurarihyonBulletCon : MonoBehaviour
 
             for (int i = 0; i < 10; i++)
             {
-                StartCoroutine(nurarihyonPushBulletCon.ShootHomingBullet(homingPoint, bullets[6]));
+                nurarihyonPushBulletCon.RandomDoll(bullets[0], bulletSpeed[0], numberOfBullet[0]);
                 yield return new WaitForSeconds(0.5f);
+                for(int j = 0;j < 5; j++)
+                {
+                    nurarihyonPushBulletCon.ApolloReflector(bullets[9], numberOfBullet[2], bulletSpeed[0], 0);
+                }
                 yield return new WaitForSeconds(1f);
             }
 
@@ -216,6 +205,7 @@ public class NurarihyonBulletCon : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 nurarihyonPushBulletCon.ApolloReflector(bullets[3], numberOfBullet[1], bulletSpeed[0], 1);
+                nurarihyonPushBulletCon.ApolloReflector(bullets[9], numberOfBullet[2], bulletSpeed[0], 0);
                 yield return new WaitForSeconds(2.0f);
             }
 
